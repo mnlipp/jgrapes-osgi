@@ -1,12 +1,9 @@
 Bundle-Name: JGrapes OSGi Portlets for Bundles
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.bundles
-Bundle-Version: 0.9.0.${tstamp}
+Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-Category: portlet
-
-base_version = ${versionmask;===;${Bundle-Version}}
-api_version = 0.1.0.${tstamp}
 
 Export-Package: org.jgrapes.osgi.portlets.bundles
 
@@ -24,6 +21,7 @@ Export-Package: org.jgrapes.osgi.portlets.bundles
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal;version=latest,\
+	org.jgrapes.osgi.factory;version=latest,\
 	org.freemarker.freemarker;version=2.3
 
 testbin=bin

@@ -21,7 +21,7 @@ package org.jgrapes.osgi.portlets.bundles;
 import java.util.Map;
 
 import org.jgrapes.core.Channel;
-import org.jgrapes.portal.PortletFactory;
+import org.jgrapes.osgi.factory.portlet.PortletFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.ServiceScope;
 

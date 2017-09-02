@@ -1,0 +1,14 @@
+Bundle-Name: JGrapes OSGi Factories APIs
+Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Copyright: Michael N. Lipp (c) 2017
+Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
+Export-Package: \
+	org.jgrapes.osgi.factory.core,\
+	org.jgrapes.osgi.factory.http,\
+	org.jgrapes.osgi.factory.portlet
+
+-baseline: *
+
+-buildpath: \
+	osgi.annotation;version=6.0.1,\
+	org.jgrapes.core;version=latest

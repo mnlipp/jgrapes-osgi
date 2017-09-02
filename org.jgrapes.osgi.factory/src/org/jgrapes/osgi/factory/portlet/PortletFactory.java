@@ -15,5 +15,16 @@
  * You should have received a copy of the GNU General Public License along 
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-@org.osgi.annotation.versioning.Version("0.0.0")
-package org.jgrapes.osgi.portlets.bundles;
+
+package org.jgrapes.osgi.factory.portlet;
+
+import org.jgrapes.core.ComponentType;
+import org.jgrapes.osgi.factory.core.ComponentFactory;
+
+/**
+ * 
+ */
+public interface PortletFactory<T extends ComponentType> 
+	extends ComponentFactory<T> {
+
+}

@@ -29,10 +29,111 @@ allprojects {
 
 /* Configure the subprojects */
 subprojects {
-  def bndProject = bndWorkspace.getProject(name)
-  if (bndProject != null) {
-    plugins.apply 'biz.aQute.bnd'
-  }
+	def bndProject = bndWorkspace.getProject(name)
+	if (bndProject != null) {
+		plugins.apply 'biz.aQute.bnd'
+		
+		// artifact_version is defined in cnf/bnd.bnd
+		if (bnd.artifact_version) {
+			project.version = bnd.artifact_version
+		}
+	}
+	apply plugin: 'maven'
+	apply plugin: 'maven-publish'
+
+	tasks.withType(Javadoc).all { enabled = false }
+	
+	task sourcesJar(type: Jar) {
+		from sourceSets.main.allJava
+		classifier "sources"
+	}
+	
+	task javadocJar(type: Jar) {
+		from (project.rootDir) {
+			include 'README.md'
+		}
+		classifier "javadoc"
+	}
+	
+	// MavenPublishing (new), incomplete, works only for local.
+	
+	publishing {
+		
+		publications {
+			mavenJava(MavenPublication) {
+				artifactId = archivesBaseName
+				from components.java
+				artifact sourcesJar
+				artifact javadocJar
+			}
+		}
+	}
+
+	// MavenPublishing (original), still needed for remote 
+
+	uploadArchives {
+		repositories {
+			mavenDeployer {
+				beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+ 
+				pom.project {
+			
+					name project.name
+					artifactId project.archivesBaseName
+					packaging 'pom'
+					description project.description
+					url 'http://mnlipp.github.io/jgrapes/'
+ 
+					scm {
+						url 'scm:git@github.com:mnlipp/jgrapes.git'
+						connection 'scm:git@github.com:mnlipp/jgrapes.git'
+						developerConnection 'git@github.com:mnlipp/jgrapes.git'
+					}
+ 
+					licenses {
+						license {
+							name 'GPL 3.0'
+							url 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+							distribution 'repo'
+						}
+					}
+ 
+					developers {
+						developer {
+							id 'mnlipp'
+							name 'Michael N. Lipp'
+						}
+					}
+				}
+			
+				artifacts {
+					archives jar
+					archives sourcesJar
+					archives javadocJar
+				}
+
+				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+					authentication(userName: project.properties['sonatypeUsername'] ?: "nouser", 
+						password: project.properties['sonatypePassword'] ?: "nopass")
+				}
+				snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+					authentication(userName: project.properties['sonatypeUsername'] ?: "nouser", 
+						password: project.properties['sonatypePassword'] ?: "nopass")
+				}
+			}
+		}
+	}
+	
+	afterEvaluate {
+		println "Checking " + project.name
+		if(project.name == cnf) {
+			tasks.matching { it.group == "upload" ||
+				it.group == "publishing" }.all {
+				// println "Disabling " + project.name + ":" + it.name 
+				enabled = false
+			}
+		}
+	}
 }
 
 task wrapper(type: Wrapper) {

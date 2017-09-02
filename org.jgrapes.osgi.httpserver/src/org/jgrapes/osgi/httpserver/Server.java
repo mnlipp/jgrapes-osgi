@@ -16,20 +16,12 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.upnpserver;
+package org.jgrapes.osgi.httpserver;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
-import java.net.URI;
-import java.security.KeyManagementException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-import java.util.ResourceBundle;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -44,25 +36,20 @@ import org.jgrapes.http.InMemorySessionManager;
 import org.jgrapes.http.LanguageSelector;
 import org.jgrapes.http.events.GetRequest;
 import org.jgrapes.http.events.PostRequest;
-import org.jgrapes.io.FileStorage;
 import org.jgrapes.io.NioDispatcher;
 import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslServer;
 import org.jgrapes.net.TcpServer;
-import org.jgrapes.osgi.portal.PortletCollector;
-import org.jgrapes.portal.KVStoreBasedPortalPolicy;
-import org.jgrapes.portal.Portal;
-import org.jgrapes.portal.PortalLocalBackedKVStore;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
  *
  */
-public class Application extends Component implements BundleActivator {
+public class Server extends Component implements BundleActivator {
 
 	private static BundleContext context;
-	private Application app;
+	private Server app;
 	
 	public static BundleContext context() {
 		return context;
@@ -73,9 +60,9 @@ public class Application extends Component implements BundleActivator {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		Application.context = context;
+		Server.context = context;
 		// The demo component is the application
-		app = new Application();
+		app = new Server();
 		// Attach a general nio dispatcher
 		app.attach(new NioDispatcher());
 
@@ -85,7 +72,7 @@ public class Application extends Component implements BundleActivator {
 		// Create TLS "converter"
 		KeyStore serverStore = KeyStore.getInstance("JKS");
 		try (InputStream kf 
-				= Application.class.getResourceAsStream("/localhost.jks")) {
+				= Server.class.getResourceAsStream("/localhost.jks")) {
 			serverStore.load(kf, "nopass".toCharArray());
 		}
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(
@@ -107,33 +94,7 @@ public class Application extends Component implements BundleActivator {
 		// Build application layer
 		app.attach(new InMemorySessionManager(app.channel()));
 		app.attach(new LanguageSelector(app.channel()));
-		app.attach(new FileStorage(app.channel(), 65536));
-		Portal portal = app.attach(new Portal(Channel.SELF, app.channel(), 
-				new URI("/portal/"))).setResourceSupplier(l -> 
-				ResourceBundle.getBundle(
-					getClass().getPackage().getName() + ".portal-l10n", l,
-					ResourceBundle.Control.getNoFallbackControl(
-							ResourceBundle.Control.FORMAT_DEFAULT)));
-		portal.attach(new PortalLocalBackedKVStore(
-				portal, portal.prefix().getPath()));
-		portal.attach(new KVStoreBasedPortalPolicy(portal));
-		portal.attach(new NewPortalSessionPolicy(portal));
-		portal.attach(new PortletCollector(portal, context));
 		Components.start(app);
-		
-		
-//		context().addServiceListener(new RootDeviceListener(),
-//                "(&" + "("+Constants.OBJECTCLASS 
-//                		+ "=" + UPnPDevice.class.getName() + ")"
-//                	 + "("+UPnPDevice.UDN+"=*)" + ")");
-//		
-//		ServiceReference[] roots = null;
-//		roots = context().getServiceReferences(
-//				UPnPDevice.class.getName(),
-//				"(&" + "("+Constants.OBJECTCLASS 
-//						+ "=" + UPnPDevice.class.getName() + ")"
-//					 + "("+UPnPDevice.UDN+"=*)" + ")");
-//		roots = null;
 	}
 
 	/* (non-Javadoc)
@@ -143,20 +104,6 @@ public class Application extends Component implements BundleActivator {
 	public void stop(BundleContext context) throws Exception {
 		app.fire(new Stop(), Channel.BROADCAST);
 		Components.awaitExhaustion();
-	}
-
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyStoreException 
-	 * @throws UnrecoverableKeyException 
-	 * @throws CertificateException 
-	 * @throws KeyManagementException 
-	 */
-	public static void main(String[] args) throws Exception {
-		new Application().start(null);
 	}
 
 }

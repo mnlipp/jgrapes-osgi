@@ -63,6 +63,12 @@
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
 
+javac.source: 1.8
+javac.target: 1.8
+
+artifact_version: ${versionmask;===S;${Bundle-Version}}
+-outputmask: ${@bsn}-${versionmask;===S;${@version}}.jar
+
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable."

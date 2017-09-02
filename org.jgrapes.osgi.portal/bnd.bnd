@@ -1,11 +1,8 @@
 Bundle-Name: JGrapes OSGi Portal Components
 Bundle-SymbolicName: org.jgrapes.osgi.portal
-Bundle-Version: 0.9.0.${tstamp}
+Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
-
-base_version = ${versionmask;===;${Bundle-Version}}
-api_version = 0.1.0.${tstamp}
 
 Export-Package: \
 	org.jgrapes.osgi.portal
@@ -21,7 +18,7 @@ testbin=bin
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
 	org.jgrapes.core;version=latest,\
-	org.jgrapes.portal;version=latest
+	org.jgrapes.osgi.factory;version=latest
 
 -fixupmessages: \
     "Found source folder 'resources' that is not on bnd's source path 'src'", \
