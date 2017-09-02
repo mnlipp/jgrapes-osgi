@@ -10,19 +10,42 @@ import aQute.bnd.osgi.Constants
 
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
-  dependencies {
-    classpath bndPlugin
-  }
+    repositories {
+        jcenter()
+        mavenCentral()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath bndPlugin
+    }
+}
+
+plugins {
+	id "maven-publish"
+	id "signing"
+	id "org.jdrupes.mdoclet" version "1.0.3"
 }
 
 /* Initialize the bnd workspace */
 Workspace.setDriver(Constants.BNDDRIVER_GRADLE)
 Workspace.addGestalt(Constants.GESTALT_BATCH, null)
-ext.bndWorkspace = new Workspace(rootDir, bnd_cnf).setOffline(gradle.startParameter.offline)
 
-ext.cnf = rootProject.project(bnd_cnf)
+ext {
+	bndWorkspace = new Workspace(rootDir, bnd_cnf).setOffline(gradle.startParameter.offline)
+	cnf = rootProject.project(bnd_cnf)
+
+	isTravisBuild = System.getenv().get("TRAVIS") == 'true'
+}
 
 allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://jitpack.io' }
+    }
+	
 	// Makes Eclipse-groovy handle *.gradle file properly
 	apply plugin:'groovy'
 }
@@ -134,8 +157,35 @@ subprojects {
 			}
 		}
 	}
+	
 }
 
+configurations {
+    javadocTaglets
+}
+
+dependencies {
+    javadocTaglets "org.jdrupes.taglets:plantuml-taglet:1.0.+"
+    // javadocTaglets "com.github.mnlipp:jdrupes-taglets:master-SNAPSHOT"
+}
+
+javadoc {
+	
+	options.tagletPath = configurations.javadocTaglets.files as List
+	options.taglets = ["org.jdrupes.taglets.plantUml.Taglet"]
+	
+	classpath = files(subprojects.collect {project ->
+		project.sourceSets.main.compileClasspath})
+	source subprojects.collect {project -> project.sourceSets.main.allJava }
+	options.addStringOption("overview", "overview.md")
+	inputs.file "overview.md"
+	options.addBooleanOption("linksource", true)
+	options.stylesheetFile(file("stylesheet.css"))
+	options.addStringOption("bottom", file("misc/javadoc.bottom.txt").text)
+	options.addStringOption("link", "http://docs.oracle.com/javase/8/docs/api/")
+	destinationDir = file("../jgrapes.gh-pages/javadoc-osgi")
+}
+	
 task wrapper(type: Wrapper) {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }

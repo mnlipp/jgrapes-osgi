@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.ComponentType;
+import org.jgrapes.core.Manager;
 
 /**
  * A general purpose factory interface for components.
