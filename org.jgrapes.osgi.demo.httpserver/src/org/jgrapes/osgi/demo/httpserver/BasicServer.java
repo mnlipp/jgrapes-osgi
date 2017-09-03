@@ -16,7 +16,7 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.httpserver;
+package org.jgrapes.osgi.demo.httpserver;
 
 import java.io.InputStream;
 import java.net.InetSocketAddress;
@@ -40,16 +40,17 @@ import org.jgrapes.io.NioDispatcher;
 import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslServer;
 import org.jgrapes.net.TcpServer;
+import org.jgrapes.osgi.http.HttpRequestHandlerCollector;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
  *
  */
-public class Server extends Component implements BundleActivator {
+public class BasicServer extends Component implements BundleActivator {
 
 	private static BundleContext context;
-	private Server app;
+	private BasicServer app;
 	
 	public static BundleContext context() {
 		return context;
@@ -60,9 +61,9 @@ public class Server extends Component implements BundleActivator {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		Server.context = context;
+		BasicServer.context = context;
 		// The demo component is the application
-		app = new Server();
+		app = new BasicServer();
 		// Attach a general nio dispatcher
 		app.attach(new NioDispatcher());
 
@@ -72,7 +73,7 @@ public class Server extends Component implements BundleActivator {
 		// Create TLS "converter"
 		KeyStore serverStore = KeyStore.getInstance("JKS");
 		try (InputStream kf 
-				= Server.class.getResourceAsStream("/localhost.jks")) {
+				= BasicServer.class.getResourceAsStream("/localhost.jks")) {
 			serverStore.load(kf, "nopass".toCharArray());
 		}
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(
@@ -94,6 +95,7 @@ public class Server extends Component implements BundleActivator {
 		// Build application layer
 		app.attach(new InMemorySessionManager(app.channel()));
 		app.attach(new LanguageSelector(app.channel()));
+		app.attach(new HttpRequestHandlerCollector(app.channel(), context));
 		Components.start(app);
 	}
 

@@ -1,0 +1,24 @@
+Bundle-Name: JGrapes OSGi HTTP Server
+Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Copyright: Michael N. Lipp (c) 2017
+Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
+Export-Package: org.jgrapes.osgi.demo.portal
+Bundle-Activator: org.jgrapes.osgi.demo.portal.Application
+
+-buildpath: \
+	osgi.core;version=6.0.0,\
+	osgi.annotation;version=6.0.1,\
+	osgi.cmpn;version=6.0,\
+	org.jgrapes.core;version=latest,\
+	org.jgrapes.io;version=latest,\
+	org.jgrapes.http;version=latest,\
+	org.jgrapes.portal;version=latest,\
+	org.jgrapes.osgi.factory;version=latest,\
+	org.jgrapes.osgi.portal;version=latest
+
+-includeresource: \
+	resources
+
+-fixupmessages: \
+    "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
+    "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable."
