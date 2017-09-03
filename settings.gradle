@@ -66,6 +66,10 @@ if (projectNames.remove('')) {
   }
 }
 
+/* Shouldn't have been added in the first place... */
+projectNames.remove('misc')
+projectNames.remove('build')
+
 /* Add each project and its dependencies to the graph */
 projectNames.each { projectName ->
   include projectName
