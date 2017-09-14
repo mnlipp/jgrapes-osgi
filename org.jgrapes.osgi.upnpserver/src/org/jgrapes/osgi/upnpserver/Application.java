@@ -109,7 +109,7 @@ public class Application extends Component implements BundleActivator {
 		app.attach(new LanguageSelector(app.channel()));
 		app.attach(new FileStorage(app.channel(), 65536));
 		Portal portal = app.attach(new Portal(Channel.SELF, app.channel(), 
-				new URI("/portal/"))).setResourceSupplier(l -> 
+				new URI("/portal/"))).setResourceBundleSupplier(l -> 
 				ResourceBundle.getBundle(
 					getClass().getPackage().getName() + ".portal-l10n", l,
 					ResourceBundle.Control.getNoFallbackControl(
