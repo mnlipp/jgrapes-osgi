@@ -47,7 +47,6 @@ import org.jgrapes.osgi.portal.PortletCollector;
 import org.jgrapes.portal.KVStoreBasedPortalPolicy;
 import org.jgrapes.portal.Portal;
 import org.jgrapes.portal.PortalLocalBackedKVStore;
-import org.jgrapes.portal.ResourceNotFoundException;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
