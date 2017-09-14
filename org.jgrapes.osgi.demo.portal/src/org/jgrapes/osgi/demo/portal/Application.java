@@ -47,6 +47,7 @@ import org.jgrapes.osgi.portal.PortletCollector;
 import org.jgrapes.portal.KVStoreBasedPortalPolicy;
 import org.jgrapes.portal.Portal;
 import org.jgrapes.portal.PortalLocalBackedKVStore;
+import org.jgrapes.portal.ResourceNotFoundException;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -103,11 +104,14 @@ public class Application extends Component implements BundleActivator {
 		app.attach(new LanguageSelector(app.channel()));
 		app.attach(new FileStorage(app.channel(), 65536));
 		Portal portal = app.attach(new Portal(Channel.SELF, app.channel(), 
-				new URI("/portal/"))).setResourceSupplier(l -> 
-				ResourceBundle.getBundle(
+				new URI("/portal/")))
+				.setResourceBundleSupplier(l -> ResourceBundle.getBundle(
 					getClass().getPackage().getName() + ".portal-l10n", l,
 					ResourceBundle.Control.getNoFallbackControl(
-							ResourceBundle.Control.FORMAT_DEFAULT)));
+							ResourceBundle.Control.FORMAT_DEFAULT)))
+				.setFallbackResourceSupplier((themeProvider, resource) -> {
+					return Application.class.getResourceAsStream(resource);
+				});
 		portal.attach(new PortalLocalBackedKVStore(
 				portal, portal.prefix().getPath()));
 		portal.attach(new KVStoreBasedPortalPolicy(portal));
