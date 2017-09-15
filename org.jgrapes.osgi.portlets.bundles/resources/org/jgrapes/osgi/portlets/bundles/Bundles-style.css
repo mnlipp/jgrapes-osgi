@@ -23,3 +23,13 @@
      padding-left: 0.5em;
      vertical-align: top;
 }
+
+.jgrapes-osgi-bundles-view table.dataTable thead th,
+.jgrapes-osgi-bundles-view table.dataTable thead td {
+  padding: 6px 18px;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable tbody th,
+.jgrapes-osgi-bundles-view table.dataTable tbody td {
+  padding: 4px 10px;
+}

@@ -1,16 +1,19 @@
-<div data-portletTitle="${_("portletName")}" class="jgrapes-osgi-bundles-preview"
-    data-appendContentHandler="tooltips"> 
+<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-bundles-preview"> 
   <table>
-    <tr>
-      <th>${_("bundleId")}</th>
-      <th>${_("bundleName")}</th>
-    </tr>
-    <#list portlet.bundles() as bundle>
-    <tr data-tooltipId="${"BundlesPreviewTooltip-" + bundle.bundleId}">
-      <td>${bundle.bundleId}</td>
-      <td>${bundle.getHeaders(locale).get("Bundle-Name")!(bundle.symbolicName)}</td>
-    </tr>
-    </#list>
+    <thead class="ui-state-default">
+      <tr>
+        <th>${_("bundleId")}</th>
+        <th>${_("bundleName")}</th>
+      </tr>
+    </thead>
+    <tbody class="ui-widget-content">
+      <#list portlet.bundles() as bundle>
+      <tr data-tooltip-id="${"BundlesPreviewTooltip-" + bundle.bundleId}">
+        <td>${bundle.bundleId}</td>
+        <td>${bundle.getHeaders(locale).get("Bundle-Name")!(bundle.symbolicName)}</td>
+      </tr>
+      </#list>
+    </tbody>
   </table>
 </div>
 
