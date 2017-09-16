@@ -34,10 +34,6 @@
   padding: 0px 10px;
 }
 
-.jgrapes-osgi-bundles-preview .dataTables_wrapper .ui-toolbar {
-  display: none;
-}
-
 .jgrapes-osgi-bundles-preview table.dataTable.no-footer {
   border-bottom: 0;
 }

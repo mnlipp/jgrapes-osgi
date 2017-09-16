@@ -48,6 +48,7 @@
 	$( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-preview table' ).DataTable( {
 		"searching": false,
 		"paging": false,
-		"info": false
+		"info": false,
+		"dom": "t"
 	} )
 </script>
