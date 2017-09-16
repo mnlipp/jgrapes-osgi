@@ -24,6 +24,24 @@
      vertical-align: top;
 }
 
+.jgrapes-osgi-bundles-preview table.dataTable thead th,
+.jgrapes-osgi-bundles-preview table.dataTable thead td {
+  padding: 2px 18px;
+}
+
+.jgrapes-osgi-bundles-preview table.dataTable tbody th,
+.jgrapes-osgi-bundles-preview table.dataTable tbody td {
+  padding: 0px 10px;
+}
+
+.jgrapes-osgi-bundles-preview .dataTables_wrapper .ui-toolbar {
+  display: none;
+}
+
+.jgrapes-osgi-bundles-preview table.dataTable.no-footer {
+  border-bottom: 0;
+}
+
 .jgrapes-osgi-bundles-view table.dataTable thead th,
 .jgrapes-osgi-bundles-view table.dataTable thead td {
   padding: 6px 18px;

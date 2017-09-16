@@ -1,12 +1,12 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-bundles-preview"> 
   <table>
-    <thead class="ui-state-default">
+    <thead>
       <tr>
         <th>${_("bundleId")}</th>
         <th>${_("bundleName")}</th>
       </tr>
     </thead>
-    <tbody class="ui-widget-content">
+    <tbody>
       <#list portlet.bundles() as bundle>
       <tr data-tooltip-id="${"BundlesPreviewTooltip-" + bundle.bundleId}">
         <td>${bundle.bundleId}</td>
@@ -44,4 +44,10 @@
 <script>
     JGPortal.tooltip($( ".jgrapes-osgi-bundles-preview" ));
     $( ".jgrapes-osgi-bundles-preview" ).tooltip( "option", "classes.ui-tooltip", "ui-corner-all ui-widget-shadow jgrapes-osgi-bundles-preview-tooltip" );
+
+	$( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-preview table' ).DataTable( {
+		"searching": false,
+		"paging": false,
+		"info": false
+	} )
 </script>
