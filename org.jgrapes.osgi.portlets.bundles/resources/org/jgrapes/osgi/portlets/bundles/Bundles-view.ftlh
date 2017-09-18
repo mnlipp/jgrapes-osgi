@@ -4,29 +4,25 @@
       <tr>
         <th>${_("bundleId")}</th>
         <th>${_("bundleName")}</th>
-        <td>${_("bundleVersion")}</td>
-        <td>${_("bundleCategory")}</td>
-        <td>${_("bundleState")}</td>
+        <th>${_("bundleVersion")}</th>
+        <th>${_("bundleCategory")}</th>
+        <th>${_("bundleState")}</th>
+        <th>${_("bundleActions")}</th>
       </tr>
     </thead>
     <tbody>
-      <#list portlet.bundles() as bundle>
-      <tr>
-        <td>${bundle.bundleId}</td>
-        <td>${bundle.getHeaders(locale).get("Bundle-Name")!(bundle.symbolicName)}
-          <em>(${bundle.symbolicName})</em></td>
-        <td>${bundle.version}</td>
-        <td>${bundle.getHeaders(locale).get("Bundle-Category")!""}</td>
-        <td>${_("bundleState_" + bundle.state)}</td>
-      </tr>
-      </#list>
     </tbody>
   </table>
 </div>
 
 <script>
-	$( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-view table' ).DataTable( {
-		"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, $.fn.dataTable.defaults.oLanguage.sLengthAll] ],
-		"pageLength": -1
-	} )
+	$.extend(orgJGrapesOsgiPortletsBundles.l10n, {
+		"bundleStop": "${_("bundleStop")}",
+		"bundleStart": "${_("bundleStart")}",
+		"bundleRefresh": "${_("bundleRefresh")}",
+		"bundleUpdate": "${_("bundleUpdate")}",
+		"bundleUninstall": "${_("bundleUninstall")}",
+	});
+
+	orgJGrapesOsgiPortletsBundles.initTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-view table' ));
 </script>

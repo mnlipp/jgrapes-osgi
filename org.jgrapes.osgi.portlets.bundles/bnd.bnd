@@ -22,7 +22,8 @@ Export-Package: org.jgrapes.osgi.portlets.bundles
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal;version=latest,\
 	org.jgrapes.osgi.factory;version=latest,\
-	org.freemarker.freemarker;version=2.3
+	org.freemarker.freemarker;version=2.3,\
+	javax.json-api;version=1.1
 
 testbin=bin
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JGrapes OSGi</name>
-	<comment></comment>
+	<name>buildSrc</name>
+	<comment>Project buildSrc created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

@@ -26,24 +26,29 @@
 
 .jgrapes-osgi-bundles-preview table.dataTable thead th,
 .jgrapes-osgi-bundles-preview table.dataTable thead td {
-  padding: 2px 18px;
+	padding: 2px 18px;
 }
 
 .jgrapes-osgi-bundles-preview table.dataTable tbody th,
 .jgrapes-osgi-bundles-preview table.dataTable tbody td {
-  padding: 0px 10px;
+	padding: 0px 10px;
 }
 
 .jgrapes-osgi-bundles-preview table.dataTable.no-footer {
-  border-bottom: 0;
+	border-bottom: 0;
 }
 
 .jgrapes-osgi-bundles-view table.dataTable thead th,
 .jgrapes-osgi-bundles-view table.dataTable thead td {
-  padding: 6px 18px;
+	padding: 6px 18px;
 }
 
 .jgrapes-osgi-bundles-view table.dataTable tbody th,
 .jgrapes-osgi-bundles-view table.dataTable tbody td {
-  padding: 4px 10px;
+	padding: 4px 10px;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable tbody button {
+	font-size: 50%;
+	padding: 0.25em 0em;
 }

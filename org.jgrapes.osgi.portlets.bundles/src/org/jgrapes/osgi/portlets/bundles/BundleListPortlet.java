@@ -22,7 +22,6 @@ import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
-import org.jgrapes.http.LanguageSelector;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
 import org.jgrapes.portal.PortalView;
@@ -30,12 +29,15 @@ import org.jgrapes.portal.events.AddPortletRequest;
 import org.jgrapes.portal.events.AddPortletType;
 import org.jgrapes.portal.events.DeletePortlet;
 import org.jgrapes.portal.events.DeletePortletRequest;
+import org.jgrapes.portal.events.NotifyPortletModel;
+import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
 import org.jgrapes.portal.events.RenderPortletFromProvider;
 import org.jgrapes.portal.events.RenderPortletRequest;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleException;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
@@ -46,10 +48,15 @@ import static org.jgrapes.portal.Portlet.*;
 import static org.jgrapes.portal.Portlet.RenderMode.*;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -87,7 +94,6 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	@Override
 	protected PortletBaseModel createPortletModel() {
 		BundleListModel model = new BundleListModel(generatePortletId());
-		model.bundles = context.getBundles();
 		return model;
 	}
 
@@ -95,8 +101,7 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	public void onPortalReady(PortalReady event, IOSubchannel channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
 			ParseException, IOException {
-		ResourceBundle resourceBundle = resourceSupplier().apply(
-				LanguageSelector.associatedLocale(channel));
+		ResourceBundle resourceBundle = resourceBundle(locale(channel));
 		// Add portlet resources to page
 		channel.respond(new AddPortletType(type())
 				.setDisplayName(resourceBundle.getString("portletName"))
@@ -118,7 +123,6 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 		}
 		if (portletId.startsWith(type() + "-")) {
 			BundleListModel model = new BundleListModel(portletId);
-			model.bundles = context.getBundles();
 			return Optional.of(addToSession(session, model));
 		}
 		return Optional.empty();
@@ -158,10 +162,6 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	protected void doRenderPortlet(RenderPortletRequest event,
 	        IOSubchannel channel, Session session, PortletBaseModel retrievedModel)
 	        throws Exception {
-		if (!event.portletId().startsWith(getClass().getName() + "-")) {
-			return;
-		}
-		
 		Map<String, Object> baseModel 
 			= freemarkerBaseModel(event.renderSupport());
 		switch (event.renderMode()) {
@@ -182,6 +182,10 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 					View, MODES, newContentProvider(tpl, 
 							freemarkerModel(baseModel, retrievedModel, channel)),
 					event.isForeground()));
+			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
+					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+			channel.respond(new NotifyPortletView(type(),
+					event.portletId(), "updateBundles", bundleInfos));
 			break;
 		}
 		default:
@@ -189,17 +193,68 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 		}	
 	}
 	
+	private Map<String,Object> createBundleInfo(Bundle bundle, Locale locale) {
+		Map<String, Object> result = new HashMap<>();
+		result.put("id", bundle.getBundleId());
+		result.put("name", Optional.ofNullable(bundle.getHeaders(locale.toString())
+				.get("Bundle-Name")).orElse(bundle.getSymbolicName()));
+		result.put("symbolicName", bundle.getSymbolicName());
+		result.put("version", bundle.getVersion().toString());
+		result.put("category", Optional.ofNullable(bundle.getHeaders(locale.toString())
+				.get("Bundle-Category")).orElse(""));
+		ResourceBundle rb = resourceBundle(locale);
+		result.put("state", rb.getString("bundleState_" + bundle.getState()));
+		result.put("actions", "");
+		return result;
+	}
+	
+	@Handler
+	public void onChangePortletModel(NotifyPortletModel event,
+			IOSubchannel channel) throws TemplateNotFoundException, 
+			MalformedTemplateNameException, ParseException, IOException {
+		Session session = session(channel);
+		Optional<PortletBaseModel> optPortletModel 
+			= modelFromSession(session, event.portletId());
+		if (!optPortletModel.isPresent()) {
+			return;
+		}
+	
+		event.stop();
+		Bundle bundle = context.getBundle(event.params().getInt(0));
+		if (bundle == null) {
+			return;
+		}
+		try {
+			switch (event.method()) {
+			case "stop":
+				bundle.stop();
+				break;
+			case "start":
+				bundle.start();
+				break;
+			case "refresh":
+				break;
+			case "update":
+				bundle.update();
+				break;
+			case "uninstall":
+				bundle.uninstall();
+				break;
+			}
+		} catch (BundleException e) {
+			// ignore
+		}
+	}
+	
 	@SuppressWarnings("serial")
 	public class BundleListModel extends PortletBaseModel {
 
-		private Bundle[] bundles;
-		
 		public BundleListModel(String portletId) {
 			super(portletId);
 		}
 
 		public Bundle[] bundles() {
-			return bundles;
+			return context.getBundles();
 		}
 	}
 }
