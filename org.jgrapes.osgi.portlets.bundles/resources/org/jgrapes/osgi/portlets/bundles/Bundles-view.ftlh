@@ -24,5 +24,5 @@
 		"bundleUninstall": "${_("bundleUninstall")}",
 	});
 
-	orgJGrapesOsgiPortletsBundles.initTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-view table' ));
+	orgJGrapesOsgiPortletsBundles.initViewTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-view table' ));
 </script>

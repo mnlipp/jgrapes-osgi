@@ -24,6 +24,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
+import org.jgrapes.io.events.Closed;
 import org.jgrapes.portal.PortalView;
 import org.jgrapes.portal.events.AddPortletRequest;
 import org.jgrapes.portal.events.AddPortletType;
@@ -37,7 +38,10 @@ import org.jgrapes.portal.events.RenderPortletRequest;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleException;
+import org.osgi.framework.BundleListener;
+import org.osgi.framework.wiring.BundleRevision;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
@@ -49,23 +53,29 @@ import static org.jgrapes.portal.Portlet.RenderMode.*;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 
 /**
  * 
  */
-public class BundleListPortlet extends FreeMarkerPortlet {
+public class BundleListPortlet extends FreeMarkerPortlet implements BundleListener {
 
 	private final static Set<RenderMode> MODES = RenderMode.asSet(
 			DeleteablePreview, View);
 	private BundleContext context;
+	private Map<IOSubchannel,Set<BundleListModel>> listenersByChannel 
+		= Collections.synchronizedMap(new WeakHashMap<>());
 	
 	/**
 	 * Creates a new component with its channel set to the given 
@@ -78,6 +88,7 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	public BundleListPortlet(Channel componentChannel, BundleContext context) {
 		super(componentChannel);
 		this.context = context;
+		context.addBundleListener(this);
 	}
 
 	/* (non-Javadoc)
@@ -114,12 +125,14 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession(org.jgrapes.io.IOSubchannel, java.lang.String)
 	 */
 	@Override
-	protected Optional<PortletBaseModel> modelFromSession(
+	protected Optional<BundleListModel> modelFromSession(
 			Session session, String portletId) {
-		Optional<PortletBaseModel> optModel 
+		Optional<? extends PortletBaseModel> optModel 
 			= super.modelFromSession(session, portletId);
 		if (optModel.isPresent()) {
-			return optModel;
+			@SuppressWarnings("unchecked")
+			Optional<BundleListModel> result = (Optional<BundleListModel>)optModel;
+			return result;
 		}
 		if (portletId.startsWith(type() + "-")) {
 			BundleListModel model = new BundleListModel(portletId);
@@ -143,7 +156,6 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 						freemarkerModel(baseModel, portletModel, channel)),
 				true));
 	}
-
 	
 	/* (non-Javadoc)
 	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet(org.jgrapes.portal.events.DeletePortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.portal.AbstractPortlet.PortletModelBean)
@@ -152,6 +164,8 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	protected void doDeletePortlet(DeletePortletRequest event,
 	        IOSubchannel channel, Session session, PortletBaseModel portletModel)
 	        throws Exception {
+		listenersByChannel.computeIfAbsent(
+				channel, k -> new HashSet<>()).remove(portletModel);
 		channel.respond(new DeletePortlet(portletModel.getPortletId()));
 	}
 	
@@ -162,8 +176,9 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 	protected void doRenderPortlet(RenderPortletRequest event,
 	        IOSubchannel channel, Session session, PortletBaseModel retrievedModel)
 	        throws Exception {
-		Map<String, Object> baseModel 
-			= freemarkerBaseModel(event.renderSupport());
+		listenersByChannel.computeIfAbsent(
+				channel, k -> new HashSet<>()).add((BundleListModel)retrievedModel);
+		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
@@ -185,7 +200,7 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
-					event.portletId(), "updateBundles", bundleInfos));
+					event.portletId(), "bundleList", bundleInfos));
 			break;
 		}
 		default:
@@ -204,7 +219,19 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 				.get("Bundle-Category")).orElse(""));
 		ResourceBundle rb = resourceBundle(locale);
 		result.put("state", rb.getString("bundleState_" + bundle.getState()));
-		result.put("actions", "");
+		result.put("startable", false);
+		result.put("stoppable", false);
+		if ((bundle.getState() & (Bundle.RESOLVED | Bundle.INSTALLED | Bundle.ACTIVE)) != 0) {
+			boolean isFragment = ((bundle.adapt(BundleRevision.class).getTypes() 
+					& BundleRevision.TYPE_FRAGMENT) != 0);
+			result.put("startable", !isFragment 
+					&& (bundle.getState() == Bundle.INSTALLED
+						|| bundle.getState() == Bundle.RESOLVED));
+			result.put("stoppable", !isFragment && bundle.getState() == Bundle.ACTIVE);
+		}
+		result.put("uninstallable", (bundle.getState() 
+				& (Bundle.INSTALLED | Bundle.RESOLVED | Bundle.ACTIVE)) != 0);
+		result.put("uninstalled", bundle.getState() == Bundle.UNINSTALLED);
 		return result;
 	}
 	
@@ -213,7 +240,7 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 			IOSubchannel channel) throws TemplateNotFoundException, 
 			MalformedTemplateNameException, ParseException, IOException {
 		Session session = session(channel);
-		Optional<PortletBaseModel> optPortletModel 
+		Optional<? extends PortletBaseModel> optPortletModel 
 			= modelFromSession(session, event.portletId());
 		if (!optPortletModel.isPresent()) {
 			return;
@@ -246,6 +273,23 @@ public class BundleListPortlet extends FreeMarkerPortlet {
 		}
 	}
 	
+	@Handler
+	public void onClosed(Closed event, IOSubchannel channel) {
+		listenersByChannel.remove(channel);
+	}
+	
+	@Override
+	public void bundleChanged(BundleEvent event) {
+		for (Entry<IOSubchannel,Set<BundleListModel>> e: listenersByChannel.entrySet()) {
+			IOSubchannel channel = e.getKey();
+			for (BundleListModel model: e.getValue()) {
+				channel.respond(new NotifyPortletView(type(),
+						model.getPortletId(), "bundleUpdate", 
+						createBundleInfo(event.getBundle(), locale(channel))));
+			}
+		}
+	}
+
 	@SuppressWarnings("serial")
 	public class BundleListModel extends PortletBaseModel {
 
