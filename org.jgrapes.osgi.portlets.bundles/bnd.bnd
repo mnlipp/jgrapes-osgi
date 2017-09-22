@@ -25,8 +25,6 @@ Export-Package: org.jgrapes.osgi.portlets.bundles
 	org.freemarker.freemarker;version=2.3,\
 	javax.json-api;version=1.1
 
-testbin=bin
-
 -fixupmessages: \
     "Found source folder 'resources' that is not on bnd's source path 'src'", \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
