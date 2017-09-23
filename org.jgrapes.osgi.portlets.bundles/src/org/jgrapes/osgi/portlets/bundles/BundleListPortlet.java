@@ -127,13 +127,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	@Override
 	protected Optional<BundleListModel> modelFromSession(
 			Session session, String portletId) {
-		Optional<? extends PortletBaseModel> optModel 
-			= super.modelFromSession(session, portletId);
-		if (optModel.isPresent()) {
-			@SuppressWarnings("unchecked")
-			Optional<BundleListModel> result = (Optional<BundleListModel>)optModel;
-			return result;
-		}
 		if (portletId.startsWith(type() + "-")) {
 			BundleListModel model = new BundleListModel(portletId);
 			return Optional.of(addToSession(session, model));
