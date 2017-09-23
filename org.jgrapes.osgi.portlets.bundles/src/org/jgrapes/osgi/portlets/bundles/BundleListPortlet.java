@@ -155,6 +155,10 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				DeleteablePreview, MODES, newContentProvider(tpl, 
 						freemarkerModel(baseModel, portletModel, channel)),
 				true));
+		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
+				.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+		channel.respond(new NotifyPortletView(type(),
+				portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
 	}
 	
 	/* (non-Javadoc)
@@ -188,6 +192,10 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 					DeleteablePreview, MODES,	newContentProvider(tpl, 
 							freemarkerModel(baseModel, retrievedModel, channel)),
 					event.isForeground()));
+			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
+					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+			channel.respond(new NotifyPortletView(type(),
+					event.portletId(), "bundleUpdates", bundleInfos, "preview", true));
 			break;
 		}
 		case View: {
@@ -200,7 +208,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
-					event.portletId(), "bundleList", bundleInfos));
+					event.portletId(), "bundleUpdates", bundleInfos, "view", true));
 			break;
 		}
 		default:
@@ -284,8 +292,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			IOSubchannel channel = e.getKey();
 			for (BundleListModel model: e.getValue()) {
 				channel.respond(new NotifyPortletView(type(),
-						model.getPortletId(), "bundleUpdate", 
-						createBundleInfo(event.getBundle(), locale(channel))));
+						model.getPortletId(), "bundleUpdates", (Object)new Object[]
+								{ createBundleInfo(event.getBundle(), locale(channel)) },
+								"*", false));
 			}
 		}
 	}
