@@ -52,6 +52,7 @@ import static org.jgrapes.portal.Portlet.*;
 import static org.jgrapes.portal.Portlet.RenderMode.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -99,15 +100,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		return type() + "-" + super.generatePortletId();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#createPortletModel()
-	 */
-	@Override
-	protected PortletBaseModel createPortletModel() {
-		BundleListModel model = new BundleListModel(generatePortletId());
-		return model;
-	}
-
 	@Handler
 	public void onPortalReady(PortalReady event, IOSubchannel channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
@@ -124,12 +116,12 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	/* (non-Javadoc)
 	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession(org.jgrapes.io.IOSubchannel, java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	protected Optional<BundleListModel> modelFromSession(
-			Session session, String portletId) {
+	protected <T extends Serializable> Optional<T> stateFromSession(
+			Session session, String portletId, Class<T> type) {
 		if (portletId.startsWith(type() + "-")) {
-			BundleListModel model = new BundleListModel(portletId);
-			return Optional.of(addToSession(session, model));
+			return Optional.of((T)new BundleListModel(portletId));
 		}
 		return Optional.empty();
 	}
@@ -139,10 +131,12 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doAddPortlet(AddPortletRequest event, IOSubchannel channel,
-	        Session session, PortletBaseModel portletModel) throws Exception {
+	        Session session) throws Exception {
+		BundleListModel portletModel = new BundleListModel(generatePortletId());
+		listenersByChannel.computeIfAbsent(
+				channel, c -> new HashSet<>()).add(portletModel);
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
-		Map<String, Object> baseModel 
-			= freemarkerBaseModel(event.renderSupport());
+		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
 		channel.respond(new RenderPortletFromProvider(
 				BundleListPortlet.class, portletModel.getPortletId(),
 				DeleteablePreview, MODES, newContentProvider(tpl, 
@@ -159,11 +153,12 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doDeletePortlet(DeletePortletRequest event,
-	        IOSubchannel channel, Session session, PortletBaseModel portletModel)
-	        throws Exception {
+	        IOSubchannel channel, Session session, String portletId, 
+	        Serializable retrievedState) throws Exception {
+		BundleListModel portletModel = (BundleListModel)retrievedState;
 		listenersByChannel.computeIfAbsent(
 				channel, k -> new HashSet<>()).remove(portletModel);
-		channel.respond(new DeletePortlet(portletModel.getPortletId()));
+		channel.respond(new DeletePortlet(portletId));
 	}
 	
 	/* (non-Javadoc)
@@ -171,19 +166,21 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doRenderPortlet(RenderPortletRequest event,
-	        IOSubchannel channel, Session session, PortletBaseModel retrievedModel)
+	        IOSubchannel channel, Session session, 
+	        String portletId, Serializable retrievedState)
 	        throws Exception {
+		BundleListModel portletModel = (BundleListModel)retrievedState;
 		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).add((BundleListModel)retrievedModel);
+				channel, k -> new HashSet<>()).add(portletModel);
 		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
 			channel.respond(new RenderPortletFromProvider(
-					BundleListPortlet.class, retrievedModel.getPortletId(), 
+					BundleListPortlet.class, portletId, 
 					DeleteablePreview, MODES,	newContentProvider(tpl, 
-							freemarkerModel(baseModel, retrievedModel, channel)),
+							freemarkerModel(baseModel, portletModel, channel)),
 					event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
@@ -194,9 +191,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftlh");
 			channel.respond(new RenderPortletFromProvider(
-					BundleListPortlet.class, retrievedModel.getPortletId(), 
+					BundleListPortlet.class, portletModel.getPortletId(), 
 					View, MODES, newContentProvider(tpl, 
-							freemarkerModel(baseModel, retrievedModel, channel)),
+							freemarkerModel(baseModel, portletModel, channel)),
 					event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
@@ -241,8 +238,8 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			IOSubchannel channel) throws TemplateNotFoundException, 
 			MalformedTemplateNameException, ParseException, IOException {
 		Session session = session(channel);
-		Optional<? extends PortletBaseModel> optPortletModel 
-			= modelFromSession(session, event.portletId());
+		Optional<BundleListModel> optPortletModel 
+			= stateFromSession(session, event.portletId(), BundleListModel.class);
 		if (!optPortletModel.isPresent()) {
 			return;
 		}
@@ -302,5 +299,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		public Bundle[] bundles() {
 			return context.getBundles();
 		}
+		
 	}
 }
