@@ -10,7 +10,7 @@ var orgJGrapesOsgiPortletsBundles = {
     var l10n = orgJGrapesOsgiPortletsBundles.l10n;
     
     function createTooltip(bundle) {
-        let tooltip = '<div class="jgrapes-tooltip-prototype">';
+        let tooltip = '<div>';
         tooltip += '<table><tbody>';
         tooltip += '<td>' + l10n.bundleSymbolicName + ':</td>';
         tooltip += '<td>' + bundle.symbolicName + '</td>';
@@ -28,13 +28,11 @@ var orgJGrapesOsgiPortletsBundles = {
     }
 
     function registerTooltip(row, bundleInfo) {
+        row.data("bundleInfo", bundleInfo);
         row.tooltip({
             items: "[data-bundle-id]",
             content: function() {
-                let tooltip = $( this ).find(".jgrapes-tooltip-prototype");
-                tooltip = tooltip.clone(true);
-                tooltip.removeClass("jgrapes-tooltip-prototype")
-                return tooltip;
+                return createTooltip($( this ).data("bundleInfo"));
             },
             classes: {
                 "ui-tooltip": "ui-corner-all ui-widget-shadow jgrapes-osgi-bundles-preview-tooltip"
@@ -50,14 +48,7 @@ var orgJGrapesOsgiPortletsBundles = {
             },
             "columns": [ 
                 { "data": "id" },
-                { "data": "name",
-                  "render": function ( data, type, row, meta ) {
-                      if (type === "display") {
-                          return data + createTooltip(row);
-                      }
-                      return data;
-                  }
-                }
+                { "data": "name"}
             ],
             "searching": false,
             "paging": false,
@@ -72,6 +63,23 @@ var orgJGrapesOsgiPortletsBundles = {
         table.processing(true);
         return table;
     }
+    
+    let buttonsPrototype = $(
+            '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            + 'title="' + l10n.bundleStart + '" data-bundle-action="start">'
+            + '<span class="ui-icon ui-icon-play"></span>' + l10n.bundleStart + '</button>'
+            + '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            + 'title="' + l10n.bundleStop + '" data-bundle-action="stop">'
+            + '<span class="ui-icon ui-icon-stop"></span>' + l10n.bundleStop + '</button>'
+            + ' <button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            + 'title="' + l10n.bundleRefresh + '" data-bundle-action="refresh">'
+            + '<span class="ui-icon ui-icon-refresh"></span>' + l10n.bundleRefresh + '</button>'
+            + ' <button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            + 'title="' + l10n.bundleUpdate + '" data-bundle-action="update">'
+            + '<span class="ui-icon ui-icon-transfer-e-w"></span>' + l10n.bundleUpdate + '</button>'
+            + ' <button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            + 'title="' + l10n.bundleUninstall + '" data-bundle-action="uninstall">'
+            + '<span class="ui-icon ui-icon-eject"></span>' + l10n.bundleUninstall + '</button>' );
     
     orgJGrapesOsgiPortletsBundles.initViewTable = function(tableSelector) {
         JGPortal.lockMessageQueue();
@@ -93,49 +101,28 @@ var orgJGrapesOsgiPortletsBundles = {
                 { "data": "category" },
                 { "data": "state" },
                 { "data": null,
+                  "defaultContent": "",
                   "orderable": false,
-                  "render": function ( data, type, row, meta ) {
-                      var buttons = ''
-                      if (row.startable) {
-                          buttons += '<button data-bundle-action="start" \
-                              >' + l10n.bundleStart + '</button>';
-                      } else {
-                          buttons += '<button data-bundle-action="stop" \
-                              >' + l10n.bundleStop + '</button>';
-                      }
-                      buttons += ' <button data-bundle-action="refresh" \
-                          >' + l10n.bundleRefresh + '</button> \
-                        <button data-bundle-action="update" \
-                            >' + l10n.bundleUpdate + '</button> \
-                        <button data-bundle-action="uninstall" \
-                            >' + l10n.bundleUninstall + '</button>';
-                      return buttons;
-                  }
                 } ],
             "createdRow": function( row, data, dataIndex ) {
                 $(row).attr("data-bundle-id", data.id);
+                $( $(row).find("td")[5] ).append(buttonsPrototype.clone());
+                $( $(row).find("td")[5] ).find("button").button();
             },
             "rowCallback": function( row, data, index ) {
-                $( row ).find('button[data-bundle-action="start"]').button( {
-                    icon: "ui-icon-play",
-                    showLabel: false
-                } );
-                $( row ).find('button[data-bundle-action="stop"]').button( {
-                    icon: "ui-icon-stop",
-                    showLabel: false
-                } );
-                $( row ).find('button[data-bundle-action="refresh"]').button( {
-                    icon: "ui-icon-refresh",
-                    showLabel: false
-                } );
-                $( row ).find('button[data-bundle-action="update"]').button( {
-                    icon: "ui-icon-transfer-e-w",
-                    showLabel: false
-                } );
-                $( row ).find('button[data-bundle-action="uninstall"]').button( {
-                    icon: "ui-icon-eject",
-                    showLabel: false
-                } );
+                if ($( $(row).find("td")[5] ).find("button").length === 0) {
+                    $( $(row).find("td")[5] ).append(buttonsPrototype.clone());
+                    $( $(row).find("td")[5] ).find("button").button();
+                }
+                let startButton = $( row ).find('button[data-bundle-action="start"]');
+                let stopButton = $( row ).find('button[data-bundle-action="stop"]');
+                if (data.startable) {
+                    startButton.show();
+                    stopButton.hide();
+                } else {
+                    startButton.hide();
+                    stopButton.show()
+                }
                 if (!data.stoppable) {
                     $( row ).find('button[data-bundle-action="stop"]').button("disable");
                 }
