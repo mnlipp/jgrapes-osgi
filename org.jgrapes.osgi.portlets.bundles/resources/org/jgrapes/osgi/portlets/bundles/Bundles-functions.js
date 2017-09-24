@@ -67,7 +67,9 @@ var orgJGrapesOsgiPortletsBundles = {
                 $(row).attr("data-bundle-id", data.id);
                 registerTooltip($(row), data);
             },
+            "processing": true 
         } );
+        table.processing(true);
         return table;
     }
     
@@ -142,8 +144,10 @@ var orgJGrapesOsgiPortletsBundles = {
                 }
             },
             "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, $.fn.dataTable.defaults.oLanguage.sLengthAll] ],
-            "pageLength": -1
+            "pageLength": -1,
+            "processing": true 
         } );
+        table.processing(true);
         return table;
     }
     
@@ -177,6 +181,7 @@ var orgJGrapesOsgiPortletsBundles = {
                 table.row.add(bundleInfo);
             }
         });
+        table.processing(false);
         table.draw();
     }
     
