@@ -44,6 +44,7 @@ var orgJGrapesOsgiPortletsBundles = {
         JGPortal.lockMessageQueue();
         let table = tableSelector.DataTable( {
             "initComplete": function( settings, json ) {
+                tableSelector.DataTable().processing(true);
                 JGPortal.unlockMessageQueue();
             },
             "columns": [ 
@@ -60,7 +61,6 @@ var orgJGrapesOsgiPortletsBundles = {
             },
             "processing": true 
         } );
-        table.processing(true);
         return table;
     }
     
@@ -85,6 +85,7 @@ var orgJGrapesOsgiPortletsBundles = {
         JGPortal.lockMessageQueue();
         let table = tableSelector.DataTable( {
             "initComplete": function( settings, json ) {
+                tableSelector.DataTable().processing(true);
                 JGPortal.unlockMessageQueue();
             },
             "columns": [ 
@@ -134,7 +135,6 @@ var orgJGrapesOsgiPortletsBundles = {
             "pageLength": -1,
             "processing": true 
         } );
-        table.processing(true);
         return table;
     }
     
