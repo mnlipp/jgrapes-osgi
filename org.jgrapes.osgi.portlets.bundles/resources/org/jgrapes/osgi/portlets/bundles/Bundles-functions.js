@@ -169,7 +169,7 @@ var orgJGrapesOsgiPortletsBundles = {
             }
         });
         table.processing(false);
-        table.draw();
+        table.columns.adjust().draw();
     }
     
     JGPortal.registerPortletMethod(
