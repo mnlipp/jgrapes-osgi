@@ -64,7 +64,12 @@ var orgJGrapesOsgiPortletsBundles = {
         return table;
     }
     
-    let buttonsPrototype = $(
+    // Delay initialization, l10n is not yet initialized when loading this file
+    let _buttonsPrototype = null;
+    
+    function buttonsPrototype() {
+        if (!_buttonsPrototype) {
+            _buttonsPrototype = $(
             '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
             + 'title="' + l10n.bundleStart + '" data-bundle-action="start">'
             + '<span class="ui-icon ui-icon-play"></span>' + l10n.bundleStart + '</button>'
@@ -80,6 +85,9 @@ var orgJGrapesOsgiPortletsBundles = {
             + ' <button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
             + 'title="' + l10n.bundleUninstall + '" data-bundle-action="uninstall">'
             + '<span class="ui-icon ui-icon-eject"></span>' + l10n.bundleUninstall + '</button>' );
+        }
+        return _buttonsPrototype;
+    }
     
     orgJGrapesOsgiPortletsBundles.initViewTable = function(tableSelector) {
         JGPortal.lockMessageQueue();
@@ -107,12 +115,12 @@ var orgJGrapesOsgiPortletsBundles = {
                 } ],
             "createdRow": function( row, data, dataIndex ) {
                 $(row).attr("data-bundle-id", data.id);
-                $( $(row).find("td")[5] ).append(buttonsPrototype.clone());
+                $( $(row).find("td")[5] ).append(buttonsPrototype().clone());
                 $( $(row).find("td")[5] ).find("button").button();
             },
             "rowCallback": function( row, data, index ) {
                 if ($( $(row).find("td")[5] ).find("button").length === 0) {
-                    $( $(row).find("td")[5] ).append(buttonsPrototype.clone());
+                    $( $(row).find("td")[5] ).append(buttonsPrototype().clone());
                     $( $(row).find("td")[5] ).find("button").button();
                 }
                 let startButton = $( row ).find('button[data-bundle-action="start"]');
