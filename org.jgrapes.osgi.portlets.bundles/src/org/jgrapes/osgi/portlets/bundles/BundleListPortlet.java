@@ -33,7 +33,7 @@ import org.jgrapes.portal.events.DeletePortletRequest;
 import org.jgrapes.portal.events.NotifyPortletModel;
 import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
-import org.jgrapes.portal.events.RenderPortletFromProvider;
+import org.jgrapes.portal.events.RenderPortlet;
 import org.jgrapes.portal.events.RenderPortletRequest;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.Bundle;
@@ -137,11 +137,10 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				channel, c -> new HashSet<>()).add(portletModel);
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
 		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
-		channel.respond(new RenderPortletFromProvider(
+		channel.respond(new RenderPortlet(
 				BundleListPortlet.class, portletModel.getPortletId(),
-				DeleteablePreview, MODES, newContentProvider(tpl, 
-						freemarkerModel(baseModel, portletModel, channel)),
-				true));
+				DeleteablePreview, MODES, true, templateProcessor(tpl, 
+						freemarkerModel(baseModel, portletModel, channel))));
 		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 				.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
@@ -177,11 +176,10 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
-			channel.respond(new RenderPortletFromProvider(
+			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletId, 
-					DeleteablePreview, MODES,	newContentProvider(tpl, 
-							freemarkerModel(baseModel, portletModel, channel)),
-					event.isForeground()));
+					DeleteablePreview, MODES, event.isForeground(), templateProcessor(tpl, 
+							freemarkerModel(baseModel, portletModel, channel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
@@ -190,11 +188,10 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		}
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftlh");
-			channel.respond(new RenderPortletFromProvider(
+			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletModel.getPortletId(), 
-					View, MODES, newContentProvider(tpl, 
-							freemarkerModel(baseModel, portletModel, channel)),
-					event.isForeground()));
+					View, MODES, event.isForeground(), templateProcessor(tpl, 
+							freemarkerModel(baseModel, portletModel, channel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
