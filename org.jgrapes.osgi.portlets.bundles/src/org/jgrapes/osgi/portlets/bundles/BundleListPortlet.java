@@ -108,7 +108,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		// Add portlet resources to page
 		channel.respond(new AddPortletType(type())
 				.setDisplayName(resourceBundle.getString("portletName"))
-				.addScript(PortalView.uriFromPath("Bundles-functions.js"))
+				.addScript(PortalView.uriFromPath("Bundles-functions.ftl.js"))
 				.addCss(PortalView.uriFromPath("Bundles-style.css"))
 				.setInstantiable());
 	}
@@ -135,12 +135,11 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		BundleListModel portletModel = new BundleListModel(generatePortletId());
 		listenersByChannel.computeIfAbsent(
 				channel, c -> new HashSet<>()).add(portletModel);
-		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
-		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
+		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 		channel.respond(new RenderPortlet(
 				BundleListPortlet.class, portletModel.getPortletId(),
-				DeleteablePreview, MODES, true, templateProcessor(tpl, 
-						freemarkerModel(baseModel, portletModel, channel))));
+				DeleteablePreview, MODES, true, templateProcessor(
+						tpl, fmModel(event, channel, portletModel))));
 		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 				.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
@@ -171,15 +170,14 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		BundleListModel portletModel = (BundleListModel)retrievedState;
 		listenersByChannel.computeIfAbsent(
 				channel, k -> new HashSet<>()).add(portletModel);
-		Map<String, Object> baseModel = freemarkerBaseModel(event.renderSupport());
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
-			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftlh");
+			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletId, 
-					DeleteablePreview, MODES, event.isForeground(), templateProcessor(tpl, 
-							freemarkerModel(baseModel, portletModel, channel))));
+					DeleteablePreview, MODES, event.isForeground(), templateProcessor(
+							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
@@ -187,11 +185,11 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			break;
 		}
 		case View: {
-			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftlh");
+			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
 			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletModel.getPortletId(), 
-					View, MODES, event.isForeground(), templateProcessor(tpl, 
-							freemarkerModel(baseModel, portletModel, channel))));
+					View, MODES, event.isForeground(), templateProcessor(
+							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),

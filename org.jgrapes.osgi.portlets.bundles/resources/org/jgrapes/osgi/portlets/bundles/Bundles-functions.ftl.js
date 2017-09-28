@@ -2,6 +2,15 @@
 
 var orgJGrapesOsgiPortletsBundles = {
     l10n: {
+        "bundleCategory": "${_("bundleCategory")}",
+        "bundleRefresh": "${_("bundleRefresh")}",
+        "bundleStart": "${_("bundleStart")}",
+        "bundleState": "${_("bundleState")}",
+        "bundleStop": "${_("bundleStop")}",
+        "bundleSymbolicName": "${_("bundleSymbolicName")}",
+        "bundleUpdate": "${_("bundleUpdate")}",
+        "bundleUninstall": "${_("bundleUninstall")}",
+        "bundleVersion": "${_("bundleVersion")}",
     }
 };
 
