@@ -92,14 +92,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		context.addBundleListener(this);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
-	 */
-	@Override
-	protected String generatePortletId() {
-		return type() + "-" + super.generatePortletId();
-	}
-
 	@Handler
 	public void onPortalReady(PortalReady event, IOSubchannel channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
@@ -113,6 +105,14 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				.setInstantiable());
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
+	 */
+	@Override
+	protected String generatePortletId() {
+		return type() + "-" + super.generatePortletId();
+	}
+
 	/* (non-Javadoc)
 	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession(org.jgrapes.io.IOSubchannel, java.lang.String)
 	 */
@@ -144,19 +144,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
 				portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet(org.jgrapes.portal.events.DeletePortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.portal.AbstractPortlet.PortletModelBean)
-	 */
-	@Override
-	protected void doDeletePortlet(DeletePortletRequest event,
-	        IOSubchannel channel, Session session, String portletId, 
-	        Serializable retrievedState) throws Exception {
-		BundleListModel portletModel = (BundleListModel)retrievedState;
-		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).remove(portletModel);
-		channel.respond(new DeletePortlet(portletId));
 	}
 	
 	/* (non-Javadoc)
@@ -226,6 +213,19 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				& (Bundle.INSTALLED | Bundle.RESOLVED | Bundle.ACTIVE)) != 0);
 		result.put("uninstalled", bundle.getState() == Bundle.UNINSTALLED);
 		return result;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet(org.jgrapes.portal.events.DeletePortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.portal.AbstractPortlet.PortletModelBean)
+	 */
+	@Override
+	protected void doDeletePortlet(DeletePortletRequest event,
+	        IOSubchannel channel, Session session, String portletId, 
+	        Serializable retrievedState) throws Exception {
+		BundleListModel portletModel = (BundleListModel)retrievedState;
+		listenersByChannel.computeIfAbsent(
+				channel, k -> new HashSet<>()).remove(portletModel);
+		channel.respond(new DeletePortlet(portletId));
 	}
 	
 	@Handler
