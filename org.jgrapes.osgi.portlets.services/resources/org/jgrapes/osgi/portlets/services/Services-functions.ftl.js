@@ -58,7 +58,11 @@ var orgJGrapesOsgiPortletsServices = {
             },
             "columns": [ 
                 { "data": "id" },
-                { "data": "type"},
+                { "data": "type",
+                  "render": function(data, type, row, meta) {
+                      return data.replace(/\./g, '.&#x200b;');
+                  }
+                },
             ],
             "searching": false,
             "paging": false,
