@@ -1,0 +1,49 @@
+/*
+ * Portlet specific styles.
+ */
+.jgrapes-osgi-services-preview {
+    max-height: 20vw;
+    overflow: auto; 
+}
+ 
+.jgrapes-osgi-services-preview td {
+     padding-left: 0.5em;
+     vertical-align: top;
+}
+
+.jgrapes-osgi-services-preview td:first-child {
+     text-align: right;
+}
+
+.jgrapes-osgi-services-preview-tooltip {
+    max-width: none;
+}
+
+.jgrapes-osgi-services-preview-tooltip td {
+     padding-left: 0.5em;
+     vertical-align: top;
+}
+
+.jgrapes-osgi-services-preview table.dataTable thead th,
+.jgrapes-osgi-services-preview table.dataTable thead td {
+	padding: 2px 18px;
+}
+
+.jgrapes-osgi-services-preview table.dataTable tbody th,
+.jgrapes-osgi-services-preview table.dataTable tbody td {
+	padding: 0px 10px;
+}
+
+.jgrapes-osgi-services-preview table.dataTable.no-footer {
+	border-bottom: 0;
+}
+
+.jgrapes-osgi-services-view table.dataTable thead th,
+.jgrapes-osgi-services-view table.dataTable thead td {
+	padding: 6px 18px;
+}
+
+.jgrapes-osgi-services-view table.dataTable tbody th,
+.jgrapes-osgi-services-view table.dataTable tbody td {
+	padding: 4px 10px;
+}

@@ -57,6 +57,7 @@
 	org.jgrapes.osgi.factory;version=latest,\
 	org.jgrapes.osgi.portal;version=latest,\
 	org.jgrapes.osgi.portlets.bundles;version=latest,\
+	org.jgrapes.osgi.portlets.services;version=latest,\
 	org.jgrapes.osgi.demo.portal;version=latest
 	
 -runrequires: \

@@ -1,0 +1,19 @@
+<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-view">
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th>${_("serviceId")}</th>
+        <th>${_("serviceType")}</th>
+        <th>${_("serviceScope")}</th>
+        <th>${_("serviceBundle")}</th>
+        <th>${_("serviceImplementedBy")}</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script>
+	orgJGrapesOsgiPortletsServices.initViewTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-services-view table' ));
+</script>
