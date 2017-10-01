@@ -20,7 +20,7 @@ var orgJGrapesOsgiPortletsBundles = {
     
     function createTooltip(bundle) {
         let tooltip = '<div>';
-        tooltip += '<table><tbody>';
+        tooltip += '<table><tbody><tr>';
         tooltip += '<td>' + l10n.bundleSymbolicName + ':</td>';
         tooltip += '<td>' + bundle.symbolicName + '</td>';
         tooltip += '</tr><tr>';
