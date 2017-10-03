@@ -13,7 +13,7 @@
         <dependency>
             <groupId>org.jgrapes</groupId>
             <artifactId>jgrapes-libs</artifactId>
-            <version>0.0.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
