@@ -28,7 +28,7 @@ import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.component.runtime.ServiceComponentRuntime;
 
 /**
- * The factory service for {@link BundleListPortlet}s.
+ * The factory service for {@link ServiceListPortlet}s.
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
 public class ServiceListPortletFactory 
