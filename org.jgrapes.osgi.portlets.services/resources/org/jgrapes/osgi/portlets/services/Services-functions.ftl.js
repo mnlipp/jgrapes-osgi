@@ -45,7 +45,11 @@ var orgJGrapesOsgiPortletsServices = {
             },
             classes: {
                 "ui-tooltip": "ui-corner-all ui-widget-shadow jgrapes-osgi-services-preview-tooltip"
-            }
+            },
+            close: function() {
+                // https://bugs.jqueryui.com/ticket/10689
+                $(".ui-helper-hidden-accessible > *:not(:last)").remove();
+            },
         });
     }
     
