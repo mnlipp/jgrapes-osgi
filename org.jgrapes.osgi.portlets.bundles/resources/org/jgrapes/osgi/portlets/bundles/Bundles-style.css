@@ -52,3 +52,16 @@
 	font-size: 50%;
 	padding: 0.25em 0em;
 }
+
+.jgrapes-osgi-bundles-view table.dataTable tbody .ui-icon-popup:hover {
+	cursor: pointer;
+}
+
+.jgrapes-osgi-bundles-details td:first-child {
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.jgrapes-osgi-bundles-details td {
+	padding: 2px 10px;
+}

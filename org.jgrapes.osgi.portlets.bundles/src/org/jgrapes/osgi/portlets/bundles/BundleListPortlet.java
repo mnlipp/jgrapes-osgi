@@ -41,6 +41,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.BundleListener;
+import org.osgi.framework.startlevel.BundleStartLevel;
 import org.osgi.framework.wiring.BundleRevision;
 
 import freemarker.core.ParseException;
@@ -53,8 +54,12 @@ import static org.jgrapes.portal.Portlet.RenderMode.*;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -64,6 +69,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 
@@ -228,17 +234,13 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		channel.respond(new DeletePortlet(portletId));
 	}
 	
-	@Handler
-	public void onChangePortletModel(NotifyPortletModel event,
-			IOSubchannel channel) throws TemplateNotFoundException, 
-			MalformedTemplateNameException, ParseException, IOException {
-		Session session = session(channel);
-		Optional<BundleListModel> optPortletModel 
-			= stateFromSession(session, event.portletId(), BundleListModel.class);
-		if (!optPortletModel.isPresent()) {
-			return;
-		}
-	
+	/* (non-Javadoc)
+	 * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel(org.jgrapes.portal.events.NotifyPortletModel, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session, java.io.Serializable)
+	 */
+	@Override
+	protected void doNotifyPortletModel(NotifyPortletModel event,
+	        IOSubchannel channel, Session session, Serializable portletState)
+	        throws Exception {
 		event.stop();
 		Bundle bundle = context.getBundle(event.params().getInt(0));
 		if (bundle == null) {
@@ -260,12 +262,45 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			case "uninstall":
 				bundle.uninstall();
 				break;
+			case "sendDetails":
+				sendBundleDetails(event.portletId(), channel, session, bundle);
 			}
 		} catch (BundleException e) {
 			// ignore
 		}
 	}
 	
+	private void sendBundleDetails(String portletId, IOSubchannel channel, 
+			Session session, Bundle bundle) {
+		Locale locale = locale(channel);
+		ResourceBundle rb = resourceBundle(locale);
+		List<Object> data = new ArrayList<>();
+		data.add(new Object[] { rb.getString("bundleSymbolicName"), bundle.getSymbolicName() });
+		data.add(new Object[] { rb.getString("bundleVersion"), bundle.getVersion().toString() });
+		data.add(new Object[] { rb.getString("bundleLocation"), 
+				bundle.getLocation().replace(".", ".&#x200b;") });
+		data.add(new Object[] { rb.getString("bundleLastModification"),
+				Instant.ofEpochMilli(bundle.getLastModified()).toString(),
+				"dateTime" });
+		data.add(new Object[] { rb.getString("bundleStartLevel"), 
+				bundle.adapt(BundleStartLevel.class).getStartLevel() });
+		Dictionary<String,String> dict = bundle.getHeaders(locale.toString());
+		Map<String,String> headers = new TreeMap<>();
+		for (Enumeration<String> e = dict.keys(); e.hasMoreElements();) {
+			String key = e.nextElement();
+			headers.put(key, dict.get(key));
+		}
+		List<Object> headerList = new ArrayList<>();
+		for (Map.Entry<String, String> e: headers.entrySet()) {
+			headerList.add(new Object[] { e.getKey(), 
+					e.getKey().contains("Package") 
+					? e.getValue().replace(".", ".&#x200b;") : e.getValue() });
+		}
+		data.add(new Object[] { rb.getString("manifestHeaders"), headerList, "table" });
+		channel.respond(new NotifyPortletView(type(),
+				portletId, "bundleDetails", bundle.getBundleId(), data));
+	}
+
 	@Handler
 	public void onClosed(Closed event, IOSubchannel channel) {
 		listenersByChannel.remove(channel);

@@ -11,6 +11,7 @@ var orgJGrapesOsgiPortletsBundles = {
         "bundleUpdate": "${_("bundleUpdate")}",
         "bundleUninstall": "${_("bundleUninstall")}",
         "bundleVersion": "${_("bundleVersion")}",
+        "detailsBeingLoaded": "${_("detailsBeingLoaded")}",
     }
 };
 
@@ -45,7 +46,11 @@ var orgJGrapesOsgiPortletsBundles = {
             },
             classes: {
                 "ui-tooltip": "ui-corner-all ui-widget-shadow jgrapes-osgi-bundles-preview-tooltip"
-            }
+            },
+            close: function() {
+                // https://bugs.jqueryui.com/ticket/10689
+                $(".ui-helper-hidden-accessible > *:not(:last)").remove();
+            },
         });
     }
     
@@ -110,7 +115,8 @@ var orgJGrapesOsgiPortletsBundles = {
                 { "data": "name",
                   "render": function ( data, type, row, meta ) {
                       if (type === "display") {
-                          return row.name + " <em>(" + row.symbolicName + ")</em>";
+                          return row.name + " <em>(" + row.symbolicName + ")</em>" +
+                              ' <span class="ui-icon ui-icon-popup"></span>';
                       }
                       return data;
                   }
@@ -123,17 +129,21 @@ var orgJGrapesOsgiPortletsBundles = {
                   "orderable": false,
                 } ],
             "createdRow": function( row, data, dataIndex ) {
-                $(row).attr("data-bundle-id", data.id);
-                $( $(row).find("td")[5] ).append(buttonsPrototype().clone());
-                $( $(row).find("td")[5] ).find("button").button();
+                let jqRow = $(row);
+                jqRow.attr("data-bundle-id", data.id);
+                $( jqRow.find("td")[5] ).append(buttonsPrototype().clone());
+                $( jqRow.find("td")[5] ).find("button").button();
             },
             "rowCallback": function( row, data, index ) {
-                if ($( $(row).find("td")[5] ).find("button").length === 0) {
-                    $( $(row).find("td")[5] ).append(buttonsPrototype().clone());
-                    $( $(row).find("td")[5] ).find("button").button();
+                let jqRow = $(row);
+                // Add buttons if not there yet, cannot be done in renderer
+                if ($( jqRow.find("td")[5] ).find("button").length === 0) {
+                    $( jqRow.find("td")[5] ).append(buttonsPrototype().clone());
+                    $( jqRow.find("td")[5] ).find("button").button();
                 }
-                let startButton = $( row ).find('button[data-bundle-action="start"]');
-                let stopButton = $( row ).find('button[data-bundle-action="stop"]');
+                // Update button states
+                let startButton = jqRow.find('button[data-bundle-action="start"]');
+                let stopButton = jqRow.find('button[data-bundle-action="stop"]');
                 if (data.startable) {
                     startButton.show();
                     stopButton.hide();
@@ -142,11 +152,37 @@ var orgJGrapesOsgiPortletsBundles = {
                     stopButton.show()
                 }
                 if (!data.stoppable) {
-                    $( row ).find('button[data-bundle-action="stop"]').button("disable");
+                    jqRow.find('button[data-bundle-action="stop"]').button("disable");
                 }
                 if (!data.uninstallable) {
-                    $( row ).find('button [data-bundle-action="uninstall"]').button("disable");
+                    jqRow.find('button [data-bundle-action="uninstall"]').button("disable");
                 }
+                // Handler must be reinstalled after each update (value may have changed)
+                jqRow.find('.ui-icon-popup').off("click");
+                jqRow.find('.ui-icon-popup').on("click", function() {
+                    let portletId = $(this).closest("[data-portlet-id]").attr("data-portlet-id");
+                    let bundleId = $(this).closest("[data-bundle-id]").attr("data-bundle-id");
+                    let bundleDetailsDialog = $('<div />');
+                    bundleDetailsDialog.attr("data-bundle-details-for", bundleId);
+                    bundleDetailsDialog.html(l10n.detailsBeingLoaded);
+                    JGPortal.sendToPortlet(portletId, "sendDetails", [ parseInt(bundleId) ]);
+                    bundleDetailsDialog.dialog({
+                        title: data.symbolicName,
+                        classes: {
+                            "ui-dialog": "ui-corner-all jgrapes-osgi-bundles-details"
+                        },
+                        width: "90%",
+                        position: {
+                            my: "center top",
+                            at: "center top+50",
+                            of: window
+                        },
+                        close: function( event, ui ) {
+                            bundleDetailsDialog.dialog("destroy");
+                            bundleDetailsDialog.remove();
+                        }
+                    });
+                });
             },
             "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, $.fn.dataTable.defaults.oLanguage.sLengthAll] ],
             "pageLength": -1,
@@ -211,6 +247,39 @@ var orgJGrapesOsgiPortletsBundles = {
                     }
                 }
             });
+
+    function toTable(rows, dtFormatter) {
+        let html = '<div><table style="width: 100%;"><tbody>';
+        for (let keyValue of rows) {
+            let key = keyValue[0];
+            let value = keyValue[1];
+            if (keyValue.length > 2) {
+                if (keyValue[2] === "dateTime") {
+                    value = dtFormatter.format(new Date(value));
+                } else if (keyValue[2] === "table") {
+                    value = toTable(value, dtFormatter);
+                }
+            }
+            html += '<tr><td>' + key + ':</td>'
+                + '<td>' + value + '</td></tr>';
+        }
+        html = html + '</tbody></table></div>';
+        return html;
+    }
+    
+    JGPortal.registerPortletMethod(
+            "org.jgrapes.osgi.portlets.bundles.BundleListPortlet",
+            "bundleDetails", function(portletId, params) {
+                let bundleId = params[0];
+                let bundleInfos = params[1];
+                let dialog = $("div[data-bundle-details-for=" + bundleId + "]");
+                let dtFormatter = new Intl.DateTimeFormat(
+                        dialog.closest('[lang]').attr('lang') || 'en',
+                        { year: 'numeric', month: 'numeric', day: 'numeric',
+                          hour: 'numeric', minute: 'numeric', second: 'numeric',
+                          hour12: false, timeZoneName: 'short' });
+                dialog.html(toTable(bundleInfos, dtFormatter));
+           });
 
 })();
 
