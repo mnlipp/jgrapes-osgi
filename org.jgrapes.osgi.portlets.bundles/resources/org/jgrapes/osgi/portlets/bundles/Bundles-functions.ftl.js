@@ -84,7 +84,8 @@ var orgJGrapesOsgiPortletsBundles = {
     function buttonsPrototype() {
         if (!_buttonsPrototype) {
             _buttonsPrototype = $(
-            '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
+            '<div>'
+            + '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
             + 'title="' + l10n.bundleStart + '" data-bundle-action="start">'
             + '<span class="ui-icon ui-icon-play"></span>' + l10n.bundleStart + '</button>'
             + '<button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
@@ -98,7 +99,8 @@ var orgJGrapesOsgiPortletsBundles = {
             + '<span class="ui-icon ui-icon-transfer-e-w"></span>' + l10n.bundleUpdate + '</button>'
             + ' <button class="ui-button ui-widget ui-corner-all ui-button-icon-only"'
             + 'title="' + l10n.bundleUninstall + '" data-bundle-action="uninstall">'
-            + '<span class="ui-icon ui-icon-eject"></span>' + l10n.bundleUninstall + '</button>' );
+            + '<span class="ui-icon ui-icon-eject"></span>' + l10n.bundleUninstall + '</button>'
+            + '</div>');
         }
         return _buttonsPrototype;
     }
@@ -127,36 +129,38 @@ var orgJGrapesOsgiPortletsBundles = {
                 { "data": null,
                   "defaultContent": "",
                   "orderable": false,
+                  "render": function ( data, type, row, meta ) {
+                      if (type === "display") {
+                          let buttons = buttonsPrototype().clone();
+                          buttons.find("button").button();
+                          buttons.find("button").attr("data-bundle-id", row.id);
+                          // Update button states
+                          let startButton = buttons.find('button[data-bundle-action="start"]');
+                          let stopButton = buttons.find('button[data-bundle-action="stop"]');
+                          if (row.startable) {
+                              startButton.show();
+                              stopButton.hide();
+                          } else {
+                              startButton.hide();
+                              stopButton.show()
+                          }
+                          if (!row.stoppable) {
+                              buttons.find('button[data-bundle-action="stop"]').button("disable");
+                          }
+                          if (!row.uninstallable) {
+                              buttons.find('button [data-bundle-action="uninstall"]').button("disable");
+                          }
+                          return buttons.html();
+                      }
+                      return data;
+                  }
                 } ],
             "createdRow": function( row, data, dataIndex ) {
                 let jqRow = $(row);
                 jqRow.attr("data-bundle-id", data.id);
-                $( jqRow.find("td")[5] ).append(buttonsPrototype().clone());
-                $( jqRow.find("td")[5] ).find("button").button();
             },
             "rowCallback": function( row, data, index ) {
                 let jqRow = $(row);
-                // Add buttons if not there yet, cannot be done in renderer
-                if ($( jqRow.find("td")[5] ).find("button").length === 0) {
-                    $( jqRow.find("td")[5] ).append(buttonsPrototype().clone());
-                    $( jqRow.find("td")[5] ).find("button").button();
-                }
-                // Update button states
-                let startButton = jqRow.find('button[data-bundle-action="start"]');
-                let stopButton = jqRow.find('button[data-bundle-action="stop"]');
-                if (data.startable) {
-                    startButton.show();
-                    stopButton.hide();
-                } else {
-                    startButton.hide();
-                    stopButton.show()
-                }
-                if (!data.stoppable) {
-                    jqRow.find('button[data-bundle-action="stop"]').button("disable");
-                }
-                if (!data.uninstallable) {
-                    jqRow.find('button [data-bundle-action="uninstall"]').button("disable");
-                }
                 // Handler must be reinstalled after each update (value may have changed)
                 jqRow.find('.ui-icon-popup').off("click");
                 jqRow.find('.ui-icon-popup').on("click", function() {
@@ -186,6 +190,7 @@ var orgJGrapesOsgiPortletsBundles = {
             },
             "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, $.fn.dataTable.defaults.oLanguage.sLengthAll] ],
             "pageLength": -1,
+            "responsive": true,
             "processing": true 
         } );
         return table;
@@ -194,7 +199,7 @@ var orgJGrapesOsgiPortletsBundles = {
     $("body").on("click", ".jgrapes-osgi-bundles-view table button",
         function(event) {
             let portletId = $(this).closest("[data-portlet-id]").attr("data-portlet-id");
-            let bundleId = $(this).closest("[data-bundle-id]").attr("data-bundle-id");
+            let bundleId = $(this).attr("data-bundle-id");
             let action = $(this).attr("data-bundle-action")
             JGPortal.sendToPortlet(portletId, action, [ parseInt(bundleId) ]);
     });
