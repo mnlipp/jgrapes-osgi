@@ -3,7 +3,6 @@ Bundle-SymbolicName: org.jgrapes.osgi.upnpserver
 Bundle-Version: 0.0.0.${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
-Export-Package: org.jgrapes.osgi.upnpserver
 Bundle-Activator: org.jgrapes.osgi.upnpserver.Application
 
 -buildpath: \
@@ -99,3 +98,4 @@ Bundle-Activator: org.jgrapes.osgi.upnpserver.Application
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable."
+Private-Package: org.jgrapes.osgi.upnpserver
