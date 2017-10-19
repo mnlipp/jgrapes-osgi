@@ -12,5 +12,5 @@ because they require a different top-level build approach than the libraries
 that can be used as OSGi bundles but do not depend on the OSGi framework.
 
 <!-- Piwik Image Tracker-->
-<img src="https://piwik.mnl.de/piwik.php?idsite=10&rec=1" style="border:0" alt="" />
+<img src="https://piwik.mnl.de/piwik.php?idsite=10&rec=1&url=https%3A%2F%2Fgithub.com%2Fmnlipp%2Fjgrapes-osgi" style="border:0" alt="" />
 <!-- End Piwik -->
