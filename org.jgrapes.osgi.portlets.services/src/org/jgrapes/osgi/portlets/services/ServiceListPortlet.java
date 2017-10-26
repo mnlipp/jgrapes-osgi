@@ -25,17 +25,13 @@ import static org.jgrapes.portal.Portlet.RenderMode.View;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.WeakHashMap;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.jgrapes.core.Channel;
@@ -43,7 +39,7 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
-import org.jgrapes.io.IOSubchannel;
+import org.jgrapes.portal.PortalSession;
 import org.jgrapes.portal.PortalView;
 import org.jgrapes.portal.Portlet.RenderMode;
 import org.jgrapes.portal.events.AddPortletRequest;
@@ -79,8 +75,6 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	private final static Set<RenderMode> MODES = RenderMode.asSet(
 			DeleteablePreview, View);
 	private BundleContext context;
-	private Map<IOSubchannel,Set<ServiceListModel>> listenersByChannel 
-		= Collections.synchronizedMap(new WeakHashMap<>());
 	
 	/**
 	 * Creates a new component with its channel set to the given 
@@ -92,17 +86,17 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	 */
 	public ServiceListPortlet(Channel componentChannel, BundleContext context,
 			ServiceComponentRuntime scr) {
-		super(componentChannel);
+		super(componentChannel, true);
 		this.context = context;
 		this.scr = scr;
 		context.addServiceListener(this);
 	}
 	
 	@Handler
-	public void onPortalReady(PortalReady event, IOSubchannel channel) 
+	public void onPortalReady(PortalReady event, PortalSession channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
 			ParseException, IOException {
-		ResourceBundle resourceBundle = resourceBundle(locale(channel));
+		ResourceBundle resourceBundle = resourceBundle(channel.locale());
 		// Add portlet resources to page
 		channel.respond(new AddPortletType(type())
 				.setDisplayName(resourceBundle.getString("portletName"))
@@ -135,11 +129,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	/* (non-Javadoc)
 	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet(org.jgrapes.portal.events.AddPortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session)
 	 */
-	protected void doAddPortlet(AddPortletRequest event, IOSubchannel channel,
-	        Session session) throws Exception {
+	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
+			throws Exception {
 		ServiceListModel portletModel = new ServiceListModel(generatePortletId());
-		listenersByChannel.computeIfAbsent(
-				channel, c -> new HashSet<>()).add(portletModel);
 		Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
 		channel.respond(new RenderPortlet(
 				ServiceListPortlet.class, portletModel.getPortletId(),
@@ -147,9 +139,10 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 						tpl, fmModel(event, channel, portletModel))));
 		List<Map<String,Object>> serviceInfos = Arrays.stream(
 				context.getAllServiceReferences(null, null))
-				.map(s -> createServiceInfo(s, locale(channel))).collect(Collectors.toList());
+				.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
 				portletModel.getPortletId(), "serviceUpdates", serviceInfos, "preview", true));
+		return portletModel.getPortletId();
 	}
 
 	/* (non-Javadoc)
@@ -157,12 +150,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	 */
 	@Override
 	protected void doRenderPortlet(RenderPortletRequest event,
-	        IOSubchannel channel, Session session, 
-	        String portletId, Serializable retrievedState)
+	        PortalSession channel, String portletId, Serializable retrievedState)
 	        throws Exception {
 		ServiceListModel portletModel = (ServiceListModel)retrievedState;
-		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).add(portletModel);
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
@@ -173,7 +163,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
 					context.getAllServiceReferences(null, null))
-					.map(s -> createServiceInfo(s, locale(channel))).collect(Collectors.toList());
+					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
 					portletModel.getPortletId(), "serviceUpdates", serviceInfos, "preview", true));
 			break;
@@ -186,7 +176,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
 					context.getAllServiceReferences(null, null))
-					.map(s -> createServiceInfo(s, locale(channel))).collect(Collectors.toList());
+					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
 					portletModel.getPortletId(), "serviceUpdates", serviceInfos, "view", true));
 			break;
@@ -239,25 +229,24 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet(org.jgrapes.portal.events.DeletePortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session, java.lang.String, java.io.Serializable)
 	 */
 	@Override
-	protected void doDeletePortlet(DeletePortletRequest event, IOSubchannel channel, Session session, String portletId,
-			Serializable portletState) throws Exception {
-		ServiceListModel portletModel = (ServiceListModel)portletState;
-		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).remove(portletModel);
+	protected void doDeletePortlet(DeletePortletRequest event, PortalSession channel, 
+			String portletId, Serializable portletState) throws Exception {
 		channel.respond(new DeletePortlet(portletId));
 	}
 
 	@Override
 	public void serviceChanged(ServiceEvent event) {
-		for (Entry<IOSubchannel,Set<ServiceListModel>> e: listenersByChannel.entrySet()) {
-			IOSubchannel channel = e.getKey();
-			Map<String,Object> info = createServiceInfo(event.getServiceReference(), locale(channel));
+		for (Map.Entry<PortalSession,Set<String>> e:
+			portletIdsByPortalSession().entrySet()) {
+			PortalSession portalSession = e.getKey();
+			Map<String,Object> info = createServiceInfo(
+					event.getServiceReference(), portalSession.locale());
 			if (event.getType() == ServiceEvent.UNREGISTERING) {
 				info.put("updateType", "unregistering");
 			}
-			for (ServiceListModel model: e.getValue()) {
-				channel.respond(new NotifyPortletView(
-						type(), model.getPortletId(), "serviceUpdates", 
+			for (String portletId: e.getValue()) {
+				portalSession.respond(new NotifyPortletView(
+						type(), portletId, "serviceUpdates", 
 						(Object)new Object[] { info }, "*", false));
 			}
 		}

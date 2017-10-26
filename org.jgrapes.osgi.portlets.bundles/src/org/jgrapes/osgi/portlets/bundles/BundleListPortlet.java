@@ -23,8 +23,7 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
-import org.jgrapes.io.IOSubchannel;
-import org.jgrapes.io.events.Closed;
+import org.jgrapes.portal.PortalSession;
 import org.jgrapes.portal.PortalView;
 import org.jgrapes.portal.events.AddPortletRequest;
 import org.jgrapes.portal.events.AddPortletType;
@@ -57,20 +56,16 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -81,8 +76,6 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	private final static Set<RenderMode> MODES = RenderMode.asSet(
 			DeleteablePreview, View);
 	private BundleContext context;
-	private Map<IOSubchannel,Set<BundleListModel>> listenersByChannel 
-		= Collections.synchronizedMap(new WeakHashMap<>());
 	
 	/**
 	 * Creates a new component with its channel set to the given 
@@ -93,16 +86,16 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 * {@link Manager#fire(Event, Channel...)} sends the event to 
 	 */
 	public BundleListPortlet(Channel componentChannel, BundleContext context) {
-		super(componentChannel);
+		super(componentChannel, true);
 		this.context = context;
 		context.addBundleListener(this);
 	}
 
 	@Handler
-	public void onPortalReady(PortalReady event, IOSubchannel channel) 
+	public void onPortalReady(PortalReady event, PortalSession channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
 			ParseException, IOException {
-		ResourceBundle resourceBundle = resourceBundle(locale(channel));
+		ResourceBundle resourceBundle = resourceBundle(channel.locale());
 		// Add portlet resources to page
 		channel.respond(new AddPortletType(type())
 				.setDisplayName(resourceBundle.getString("portletName"))
@@ -136,20 +129,19 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet(org.jgrapes.portal.events.AddPortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.portal.AbstractPortlet.PortletModelBean)
 	 */
 	@Override
-	protected void doAddPortlet(AddPortletRequest event, IOSubchannel channel,
-	        Session session) throws Exception {
+	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
+			throws Exception {
 		BundleListModel portletModel = new BundleListModel(generatePortletId());
-		listenersByChannel.computeIfAbsent(
-				channel, c -> new HashSet<>()).add(portletModel);
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 		channel.respond(new RenderPortlet(
 				BundleListPortlet.class, portletModel.getPortletId(),
 				DeleteablePreview, MODES, true, templateProcessor(
 						tpl, fmModel(event, channel, portletModel))));
 		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-				.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+				.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
 				portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
+		return portletModel.getPortletId();
 	}
 	
 	/* (non-Javadoc)
@@ -157,12 +149,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doRenderPortlet(RenderPortletRequest event,
-	        IOSubchannel channel, Session session, 
-	        String portletId, Serializable retrievedState)
+	        PortalSession channel, String portletId, Serializable retrievedState)
 	        throws Exception {
 		BundleListModel portletModel = (BundleListModel)retrievedState;
-		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).add(portletModel);
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
@@ -172,7 +161,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 					DeleteablePreview, MODES, event.isForeground(), templateProcessor(
 							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
 					event.portletId(), "bundleUpdates", bundleInfos, "preview", true));
 			break;
@@ -184,7 +173,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 					View, MODES, event.isForeground(), templateProcessor(
 							tpl, fmModel(event, channel, portletModel))));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-					.map(b -> createBundleInfo(b, locale(channel))).collect(Collectors.toList());
+					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
 					event.portletId(), "bundleUpdates", bundleInfos, "view", true));
 			break;
@@ -226,11 +215,8 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doDeletePortlet(DeletePortletRequest event,
-	        IOSubchannel channel, Session session, String portletId, 
+	        PortalSession channel, String portletId, 
 	        Serializable retrievedState) throws Exception {
-		BundleListModel portletModel = (BundleListModel)retrievedState;
-		listenersByChannel.computeIfAbsent(
-				channel, k -> new HashSet<>()).remove(portletModel);
 		channel.respond(new DeletePortlet(portletId));
 	}
 	
@@ -239,7 +225,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	 */
 	@Override
 	protected void doNotifyPortletModel(NotifyPortletModel event,
-	        IOSubchannel channel, Session session, Serializable portletState)
+	        PortalSession channel, Serializable portletState)
 	        throws Exception {
 		event.stop();
 		Bundle bundle = context.getBundle(event.params().getInt(0));
@@ -263,16 +249,15 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				bundle.uninstall();
 				break;
 			case "sendDetails":
-				sendBundleDetails(event.portletId(), channel, session, bundle);
+				sendBundleDetails(event.portletId(), channel, bundle);
 			}
 		} catch (BundleException e) {
 			// ignore
 		}
 	}
-	
-	private void sendBundleDetails(String portletId, IOSubchannel channel, 
-			Session session, Bundle bundle) {
-		Locale locale = locale(channel);
+
+	private void sendBundleDetails(String portletId, PortalSession channel, Bundle bundle) {
+		Locale locale = channel.locale();
 		ResourceBundle rb = resourceBundle(locale);
 		List<Object> data = new ArrayList<>();
 		data.add(new Object[] { rb.getString("bundleSymbolicName"), bundle.getSymbolicName() });
@@ -301,20 +286,16 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				portletId, "bundleDetails", bundle.getBundleId(), data));
 	}
 
-	@Handler
-	public void onClosed(Closed event, IOSubchannel channel) {
-		listenersByChannel.remove(channel);
-	}
-	
 	@Override
 	public void bundleChanged(BundleEvent event) {
-		for (Entry<IOSubchannel,Set<BundleListModel>> e: listenersByChannel.entrySet()) {
-			IOSubchannel channel = e.getKey();
-			for (BundleListModel model: e.getValue()) {
-				channel.respond(new NotifyPortletView(type(),
-						model.getPortletId(), "bundleUpdates", (Object)new Object[]
-								{ createBundleInfo(event.getBundle(), locale(channel)) },
-								"*", false));
+		for (Map.Entry<PortalSession,Set<String>> e:
+			portletIdsByPortalSession().entrySet()) {
+			PortalSession portalSession = e.getKey();
+			for (String portletId: e.getValue()) {
+				portalSession.respond(new NotifyPortletView(type(),
+					portletId, "bundleUpdates", (Object)new Object[]
+							{ createBundleInfo(event.getBundle(), portalSession.locale()) },
+							"*", false));
 			}
 		}
 	}
