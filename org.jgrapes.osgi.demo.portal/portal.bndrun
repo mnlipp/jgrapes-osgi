@@ -16,6 +16,7 @@
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal;version=latest,\
+	org.jgrapes.portlets.sysinfo;version=latest,\
 	org.jgrapes.portal.themes.blacktie;version=latest,\
 	org.jgrapes.portal.themes.blitzer;version=latest,\
 	org.jgrapes.portal.themes.cupertino;version=latest,\
@@ -56,6 +57,7 @@
     json,\
 	org.jgrapes.osgi.factory;version=latest,\
 	org.jgrapes.osgi.portal;version=latest,\
+	org.jgrapes.osgi.portlets.sysinfo;version=latest,\
 	org.jgrapes.osgi.portlets.bundles;version=latest,\
 	org.jgrapes.osgi.portlets.services;version=latest,\
 	org.jgrapes.osgi.demo.portal;version=latest
