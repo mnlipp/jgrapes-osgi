@@ -26,7 +26,7 @@ import org.jgrapes.portlets.sysinfo.SysInfoPortlet;
 import org.osgi.service.component.annotations.ServiceScope;
 
 /**
- * The factory service for {@link BundleListPortlet}s.
+ * The factory service for {@link SysInfoPortlet}s.
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
 public class SysInfoPortletFactory 
