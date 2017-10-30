@@ -12,3 +12,7 @@ Export-Package: \
 -buildpath: \
 	osgi.annotation;version=6.0.1,\
 	org.jgrapes.core;version=latest
+
+-fixupmessages: \
+    "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
+    "The build path does not refer to the bnd container 'aQute.bnd.classpath.container'"
