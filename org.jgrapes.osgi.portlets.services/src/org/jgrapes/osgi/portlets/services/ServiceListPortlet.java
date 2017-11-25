@@ -219,8 +219,12 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 			result.put("implementationClass", dto.implementationClass);
 		} else {
 			Object service = context.getService(serviceRef);
-			result.put("implementationClass", service.getClass().getName());
-			context.ungetService(serviceRef);
+			if (service != null) {
+				result.put("implementationClass", service.getClass().getName());
+				context.ungetService(serviceRef);
+			} else {
+				result.put("implementationClass", "");
+			}
 		}
 		return result;
 	}
