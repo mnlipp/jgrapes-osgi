@@ -54,13 +54,22 @@
 	osgi.enroute.bostock.d3.webresource;version='[3.5.6,3.5.7)',\
 	osgi.enroute.web.simple.provider;version='[2.0.0,2.0.1)',\
 	osgi.enroute.webconsole.xray.provider;version='[2.0.0,2.0.1)',\
-    json,\
+	json,\
 	org.jgrapes.osgi.factory;version=latest,\
 	org.jgrapes.osgi.portal;version=latest,\
 	org.jgrapes.osgi.portlets.sysinfo;version=latest,\
 	org.jgrapes.osgi.portlets.bundles;version=latest,\
 	org.jgrapes.osgi.portlets.services;version=latest,\
-	org.jgrapes.osgi.demo.portal;version=latest
+	org.jgrapes.osgi.demo.portal;version=latest,\
+	org.apache.felix.webconsole.plugins.ds,\
+	org.apache.felix.inventory,\
+	org.apache.felix.log,\
+	org.apache.felix.webconsole.plugins.memoryusage,\
+	org.apache.felix.webconsole.plugins.upnp,\
+	org.apache.felix.webconsole.plugins.useradmin,\
+	org.apache.felix.upnp.basedriver,\
+	org.apache.felix.webconsole.plugins.obr,\
+	org.apache.felix.useradmin
 	
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
