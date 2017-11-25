@@ -135,8 +135,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 		channel.respond(new RenderPortlet(
 				BundleListPortlet.class, portletModel.getPortletId(),
-				DeleteablePreview, MODES, true, templateProcessor(
-						tpl, fmModel(event, channel, portletModel))));
+				templateProcessor(tpl, fmModel(event, channel, portletModel)))
+				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+				.setForeground(true));
 		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 				.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 		channel.respond(new NotifyPortletView(type(),
@@ -158,8 +159,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletId, 
-					DeleteablePreview, MODES, event.isForeground(), templateProcessor(
-							tpl, fmModel(event, channel, portletModel))));
+					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+					.setForeground(event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
@@ -170,8 +172,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
 			channel.respond(new RenderPortlet(
 					BundleListPortlet.class, portletModel.getPortletId(), 
-					View, MODES, event.isForeground(), templateProcessor(
-							tpl, fmModel(event, channel, portletModel))));
+					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					.setRenderMode(View).setSupportedModes(MODES)
+					.setForeground(event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),

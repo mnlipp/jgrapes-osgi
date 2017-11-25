@@ -135,8 +135,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
 		channel.respond(new RenderPortlet(
 				ServiceListPortlet.class, portletModel.getPortletId(),
-				DeleteablePreview, MODES, true, templateProcessor(
-						tpl, fmModel(event, channel, portletModel))));
+				templateProcessor(tpl, fmModel(event, channel, portletModel)))
+				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+				.setForeground(true));
 		List<Map<String,Object>> serviceInfos = Arrays.stream(
 				context.getAllServiceReferences(null, null))
 				.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
@@ -159,8 +160,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 			Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
 			channel.respond(new RenderPortlet(
 					ServiceListPortlet.class, portletId, 
-					DeleteablePreview, MODES, event.isForeground(), templateProcessor(
-							tpl, fmModel(event, channel, portletModel))));
+					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+					.setForeground(event.isForeground()));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
 					context.getAllServiceReferences(null, null))
 					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
@@ -172,8 +174,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 			Template tpl = freemarkerConfig().getTemplate("Services-view.ftl.html");
 			channel.respond(new RenderPortlet(
 					ServiceListPortlet.class, portletModel.getPortletId(), 
-					View, MODES, event.isForeground(), templateProcessor(
-							tpl, fmModel(event, channel, portletModel))));
+					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					.setRenderMode(View).setSupportedModes(MODES)
+					.setForeground(event.isForeground()));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
 					context.getAllServiceReferences(null, null))
 					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
