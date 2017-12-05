@@ -1,0 +1,11 @@
+#Fri Dec 01 14:36:34 CET 2017
+connection.arguments=
+connection.jvm.arguments=
+build.commands=org.eclipse.jdt.core.javabuilder
+connection.project.dir=..
+natures=org.eclipse.jdt.groovy.core.groovyNature,org.eclipse.jdt.core.javanature
+eclipse.preferences.version=1
+connection.java.home=null
+derived.resources=.gradle,generated
+project.path=\:org.jgrapes.osgi.portlets.sysinfo
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)

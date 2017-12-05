@@ -5,6 +5,7 @@ Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Export-Package: \
 	org.jgrapes.osgi.factory.core,\
 	org.jgrapes.osgi.factory.http,\
+	org.jgrapes.osgi.factory.portal.provider,\
 	org.jgrapes.osgi.factory.portlet
 
 -baseline: *

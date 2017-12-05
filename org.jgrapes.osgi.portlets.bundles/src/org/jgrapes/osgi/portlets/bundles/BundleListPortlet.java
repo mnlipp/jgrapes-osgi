@@ -24,7 +24,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.PortalSession;
-import org.jgrapes.portal.PortalView;
+import org.jgrapes.portal.events.AddPageResources.ScriptResource;
 import org.jgrapes.portal.events.AddPortletRequest;
 import org.jgrapes.portal.events.AddPortletType;
 import org.jgrapes.portal.events.DeletePortlet;
@@ -99,8 +99,12 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		// Add portlet resources to page
 		channel.respond(new AddPortletType(type())
 				.setDisplayName(resourceBundle.getString("portletName"))
-				.addScript(PortalView.uriFromPath("Bundles-functions.ftl.js"))
-				.addCss(PortalView.uriFromPath("Bundles-style.css"))
+				.addScript(new ScriptResource()
+						.setRequires(new String[] {"datatables.net"})
+						.setScriptUri(event.renderSupport().portletResource(
+								type(), "Bundles-functions.ftl.js")))
+				.addCss(event.renderSupport().portletResource(
+						type(), "Bundles-style.css"))
 				.setInstantiable());
 	}
 	

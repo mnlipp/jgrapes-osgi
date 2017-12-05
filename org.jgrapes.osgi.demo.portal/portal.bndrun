@@ -69,7 +69,11 @@
 	org.apache.felix.webconsole.plugins.useradmin,\
 	org.apache.felix.upnp.basedriver,\
 	org.apache.felix.webconsole.plugins.obr,\
-	org.apache.felix.useradmin
+	org.apache.felix.useradmin,\
+	org.jgrapes.osgi.portal.providers.chartjs;version=latest,\
+	org.jgrapes.portal.providers.chartjs,\
+	org.jgrapes.osgi.portal.providers.datatables;version=latest,\
+	org.jgrapes.portal.providers.datatables
 	
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\

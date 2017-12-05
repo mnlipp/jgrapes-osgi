@@ -3,6 +3,8 @@ Bundle-SymbolicName: org.jgrapes.osgi.portlets.bundles
 Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
+Require-Capability: \
+	org.jgrapes.portal.page.resource;filter:="(name=datatables.net)"
 Bundle-Category: portlet
 
 
