@@ -26,7 +26,7 @@ import org.jgrapes.portal.providers.datatables.DatatablesProvider;
 import org.osgi.service.component.annotations.ServiceScope;
 
 /**
- * The factory service for {@link SysInfoPortlet}s.
+ * The factory service for {@link DatatablesProvider}s.
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
 public class DatatablesProviderFactory 
