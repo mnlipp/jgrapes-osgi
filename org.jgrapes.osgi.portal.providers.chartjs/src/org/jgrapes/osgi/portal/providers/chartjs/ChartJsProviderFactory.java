@@ -26,7 +26,7 @@ import org.jgrapes.portal.providers.chartjs.ChartJsProvider;
 import org.osgi.service.component.annotations.ServiceScope;
 
 /**
- * The factory service for {@link SysInfoPortlet}s.
+ * The factory service for {@link ChartJsProvider}s.
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
 public class ChartJsProviderFactory 
