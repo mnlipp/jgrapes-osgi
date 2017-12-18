@@ -4,7 +4,7 @@
  * Depends on bnd_* values from gradle.properties.
  */
 
-rootProject.name = 'JGrapes OSGi'
+rootProject.name = 'JGrapes-OSGi'
  
 import aQute.bnd.build.Workspace
 import aQute.bnd.osgi.Constants
