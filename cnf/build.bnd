@@ -40,14 +40,28 @@
         name=OSGi; \
     	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
         releaseUrls=https://repo1.maven.org/maven2; \
-        query='q=g=%22org.osgi%22'
+        query='q=g:%22org.osgi%22&rows=1000'
 
-#-plugin.6.JGrapes = \
-#    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-#        name=JGrapes; \
-#    	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
-#        releaseUrls=https://repo1.maven.org/maven2; \
-#        query='q=g=%22org.jgrapes%22'
+-plugin.6.Felix = \
+    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+        name=Felix; \
+    	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+        releaseUrls=https://repo1.maven.org/maven2; \
+        query='q=g:%22org.apache.felix%22&rows=1000'
+
+-plugin.7.JDrupes = \
+    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+        name=JDrupes; \
+    	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+        releaseUrls=https://repo1.maven.org/maven2; \
+        query='q=g:%22org.jdrupes%22&rows=1000'
+
+-plugin.8.JGrapes = \
+    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+        name=JGrapes; \
+    	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+        releaseUrls=https://repo1.maven.org/maven2; \
+        query='q=g:%22org.grapes%22&rows=1000'
 
 -plugin.enroute.distro = \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
