@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Portlet for System Information
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.sysinfo
-Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.1.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Require-Capability: \
@@ -9,6 +9,8 @@ Bundle-Category: portlet
 
 -sources: true
 -runee: JavaSE-1.8
+
+-baseline: *
 
 -buildpath: \
 	osgi.core;version=6.0.0,\

@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Portal Components
 Bundle-SymbolicName: org.jgrapes.osgi.portal
-Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.1.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -11,6 +11,8 @@ Export-Package: \
 -runee: JavaSE-1.8
 
 -dsannotations: 
+
+-baseline: *
 
 -buildpath: \
 	osgi.core;version=6.0.0,\

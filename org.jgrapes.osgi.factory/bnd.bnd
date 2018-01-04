@@ -1,5 +1,5 @@
 Bundle-Name: JGrapes OSGi Factories APIs
-Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.1.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Export-Package: \
@@ -12,7 +12,7 @@ Export-Package: \
 
 -buildpath: \
 	osgi.annotation;version=6.0.1,\
-	org.jgrapes.core;version=latest
+	org.jgrapes.core
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \

@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Markdownit Resource Provider
 Bundle-SymbolicName: org.jgrapes.osgi.portal.providers.markdownit
-Bundle-Version: 0.9.0.${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.1.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Provide-Capability: \
@@ -8,6 +8,8 @@ Provide-Capability: \
 
 -sources: true
 -runee: JavaSE-1.8
+
+-baseline: *
 
 -buildpath: \
 	osgi.core;version=6.0.0,\
