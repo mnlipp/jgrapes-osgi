@@ -24,8 +24,8 @@ Bundle-Category: portlet
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal;version=latest,\
 	org.jgrapes.osgi.factory;version=latest,\
-	org.freemarker.freemarker;version=2.3,\
-	javax.json-api;version=1.1
+	javax.json-api;version=1.1,\
+	org.freemarker.freemarker;version=2.3.27
 
 -fixupmessages: \
     "Found source folder 'resources' that is not on bnd's source path 'src'", \
