@@ -82,6 +82,11 @@ subprojects {
 			from (project.rootDir) { include 'README.md' }
 			classifier "javadoc"
 		}
+		
+		artifacts {
+			archives sourcesJar
+			archives javadocJar
+		}
 
 		// MavenPublishing (new)
 
