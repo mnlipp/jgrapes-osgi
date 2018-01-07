@@ -13,14 +13,6 @@ bundleVersionQualifier: -${tstamp}-SNAPSHOT
 		releaseUrl=https://repo.maven.apache.org/maven2/; \
 		index=${.}/central.mvn
 
--plugin.1.CentralPom:  \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name="Central (POM)"; \
-        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
-        releaseUrls=https://repo1.maven.org/maven2/; \
-        pom=${build}/central-pom.xml; \
-        location=${build}/cache/central-pom.xml
-
 -plugin.2.Local: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \
 		name = Local; \
