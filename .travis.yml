@@ -2,6 +2,11 @@ sudo: false
 language: java
 jdk:
 - oraclejdk8
+addons:
+  apt:
+    packages:
+    - graphviz
+script: "./gradlew stage"
 env:
   global:
     secure: ybN9QbQJneoT+7O0grbbeIhmkmlQq/Yys8PkoBHsiiczQl5MSCBQ1MclE/1xVWhwUjnVpJKHMmBH90l76rm+oGzf63PyKnygcgKG1dfz/cEYJxJ/o8eRmL29oJHg/fpw+triYTKdkEfXf6vVNomUqke+0faZIOBlbkGyL1RUl4liY4UaXwjlOrt5Sqix+C07i0ebbxIAgonl1Tt/0R585btFQO1DdJ5niSAQsvHnQm/e231Tobge9nIuIK+w5SZ0/yt/mGYV+IRPmVshl3v7Az/UGN1nn2dgXJQfH+/xOEvKb13QBRgRHhhK02dKaQtxpiMQLGu3hZczXc7ShkYkEwphfvxgHJ5jZCrUZzUSZMkVncQmr/fqK/aw7p6+LRtrfQ15tLwiadC8Jnk8fGe8Y/NXG7xV1Vs0ZrqTZZqXfwMUZ2/umC3awb3D2VufO4BDgljhd7nxB818e/iVdCaxU53sXjBtBcFOGUx+1RDSYdX9EodT8tY7kGAkpPMAkPaa2jpuZD8DU0vvxYcS/LxICRyo8xxCyvhUSFHNLKicLyKt9vM2GVpkY6L2LD1qenbgDfI84+wt24/t2dLZ4B/t2j/9Xq+PhCGB/8wQSTqE87EEylms0fiX/481OtLvQyYmcPEuIiczFjWAo9R06AiCc4Zx3jcbGHP1ah8mekH1up4=
