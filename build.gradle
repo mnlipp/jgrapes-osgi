@@ -25,6 +25,7 @@ plugins {
 	id "maven-publish"
 	id "signing"
 	id "org.jdrupes.mdoclet" version "1.0.3"
+	id 'org.ajoberstar.git-publish' version '0.4.0-rc.2'
 }
 
 /* Initialize the bnd workspace */
@@ -36,6 +37,12 @@ ext {
 	cnf = rootProject.project(bnd_cnf)
 
 	isTravisBuild = System.getenv().get("TRAVIS") == 'true'
+}
+
+// Prepare github authentication for plugins
+if (System.properties['org.ajoberstar.grgit.auth.username'] == null) {
+	System.setProperty('org.ajoberstar.grgit.auth.username',
+		System.getenv("GH_TOKEN") ?: project.properties['github.token'] ?: "nouser")
 }
 
 allprojects {
@@ -172,16 +179,44 @@ javadoc {
 	classpath = files(subprojects.collect {project ->
 		project.sourceSets.main.compileClasspath})
 	source subprojects.collect {project -> project.sourceSets.main.allJava }
+	options.addStringOption("doctitle", "JGrapes OSGi Components ${project.version}")
 	options.addStringOption("overview", "overview.md")
 	inputs.file "overview.md"
 	options.addBooleanOption("use", true)
 	options.addBooleanOption("linksource", true)
 	options.stylesheetFile(file("stylesheet.css"))
 	options.addStringOption("bottom", file("misc/javadoc.bottom.txt").text)
-	options.addStringOption("link", "http://docs.oracle.com/javase/8/docs/api/")
+	options.links "https://docs.oracle.com/javase/8/docs/api/"
 	destinationDir = file("../jgrapes.gh-pages/javadoc-osgi")
 }
-	
+
+gitPublish {
+	repoUri = 'https://github.com/mnlipp/jgrapes.git'
+	branch = 'gh-pages'
+	contents {
+		from(javadoc) {
+			into 'javadoc-osgi'
+		}
+	}
+	preserve { include '**/*' }
+	commitMessage = "Updated."
+}
+
+// Until https://github.com/ajoberstar/gradle-git-publish/issues/41 is fixed
+tasks.gitPublishCopy.dependsOn javadoc
+
+task stage {
+	// Build everything first
+	subprojects.tasks.each { tc -> dependsOn tc.findByName("build") }
+	// Publish JavaDoc
+	dependsOn gitPublishPush	
+}
+
+configure(stage) {
+	description = 'To be executed by travis, build and update JavaDoc.'
+	group = 'build'
+}
+
 task wrapper(type: Wrapper) {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }
