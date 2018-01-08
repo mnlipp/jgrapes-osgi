@@ -179,7 +179,7 @@ javadoc {
 	classpath = files(subprojects.collect {project ->
 		project.sourceSets.main.compileClasspath})
 	source subprojects.collect {project -> project.sourceSets.main.allJava }
-	options.addStringOption("doctitle", "JGrapes OSGi Components ${project.version}")
+	options.addStringOption("doctitle", "JGrapes OSGi Components")
 	options.addStringOption("overview", "overview.md")
 	inputs.file "overview.md"
 	options.addBooleanOption("use", true)
