@@ -19,9 +19,11 @@
 package org.jgrapes.osgi.portlets.services;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.jgrapes.core.Channel;
-import org.jgrapes.osgi.factory.portlet.PortletFactory;
+import org.jgrapes.core.ComponentType;
+import org.jgrapes.portal.PortletComponentFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -31,8 +33,7 @@ import org.osgi.service.component.runtime.ServiceComponentRuntime;
  * The factory service for {@link ServiceListPortlet}s.
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
-public class ServiceListPortletFactory 
-	implements PortletFactory<ServiceListPortlet> {
+public class ServiceListPortletFactory implements PortletComponentFactory {
 
 	private ServiceComponentRuntime scr;
 	
@@ -45,7 +46,7 @@ public class ServiceListPortletFactory
 	 * @see org.jgrapes.core.ComponentFactory#componentType()
 	 */
 	@Override
-	public Class<ServiceListPortlet> componentType() {
+	public Class<? extends ComponentType> componentType() {
 		return ServiceListPortlet.class;
 	}
 
@@ -53,10 +54,9 @@ public class ServiceListPortletFactory
 	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
 	 */
 	@Override
-	public ServiceListPortlet create(Channel componentChannel,
-	        Map<Object, Object> properties) {
-		return new ServiceListPortlet(componentChannel, 
-				(BundleContext)properties.get(BundleContext.class), scr);
+	public Optional<ComponentType> create(Channel componentChannel, Map<?, ?> properties) {
+		return Optional.of(new ServiceListPortlet(componentChannel, 
+				(BundleContext)properties.get(BundleContext.class), scr));
 	}
 
 }

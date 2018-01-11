@@ -31,6 +31,7 @@ import org.jgrapes.core.Component;
 import org.jgrapes.core.Components;
 import org.jgrapes.core.NamedChannel;
 import org.jgrapes.core.events.Stop;
+import org.jgrapes.http.HttpRequestHandlerFactory;
 import org.jgrapes.http.HttpServer;
 import org.jgrapes.http.InMemorySessionManager;
 import org.jgrapes.http.LanguageSelector;
@@ -40,7 +41,7 @@ import org.jgrapes.io.NioDispatcher;
 import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslServer;
 import org.jgrapes.net.TcpServer;
-import org.jgrapes.osgi.http.HttpRequestHandlerCollector;
+import org.jgrapes.osgi.core.ComponentCollector;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -95,7 +96,8 @@ public class BasicServer extends Component implements BundleActivator {
 		// Build application layer
 		app.attach(new InMemorySessionManager(app.channel()));
 		app.attach(new LanguageSelector(app.channel()));
-		app.attach(new HttpRequestHandlerCollector(app.channel(), context));
+		app.attach(new ComponentCollector<>(
+				app.channel(), context, HttpRequestHandlerFactory.class));
 		Components.start(app);
 	}
 

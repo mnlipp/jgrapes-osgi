@@ -12,6 +12,7 @@
 	org.jdrupes.httpcodec;version=latest,\
 	org.jdrupes.json;version=latest,\
 	org.jgrapes.core;version=latest,\
+    org.jgrapes.osgi.core;version=latest,\
 	org.jgrapes.util;version=latest,\
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
@@ -63,18 +64,11 @@
 	org.apache.felix.upnp.basedriver,\
 	org.apache.felix.webconsole.plugins.obr,\
 	org.apache.felix.useradmin,\
-	org.jgrapes.osgi.factory;version=latest,\
-	org.jgrapes.osgi.portal;version=latest,\
 	org.jgrapes.portal.providers.chartjs,\
-	org.jgrapes.osgi.portal.providers.chartjs;version=latest,\
 	org.jgrapes.portal.providers.datatables,\
-	org.jgrapes.osgi.portal.providers.datatables;version=latest,\
 	org.jgrapes.portal.providers.markdownit,\
-	org.jgrapes.osgi.portal.providers.markdownit;version=latest,\
 	org.jgrapes.portlets.sysinfo;version=latest,\
-	org.jgrapes.osgi.portlets.sysinfo;version=latest,\
 	org.jgrapes.portlets.markdowndisplay;version=latest,\
-	org.jgrapes.osgi.portlets.markdowndisplay;version=latest,\
 	org.jgrapes.osgi.portlets.bundles;version=latest,\
 	org.jgrapes.osgi.portlets.services;version=latest,\
 	org.jgrapes.osgi.demo.portal;version=latest
@@ -82,7 +76,6 @@
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.upnpserver)',\
 	osgi.identity;filter:='(osgi.identity=osgi.enroute.webconsole.xray.provider)'
 -runprogramargs: -console
 -runproperties: \

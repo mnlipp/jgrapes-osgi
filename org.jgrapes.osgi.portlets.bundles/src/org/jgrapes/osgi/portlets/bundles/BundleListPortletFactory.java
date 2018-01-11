@@ -19,9 +19,11 @@
 package org.jgrapes.osgi.portlets.bundles;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.jgrapes.core.Channel;
-import org.jgrapes.osgi.factory.portlet.PortletFactory;
+import org.jgrapes.core.ComponentType;
+import org.jgrapes.portal.PortletComponentFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.ServiceScope;
 
@@ -30,13 +32,13 @@ import org.osgi.service.component.annotations.ServiceScope;
  */
 @org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
 public class BundleListPortletFactory 
-	implements PortletFactory<BundleListPortlet> {
+	implements PortletComponentFactory {
 
 	/* (non-Javadoc)
 	 * @see org.jgrapes.core.ComponentFactory#componentType()
 	 */
 	@Override
-	public Class<BundleListPortlet> componentType() {
+	public Class<? extends ComponentType> componentType() {
 		return BundleListPortlet.class;
 	}
 
@@ -44,10 +46,9 @@ public class BundleListPortletFactory
 	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
 	 */
 	@Override
-	public BundleListPortlet create(Channel componentChannel,
-	        Map<Object, Object> properties) {
-		return new BundleListPortlet(componentChannel, 
-				(BundleContext)properties.get(BundleContext.class));
+	public Optional<ComponentType> create(Channel componentChannel, Map<?, ?> properties) {
+		return Optional.of(new BundleListPortlet(componentChannel, 
+				(BundleContext)properties.get(BundleContext.class)));
 	}
 
 }

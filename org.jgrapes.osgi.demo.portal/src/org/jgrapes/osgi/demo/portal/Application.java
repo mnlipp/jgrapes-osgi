@@ -43,10 +43,12 @@ import org.jgrapes.io.NioDispatcher;
 import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslServer;
 import org.jgrapes.net.TcpServer;
-import org.jgrapes.osgi.portal.PortalComponentsCollector;
+import org.jgrapes.osgi.core.ComponentCollector;
 import org.jgrapes.portal.KVStoreBasedPortalPolicy;
+import org.jgrapes.portal.PageResourceProviderFactory;
 import org.jgrapes.portal.Portal;
 import org.jgrapes.portal.PortalLocalBackedKVStore;
+import org.jgrapes.portal.PortletComponentFactory;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -115,7 +117,10 @@ public class Application extends Component implements BundleActivator {
 				portal, portal.prefix().getPath()));
 		portal.attach(new KVStoreBasedPortalPolicy(portal));
 		portal.attach(new NewPortalSessionPolicy(portal));
-		portal.attach(new PortalComponentsCollector(portal, context));
+		portal.attach(new ComponentCollector<>(
+				portal, context, PageResourceProviderFactory.class));
+		portal.attach(new ComponentCollector<>(
+				portal, context, PortletComponentFactory.class));
 		Components.start(app);
 	}
 
