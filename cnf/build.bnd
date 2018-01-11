@@ -13,41 +13,23 @@ bundleVersionQualifier: -${tstamp}-SNAPSHOT
 		releaseUrl=https://repo.maven.apache.org/maven2/; \
 		index=${.}/central.mvn
 
--plugin.2.Local: \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name = Local; \
-		pretty = true; \
-		local = ${build}/local
-
--plugin.3.Templates: \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name = Templates; \
-		pretty = true; \
-		local = ${build}/templates
-
--plugin.4.Release: \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name = Release; \
-		pretty = true; \
-		local = ${build}/release
-
--plugin.5.OSGi: \
+-plugin.2.OSGi: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
         name=OSGi; \
     	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
         releaseUrls=https://repo1.maven.org/maven2; \
         query='q=g:%22org.osgi%22&rows=1000'
 
--plugin.6.Felix: \
+-plugin.3.Felix: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
         name=Felix; \
     	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
         releaseUrls=https://repo1.maven.org/maven2; \
         query='q=g:%22org.apache.felix%22&rows=1000'
 
--plugin.8.JGrapes: \
+-plugin.4.JGrapes: \
     de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.5.jar,\
+		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.7.jar,\
             ${workspace}/cnf/plugins/biz.aQute.repository-3.5.0.jar"; \
         name=JGrapes; \
         server="https://oss.sonatype.org"; \
