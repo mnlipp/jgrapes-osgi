@@ -59,7 +59,9 @@
 	org.apache.felix.inventory,\
 	org.apache.felix.log,\
 	org.apache.felix.webconsole.plugins.memoryusage,\
+	org.apache.felix.webconsole.plugins.upnp,\
 	org.apache.felix.webconsole.plugins.useradmin,\
+	org.apache.felix.upnp.basedriver,\
 	org.apache.felix.webconsole.plugins.obr,\
 	org.apache.felix.useradmin,\
 	org.jgrapes.portal.providers.chartjs,\
@@ -69,16 +71,20 @@
 	org.jgrapes.portlets.markdowndisplay;version=latest,\
 	org.jgrapes.osgi.portlets.bundles;version=latest,\
 	org.jgrapes.osgi.portlets.services;version=latest,\
-	org.jgrapes.osgi.demo.portal;version=latest
+	org.osgi.service.upnp;version=1.2.0,\
+	org.jgrapes.osgi.upnpserver;version=latest
 	
+#     org.apache.felix.upnp.basedriver;version=0.8.0    
+    
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=osgi.enroute.webconsole.xray.provider)'
+	osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.upnpserver)',\
+    osgi.identity;filter:='(osgi.identity=osgi.enroute.webconsole.xray.provider)'
 -runprogramargs: -console
 -runproperties: \
-	java.util.logging.config.file=jul-debug.properties,\
-		org.apache.felix.log=10000,\
-		org.apache.felix.log.storeDebug=true
+    java.util.logging.config.file=jul-debug.properties,\
+        org.apache.felix.log=10000,\
+        org.apache.felix.log.storeDebug=true
 -runee: JavaSE-1.8
 
