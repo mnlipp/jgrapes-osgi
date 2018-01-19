@@ -26,7 +26,6 @@ public class RootDeviceListener implements ServiceListener {
 	@Override
 	public void serviceChanged(ServiceEvent event) {
 		// TODO Auto-generated method stub
-		event = null;
 	}
 
 }
