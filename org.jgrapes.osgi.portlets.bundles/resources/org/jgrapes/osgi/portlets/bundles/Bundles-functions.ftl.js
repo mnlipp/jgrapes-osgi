@@ -187,7 +187,7 @@ var orgJGrapesOsgiPortletsBundles = {
                     let bundleDetailsDialog = $('<div />');
                     bundleDetailsDialog.attr("data-bundle-details-for", bundleId);
                     bundleDetailsDialog.html(l10n.detailsBeingLoaded);
-                    JGPortal.sendToPortlet(portletId, "sendDetails", [ parseInt(bundleId) ]);
+                    JGPortal.notifyPortletModel(portletId, "sendDetails", parseInt(bundleId));
                     bundleDetailsDialog.dialog({
                         title: data.symbolicName,
                         classes: {
@@ -219,7 +219,7 @@ var orgJGrapesOsgiPortletsBundles = {
             let portletId = $(this).closest("[data-portlet-id]").attr("data-portlet-id");
             let bundleId = $(this).attr("data-bundle-id");
             let action = $(this).attr("data-bundle-action")
-            JGPortal.sendToPortlet(portletId, action, [ parseInt(bundleId) ]);
+            JGPortal.notifyPortletModel(portletId, action, parseInt(bundleId));
     });
 
     function updateTable(table, bundleInfos, replace) {
