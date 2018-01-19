@@ -114,7 +114,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 	}
 
 	/* (non-Javadoc)
-	 * @see org.osgi.util.tracker.ServiceTrackerCustomizer#modifiedService(org.osgi.framework.ServiceReference, java.lang.Object)
+	 * @see org.osgi.util.tracker.ServiceTrackerCustomizer#modifiedService
 	 */
 	@Override
 	public void modifiedService(ServiceReference<F> reference, F service) {

@@ -19,8 +19,10 @@
 
 package org.jgrapes.osgi.portlets.services;
 
-import static org.jgrapes.portal.Portlet.RenderMode.DeleteablePreview;
-import static org.jgrapes.portal.Portlet.RenderMode.View;
+import freemarker.core.ParseException;
+import freemarker.template.MalformedTemplateNameException;
+import freemarker.template.Template;
+import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -41,6 +43,10 @@ import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.PortalSession;
 import org.jgrapes.portal.Portlet.RenderMode;
+
+import static org.jgrapes.portal.Portlet.RenderMode.DeleteablePreview;
+import static org.jgrapes.portal.Portlet.RenderMode.View;
+
 import org.jgrapes.portal.events.AddPageResources.ScriptResource;
 import org.jgrapes.portal.events.AddPortletRequest;
 import org.jgrapes.portal.events.AddPortletType;
@@ -60,11 +66,6 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.runtime.ServiceComponentRuntime;
 import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
 
-import freemarker.core.ParseException;
-import freemarker.template.MalformedTemplateNameException;
-import freemarker.template.Template;
-import freemarker.template.TemplateNotFoundException;
-
 /**
  * A portlet for inspecting the services in an OSGi runtime.
  */
@@ -72,7 +73,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	implements ServiceListener {
 
 	private ServiceComponentRuntime scr;
-	private final static Set<RenderMode> MODES = RenderMode.asSet(
+	private static final Set<RenderMode> MODES = RenderMode.asSet(
 			DeleteablePreview, View);
 	private BundleContext context;
 	
@@ -118,7 +119,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	}
 
 	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession(org.jgrapes.io.IOSubchannel, java.lang.String)
+	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -131,7 +132,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	}
 
 	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet(org.jgrapes.portal.events.AddPortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session)
+	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
 	 */
 	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
 			throws Exception {
@@ -151,7 +152,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	}
 
 	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet(org.jgrapes.portal.events.RenderPortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session, java.lang.String, java.io.Serializable)
+	 * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
 	 */
 	@Override
 	protected void doRenderPortlet(RenderPortletRequest event,
@@ -237,7 +238,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet(org.jgrapes.portal.events.DeletePortletRequest, org.jgrapes.io.IOSubchannel, org.jgrapes.http.Session, java.lang.String, java.io.Serializable)
+	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
 	 */
 	@Override
 	protected void doDeletePortlet(DeletePortletRequest event, PortalSession channel, 

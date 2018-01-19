@@ -69,7 +69,7 @@ public class NewPortalSessionPolicy extends Component {
 //			fire(new AddPortletRequest(event.event().event().renderSupport(), 
 //					HelloWorldPortlet.class.getName(), 
 //					Portlet.RenderMode.DeleteablePreview), channel);
-		};
+		}
 	}
 
 }

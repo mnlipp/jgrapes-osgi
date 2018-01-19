@@ -75,9 +75,6 @@ public class Application extends Component implements BundleActivator {
 		// Attach a general nio dispatcher
 		app.attach(new NioDispatcher());
 
-		// Network level unencrypted channel.
-		Channel httpTransport = new NamedChannel("httpTransport");
-
 		// Create TLS "converter"
 		KeyStore serverStore = KeyStore.getInstance("JKS");
 		try (InputStream kf 
@@ -93,6 +90,8 @@ public class Application extends Component implements BundleActivator {
 		Channel securedNetwork = app.attach(
 				new TcpServer().setServerAddress(new InetSocketAddress(5443))
 				.setBacklog(3000).setConnectionLimiter(new PermitsPool(50)));
+		// Network level unencrypted channel.
+		Channel httpTransport = new NamedChannel("httpTransport");
 		app.attach(new SslServer(httpTransport, securedNetwork, sslContext));
 
 		// Create an HTTP server as converter between transport and application
