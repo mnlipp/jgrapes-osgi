@@ -13,4 +13,4 @@ Export-Package: org.jgrapes.osgi.core
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
-    "The build path does not refer to the bnd container 'aQute.bnd.classpath.container'"
+    "The .classpath contains a library that will not be available during continuous integration:"

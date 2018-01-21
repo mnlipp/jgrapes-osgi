@@ -3,6 +3,7 @@ Bundle-Version: 0.9.1.-${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-Activator: org.jgrapes.osgi.demo.portal.Application
+Private-Package: org.jgrapes.osgi.demo.portal
 
 -buildpath: \
 	osgi.core;version=6.0.0,\
@@ -18,8 +19,5 @@ Bundle-Activator: org.jgrapes.osgi.demo.portal.Application
 	resources
 
 -fixupmessages: \
-    "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
-    "The build path does not refer to the bnd container 'aQute.bnd.classpath.container'"
-
-Private-Package: org.jgrapes.osgi.demo.portal
+    "The .classpath contains a library that will not be available during continuous integration:"

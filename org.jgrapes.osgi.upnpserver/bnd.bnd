@@ -4,6 +4,7 @@ Bundle-Version: 0.0.1.-${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-Activator: org.jgrapes.osgi.upnpserver.Application
+Private-Package: org.jgrapes.osgi.upnpserver
 
 # -baseline: *
 
@@ -20,9 +21,10 @@ Bundle-Activator: org.jgrapes.osgi.upnpserver.Application
 -includeresource: \
 	resources
 
+# Since we have no tests but gradle creates a classpath entry for testbin...
+testbin=bin/main
+
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
-    "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
-    "The build path does not refer to the bnd container 'aQute.bnd.classpath.container'"
+    "The .classpath contains a library that will not be available during continuous integration:"
 
-Private-Package: org.jgrapes.osgi.upnpserver
