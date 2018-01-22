@@ -245,3 +245,7 @@ configure(stage) {
 task wrapper(type: Wrapper) {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }
+
+apply plugin: 'eclipse'
+
+tasks.eclipse.dependsOn(cleanEclipse)

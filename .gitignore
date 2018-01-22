@@ -3,5 +3,4 @@
 /build/
 **/.project
 **/.classpath
-!/.project
-!/.classpath
+**/org.eclipse.jdt.core.prefs
