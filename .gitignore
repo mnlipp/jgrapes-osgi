@@ -1,3 +1,7 @@
 .gradle/
 .metadata
 /build/
+**/.project
+**/.classpath
+!.project
+!.classpath
