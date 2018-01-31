@@ -88,7 +88,7 @@ public class Application extends Component implements BundleActivator {
 		sslContext.init(kmf.getKeyManagers(), null, new SecureRandom());
 		// Create a TCP server for SSL
 		Channel securedNetwork = app.attach(
-				new TcpServer().setServerAddress(new InetSocketAddress(5443))
+				new TcpServer().setServerAddress(new InetSocketAddress(6443))
 				.setBacklog(3000).setConnectionLimiter(new PermitsPool(50)));
 		// Network level unencrypted channel.
 		Channel httpTransport = new NamedChannel("httpTransport");
