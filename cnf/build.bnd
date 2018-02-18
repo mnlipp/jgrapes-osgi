@@ -13,21 +13,30 @@ bundleVersionQualifier: -${tstamp}-SNAPSHOT
 		releaseUrl=https://repo.maven.apache.org/maven2/; \
 		index=${.}/central.mvn
 
--plugin.2.OSGi: \
+# Currently not working, problem resolving relative URLs
+#-plugin.2.JitPack: \
+#    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+#        name="JitPack (POM)"; \
+#        snapshotUrls=https://jitpack.io/; \
+#        releaseUrls=https://jitpack.io/; \
+#        pom=${build}/jitpack.pom; \
+#        location=${build}/cache/jitpack-pom.xml
+
+-plugin.3.OSGi: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
         name=OSGi; \
     	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
         releaseUrls=https://repo1.maven.org/maven2; \
         query='q=g:%22org.osgi%22&rows=1000'
 
--plugin.3.Felix: \
+-plugin.4.Felix: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
         name=Felix; \
     	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
         releaseUrls=https://repo1.maven.org/maven2; \
         query='q=g:%22org.apache.felix%22&rows=1000'
 
--plugin.4.JGrapes: \
+-plugin.5.JGrapes: \
     de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
 		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.9.jar,\
             ${workspace}/cnf/plugins/biz.aQute.repository-3.5.0.jar"; \
