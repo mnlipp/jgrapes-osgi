@@ -51,9 +51,10 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 	/**
 	 * Creates a collector component that uses the {@link ServiceTracker} to
 	 * monitor the addition and removal of component factories.
-	 * 
+	 *
 	 * @param componentChannel this component's channel
-	 * @param factoryClass the factory class
+	 * @param context the OSGi {@link BundleContext}
+	 * @param factoryCls the factory class
 	 * @param matcher the matcher function
 	 */
 	public ComponentCollector(
