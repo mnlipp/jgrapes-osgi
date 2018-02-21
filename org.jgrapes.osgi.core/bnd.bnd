@@ -1,5 +1,5 @@
 Bundle-Name: JGrapes OSGi Adapters
-Bundle-Version: 0.9.1.${bundleVersionQualifier}
+Bundle-Version: 0.9.2.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Export-Package: org.jgrapes.osgi.core
