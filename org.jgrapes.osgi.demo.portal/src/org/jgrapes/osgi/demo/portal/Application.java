@@ -110,7 +110,7 @@ public class Application extends Component implements BundleActivator {
 					ResourceBundle.Control.getNoFallbackControl(
 							ResourceBundle.Control.FORMAT_DEFAULT)))
 				.setFallbackResourceSupplier((themeProvider, resource) -> {
-					return Application.class.getResourceAsStream(resource);
+					return Application.class.getResource(resource);
 				});
 		portal.attach(new PortalLocalBackedKVStore(
 				portal, portal.prefix().getPath()));
