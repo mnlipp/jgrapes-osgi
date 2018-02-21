@@ -246,24 +246,52 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		channel.respond(new DeletePortlet(portletId));
 	}
 
+	/**
+	 * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
+	 * on all known portal session channels.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void serviceChanged(ServiceEvent event) {
-		for (Map.Entry<PortalSession,Set<String>> e:
-			portletIdsByPortalSession().entrySet()) {
-			PortalSession portalSession = e.getKey();
-			Map<String,Object> info = createServiceInfo(
-					event.getServiceReference(), portalSession.locale());
-			if (event.getType() == ServiceEvent.UNREGISTERING) {
-				info.put("updateType", "unregistering");
-			}
-			for (String portletId: e.getValue()) {
-				portalSession.respond(new NotifyPortletView(
-						type(), portletId, "serviceUpdates", 
-						(Object)new Object[] { info }, "*", false));
-			}
+		fire(new ServiceChanged(event), trackedSessions());
+	}
+	
+	/**
+	 * Handles a {@link ServiceChanged} event by updating the information in the portal
+	 * sessions.
+	 *
+	 * @param event the event
+	 */
+	@Handler
+	public void onServiceChanged(ServiceChanged event, PortalSession portalSession) {
+		Map<String,Object> info = createServiceInfo(
+				event.serviceEvent().getServiceReference(), portalSession.locale());
+		if (event.serviceEvent().getType() == ServiceEvent.UNREGISTERING) {
+			info.put("updateType", "unregistering");
+		}
+		for (String portletId: portletIds(portalSession)) {
+			portalSession.respond(new NotifyPortletView(
+					type(), portletId, "serviceUpdates", 
+					(Object)new Object[] { info }, "*", false));
 		}
 	}
 
+	/**
+	 * Wraps an OSGi {@link ServiceEvent}.
+	 */
+	public static class ServiceChanged extends Event<Void> {
+		private ServiceEvent serviceEvent;
+
+		public ServiceChanged(ServiceEvent serviceEvent) {
+			this.serviceEvent = serviceEvent;
+		}
+
+		public ServiceEvent serviceEvent() {
+			return serviceEvent;
+		}
+	}
+	
 	@SuppressWarnings("serial")
 	public class ServiceListModel extends PortletBaseModel {
 

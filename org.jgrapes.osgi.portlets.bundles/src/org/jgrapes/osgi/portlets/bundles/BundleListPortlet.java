@@ -92,7 +92,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		this.context = context;
 		context.addBundleListener(this);
 	}
-
+	
 	@Handler
 	public void onPortalReady(PortalReady event, PortalSession channel) 
 			throws TemplateNotFoundException, MalformedTemplateNameException, 
@@ -295,20 +295,59 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 				portletId, "bundleDetails", bundle.getBundleId(), data));
 	}
 
+	/**
+	 * Translates the OSGi {@link BundleEvent} to a JGrapes event and fires it
+	 * on all known portal session channels.
+	 *
+	 * @param event the event
+	 */
 	@Override
 	public void bundleChanged(BundleEvent event) {
-		for (Map.Entry<PortalSession,Set<String>> e:
-			portletIdsByPortalSession().entrySet()) {
-			PortalSession portalSession = e.getKey();
-			for (String portletId: e.getValue()) {
-				portalSession.respond(new NotifyPortletView(type(),
-					portletId, "bundleUpdates", (Object)new Object[]
-							{ createBundleInfo(event.getBundle(), portalSession.locale()) },
-							"*", false));
-			}
+		fire(new BundleChanged(event), trackedSessions()); 
+	}
+
+	/**
+	 * Handles a {@link BundleChanged} event by updating the information in the portal
+	 * sessions.
+	 *
+	 * @param event the event
+	 */
+	@Handler
+	public void onBundleChanged(BundleChanged event, PortalSession portalSession) {
+		for (String portletId : portletIds(portalSession)) {
+			portalSession.respond(new NotifyPortletView(type(), portletId, "bundleUpdates",
+					(Object) new Object[] { createBundleInfo(
+							event.bundleEvent().getBundle(), portalSession.locale()) },
+					"*", false));
 		}
 	}
 
+	/**
+	 * Wraps an OSGi {@link BundleEvent}.
+	 */
+	public static class BundleChanged extends Event<Void> {
+		private BundleEvent bundleEvent;
+
+		/**
+		 * Instantiates a new event.
+		 *
+		 * @param bundleEvent the OSGi bundle event
+		 */
+		public BundleChanged(BundleEvent bundleEvent) {
+			this.bundleEvent = bundleEvent;
+		}
+
+		/**
+		 * Return the OSGi bundle event.
+		 *
+		 * @return the bundle event
+		 */
+		public BundleEvent bundleEvent() {
+			return bundleEvent;
+		}
+		
+	}
+	
 	@SuppressWarnings("serial")
 	public class BundleListModel extends PortletBaseModel {
 
