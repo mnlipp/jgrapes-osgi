@@ -42,6 +42,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.PortalSession;
+import org.jgrapes.portal.PortalWeblet;
 import org.jgrapes.portal.Portlet.RenderMode;
 
 import static org.jgrapes.portal.Portlet.RenderMode.DeleteablePreview;
@@ -105,8 +106,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 						.setRequires(new String[] {"datatables.net"})
 						.setScriptUri(event.renderSupport().portletResource(
 								type(), "Services-functions.ftl.js")))
-				.addCss(event.renderSupport().portletResource(
-						type(), "Services-style.css"))
+				.addCss(event.renderSupport(), PortalWeblet.uriFromPath("Services-style.css"))
 				.setInstantiable());
 	}
 	
