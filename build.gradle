@@ -74,7 +74,7 @@ subprojects {
 		// artifact_version is defined in cnf/bnd.bnd
 		if (bnd.artifact_version) {
 			project.version = bnd.artifact_version
-		}
+        }
 	}
 	
 	if (bndProject != null && project.name != "cnf") {
@@ -151,7 +151,18 @@ subprojects {
 				}
 			}
 		}
-		
+
+		// Disable un-applicable publishing mode
+        if (bnd.artifact_version.contains("SNAPSHOT")) {
+            tasks.matching { it.name == "publishMavenJavaPublicationToReleaseRepository" }.all {
+                enabled = false
+            }
+        } else {
+            tasks.matching { it.name == "publishMavenJavaPublicationToSnapshotRepository" }.all {
+                enabled = false
+            }
+        }
+            
         apply plugin: 'eclipse'
     
         eclipse {
@@ -178,8 +189,6 @@ subprojects {
         tasks.eclipse.dependsOn(cleanEclipse)
 	}
 
-	tasks.withType(Javadoc).all { enabled = false }	
-	
 	afterEvaluate {
 		if(project.name == "cnf") {
 			tasks.matching { it.group == "upload" ||
