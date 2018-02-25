@@ -19,7 +19,7 @@ if (bndProject != null && project.name != "cnf") {
 
     group = "org.jgrapes"
         
-    apply from: "${project.rootDir}/gradle/publishing.gradle"
+    apply from: "${project.rootDir}/gradle/upload.gradle"
             
     apply from: "${project.rootDir}/gradle/eclipse.gradle"
 }

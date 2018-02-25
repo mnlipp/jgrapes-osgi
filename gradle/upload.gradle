@@ -1,0 +1,72 @@
+// MavenPublishing (original), still simpler for remote 
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier "sources"
+}
+
+task javadocJar(type: Jar) {
+    from (project.rootDir) { include 'README.md' }
+    classifier "javadoc"
+}
+        
+// Allow build without signing information (e.g. travis)
+if (project.hasProperty('signing.keyId')) {
+    signing {
+        sign configurations.archives
+    }
+}
+
+uploadArchives {
+    
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+ 
+            pom.project {
+            
+                name project.name
+                artifactId project.archivesBaseName
+                packaging 'pom'
+                description project.description
+                url 'https://github.com/mnlipp/jgrapes-osgi'
+ 
+                scm {
+                    url 'scm:git@github.com:mnlipp/jgrapes-osgi.git'
+                    connection 'scm:git@github.com:mnlipp/jgrapes-osgi.git'
+                    developerConnection 'git@github.com:mnlipp/jgrapes-osgi.git'
+                }
+ 
+                licenses {
+                    license {
+                        name 'GPL 3.0'
+                        url 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+                        distribution 'repo'
+                    }
+                }
+ 
+                developers {
+                    developer {
+                        id 'mnlipp'
+                        name 'Michael N. Lipp'
+                    }
+                }
+            }
+            
+            artifacts {
+                archives sourcesJar
+                archives javadocJar
+            }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: project.properties['sonatypeUsername'] ?: "nouser", 
+                    password: project.properties['sonatypePassword'] ?: "nopass")
+            }
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: project.properties['sonatypeUsername'] ?: "nouser", 
+                    password: project.properties['sonatypePassword'] ?: "nopass")
+            }
+
+        }
+    }
+}
