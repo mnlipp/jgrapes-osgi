@@ -23,7 +23,9 @@ if (project.hasProperty('signing.keyId')) {
 }
 
 uploadArchives {
-    dependsOn signArchives
+    if (project.hasProperty('signing.keyId')) {
+        dependsOn signArchives
+    }
     
     repositories {
         mavenDeployer {
