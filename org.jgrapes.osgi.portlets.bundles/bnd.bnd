@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Portlets for Bundles
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.bundles
-Bundle-Version: 0.9.4.${bundleVersionQualifier}
+Bundle-Version: 0.9.5.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Require-Capability: \

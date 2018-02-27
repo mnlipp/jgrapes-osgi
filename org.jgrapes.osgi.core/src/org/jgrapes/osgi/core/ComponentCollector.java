@@ -46,7 +46,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 
 	private BundleContext context;
 	private ServiceTracker<F, F> serviceTracker;
-	private Function<String,List<Map<?,?>>> matcher;
+	private Function<String,List<Map<Object,Object>>> matcher;
 	
 	/**
 	 * Creates a collector component that uses the {@link ServiceTracker} to
@@ -59,7 +59,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 	 */
 	public ComponentCollector(
 			Channel componentChannel, BundleContext context, Class<F> factoryCls, 
-			Function<String,List<Map<?,?>>> matcher) {
+			Function<String,List<Map<Object,Object>>> matcher) {
 		super(componentChannel);
 		this.context = context;
 		this.matcher = matcher;
@@ -67,7 +67,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 		serviceTracker.open();
 	}
 
-	private static List<Map<?,?>> SINGLE_DEFAULT 
+	private static List<Map<Object,Object>> SINGLE_DEFAULT 
 		= Arrays.asList(Collections.emptyMap());
 
 	/**
@@ -102,7 +102,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 		if (StreamSupport.stream(spliterator(), false)
 				.filter(c -> c.getClass().equals(factory.componentType()))
 				.count() == 0) {
-			List<Map<?,?>> configs = matcher.apply(
+			List<Map<Object,Object>> configs = matcher.apply(
 					factory.componentType().getName());
 			for (Map<?,?> config: configs) {
 				Map<Object,Object> props = new HashMap<>(config);

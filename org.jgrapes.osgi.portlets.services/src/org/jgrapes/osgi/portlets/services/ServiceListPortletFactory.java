@@ -54,7 +54,7 @@ public class ServiceListPortletFactory implements PortletComponentFactory {
 	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
 	 */
 	@Override
-	public Optional<ComponentType> create(Channel componentChannel, Map<?, ?> properties) {
+	public Optional<ComponentType> create(Channel componentChannel, Map<Object,Object> properties) {
 		return Optional.of(new ServiceListPortlet(componentChannel, 
 				(BundleContext)properties.get(BundleContext.class), scr));
 	}
