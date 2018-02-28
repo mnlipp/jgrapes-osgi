@@ -1,7 +1,7 @@
 Bundle-Name: JGrapes OSGi Portlets for Services
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.services
-Bundle-Version: 0.9.5.${bundleVersionQualifier}
-Bundle-Copyright: Michael N. Lipp (c) 2017
+Bundle-Version: 0.9.6.${bundleVersionQualifier}
+Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Require-Capability: \
 	org.jgrapes.portal.page.resource;filter:="(name=datatables.net)"

@@ -46,7 +46,8 @@ public class BundleListPortletFactory
 	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
 	 */
 	@Override
-	public Optional<ComponentType> create(Channel componentChannel, Map<Object, Object> properties) {
+	public Optional<ComponentType> create(
+			Channel componentChannel, Map<Object, Object> properties) {
 		return Optional.of(new BundleListPortlet(componentChannel, 
 				(BundleContext)properties.get(BundleContext.class)));
 	}
