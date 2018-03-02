@@ -5,7 +5,7 @@ eclipse {
         containers 'aQute.bnd.classpath.container'
         // Classpath is completely handled by bnd container above
         minusConfigurations += [ configurations.compileClasspath,
-            configurations.testCompileClasspath ]
+            configurations.testCompileClasspath, configurations.testRuntimeClasspath ]
         downloadJavadoc = true
         downloadSources = true
     }
