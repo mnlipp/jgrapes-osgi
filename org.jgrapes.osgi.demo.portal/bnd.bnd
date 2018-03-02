@@ -12,7 +12,7 @@ Private-Package: org.jgrapes.osgi.demo.portal
 	org.jgrapes.core;version=latest,\
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
-	org.jgrapes.portal;version=latest,\
+	org.jgrapes.portal;version='[0.11.0.ga,1.1)',\
 	org.jgrapes.osgi.core;version=latest
 
 -includeresource: \

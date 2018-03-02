@@ -1,5 +1,5 @@
 Bundle-Name: JGrapes OSGi Adapters
-Bundle-Version: 0.9.4.${bundleVersionQualifier}
+Bundle-Version: 0.9.5.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Export-Package: org.jgrapes.osgi.core
@@ -9,7 +9,7 @@ Export-Package: org.jgrapes.osgi.core
 -buildpath: \
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
-	org.jgrapes.core;version='[0.12.0.ga,1.1)'
+	org.jgrapes.core;version='[0.14.0.ga,1.1)'
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
