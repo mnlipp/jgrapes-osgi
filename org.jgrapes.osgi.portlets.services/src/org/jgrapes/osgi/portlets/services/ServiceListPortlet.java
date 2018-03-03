@@ -138,9 +138,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 			throws Exception {
 		ServiceListModel portletModel = new ServiceListModel(generatePortletId());
 		Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-		channel.respond(new RenderPortlet(
+		channel.respond(new RenderPortletFromTemplate(
 				ServiceListPortlet.class, portletModel.getPortletId(),
-				templateProcessor(tpl, fmModel(event, channel, portletModel)))
+				tpl, fmModel(event, channel, portletModel))
 				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 				.setForeground(true));
 		List<Map<String,Object>> serviceInfos = Arrays.stream(
@@ -163,9 +163,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-			channel.respond(new RenderPortlet(
+			channel.respond(new RenderPortletFromTemplate(
 					ServiceListPortlet.class, portletId, 
-					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
@@ -177,9 +177,9 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		}
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Services-view.ftl.html");
-			channel.respond(new RenderPortlet(
+			channel.respond(new RenderPortletFromTemplate(
 					ServiceListPortlet.class, portletModel.getPortletId(), 
-					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(View).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(

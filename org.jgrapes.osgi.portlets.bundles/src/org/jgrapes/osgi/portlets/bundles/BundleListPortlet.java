@@ -59,7 +59,6 @@ import org.jgrapes.portal.events.DeletePortletRequest;
 import org.jgrapes.portal.events.NotifyPortletModel;
 import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
-import org.jgrapes.portal.events.RenderPortlet;
 import org.jgrapes.portal.events.RenderPortletRequest;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 
@@ -139,9 +138,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			throws Exception {
 		BundleListModel portletModel = new BundleListModel(generatePortletId());
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-		channel.respond(new RenderPortlet(
+		channel.respond(new RenderPortletFromTemplate(
 				BundleListPortlet.class, portletModel.getPortletId(),
-				templateProcessor(tpl, fmModel(event, channel, portletModel)))
+				tpl, fmModel(event, channel, portletModel))
 				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 				.setForeground(true));
 		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
@@ -163,9 +162,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-			channel.respond(new RenderPortlet(
+			channel.respond(new RenderPortletFromTemplate(
 					BundleListPortlet.class, portletId, 
-					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
@@ -176,9 +175,9 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		}
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
-			channel.respond(new RenderPortlet(
+			channel.respond(new RenderPortletFromTemplate(
 					BundleListPortlet.class, portletModel.getPortletId(), 
-					templateProcessor(tpl, fmModel(event, channel, portletModel)))
+					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(View).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
