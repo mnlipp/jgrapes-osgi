@@ -1,5 +1,5 @@
 Bundle-Name: JGrapes OSGi HTTP Server
-Bundle-Version: 0.9.2.${bundleVersionQualifier}
+Bundle-Version: 0.9.3.${bundleVersionQualifier}
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
 Bundle-Activator: org.jgrapes.osgi.demo.portal.Application
