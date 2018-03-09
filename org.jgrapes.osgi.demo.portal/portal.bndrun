@@ -5,12 +5,11 @@
 	org.apache.aries.util;version='[1.0.0,1.0.1)',\
 	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
 	org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
-	org.glassfish.javax.json;version=1.1.0,\
-	javax.json-api;version='[1.1.0,1.1.1)',\
 	org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)',\
 	org.freemarker.freemarker;version='2.3.27',\
 	org.jdrupes.httpcodec;version=latest,\
-	org.jdrupes.json;version='[1.1.0,1.2.0)',\
+	com.fasterxml.jackson.core.jackson-core;version='[2.9.4,2.10)',\
+	org.jdrupes.json;version='[2.0.0,2.1.0)',\
 	org.jgrapes.core;version=latest,\
     org.jgrapes.osgi.core;version=latest,\
 	org.jgrapes.util;version=latest,\

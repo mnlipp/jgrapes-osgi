@@ -55,7 +55,6 @@ import org.jgrapes.portal.events.DeletePortlet;
 import org.jgrapes.portal.events.DeletePortletRequest;
 import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
-import org.jgrapes.portal.events.RenderPortlet;
 import org.jgrapes.portal.events.RenderPortletRequest;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.Bundle;
@@ -138,7 +137,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 			throws Exception {
 		ServiceListModel portletModel = new ServiceListModel(generatePortletId());
 		Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-		channel.respond(new RenderPortletFromTemplate(
+		channel.respond(new RenderPortletFromTemplate(event,
 				ServiceListPortlet.class, portletModel.getPortletId(),
 				tpl, fmModel(event, channel, portletModel))
 				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
@@ -163,7 +162,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(
+			channel.respond(new RenderPortletFromTemplate(event,
 					ServiceListPortlet.class, portletId, 
 					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
@@ -177,11 +176,10 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		}
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Services-view.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(
+			channel.respond(new RenderPortletFromTemplate(event,
 					ServiceListPortlet.class, portletModel.getPortletId(), 
 					tpl, fmModel(event, channel, portletModel))
-					.setRenderMode(View).setSupportedModes(MODES)
-					.setForeground(event.isForeground()));
+					.setSupportedModes(MODES).setForeground(event.isForeground()));
 			List<Map<String,Object>> serviceInfos = Arrays.stream(
 					context.getAllServiceReferences(null, null))
 					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());

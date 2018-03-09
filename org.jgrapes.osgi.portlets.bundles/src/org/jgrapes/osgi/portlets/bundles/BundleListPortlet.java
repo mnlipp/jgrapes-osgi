@@ -138,7 +138,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			throws Exception {
 		BundleListModel portletModel = new BundleListModel(generatePortletId());
 		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-		channel.respond(new RenderPortletFromTemplate(
+		channel.respond(new RenderPortletFromTemplate(event,
 				BundleListPortlet.class, portletModel.getPortletId(),
 				tpl, fmModel(event, channel, portletModel))
 				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
@@ -162,7 +162,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(
+			channel.respond(new RenderPortletFromTemplate(event,
 					BundleListPortlet.class, portletId, 
 					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
@@ -175,7 +175,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 		}
 		case View: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(
+			channel.respond(new RenderPortletFromTemplate(event,
 					BundleListPortlet.class, portletModel.getPortletId(), 
 					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(View).setSupportedModes(MODES)
@@ -236,7 +236,7 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	        PortalSession channel, Serializable portletState)
 	        throws Exception {
 		event.stop();
-		Bundle bundle = context.getBundle(event.params().getInt(0));
+		Bundle bundle = context.getBundle(event.params().asInt(0));
 		if (bundle == null) {
 			return;
 		}
