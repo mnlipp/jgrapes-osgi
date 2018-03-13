@@ -45,7 +45,7 @@ bundleVersionQualifier: ga
         query="g=org.jgrapes"
 
 -baselinerepo: JGrapes
-# -baseline: *
+-baseline: *
 
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
