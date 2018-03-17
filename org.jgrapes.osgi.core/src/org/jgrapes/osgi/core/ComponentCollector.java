@@ -18,6 +18,7 @@
 
 package org.jgrapes.osgi.core;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -129,11 +130,15 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 	 */
 	@Override
 	public void removedService(ServiceReference<F> reference, F service) {
+		// Avoid ConcurrentModificationException
+		List<ComponentType> toBeRemoved = new ArrayList<>();
 		for (ComponentType child: this) {
 			if (child.getClass().equals(service.componentType())) {
-				Components.manager(child).detach();
+				toBeRemoved.add(child);
 			}
 		}
+		for (ComponentType item: toBeRemoved) {
+			Components.manager(item).detach();
+		}
 	}
-
 }
