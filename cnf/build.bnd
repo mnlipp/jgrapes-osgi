@@ -38,7 +38,7 @@ bundleVersionQualifier: -${tstamp}-SNAPSHOT
 
 -plugin.5.JGrapes: \
     de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.11.jar,\
+		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.12.jar,\
             ${workspace}/cnf/plugins/biz.aQute.repository-3.5.0.jar"; \
         name=JGrapes; \
         server="https://oss.sonatype.org"; \
