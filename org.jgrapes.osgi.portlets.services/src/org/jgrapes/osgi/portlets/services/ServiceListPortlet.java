@@ -56,10 +56,12 @@ import org.jgrapes.portal.events.DeletePortletRequest;
 import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
 import org.jgrapes.portal.events.RenderPortletRequest;
+import org.jgrapes.portal.events.RenderPortletRequestBase;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
+import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
@@ -136,17 +138,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
 			throws Exception {
 		ServiceListModel portletModel = new ServiceListModel(generatePortletId());
-		Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-		channel.respond(new RenderPortletFromTemplate(event,
-				ServiceListPortlet.class, portletModel.getPortletId(),
-				tpl, fmModel(event, channel, portletModel))
-				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
-				.setForeground(true));
-		List<Map<String,Object>> serviceInfos = Arrays.stream(
-				context.getAllServiceReferences(null, null))
-				.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
-		channel.respond(new NotifyPortletView(type(),
-				portletModel.getPortletId(), "serviceUpdates", serviceInfos, "preview", true));
+		renderPortlet(event, channel, portletModel);	
 		return portletModel.getPortletId();
 	}
 
@@ -158,12 +150,18 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 	        PortalSession channel, String portletId, Serializable retrievedState)
 	        throws Exception {
 		ServiceListModel portletModel = (ServiceListModel)retrievedState;
+		renderPortlet(event, channel, portletModel);	
+	}
+
+	private void renderPortlet(RenderPortletRequestBase<?> event, PortalSession channel, 
+			ServiceListModel portletModel) throws TemplateNotFoundException, 
+			MalformedTemplateNameException, ParseException, IOException, InvalidSyntaxException {
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
 			channel.respond(new RenderPortletFromTemplate(event,
-					ServiceListPortlet.class, portletId, 
+					ServiceListPortlet.class, portletModel.getPortletId(), 
 					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
@@ -189,7 +187,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		}
 		default:
 			break;
-		}	
+		}
 	}
 
 	private Map<String,Object> createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {

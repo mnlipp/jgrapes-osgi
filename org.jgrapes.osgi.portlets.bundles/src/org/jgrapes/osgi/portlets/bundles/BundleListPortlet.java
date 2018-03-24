@@ -60,6 +60,7 @@ import org.jgrapes.portal.events.NotifyPortletModel;
 import org.jgrapes.portal.events.NotifyPortletView;
 import org.jgrapes.portal.events.PortalReady;
 import org.jgrapes.portal.events.RenderPortletRequest;
+import org.jgrapes.portal.events.RenderPortletRequestBase;
 import org.jgrapes.portal.freemarker.FreeMarkerPortlet;
 
 import org.osgi.framework.Bundle;
@@ -158,19 +159,25 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 	        PortalSession channel, String portletId, Serializable retrievedState)
 	        throws Exception {
 		BundleListModel portletModel = (BundleListModel)retrievedState;
+		renderPortlet(event, channel, portletModel);	
+	}
+
+	private void renderPortlet(RenderPortletRequestBase<?> event, PortalSession channel,
+			BundleListModel portletModel) throws TemplateNotFoundException, 
+				MalformedTemplateNameException, ParseException, IOException {
 		switch (event.renderMode()) {
 		case Preview:
 		case DeleteablePreview: {
 			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
 			channel.respond(new RenderPortletFromTemplate(event,
-					BundleListPortlet.class, portletId, 
+					BundleListPortlet.class, portletModel.getPortletId(), 
 					tpl, fmModel(event, channel, portletModel))
 					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
 					.setForeground(event.isForeground()));
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
-					event.portletId(), "bundleUpdates", bundleInfos, "preview", true));
+					portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
 			break;
 		}
 		case View: {
@@ -183,12 +190,12 @@ public class BundleListPortlet extends FreeMarkerPortlet implements BundleListen
 			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
 					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
 			channel.respond(new NotifyPortletView(type(),
-					event.portletId(), "bundleUpdates", bundleInfos, "view", true));
+					portletModel.getPortletId(), "bundleUpdates", bundleInfos, "view", true));
 			break;
 		}
 		default:
 			break;
-		}	
+		}
 	}
 	
 	private Map<String,Object> createBundleInfo(Bundle bundle, Locale locale) {
