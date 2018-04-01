@@ -9,7 +9,7 @@ Export-Package: org.jgrapes.osgi.core
 -buildpath: \
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
-	org.jgrapes.core;version='[0.16.0,1.1)'
+	org.jgrapes.core;version='[0.16.0.ga,1.1)'
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
