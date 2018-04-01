@@ -198,8 +198,12 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		Long bundleId = (Long)serviceRef.getProperty(Constants.SERVICE_BUNDLEID);
 		result.put("bundleId", bundleId.toString());
 		Bundle bundle = context.getBundle(bundleId);
-		result.put("bundleName", Optional.ofNullable(bundle.getHeaders(locale.toString())
-				.get("Bundle-Name")).orElse(bundle.getSymbolicName()));
+		if (bundle == null) {
+			result.put("bundleName", "");
+		} else {
+			result.put("bundleName", Optional.ofNullable(bundle.getHeaders(locale.toString())
+					.get("Bundle-Name")).orElse(bundle.getSymbolicName()));
+		}
 		String scope = "";
 		switch((String)serviceRef.getProperty(Constants.SERVICE_SCOPE)) {
 		case Constants.SCOPE_BUNDLE:
@@ -216,7 +220,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
 		Integer ranking = (Integer)serviceRef.getProperty(Constants.SERVICE_RANKING);
 		result.put("ranking", ranking == null ? "" : ranking.toString());
 		String componentName = (String)serviceRef.getProperty("component.name");
-		if (componentName != null) {
+		if (componentName != null && bundle != null) {
 			ComponentDescriptionDTO dto = scr.getComponentDescriptionDTO(bundle, componentName);
 			result.put("dsScope", "serviceScope" 
 					+ dto.scope.substring(0, 1).toUpperCase() + dto.scope.substring(1));
