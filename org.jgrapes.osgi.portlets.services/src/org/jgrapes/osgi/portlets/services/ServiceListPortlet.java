@@ -16,7 +16,6 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-
 package org.jgrapes.osgi.portlets.services;
 
 import freemarker.core.ParseException;
@@ -72,232 +71,300 @@ import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
  * A portlet for inspecting the services in an OSGi runtime.
  */
 public class ServiceListPortlet extends FreeMarkerPortlet
-	implements ServiceListener {
+        implements ServiceListener {
 
-	private ServiceComponentRuntime scr;
-	private static final Set<RenderMode> MODES = RenderMode.asSet(
-			DeleteablePreview, View);
-	private BundleContext context;
-	
-	/**
-	 * Creates a new component with its channel set to the given 
-	 * channel.
-	 * 
-	 * @param componentChannel the channel that the component's 
-	 * handlers listen on by default and that 
-	 * {@link Manager#fire(Event, Channel...)} sends the event to 
-	 */
-	public ServiceListPortlet(Channel componentChannel, BundleContext context,
-			ServiceComponentRuntime scr) {
-		super(componentChannel, true);
-		this.context = context;
-		this.scr = scr;
-		context.addServiceListener(this);
-	}
-	
-	@Handler
-	public void onPortalReady(PortalReady event, PortalSession channel) 
-			throws TemplateNotFoundException, MalformedTemplateNameException, 
-			ParseException, IOException {
-		ResourceBundle resourceBundle = resourceBundle(channel.locale());
-		// Add portlet resources to page
-		channel.respond(new AddPortletType(type())
-				.setDisplayName(resourceBundle.getString("portletName"))
-				.addScript(new ScriptResource()
-						.setRequires(new String[] {"datatables.net"})
-						.setScriptUri(event.renderSupport().portletResource(
-								type(), "Services-functions.ftl.js")))
-				.addCss(event.renderSupport(), PortalWeblet.uriFromPath("Services-style.css"))
-				.setInstantiable());
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
-	 */
-	@Override
-	protected String generatePortletId() {
-		return type() + "-" + super.generatePortletId();
-	}
+    private final ServiceComponentRuntime scr;
+    private static final Set<RenderMode> MODES = RenderMode.asSet(
+        DeleteablePreview, View);
+    private final BundleContext context;
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	protected <T extends Serializable> Optional<T> stateFromSession(
-			Session session, String portletId, Class<T> type) {
-		if (portletId.startsWith(type() + "-")) {
-			return Optional.of((T)new ServiceListModel(portletId));
-		}
-		return Optional.empty();
-	}
+    /**
+     * Creates a new component with its channel set to the given channel.
+     * 
+     * @param componentChannel the channel that the component's handlers listen
+     *            on by default and that {@link Manager#fire(Event, Channel...)}
+     *            sends the event to
+     */
+    public ServiceListPortlet(Channel componentChannel, BundleContext context,
+            ServiceComponentRuntime scr) {
+        super(componentChannel, true);
+        this.context = context;
+        this.scr = scr;
+        context.addServiceListener(this);
+    }
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
-	 */
-	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
-			throws Exception {
-		ServiceListModel portletModel = new ServiceListModel(generatePortletId());
-		renderPortlet(event, channel, portletModel);	
-		return portletModel.getPortletId();
-	}
+    /**
+     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     *
+     * @param event the event
+     * @param channel the channel
+     * @throws TemplateNotFoundException the template not found exception
+     * @throws MalformedTemplateNameException the malformed template name
+     *             exception
+     * @throws ParseException the parse exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Handler
+    public void onPortalReady(PortalReady event, PortalSession channel)
+            throws TemplateNotFoundException, MalformedTemplateNameException,
+            ParseException, IOException {
+        ResourceBundle resourceBundle = resourceBundle(channel.locale());
+        // Add portlet resources to page
+        channel.respond(new AddPortletType(type())
+            .setDisplayName(resourceBundle.getString("portletName"))
+            .addScript(new ScriptResource()
+                .setRequires(new String[] { "datatables.net" })
+                .setScriptUri(event.renderSupport().portletResource(
+                    type(), "Services-functions.ftl.js")))
+            .addCss(event.renderSupport(),
+                PortalWeblet.uriFromPath("Services-style.css"))
+            .setInstantiable());
+    }
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
-	 */
-	@Override
-	protected void doRenderPortlet(RenderPortletRequest event,
-	        PortalSession channel, String portletId, Serializable retrievedState)
-	        throws Exception {
-		ServiceListModel portletModel = (ServiceListModel)retrievedState;
-		renderPortlet(event, channel, portletModel);	
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
+     */
+    @Override
+    protected String generatePortletId() {
+        return type() + "-" + super.generatePortletId();
+    }
 
-	private void renderPortlet(RenderPortletRequestBase<?> event, PortalSession channel, 
-			ServiceListModel portletModel) throws TemplateNotFoundException, 
-			MalformedTemplateNameException, ParseException, IOException, InvalidSyntaxException {
-		switch (event.renderMode()) {
-		case Preview:
-		case DeleteablePreview: {
-			Template tpl = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(event,
-					ServiceListPortlet.class, portletModel.getPortletId(), 
-					tpl, fmModel(event, channel, portletModel))
-					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
-					.setForeground(event.isForeground()));
-			List<Map<String,Object>> serviceInfos = Arrays.stream(
-					context.getAllServiceReferences(null, null))
-					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
-			channel.respond(new NotifyPortletView(type(),
-					portletModel.getPortletId(), "serviceUpdates", serviceInfos, "preview", true));
-			break;
-		}
-		case View: {
-			Template tpl = freemarkerConfig().getTemplate("Services-view.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(event,
-					ServiceListPortlet.class, portletModel.getPortletId(), 
-					tpl, fmModel(event, channel, portletModel))
-					.setSupportedModes(MODES).setForeground(event.isForeground()));
-			List<Map<String,Object>> serviceInfos = Arrays.stream(
-					context.getAllServiceReferences(null, null))
-					.map(s -> createServiceInfo(s, channel.locale())).collect(Collectors.toList());
-			channel.respond(new NotifyPortletView(type(),
-					portletModel.getPortletId(), "serviceUpdates", serviceInfos, "view", true));
-			break;
-		}
-		default:
-			break;
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    protected <T extends Serializable> Optional<T> stateFromSession(
+            Session session, String portletId, Class<T> type) {
+        if (portletId.startsWith(type() + "-")) {
+            return Optional.of((T) new ServiceListModel(portletId));
+        }
+        return Optional.empty();
+    }
 
-	private Map<String,Object> createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {
-		Map<String, Object> result = new HashMap<>();
-		result.put("id", serviceRef.getProperty(Constants.SERVICE_ID).toString());
-		String[] interfaces = (String[])serviceRef.getProperty(Constants.OBJECTCLASS);
-		result.put("type", String.join(", ", interfaces));
-		Long bundleId = (Long)serviceRef.getProperty(Constants.SERVICE_BUNDLEID);
-		result.put("bundleId", bundleId.toString());
-		Bundle bundle = context.getBundle(bundleId);
-		if (bundle == null) {
-			result.put("bundleName", "");
-		} else {
-			result.put("bundleName", Optional.ofNullable(bundle.getHeaders(locale.toString())
-					.get("Bundle-Name")).orElse(bundle.getSymbolicName()));
-		}
-		String scope = "";
-		switch((String)serviceRef.getProperty(Constants.SERVICE_SCOPE)) {
-		case Constants.SCOPE_BUNDLE:
-			scope = "serviceScopeBundle";
-			break;
-		case Constants.SCOPE_PROTOTYPE:
-			scope = "serviceScopePrototype";
-			break;
-		case Constants.SCOPE_SINGLETON:
-			scope = "serviceScopeSingleton";
-			break;
-		}
-		result.put("scope", scope);
-		Integer ranking = (Integer)serviceRef.getProperty(Constants.SERVICE_RANKING);
-		result.put("ranking", ranking == null ? "" : ranking.toString());
-		String componentName = (String)serviceRef.getProperty("component.name");
-		if (componentName != null && bundle != null) {
-			ComponentDescriptionDTO dto = scr.getComponentDescriptionDTO(bundle, componentName);
-			result.put("dsScope", "serviceScope" 
-					+ dto.scope.substring(0, 1).toUpperCase() + dto.scope.substring(1));
-			result.put("implementationClass", dto.implementationClass);
-		} else {
-			Object service = context.getService(serviceRef);
-			if (service != null) {
-				result.put("implementationClass", service.getClass().getName());
-				context.ungetService(serviceRef);
-			} else {
-				result.put("implementationClass", "");
-			}
-		}
-		return result;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
-	 */
-	@Override
-	protected void doDeletePortlet(DeletePortletRequest event, PortalSession channel, 
-			String portletId, Serializable portletState) throws Exception {
-		channel.respond(new DeletePortlet(portletId));
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
+     */
+    @Override
+    protected String doAddPortlet(AddPortletRequest event,
+            PortalSession channel)
+            throws Exception {
+        ServiceListModel portletModel
+            = new ServiceListModel(generatePortletId());
+        renderPortlet(event, channel, portletModel);
+        return portletModel.getPortletId();
+    }
 
-	/**
-	 * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
-	 * on all known portal session channels.
-	 *
-	 * @param event the event
-	 */
-	@Override
-	public void serviceChanged(ServiceEvent event) {
-		fire(new ServiceChanged(event), trackedSessions());
-	}
-	
-	/**
-	 * Handles a {@link ServiceChanged} event by updating the information in the portal
-	 * sessions.
-	 *
-	 * @param event the event
-	 */
-	@Handler
-	public void onServiceChanged(ServiceChanged event, PortalSession portalSession) {
-		Map<String,Object> info = createServiceInfo(
-				event.serviceEvent().getServiceReference(), portalSession.locale());
-		if (event.serviceEvent().getType() == ServiceEvent.UNREGISTERING) {
-			info.put("updateType", "unregistering");
-		}
-		for (String portletId: portletIds(portalSession)) {
-			portalSession.respond(new NotifyPortletView(
-					type(), portletId, "serviceUpdates", 
-					(Object)new Object[] { info }, "*", false));
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
+     */
+    @Override
+    protected void doRenderPortlet(RenderPortletRequest event,
+            PortalSession channel, String portletId,
+            Serializable retrievedState)
+            throws Exception {
+        ServiceListModel portletModel = (ServiceListModel) retrievedState;
+        renderPortlet(event, channel, portletModel);
+    }
 
-	/**
-	 * Wraps an OSGi {@link ServiceEvent}.
-	 */
-	public static class ServiceChanged extends Event<Void> {
-		private ServiceEvent serviceEvent;
+    private void renderPortlet(RenderPortletRequestBase<?> event,
+            PortalSession channel,
+            ServiceListModel portletModel) throws TemplateNotFoundException,
+            MalformedTemplateNameException, ParseException, IOException,
+            InvalidSyntaxException {
+        switch (event.renderMode()) {
+        case Preview:
+        case DeleteablePreview: {
+            Template tpl
+                = freemarkerConfig().getTemplate("Services-preview.ftl.html");
+            channel.respond(new RenderPortletFromTemplate(event,
+                ServiceListPortlet.class, portletModel.getPortletId(),
+                tpl, fmModel(event, channel, portletModel))
+                    .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+                    .setForeground(event.isForeground()));
+            List<Map<String, Object>> serviceInfos = Arrays.stream(
+                context.getAllServiceReferences(null, null))
+                .map(svc -> createServiceInfo(svc, channel.locale()))
+                .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "serviceUpdates", serviceInfos,
+                "preview", true));
+            break;
+        }
+        case View: {
+            Template tpl
+                = freemarkerConfig().getTemplate("Services-view.ftl.html");
+            channel.respond(new RenderPortletFromTemplate(event,
+                ServiceListPortlet.class, portletModel.getPortletId(),
+                tpl, fmModel(event, channel, portletModel))
+                    .setSupportedModes(MODES)
+                    .setForeground(event.isForeground()));
+            List<Map<String, Object>> serviceInfos = Arrays.stream(
+                context.getAllServiceReferences(null, null))
+                .map(svc -> createServiceInfo(svc, channel.locale()))
+                .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "serviceUpdates", serviceInfos,
+                "view", true));
+            break;
+        }
+        default:
+            break;
+        }
+    }
 
-		public ServiceChanged(ServiceEvent serviceEvent) {
-			this.serviceEvent = serviceEvent;
-		}
+    @SuppressWarnings({ "PMD.NcssCount", "PMD.ConfusingTernary" })
+    private Map<String, Object>
+            createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
+        Map<String, Object> result = new HashMap<>();
+        result.put("id",
+            serviceRef.getProperty(Constants.SERVICE_ID).toString());
+        String[] interfaces
+            = (String[]) serviceRef.getProperty(Constants.OBJECTCLASS);
+        result.put("type", String.join(", ", interfaces));
+        Long bundleId
+            = (Long) serviceRef.getProperty(Constants.SERVICE_BUNDLEID);
+        result.put("bundleId", bundleId.toString());
+        Bundle bundle = context.getBundle(bundleId);
+        if (bundle == null) {
+            result.put("bundleName", "");
+        } else {
+            result
+                .put(
+                    "bundleName", Optional
+                        .ofNullable(bundle.getHeaders(locale.toString())
+                            .get("Bundle-Name"))
+                        .orElse(bundle.getSymbolicName()));
+        }
+        String scope;
+        switch ((String) serviceRef.getProperty(Constants.SERVICE_SCOPE)) {
+        case Constants.SCOPE_BUNDLE:
+            scope = "serviceScopeBundle";
+            break;
+        case Constants.SCOPE_PROTOTYPE:
+            scope = "serviceScopePrototype";
+            break;
+        case Constants.SCOPE_SINGLETON:
+            scope = "serviceScopeSingleton";
+            break;
+        default:
+            scope = "";
+            break;
+        }
+        result.put("scope", scope);
+        Integer ranking
+            = (Integer) serviceRef.getProperty(Constants.SERVICE_RANKING);
+        result.put("ranking", ranking == null ? "" : ranking.toString());
+        String componentName
+            = (String) serviceRef.getProperty("component.name");
+        if (componentName != null && bundle != null) {
+            ComponentDescriptionDTO dto
+                = scr.getComponentDescriptionDTO(bundle, componentName);
+            result.put("dsScope", "serviceScope"
+                + dto.scope.substring(0, 1).toUpperCase(Locale.US)
+                + dto.scope.substring(1));
+            result.put("implementationClass", dto.implementationClass);
+        } else {
+            Object service = context.getService(serviceRef);
+            if (service != null) {
+                result.put("implementationClass", service.getClass().getName());
+                context.ungetService(serviceRef);
+            } else {
+                result.put("implementationClass", "");
+            }
+        }
+        return result;
+    }
 
-		public ServiceEvent serviceEvent() {
-			return serviceEvent;
-		}
-	}
-	
-	@SuppressWarnings("serial")
-	public class ServiceListModel extends PortletBaseModel {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
+     */
+    @Override
+    protected void doDeletePortlet(DeletePortletRequest event,
+            PortalSession channel,
+            String portletId, Serializable portletState) throws Exception {
+        channel.respond(new DeletePortlet(portletId));
+    }
 
-		public ServiceListModel(String portletId) {
-			super(portletId);
-		}
+    /**
+     * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
+     * on all known portal session channels.
+     *
+     * @param event the event
+     */
+    @Override
+    public void serviceChanged(ServiceEvent event) {
+        fire(new ServiceChanged(event), trackedSessions());
+    }
 
-	}
+    /**
+     * Handles a {@link ServiceChanged} event by updating the information in the
+     * portal sessions.
+     *
+     * @param event the event
+     */
+    @Handler
+    @SuppressWarnings({ "PMD.AvoidInstantiatingObjectsInLoops",
+        "PMD.DataflowAnomalyAnalysis" })
+    public void onServiceChanged(ServiceChanged event,
+            PortalSession portalSession) {
+        Map<String, Object> info = createServiceInfo(
+            event.serviceEvent().getServiceReference(), portalSession.locale());
+        if (event.serviceEvent().getType() == ServiceEvent.UNREGISTERING) {
+            info.put("updateType", "unregistering");
+        }
+        for (String portletId : portletIds(portalSession)) {
+            portalSession.respond(new NotifyPortletView(
+                type(), portletId, "serviceUpdates",
+                (Object) new Object[] { info }, "*", false));
+        }
+    }
+
+    /**
+     * Wraps an OSGi {@link ServiceEvent}.
+     */
+    public static class ServiceChanged extends Event<Void> {
+        private final ServiceEvent serviceEvent;
+
+        /**
+         * Instantiates a new event.
+         *
+         * @param serviceEvent the service event
+         */
+        public ServiceChanged(ServiceEvent serviceEvent) {
+            this.serviceEvent = serviceEvent;
+        }
+
+        public ServiceEvent serviceEvent() {
+            return serviceEvent;
+        }
+    }
+
+    /**
+     * The portlet's model.
+     */
+    @SuppressWarnings("serial")
+    public class ServiceListModel extends PortletBaseModel {
+
+        /**
+         * Instantiates a new service list model.
+         *
+         * @param portletId the portlet id
+         */
+        public ServiceListModel(String portletId) {
+            super(portletId);
+        }
+
+    }
 }

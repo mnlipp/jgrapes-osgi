@@ -38,6 +38,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.jgrapes.core.Channel;
@@ -48,8 +50,7 @@ import org.jgrapes.http.Session;
 import org.jgrapes.portal.PortalSession;
 import org.jgrapes.portal.PortalWeblet;
 
-import static org.jgrapes.portal.Portlet.*;
-import static org.jgrapes.portal.Portlet.RenderMode.*;
+import static org.jgrapes.portal.Portlet.RenderMode;
 
 import org.jgrapes.portal.events.AddPageResources.ScriptResource;
 import org.jgrapes.portal.events.AddPortletRequest;
@@ -74,296 +75,376 @@ import org.osgi.framework.wiring.BundleRevision;
 /**
  * 
  */
-public class BundleListPortlet extends FreeMarkerPortlet implements BundleListener {
+public class BundleListPortlet extends FreeMarkerPortlet
+        implements BundleListener {
 
-	private static final Set<RenderMode> MODES = RenderMode.asSet(
-			DeleteablePreview, View);
-	private BundleContext context;
-	
-	/**
-	 * Creates a new component with its channel set to the given 
-	 * channel.
-	 * 
-	 * @param componentChannel the channel that the component's 
-	 * handlers listen on by default and that 
-	 * {@link Manager#fire(Event, Channel...)} sends the event to 
-	 */
-	public BundleListPortlet(Channel componentChannel, BundleContext context) {
-		super(componentChannel, true);
-		this.context = context;
-		context.addBundleListener(this);
-	}
-	
-	@Handler
-	public void onPortalReady(PortalReady event, PortalSession channel) 
-			throws TemplateNotFoundException, MalformedTemplateNameException, 
-			ParseException, IOException {
-		ResourceBundle resourceBundle = resourceBundle(channel.locale());
-		// Add portlet resources to page
-		channel.respond(new AddPortletType(type())
-				.setDisplayName(resourceBundle.getString("portletName"))
-				.addScript(new ScriptResource()
-						.setRequires(new String[] {"datatables.net"})
-						.setScriptUri(event.renderSupport().portletResource(
-								type(), "Bundles-functions.ftl.js")))
-				.addCss(event.renderSupport(), PortalWeblet.uriFromPath("Bundles-style.css"))
-				.setInstantiable());
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
-	 */
-	@Override
-	protected String generatePortletId() {
-		return type() + "-" + super.generatePortletId();
-	}
+    private static final Logger logger
+        = Logger.getLogger(BundleListPortlet.class.getName());
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	protected <T extends Serializable> Optional<T> stateFromSession(
-			Session session, String portletId, Class<T> type) {
-		if (portletId.startsWith(type() + "-")) {
-			return Optional.of((T)new BundleListModel(portletId));
-		}
-		return Optional.empty();
-	}
+    private static final Set<RenderMode> MODES = RenderMode.asSet(
+        RenderMode.DeleteablePreview, RenderMode.View);
+    private final BundleContext context;
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
-	 */
-	@Override
-	protected String doAddPortlet(AddPortletRequest event, PortalSession channel)
-			throws Exception {
-		BundleListModel portletModel = new BundleListModel(generatePortletId());
-		Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-		channel.respond(new RenderPortletFromTemplate(event,
-				BundleListPortlet.class, portletModel.getPortletId(),
-				tpl, fmModel(event, channel, portletModel))
-				.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
-				.setForeground(true));
-		List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-				.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
-		channel.respond(new NotifyPortletView(type(),
-				portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
-		return portletModel.getPortletId();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
-	 */
-	@Override
-	protected void doRenderPortlet(RenderPortletRequest event,
-	        PortalSession channel, String portletId, Serializable retrievedState)
-	        throws Exception {
-		BundleListModel portletModel = (BundleListModel)retrievedState;
-		renderPortlet(event, channel, portletModel);	
-	}
+    /**
+     * Creates a new component with its channel set to the given channel.
+     * 
+     * @param componentChannel the channel that the component's handlers listen
+     *            on by default and that {@link Manager#fire(Event, Channel...)}
+     *            sends the event to
+     */
+    public BundleListPortlet(Channel componentChannel, BundleContext context) {
+        super(componentChannel, true);
+        this.context = context;
+        context.addBundleListener(this);
+    }
 
-	private void renderPortlet(RenderPortletRequestBase<?> event, PortalSession channel,
-			BundleListModel portletModel) throws TemplateNotFoundException, 
-				MalformedTemplateNameException, ParseException, IOException {
-		switch (event.renderMode()) {
-		case Preview:
-		case DeleteablePreview: {
-			Template tpl = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(event,
-					BundleListPortlet.class, portletModel.getPortletId(), 
-					tpl, fmModel(event, channel, portletModel))
-					.setRenderMode(DeleteablePreview).setSupportedModes(MODES)
-					.setForeground(event.isForeground()));
-			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
-			channel.respond(new NotifyPortletView(type(),
-					portletModel.getPortletId(), "bundleUpdates", bundleInfos, "preview", true));
-			break;
-		}
-		case View: {
-			Template tpl = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
-			channel.respond(new RenderPortletFromTemplate(event,
-					BundleListPortlet.class, portletModel.getPortletId(), 
-					tpl, fmModel(event, channel, portletModel))
-					.setRenderMode(View).setSupportedModes(MODES)
-					.setForeground(event.isForeground()));
-			List<Map<String,Object>> bundleInfos = Arrays.stream(context.getBundles())
-					.map(b -> createBundleInfo(b, channel.locale())).collect(Collectors.toList());
-			channel.respond(new NotifyPortletView(type(),
-					portletModel.getPortletId(), "bundleUpdates", bundleInfos, "view", true));
-			break;
-		}
-		default:
-			break;
-		}
-	}
-	
-	private Map<String,Object> createBundleInfo(Bundle bundle, Locale locale) {
-		Map<String, Object> result = new HashMap<>();
-		result.put("id", bundle.getBundleId());
-		result.put("name", Optional.ofNullable(bundle.getHeaders(locale.toString())
-				.get("Bundle-Name")).orElse(bundle.getSymbolicName()));
-		result.put("symbolicName", bundle.getSymbolicName());
-		result.put("version", bundle.getVersion().toString());
-		result.put("category", Optional.ofNullable(bundle.getHeaders(locale.toString())
-				.get("Bundle-Category")).orElse(""));
-		ResourceBundle rb = resourceBundle(locale);
-		result.put("state", rb.getString("bundleState_" + bundle.getState()));
-		result.put("startable", false);
-		result.put("stoppable", false);
-		if ((bundle.getState() & (Bundle.RESOLVED | Bundle.INSTALLED | Bundle.ACTIVE)) != 0) {
-			boolean isFragment = ((bundle.adapt(BundleRevision.class).getTypes() 
-					& BundleRevision.TYPE_FRAGMENT) != 0);
-			result.put("startable", !isFragment 
-					&& (bundle.getState() == Bundle.INSTALLED
-						|| bundle.getState() == Bundle.RESOLVED));
-			result.put("stoppable", !isFragment && bundle.getState() == Bundle.ACTIVE);
-		}
-		result.put("uninstallable", (bundle.getState() 
-				& (Bundle.INSTALLED | Bundle.RESOLVED | Bundle.ACTIVE)) != 0);
-		result.put("uninstalled", bundle.getState() == Bundle.UNINSTALLED);
-		return result;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
-	 */
-	@Override
-	protected void doDeletePortlet(DeletePortletRequest event,
-	        PortalSession channel, String portletId, 
-	        Serializable retrievedState) throws Exception {
-		channel.respond(new DeletePortlet(portletId));
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel
-	 */
-	@Override
-	protected void doNotifyPortletModel(NotifyPortletModel event,
-	        PortalSession channel, Serializable portletState)
-	        throws Exception {
-		event.stop();
-		Bundle bundle = context.getBundle(event.params().asInt(0));
-		if (bundle == null) {
-			return;
-		}
-		try {
-			switch (event.method()) {
-			case "stop":
-				bundle.stop();
-				break;
-			case "start":
-				bundle.start();
-				break;
-			case "refresh":
-				break;
-			case "update":
-				bundle.update();
-				break;
-			case "uninstall":
-				bundle.uninstall();
-				break;
-			case "sendDetails":
-				sendBundleDetails(event.portletId(), channel, bundle);
-			}
-		} catch (BundleException e) {
-			// ignore
-		}
-	}
+    /**
+     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     *
+     * @param event the event
+     * @param channel the channel
+     * @throws TemplateNotFoundException the template not found exception
+     * @throws MalformedTemplateNameException the malformed template name
+     *             exception
+     * @throws ParseException the parse exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Handler
+    public void onPortalReady(PortalReady event, PortalSession channel)
+            throws TemplateNotFoundException, MalformedTemplateNameException,
+            ParseException, IOException {
+        ResourceBundle resourceBundle = resourceBundle(channel.locale());
+        // Add portlet resources to page
+        channel.respond(new AddPortletType(type())
+            .setDisplayName(resourceBundle.getString("portletName"))
+            .addScript(new ScriptResource()
+                .setRequires(new String[] { "datatables.net" })
+                .setScriptUri(event.renderSupport().portletResource(
+                    type(), "Bundles-functions.ftl.js")))
+            .addCss(event.renderSupport(),
+                PortalWeblet.uriFromPath("Bundles-style.css"))
+            .setInstantiable());
+    }
 
-	private void sendBundleDetails(String portletId, PortalSession channel, Bundle bundle) {
-		Locale locale = channel.locale();
-		ResourceBundle rb = resourceBundle(locale);
-		List<Object> data = new ArrayList<>();
-		data.add(new Object[] { rb.getString("bundleSymbolicName"), bundle.getSymbolicName() });
-		data.add(new Object[] { rb.getString("bundleVersion"), bundle.getVersion().toString() });
-		data.add(new Object[] { rb.getString("bundleLocation"), 
-				bundle.getLocation().replace(".", ".&#x200b;") });
-		data.add(new Object[] { rb.getString("bundleLastModification"),
-				Instant.ofEpochMilli(bundle.getLastModified()).toString(),
-				"dateTime" });
-		data.add(new Object[] { rb.getString("bundleStartLevel"), 
-				bundle.adapt(BundleStartLevel.class).getStartLevel() });
-		Dictionary<String,String> dict = bundle.getHeaders(locale.toString());
-		Map<String,String> headers = new TreeMap<>();
-		for (Enumeration<String> e = dict.keys(); e.hasMoreElements();) {
-			String key = e.nextElement();
-			headers.put(key, dict.get(key));
-		}
-		List<Object> headerList = new ArrayList<>();
-		for (Map.Entry<String, String> e: headers.entrySet()) {
-			headerList.add(new Object[] { e.getKey(), 
-					e.getKey().contains("Package") 
-					? e.getValue().replace(".", ".&#x200b;") : e.getValue() });
-		}
-		data.add(new Object[] { rb.getString("manifestHeaders"), headerList, "table" });
-		channel.respond(new NotifyPortletView(type(),
-				portletId, "bundleDetails", bundle.getBundleId(), data));
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
+     */
+    @Override
+    protected String generatePortletId() {
+        return type() + "-" + super.generatePortletId();
+    }
 
-	/**
-	 * Translates the OSGi {@link BundleEvent} to a JGrapes event and fires it
-	 * on all known portal session channels.
-	 *
-	 * @param event the event
-	 */
-	@Override
-	public void bundleChanged(BundleEvent event) {
-		fire(new BundleChanged(event), trackedSessions()); 
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    protected <T extends Serializable> Optional<T> stateFromSession(
+            Session session, String portletId, Class<T> type) {
+        if (portletId.startsWith(type() + "-")) {
+            return Optional.of((T) new BundleListModel(portletId));
+        }
+        return Optional.empty();
+    }
 
-	/**
-	 * Handles a {@link BundleChanged} event by updating the information in the portal
-	 * sessions.
-	 *
-	 * @param event the event
-	 */
-	@Handler
-	public void onBundleChanged(BundleChanged event, PortalSession portalSession) {
-		for (String portletId : portletIds(portalSession)) {
-			portalSession.respond(new NotifyPortletView(type(), portletId, "bundleUpdates",
-					(Object) new Object[] { createBundleInfo(
-							event.bundleEvent().getBundle(), portalSession.locale()) },
-					"*", false));
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
+     */
+    @Override
+    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
+    protected String doAddPortlet(AddPortletRequest event,
+            PortalSession channel)
+            throws Exception {
+        BundleListModel portletModel = new BundleListModel(generatePortletId());
+        Template tpl
+            = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
+        channel.respond(new RenderPortletFromTemplate(event,
+            BundleListPortlet.class, portletModel.getPortletId(),
+            tpl, fmModel(event, channel, portletModel))
+                .setRenderMode(RenderMode.DeleteablePreview)
+                .setSupportedModes(MODES)
+                .setForeground(true));
+        List<Map<String, Object>> bundleInfos
+            = Arrays.stream(context.getBundles())
+                .map(bndl -> createBundleInfo(bndl, channel.locale()))
+                .collect(Collectors.toList());
+        channel.respond(new NotifyPortletView(type(),
+            portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+            "preview", true));
+        return portletModel.getPortletId();
+    }
 
-	/**
-	 * Wraps an OSGi {@link BundleEvent}.
-	 */
-	public static class BundleChanged extends Event<Void> {
-		private BundleEvent bundleEvent;
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
+     */
+    @Override
+    protected void doRenderPortlet(RenderPortletRequest event,
+            PortalSession channel, String portletId,
+            Serializable retrievedState)
+            throws Exception {
+        BundleListModel portletModel = (BundleListModel) retrievedState;
+        renderPortlet(event, channel, portletModel);
+    }
 
-		/**
-		 * Instantiates a new event.
-		 *
-		 * @param bundleEvent the OSGi bundle event
-		 */
-		public BundleChanged(BundleEvent bundleEvent) {
-			this.bundleEvent = bundleEvent;
-		}
+    private void renderPortlet(RenderPortletRequestBase<?> event,
+            PortalSession channel,
+            BundleListModel portletModel) throws TemplateNotFoundException,
+            MalformedTemplateNameException, ParseException, IOException {
+        switch (event.renderMode()) {
+        case Preview:
+        case DeleteablePreview: {
+            Template tpl
+                = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
+            channel.respond(new RenderPortletFromTemplate(event,
+                BundleListPortlet.class, portletModel.getPortletId(),
+                tpl, fmModel(event, channel, portletModel))
+                    .setRenderMode(RenderMode.DeleteablePreview)
+                    .setSupportedModes(MODES)
+                    .setForeground(event.isForeground()));
+            List<Map<String, Object>> bundleInfos
+                = Arrays.stream(context.getBundles())
+                    .map(bndl -> createBundleInfo(bndl, channel.locale()))
+                    .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+                "preview", true));
+            break;
+        }
+        case View: {
+            Template tpl
+                = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
+            channel.respond(new RenderPortletFromTemplate(event,
+                BundleListPortlet.class, portletModel.getPortletId(),
+                tpl, fmModel(event, channel, portletModel))
+                    .setRenderMode(RenderMode.View).setSupportedModes(MODES)
+                    .setForeground(event.isForeground()));
+            List<Map<String, Object>> bundleInfos
+                = Arrays.stream(context.getBundles())
+                    .map(bndl -> createBundleInfo(bndl, channel.locale()))
+                    .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+                "view", true));
+            break;
+        }
+        default:
+            break;
+        }
+    }
 
-		/**
-		 * Return the OSGi bundle event.
-		 *
-		 * @return the bundle event
-		 */
-		public BundleEvent bundleEvent() {
-			return bundleEvent;
-		}
-		
-	}
-	
-	@SuppressWarnings("serial")
-	public class BundleListModel extends PortletBaseModel {
+    private Map<String, Object> createBundleInfo(Bundle bundle, Locale locale) {
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
+        Map<String, Object> result = new HashMap<>();
+        result.put("id", bundle.getBundleId());
+        result.put("name",
+            Optional.ofNullable(bundle.getHeaders(locale.toString())
+                .get("Bundle-Name")).orElse(bundle.getSymbolicName()));
+        result.put("symbolicName", bundle.getSymbolicName());
+        result.put("version", bundle.getVersion().toString());
+        result.put("category",
+            Optional.ofNullable(bundle.getHeaders(locale.toString())
+                .get("Bundle-Category")).orElse(""));
+        ResourceBundle resources = resourceBundle(locale);
+        result.put("state",
+            resources.getString("bundleState_" + bundle.getState()));
+        result.put("startable", false);
+        result.put("stoppable", false);
+        if ((bundle.getState()
+            & (Bundle.RESOLVED | Bundle.INSTALLED | Bundle.ACTIVE)) != 0) {
+            boolean isFragment = (bundle.adapt(BundleRevision.class).getTypes()
+                & BundleRevision.TYPE_FRAGMENT) != 0;
+            result.put("startable", !isFragment
+                && (bundle.getState() == Bundle.INSTALLED
+                    || bundle.getState() == Bundle.RESOLVED));
+            result.put("stoppable",
+                !isFragment && bundle.getState() == Bundle.ACTIVE);
+        }
+        result.put("uninstallable", (bundle.getState()
+            & (Bundle.INSTALLED | Bundle.RESOLVED | Bundle.ACTIVE)) != 0);
+        result.put("uninstalled", bundle.getState() == Bundle.UNINSTALLED);
+        return result;
+    }
 
-		public BundleListModel(String portletId) {
-			super(portletId);
-		}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
+     */
+    @Override
+    protected void doDeletePortlet(DeletePortletRequest event,
+            PortalSession channel, String portletId,
+            Serializable retrievedState) throws Exception {
+        channel.respond(new DeletePortlet(portletId));
+    }
 
-		public Bundle[] bundles() {
-			return context.getBundles();
-		}
-		
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel
+     */
+    @Override
+    protected void doNotifyPortletModel(NotifyPortletModel event,
+            PortalSession channel, Serializable portletState)
+            throws Exception {
+        event.stop();
+        Bundle bundle = context.getBundle(event.params().asInt(0));
+        if (bundle == null) {
+            return;
+        }
+        try {
+            switch (event.method()) {
+            case "stop":
+                bundle.stop();
+                break;
+            case "start":
+                bundle.start();
+                break;
+            case "refresh":
+                break;
+            case "update":
+                bundle.update();
+                break;
+            case "uninstall":
+                bundle.uninstall();
+                break;
+            case "sendDetails":
+                sendBundleDetails(event.portletId(), channel, bundle);
+                break;
+            default:
+                // ignore
+                break;
+            }
+        } catch (BundleException e) {
+            // ignore
+            logger.log(Level.WARNING, "Cannot update bundle state", e);
+        }
+    }
+
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+    private void sendBundleDetails(String portletId, PortalSession channel,
+            Bundle bundle) {
+        Locale locale = channel.locale();
+        ResourceBundle resources = resourceBundle(locale);
+        List<Object> data = new ArrayList<>();
+        data.add(new Object[] { resources.getString("bundleSymbolicName"),
+            bundle.getSymbolicName() });
+        data.add(new Object[] { resources.getString("bundleVersion"),
+            bundle.getVersion().toString() });
+        data.add(new Object[] { resources.getString("bundleLocation"),
+            bundle.getLocation().replace(".", ".&#x200b;") });
+        data.add(new Object[] { resources.getString("bundleLastModification"),
+            Instant.ofEpochMilli(bundle.getLastModified()).toString(),
+            "dateTime" });
+        data.add(new Object[] { resources.getString("bundleStartLevel"),
+            bundle.adapt(BundleStartLevel.class).getStartLevel() });
+        Dictionary<String, String> dict = bundle.getHeaders(locale.toString());
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
+        Map<String, String> headers = new TreeMap<>();
+        for (Enumeration<String> e = dict.keys(); e.hasMoreElements();) {
+            String key = e.nextElement();
+            headers.put(key, dict.get(key));
+        }
+        List<Object> headerList = new ArrayList<>();
+        for (Map.Entry<String, String> e : headers.entrySet()) {
+            headerList.add(new Object[] { e.getKey(),
+                e.getKey().contains("Package")
+                    ? e.getValue().replace(".", ".&#x200b;")
+                    : e.getValue() });
+        }
+        data.add(
+            new Object[] { resources.getString("manifestHeaders"), headerList,
+                "table" });
+        channel.respond(new NotifyPortletView(type(),
+            portletId, "bundleDetails", bundle.getBundleId(), data));
+    }
+
+    /**
+     * Translates the OSGi {@link BundleEvent} to a JGrapes event and fires it
+     * on all known portal session channels.
+     *
+     * @param event the event
+     */
+    @Override
+    public void bundleChanged(BundleEvent event) {
+        fire(new BundleChanged(event), trackedSessions());
+    }
+
+    /**
+     * Handles a {@link BundleChanged} event by updating the information in the
+     * portal sessions.
+     *
+     * @param event the event
+     */
+    @Handler
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+    public void onBundleChanged(BundleChanged event,
+            PortalSession portalSession) {
+        for (String portletId : portletIds(portalSession)) {
+            portalSession.respond(new NotifyPortletView(type(), portletId,
+                "bundleUpdates",
+                (Object) new Object[] { createBundleInfo(
+                    event.bundleEvent().getBundle(), portalSession.locale()) },
+                "*", false));
+        }
+    }
+
+    /**
+     * Wraps an OSGi {@link BundleEvent}.
+     */
+    public static class BundleChanged extends Event<Void> {
+        private final BundleEvent bundleEvent;
+
+        /**
+         * Instantiates a new event.
+         *
+         * @param bundleEvent the OSGi bundle event
+         */
+        public BundleChanged(BundleEvent bundleEvent) {
+            this.bundleEvent = bundleEvent;
+        }
+
+        /**
+         * Return the OSGi bundle event.
+         *
+         * @return the bundle event
+         */
+        public BundleEvent bundleEvent() {
+            return bundleEvent;
+        }
+
+    }
+
+    /**
+     * The bundle's model.
+     */
+    @SuppressWarnings("serial")
+    public class BundleListModel extends PortletBaseModel {
+
+        /**
+         * Instantiates a new bundle list model.
+         *
+         * @param portletId the portlet id
+         */
+        public BundleListModel(String portletId) {
+            super(portletId);
+        }
+
+        /**
+         * Return the bundles.
+         *
+         * @return the bundle[]
+         */
+        public Bundle[] bundles() {
+            return context.getBundles();
+        }
+
+    }
 }

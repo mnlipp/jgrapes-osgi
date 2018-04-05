@@ -21,11 +21,16 @@ package org.jgrapes.osgi.upnpserver;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 
+/**
+ * Receives the root device events.
+ *
+ * @see RootDeviceEvent
+ */
 public class RootDeviceListener implements ServiceListener {
 
-	@Override
-	public void serviceChanged(ServiceEvent event) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void serviceChanged(ServiceEvent event) {
+        // TODO Auto-generated method stub
+    }
 
 }

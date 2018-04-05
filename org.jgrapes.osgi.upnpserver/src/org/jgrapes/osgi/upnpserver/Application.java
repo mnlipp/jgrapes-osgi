@@ -63,69 +63,76 @@ import org.osgi.framework.BundleContext;
  */
 public class Application extends Component implements BundleActivator {
 
-	private static BundleContext context;
-	private Application app;
-	
-	public static BundleContext context() {
-		return context;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
-	 */
-	@Override
-	public void start(BundleContext context) throws Exception {
-		Application.context = context;
-		// The demo component is the application
-		app = new Application();
-		// Attach a general nio dispatcher
-		app.attach(new NioDispatcher());
+    private static BundleContext context;
+    private Application app;
 
-		// Create TLS "converter"
-		KeyStore serverStore = KeyStore.getInstance("JKS");
-		try (InputStream kf 
-				= Application.class.getResourceAsStream("/localhost.jks")) {
-			serverStore.load(kf, "nopass".toCharArray());
-		}
-		KeyManagerFactory kmf = KeyManagerFactory.getInstance(
-				KeyManagerFactory.getDefaultAlgorithm());
+    /**
+     * Returns the context passed to the application.
+     *
+     * @return the bundle context
+     */
+    public static BundleContext context() {
+        return context;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.
+     * BundleContext)
+     */
+    @Override
+    public void start(BundleContext context) throws Exception {
+        Application.context = context;
+        // The demo component is the application
+        app = new Application();
+        // Attach a general nio dispatcher
+        app.attach(new NioDispatcher());
+
+        // Create TLS "converter"
+        KeyStore serverStore = KeyStore.getInstance("JKS");
+        try (InputStream storeData
+            = Application.class.getResourceAsStream("/localhost.jks")) {
+            serverStore.load(storeData, "nopass".toCharArray());
+        }
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance(
+            KeyManagerFactory.getDefaultAlgorithm());
         kmf.init(serverStore, "nopass".toCharArray());
-		SSLContext sslContext = SSLContext.getInstance("TLS");
-		sslContext.init(kmf.getKeyManagers(), null, new SecureRandom());
-		// Create a TCP server for SSL
-		Channel securedNetwork = app.attach(
-				new TcpServer().setServerAddress(new InetSocketAddress(7443))
-				.setBacklog(3000).setConnectionLimiter(new PermitsPool(50)));
-		// Network level unencrypted channel.
-		Channel httpTransport = new NamedChannel("httpTransport");
-		app.attach(new SslServer(httpTransport, securedNetwork, sslContext));
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(kmf.getKeyManagers(), null, new SecureRandom());
+        // Create a TCP server for SSL
+        Channel securedNetwork = app.attach(
+            new TcpServer().setServerAddress(new InetSocketAddress(7443))
+                .setBacklog(3000).setConnectionLimiter(new PermitsPool(50)));
+        // Network level unencrypted channel.
+        Channel httpTransport = new NamedChannel("httpTransport");
+        app.attach(new SslServer(httpTransport, securedNetwork, sslContext));
 
-		// Create an HTTP server as converter between transport and application
-		// layer.
-		app.attach(new HttpServer(app, 
-		        httpTransport, GetRequest.class, PostRequest.class));
-		
-		// Build application layer
-		app.attach(new InMemorySessionManager(app.channel()));
-		app.attach(new LanguageSelector(app.channel()));
-		app.attach(new FileStorage(app.channel(), 65536));
-		Portal portal = app.attach(new Portal(Channel.SELF, app.channel(), 
-				new URI("/portal/"))).setResourceBundleSupplier(l -> 
-				ResourceBundle.getBundle(
-					getClass().getPackage().getName() + ".portal-l10n", l,
-					ResourceBundle.Control.getNoFallbackControl(
-							ResourceBundle.Control.FORMAT_DEFAULT)));
-		portal.attach(new PortalLocalBackedKVStore(
-				portal, portal.prefix().getPath()));
-		portal.attach(new KVStoreBasedPortalPolicy(portal));
-		portal.attach(new NewPortalSessionPolicy(portal));
-		portal.attach(new ComponentCollector<>(
-				portal, context, PageResourceProviderFactory.class));
-		portal.attach(new ComponentCollector<>(
-				portal, context, PortletComponentFactory.class));
-		Components.start(app);
-		
-		
+        // Create an HTTP server as converter between transport and application
+        // layer.
+        app.attach(new HttpServer(app,
+            httpTransport, GetRequest.class, PostRequest.class));
+
+        // Build application layer
+        app.attach(new InMemorySessionManager(app.channel()));
+        app.attach(new LanguageSelector(app.channel()));
+        app.attach(new FileStorage(app.channel(), 65536));
+        Portal portal = app.attach(new Portal(Channel.SELF, app.channel(),
+            new URI("/portal/")))
+            .setResourceBundleSupplier(lang -> ResourceBundle.getBundle(
+                getClass().getPackage().getName() + ".portal-l10n", lang,
+                ResourceBundle.Control.getNoFallbackControl(
+                    ResourceBundle.Control.FORMAT_DEFAULT)));
+        portal.attach(new PortalLocalBackedKVStore(
+            portal, portal.prefix().getPath()));
+        portal.attach(new KVStoreBasedPortalPolicy(portal));
+        portal.attach(new NewPortalSessionPolicy(portal));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PageResourceProviderFactory.class));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PortletComponentFactory.class));
+        Components.start(app);
+
 //		context().addServiceListener(new RootDeviceListener(),
 //                "(&" + "("+Constants.OBJECTCLASS 
 //                		+ "=" + UPnPDevice.class.getName() + ")"
@@ -138,29 +145,33 @@ public class Application extends Component implements BundleActivator {
 //						+ "=" + UPnPDevice.class.getName() + ")"
 //					 + "("+UPnPDevice.UDN+"=*)" + ")");
 //		roots = null;
-	}
+    }
 
-	/* (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
-	 */
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		app.fire(new Stop(), Channel.BROADCAST);
-		Components.awaitExhaustion();
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+     */
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        app.fire(new Stop(), Channel.BROADCAST);
+        Components.awaitExhaustion();
+    }
 
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws KeyStoreException 
-	 * @throws UnrecoverableKeyException 
-	 * @throws CertificateException 
-	 * @throws KeyManagementException 
-	 */
-	public static void main(String[] args) throws Exception {
-		new Application().start(null);
-	}
+    /**
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws NoSuchAlgorithmException
+     * @throws KeyStoreException
+     * @throws UnrecoverableKeyException
+     * @throws CertificateException
+     * @throws KeyManagementException
+     */
+    @SuppressWarnings("PMD.SignatureDeclareThrowsException")
+    public static void main(String[] args) throws Exception {
+        new Application().start(null);
+    }
 
 }

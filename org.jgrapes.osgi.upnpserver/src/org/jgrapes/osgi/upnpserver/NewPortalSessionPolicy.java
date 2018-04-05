@@ -33,43 +33,54 @@ import org.jgrapes.portal.events.RenderPortlet;
  */
 public class NewPortalSessionPolicy extends Component {
 
-	private final String renderedFlagName = getClass().getName() + ".rendered";
-	
-	/**
-	 * Creates a new component with its channel set to
-	 * itself.
-	 */
-	public NewPortalSessionPolicy() {
-	}
+    private final String renderedFlagName = getClass().getName() + ".rendered";
 
-	/**
-	 * Creates a new component with its channel set to the given channel.
-	 * 
-	 * @param componentChannel
-	 */
-	public NewPortalSessionPolicy(Channel componentChannel) {
-		super(componentChannel);
-	}
+    /**
+     * Creates a new component with its channel set to itself.
+     */
+    public NewPortalSessionPolicy() {
+        // Everything done by super.
+    }
 
-	@Handler
-	public void onRenderPortlet(RenderPortlet event, IOSubchannel channel) {
-		channel.associated(Session.class).ifPresent(session -> 
-			session.put(renderedFlagName, true));
-	}
-	
-	@Handler
-	public void onPortalConfigured(PortalConfigured event, IOSubchannel channel) 
-			throws InterruptedException {
-		Optional<Session> optSession = channel.associated(Session.class);
-		if (optSession.isPresent()) {
-			if ((Boolean)optSession.get().getOrDefault(
-					renderedFlagName, false)) {
-				return;
-			}
-//			fire(new AddPortletRequest(event.event().event().renderSupport(), 
-//					HelloWorldPortlet.class.getName(), 
-//					Portlet.RenderMode.DeleteablePreview), channel);
-		}
-	}
+    /**
+     * Creates a new component with its channel set to the given channel.
+     * 
+     * @param componentChannel
+     */
+    public NewPortalSessionPolicy(Channel componentChannel) {
+        super(componentChannel);
+    }
+
+    /**
+     * Handle render portlet requests.
+     *
+     * @param event the event
+     * @param channel the channel
+     */
+    @Handler
+    public void onRenderPortlet(RenderPortlet event, IOSubchannel channel) {
+        channel.associated(Session.class)
+            .ifPresent(session -> session.put(renderedFlagName, true));
+    }
+
+    /**
+     * Check layout.
+     *
+     * @param event the event
+     * @param channel the channel
+     * @throws InterruptedException the interrupted exception
+     */
+    @Handler
+    @SuppressWarnings("PMD.CollapsibleIfStatements")
+    public void onPortalConfigured(PortalConfigured event, IOSubchannel channel)
+            throws InterruptedException {
+        Optional<Session> optSession = channel.associated(Session.class);
+        if (optSession.isPresent()) {
+            if ((Boolean) optSession.get().getOrDefault(
+                renderedFlagName, false)) {
+                return;
+            }
+        }
+    }
 
 }
