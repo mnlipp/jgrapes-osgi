@@ -32,31 +32,38 @@ import org.osgi.service.component.runtime.ServiceComponentRuntime;
 /**
  * The factory service for {@link ServiceListPortlet}s.
  */
-@org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
+@org.osgi.service.component.annotations.Component(
+    scope = ServiceScope.SINGLETON)
 public class ServiceListPortletFactory implements PortletComponentFactory {
 
-	private ServiceComponentRuntime scr;
-	
-	@Reference
-	public void setScr(ServiceComponentRuntime scr) {
-		this.scr = scr;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.jgrapes.core.ComponentFactory#componentType()
-	 */
-	@Override
-	public Class<? extends ComponentType> componentType() {
-		return ServiceListPortlet.class;
-	}
+    private ServiceComponentRuntime scr;
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
-	 */
-	@Override
-	public Optional<ComponentType> create(Channel componentChannel, Map<Object,Object> properties) {
-		return Optional.of(new ServiceListPortlet(componentChannel, 
-				(BundleContext)properties.get(BundleContext.class), scr));
-	}
+    @Reference
+    public void setScr(ServiceComponentRuntime scr) {
+        this.scr = scr;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.core.ComponentFactory#componentType()
+     */
+    @Override
+    public Class<? extends ComponentType> componentType() {
+        return ServiceListPortlet.class;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel,
+     * java.util.Map)
+     */
+    @Override
+    public Optional<ComponentType> create(Channel componentChannel,
+            Map<Object, Object> properties) {
+        return Optional.of(new ServiceListPortlet(componentChannel,
+            (BundleContext) properties.get(BundleContext.class), scr));
+    }
 
 }

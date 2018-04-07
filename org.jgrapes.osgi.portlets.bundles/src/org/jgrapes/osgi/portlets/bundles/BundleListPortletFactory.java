@@ -30,26 +30,32 @@ import org.osgi.service.component.annotations.ServiceScope;
 /**
  * The factory service for {@link BundleListPortlet}s.
  */
-@org.osgi.service.component.annotations.Component(scope=ServiceScope.SINGLETON)
-public class BundleListPortletFactory 
-	implements PortletComponentFactory {
+@org.osgi.service.component.annotations.Component(
+    scope = ServiceScope.SINGLETON)
+public class BundleListPortletFactory
+        implements PortletComponentFactory {
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.core.ComponentFactory#componentType()
-	 */
-	@Override
-	public Class<? extends ComponentType> componentType() {
-		return BundleListPortlet.class;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.core.ComponentFactory#componentType()
+     */
+    @Override
+    public Class<? extends ComponentType> componentType() {
+        return BundleListPortlet.class;
+    }
 
-	/* (non-Javadoc)
-	 * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel, java.util.Map)
-	 */
-	@Override
-	public Optional<ComponentType> create(
-			Channel componentChannel, Map<Object, Object> properties) {
-		return Optional.of(new BundleListPortlet(componentChannel, 
-				(BundleContext)properties.get(BundleContext.class)));
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.core.ComponentFactory#create(org.jgrapes.core.Channel,
+     * java.util.Map)
+     */
+    @Override
+    public Optional<ComponentType> create(
+            Channel componentChannel, Map<Object, Object> properties) {
+        return Optional.of(new BundleListPortlet(componentChannel,
+            (BundleContext) properties.get(BundleContext.class)));
+    }
 
 }
