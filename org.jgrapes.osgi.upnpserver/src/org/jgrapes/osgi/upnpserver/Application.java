@@ -18,17 +18,11 @@
 
 package org.jgrapes.osgi.upnpserver;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
-import java.security.KeyManagementException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 import java.util.ResourceBundle;
 
 import javax.net.ssl.KeyManagerFactory;
@@ -160,14 +154,10 @@ public class Application extends Component implements BundleActivator {
     }
 
     /**
-     * @param args
-     * @throws IOException
-     * @throws InterruptedException
-     * @throws NoSuchAlgorithmException
-     * @throws KeyStoreException
-     * @throws UnrecoverableKeyException
-     * @throws CertificateException
-     * @throws KeyManagementException
+     * The main method.
+     *
+     * @param args command line arguments
+     * @throws Exception the exception
      */
     @SuppressWarnings("PMD.SignatureDeclareThrowsException")
     public static void main(String[] args) throws Exception {

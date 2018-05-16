@@ -45,7 +45,7 @@ public class NewPortalSessionPolicy extends Component {
     /**
      * Creates a new component with its channel set to the given channel.
      * 
-     * @param componentChannel
+     * @param componentChannel the component channel
      */
     public NewPortalSessionPolicy(Channel componentChannel) {
         super(componentChannel);

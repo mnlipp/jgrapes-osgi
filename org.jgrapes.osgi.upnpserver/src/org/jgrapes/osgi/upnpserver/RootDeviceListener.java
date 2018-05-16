@@ -23,8 +23,6 @@ import org.osgi.framework.ServiceListener;
 
 /**
  * Receives the root device events.
- *
- * @see RootDeviceEvent
  */
 public class RootDeviceListener implements ServiceListener {
 
