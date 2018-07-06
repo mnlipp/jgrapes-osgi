@@ -2,17 +2,15 @@ dependencies {
     compile localGroovy()
 }
 
-def bndProject = bndWorkspace.getProject(name)
-if (bndProject != null) {
-    plugins.apply 'biz.aQute.bnd'
-        
+if (plugins.hasPlugin('biz.aQute.bnd')) {
+    
     // artifact_version is defined in cnf/bnd.bnd
     if (bnd.artifact_version) {
         project.version = bnd.artifact_version
     }
 }
-    
-if (bndProject != null && project.name != "cnf") {
+
+if (project.name.startsWith("org.jgrapes.")) {
     apply plugin: 'signing'
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
@@ -20,9 +18,15 @@ if (bndProject != null && project.name != "cnf") {
     group = "org.jgrapes"
         
     apply from: "${project.rootDir}/gradle/upload.gradle"
-            
-    apply from: "${project.rootDir}/gradle/eclipse.gradle"
+    
+    tasks.compileJava {
+        if (!JavaVersion.current().isJava8()) {
+            options.compilerArgs.addAll(['--release', '8'])
+        }
+    }
 }
+
+apply from: "${project.rootDir}/gradle/eclipse.gradle"
 
 afterEvaluate {
     if(project.name == "cnf") {

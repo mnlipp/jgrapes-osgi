@@ -4,9 +4,6 @@ bundleVersionQualifier: ga
 
 # Configure Repositories
 -plugin.1.CentralMvn: \
-	aQute.bnd.deployer.repository.wrapper.Plugin; \
-		location = "${build}/cache/wrapper"; \
-		reindex = true, \
 	aQute.bnd.repository.maven.provider.MavenBndRepository; \
 		name="Central (Maven)"; \
 		snapshotUrl=https://oss.sonatype.org/content/repositories/snapshots/; \
@@ -38,11 +35,12 @@ bundleVersionQualifier: ga
 
 -plugin.5.JGrapes: \
     de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.12.jar,\
-            ${workspace}/cnf/plugins/biz.aQute.repository-3.5.0.jar"; \
+		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.15.jar,\
+            ${workspace}/cnf/plugins/biz.aQute.repository-4.0.0.jar"; \
         name=JGrapes; \
         server="https://oss.sonatype.org"; \
-        query="g=org.jgrapes"
+        query="g=org.jgrapes"; \
+        searchBreadth="2"
 
 -baselinerepo: JGrapes
 -baseline: *

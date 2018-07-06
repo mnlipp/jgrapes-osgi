@@ -13,7 +13,7 @@
         <dependency>
             <groupId>com.github.mnlipp</groupId>
             <artifactId>jgrapes</artifactId>
-            <version>master-SNAPSHOT</version>
+            <version>0.18.4</version>
         </dependency>
 
         <dependency>
