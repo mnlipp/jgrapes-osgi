@@ -95,8 +95,11 @@ tasks.gitPublishCopy.dependsOn javadoc
 task stage {
 	// Build everything first
 	subprojects.tasks.each { tc -> dependsOn tc.findByName("build") }
-	// Publish JavaDoc
-	dependsOn gitPublishPush	
+	
+	if (!isTravisBuild || JavaVersion.current().isJava8()) {
+    	// Publish JavaDoc
+    	dependsOn gitPublishPush
+    }	
 }
 
 configure(stage) {
