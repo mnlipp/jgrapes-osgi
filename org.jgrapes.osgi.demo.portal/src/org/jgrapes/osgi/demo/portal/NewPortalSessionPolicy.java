@@ -25,8 +25,8 @@ import org.jgrapes.core.Component;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
-import org.jgrapes.portal.events.PortalConfigured;
-import org.jgrapes.portal.events.RenderPortlet;
+import org.jgrapes.portal.base.events.PortalConfigured;
+import org.jgrapes.portal.base.events.RenderPortlet;
 
 /**
  * 

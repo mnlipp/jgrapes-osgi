@@ -44,11 +44,13 @@ import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslServer;
 import org.jgrapes.net.TcpServer;
 import org.jgrapes.osgi.core.ComponentCollector;
-import org.jgrapes.portal.KVStoreBasedPortalPolicy;
-import org.jgrapes.portal.PageResourceProviderFactory;
-import org.jgrapes.portal.Portal;
-import org.jgrapes.portal.PortalLocalBackedKVStore;
-import org.jgrapes.portal.PortletComponentFactory;
+import org.jgrapes.portal.base.KVStoreBasedPortalPolicy;
+import org.jgrapes.portal.base.PageResourceProviderFactory;
+import org.jgrapes.portal.base.Portal;
+import org.jgrapes.portal.base.PortalLocalBackedKVStore;
+import org.jgrapes.portal.base.PortalWeblet;
+import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -112,17 +114,17 @@ public class Application extends Component implements BundleActivator {
         app.attach(new InMemorySessionManager(app.channel()));
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65536));
-        Portal portal = app.attach(new Portal(Channel.SELF, app.channel(),
-            new URI("/portal/")))
-            .setResourceBundleSupplier(lang -> ResourceBundle.getBundle(
-                getClass().getPackage().getName() + ".portal-l10n", lang,
-                ResourceBundle.Control.getNoFallbackControl(
-                    ResourceBundle.Control.FORMAT_DEFAULT)))
-            .setFallbackResourceSupplier((themeProvider, resource) -> {
-                return Application.class.getResource(resource);
-            });
+
+        PortalWeblet portalWeblet
+            = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
+                new URI("/portal/")))
+                .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
+                    getClass().getPackage().getName() + ".portal-l10n", l,
+                    ResourceBundle.Control.getNoFallbackControl(
+                        ResourceBundle.Control.FORMAT_DEFAULT)));
+        Portal portal = portalWeblet.portal();
         portal.attach(new PortalLocalBackedKVStore(
-            portal, portal.prefix().getPath()));
+            portal, portalWeblet.prefix().getPath()));
         portal.attach(new KVStoreBasedPortalPolicy(portal));
         portal.attach(new NewPortalSessionPolicy(portal));
         portal.attach(new ComponentCollector<>(

@@ -15,7 +15,8 @@ Private-Package: org.jgrapes.osgi.upnpserver
 	org.jgrapes.core;version=latest,\
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
-	org.jgrapes.portal;version=latest,\
+	org.jgrapes.portal.base;version=latest,\
+    org.jgrapes.portal.jqueryui;version=latest,\
     org.jgrapes.osgi.core;version=latest
 
 -includeresource: \
