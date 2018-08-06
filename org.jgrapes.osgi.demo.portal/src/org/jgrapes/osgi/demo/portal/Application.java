@@ -21,6 +21,7 @@ package org.jgrapes.osgi.demo.portal;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
@@ -50,6 +51,7 @@ import org.jgrapes.portal.base.Portal;
 import org.jgrapes.portal.base.PortalLocalBackedKVStore;
 import org.jgrapes.portal.base.PortalWeblet;
 import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
 import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -115,9 +117,16 @@ public class Application extends Component implements BundleActivator {
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65536));
 
+        createJQueryUiPortal(context);
+        createBootstrap4Portal(context);
+        Components.start(app);
+    }
+
+    private void createJQueryUiPortal(BundleContext context)
+            throws URISyntaxException {
         PortalWeblet portalWeblet
             = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
-                new URI("/portal/")))
+                new URI("/jqportal/")))
                 .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
                     getClass().getPackage().getName() + ".portal-l10n", l,
                     ResourceBundle.Control.getNoFallbackControl(
@@ -131,7 +140,26 @@ public class Application extends Component implements BundleActivator {
             portal, context, PageResourceProviderFactory.class));
         portal.attach(new ComponentCollector<>(
             portal, context, PortletComponentFactory.class));
-        Components.start(app);
+    }
+
+    private void createBootstrap4Portal(BundleContext context)
+            throws URISyntaxException {
+        PortalWeblet portalWeblet
+            = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
+                new URI("/b4portal/")))
+                .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
+                    getClass().getPackage().getName() + ".portal-l10n", l,
+                    ResourceBundle.Control.getNoFallbackControl(
+                        ResourceBundle.Control.FORMAT_DEFAULT)));
+        Portal portal = portalWeblet.portal();
+        portal.attach(new PortalLocalBackedKVStore(
+            portal, portalWeblet.prefix().getPath()));
+        portal.attach(new KVStoreBasedPortalPolicy(portal));
+        portal.attach(new NewPortalSessionPolicy(portal));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PageResourceProviderFactory.class));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PortletComponentFactory.class));
     }
 
     /*
