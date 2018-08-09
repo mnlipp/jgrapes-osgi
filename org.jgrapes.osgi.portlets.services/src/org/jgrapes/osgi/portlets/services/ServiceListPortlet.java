@@ -266,9 +266,10 @@ public class ServiceListPortlet extends FreeMarkerPortlet
         result.put("ranking", ranking == null ? "" : ranking.toString());
         String componentName
             = (String) serviceRef.getProperty("component.name");
-        if (componentName != null && bundle != null) {
-            ComponentDescriptionDTO dto
-                = scr.getComponentDescriptionDTO(bundle, componentName);
+        ComponentDescriptionDTO dto;
+        if (componentName != null && bundle != null
+            && (dto = scr.getComponentDescriptionDTO(bundle,
+                componentName)) != null) {
             result.put("dsScope", "serviceScope"
                 + dto.scope.substring(0, 1).toUpperCase(Locale.US)
                 + dto.scope.substring(1));
