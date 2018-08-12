@@ -1,0 +1,16 @@
+<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-bundles-preview"> 
+  <table class="bundles-table">
+    <thead>
+      <tr>
+        <th>${_("bundleId")}</th>
+        <th>${_("bundleName")}</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script>
+	orgJGrapesOsgiPortletsBundles.initPreviewTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-preview table' ));
+</script>

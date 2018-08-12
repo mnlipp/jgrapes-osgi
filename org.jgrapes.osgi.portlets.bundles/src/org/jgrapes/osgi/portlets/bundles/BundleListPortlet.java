@@ -52,6 +52,7 @@ import org.jgrapes.portal.base.PortalWeblet;
 
 import static org.jgrapes.portal.base.Portlet.RenderMode;
 
+import org.jgrapes.portal.base.StylingInfo;
 import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.portal.base.events.AddPortletRequest;
 import org.jgrapes.portal.base.events.AddPortletType;
@@ -80,6 +81,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
 
     private static final Logger logger
         = Logger.getLogger(BundleListPortlet.class.getName());
+    private final StylingInfo stylingInfo;
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
         RenderMode.DeleteablePreview, RenderMode.View);
@@ -92,10 +94,21 @@ public class BundleListPortlet extends FreeMarkerPortlet
      *            on by default and that {@link Manager#fire(Event, Channel...)}
      *            sends the event to
      */
-    public BundleListPortlet(Channel componentChannel, BundleContext context) {
+    public BundleListPortlet(Channel componentChannel, BundleContext context,
+            Map<Object, Object> properties) {
         super(componentChannel, true);
         this.context = context;
         context.addBundleListener(this);
+        stylingInfo = new StylingInfo(this, properties);
+    }
+
+    private String stylingDir() {
+        switch (stylingInfo.get()) {
+        case "jqueryui":
+            return "jqueryui/";
+        default:
+            return "";
+        }
     }
 
     /**
@@ -118,11 +131,12 @@ public class BundleListPortlet extends FreeMarkerPortlet
         channel.respond(new AddPortletType(type())
             .setDisplayName(resourceBundle.getString("portletName"))
             .addScript(new ScriptResource()
+                .setRequires(new String[] { "vuejs.org" })
                 .setRequires(new String[] { "datatables.net" })
                 .setScriptUri(event.renderSupport().portletResource(
-                    type(), "Bundles-functions.ftl.js")))
+                    type(), stylingDir() + "Bundles-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalWeblet.uriFromPath("Bundles-style.css"))
+                PortalWeblet.uriFromPath(stylingDir() + "Bundles-style.css"))
             .setInstantiable());
     }
 
@@ -163,7 +177,8 @@ public class BundleListPortlet extends FreeMarkerPortlet
             throws Exception {
         BundleListModel portletModel = new BundleListModel(generatePortletId());
         Template tpl
-            = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
+            = freemarkerConfig()
+                .getTemplate(stylingDir() + "Bundles-preview.ftl.html");
         channel.respond(new RenderPortletFromTemplate(event,
             BundleListPortlet.class, portletModel.getPortletId(),
             tpl, fmModel(event, channel, portletModel))
@@ -202,7 +217,8 @@ public class BundleListPortlet extends FreeMarkerPortlet
         case Preview:
         case DeleteablePreview: {
             Template tpl
-                = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
+                = freemarkerConfig()
+                    .getTemplate(stylingDir() + "Bundles-preview.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
                 BundleListPortlet.class, portletModel.getPortletId(),
                 tpl, fmModel(event, channel, portletModel))
@@ -220,7 +236,8 @@ public class BundleListPortlet extends FreeMarkerPortlet
         }
         case View: {
             Template tpl
-                = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
+                = freemarkerConfig()
+                    .getTemplate(stylingDir() + "Bundles-view.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
                 BundleListPortlet.class, portletModel.getPortletId(),
                 tpl, fmModel(event, channel, portletModel))

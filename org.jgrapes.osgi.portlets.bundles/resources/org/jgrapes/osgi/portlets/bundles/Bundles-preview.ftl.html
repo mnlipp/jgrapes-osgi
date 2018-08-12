@@ -1,16 +1,28 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-bundles-preview"> 
-  <table class="bundles-table">
+  <table class="jgportal-basic-table jgrapes-osgi-bundles-preview-table">
     <thead>
       <tr>
-        <th>${_("bundleId")}</th>
-        <th>${_("bundleName")}</th>
+        <th v-for="key in controller.keys"
+          v-on:click="controller.sortBy(key)">
+          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            v-if="controller.sortedByDesc(key)"
+            role="button" class="jgportal-button-icon">&#x25BC;</span>
+        </th>
       </tr>
     </thead>
     <tbody>
+      <tr v-for="entry in filteredData" 
+        v-bind:title="entry['symbolicName'] + ':' + entry['version']
+        + ' (' + entry['state'] + ')'">
+        <td v-for="key in controller.keys">
+          {{entry[key]}}
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 <script>
-	orgJGrapesOsgiPortletsBundles.initPreviewTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-bundles-preview table' ));
+	orgJGrapesOsgiPortletsBundles.initPreviewTable("${portlet.portletId}");
 </script>

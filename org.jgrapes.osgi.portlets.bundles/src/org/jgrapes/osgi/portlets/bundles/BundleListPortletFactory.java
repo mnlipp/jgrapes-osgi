@@ -55,7 +55,7 @@ public class BundleListPortletFactory
     public Optional<ComponentType> create(
             Channel componentChannel, Map<Object, Object> properties) {
         return Optional.of(new BundleListPortlet(componentChannel,
-            (BundleContext) properties.get(BundleContext.class)));
+            (BundleContext) properties.get(BundleContext.class), properties));
     }
 
 }

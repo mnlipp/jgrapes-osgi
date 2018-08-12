@@ -1,0 +1,67 @@
+/*
+ * Portlet specific styles.
+ */
+.jgrapes-osgi-bundles-preview {
+    max-height: 20vw;
+    overflow: auto; 
+}
+ 
+.jgrapes-osgi-bundles-preview td {
+     padding-left: 0.5em;
+     vertical-align: top;
+}
+
+.jgrapes-osgi-bundles-preview td:first-child {
+     text-align: right;
+}
+
+.jgrapes-osgi-bundles-preview-tooltip {
+    max-width: none;
+}
+
+.jgrapes-osgi-bundles-preview-tooltip td {
+     padding-left: 0.5em;
+     vertical-align: top;
+}
+
+.jgrapes-osgi-bundles-preview table.dataTable thead th,
+.jgrapes-osgi-bundles-preview table.dataTable thead td {
+	padding: 2px 18px;
+}
+
+.jgrapes-osgi-bundles-preview table.dataTable tbody th,
+.jgrapes-osgi-bundles-preview table.dataTable tbody td {
+	padding: 0px 10px;
+}
+
+.jgrapes-osgi-bundles-preview table.dataTable.no-footer {
+	border-bottom: 0;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable thead th,
+.jgrapes-osgi-bundles-view table.dataTable thead td {
+	padding: 6px 18px;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable tbody th,
+.jgrapes-osgi-bundles-view table.dataTable tbody td {
+	padding: 4px 10px;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable tbody button {
+	font-size: 50%;
+	padding: 0.25em 0em;
+}
+
+.jgrapes-osgi-bundles-view table.dataTable tbody .ui-icon-popup:hover {
+	cursor: pointer;
+}
+
+.jgrapes-osgi-bundles-details td:first-child {
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.jgrapes-osgi-bundles-details td {
+	padding: 2px 10px;
+}
