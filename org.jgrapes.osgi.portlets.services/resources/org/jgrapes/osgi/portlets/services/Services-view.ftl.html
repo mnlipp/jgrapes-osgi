@@ -1,19 +1,32 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-view">
-  <table style="width: 100%;">
+  <div class="jgrapes-osgi-services-view-search">
+    <form>
+      ${_("Filter:")} <input type="search" v-on:input="controller.updateFilter($event)">
+      <span role="button" class="jgportal-button-icon fas fa-backspace" 
+        v-on:click="controller.clearFilter($event)"></span>
+    </form>
+  </div>
+  <table class="jgportal-basic-table jgrapes-osgi-services-view-table">
     <thead>
       <tr>
-        <th>${_("serviceId")}</th>
-        <th>${_("serviceType")}</th>
-        <th>${_("serviceScope")}</th>
-        <th>${_("serviceBundle")}</th>
-        <th>${_("serviceImplementedBy")}</th>
+        <th v-for="key in controller.keys"
+          v-on:click="controller.sortBy(key)">
+          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            v-if="controller.sortedByDesc(key)"
+            role="button" class="jgportal-button-icon">&#x25BC;</span>
+        </th>
       </tr>
     </thead>
     <tbody>
+      <tr v-for="entry in filteredData">
+        <td v-for="key in controller.keys" v-html="controller.breakBeforeDots(entry[key])">
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 <script>
-	orgJGrapesOsgiPortletsServices.initViewTable($( '[data-portlet-id="${portlet.portletId}"] .jgrapes-osgi-services-view table' ));
+	orgJGrapesOsgiPortletsServices.initViewTable("${portlet.portletId}");
 </script>

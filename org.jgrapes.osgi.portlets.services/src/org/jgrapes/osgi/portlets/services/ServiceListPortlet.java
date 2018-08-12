@@ -227,7 +227,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
         @SuppressWarnings("PMD.UseConcurrentHashMap")
         Map<String, Object> result = new HashMap<>();
         result.put("id",
-            serviceRef.getProperty(Constants.SERVICE_ID).toString());
+            serviceRef.getProperty(Constants.SERVICE_ID));
         String[] interfaces
             = (String[]) serviceRef.getProperty(Constants.OBJECTCLASS);
         result.put("type", String.join(", ", interfaces));
