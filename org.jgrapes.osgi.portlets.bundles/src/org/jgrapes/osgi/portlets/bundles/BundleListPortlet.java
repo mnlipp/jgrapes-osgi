@@ -120,7 +120,6 @@ public class BundleListPortlet extends FreeMarkerPortlet
             .setDisplayName(resourceBundle.getString("portletName"))
             .addScript(new ScriptResource()
                 .setRequires(new String[] { "vuejs.org" })
-                .setRequires(new String[] { "datatables.net" })
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Bundles-functions.ftl.js")))
             .addCss(event.renderSupport(),

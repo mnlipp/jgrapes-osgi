@@ -113,7 +113,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
         channel.respond(new AddPortletType(type())
             .setDisplayName(resourceBundle.getString("portletName"))
             .addScript(new ScriptResource()
-                .setRequires(new String[] { "datatables.net" })
+                .setRequires(new String[] { "vuejs.org" })
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Services-functions.ftl.js")))
             .addCss(event.renderSupport(),
