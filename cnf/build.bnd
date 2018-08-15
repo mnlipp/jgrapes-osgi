@@ -35,11 +35,17 @@ bundleVersionQualifier: ga
 
 -plugin.5.JGrapes: \
     de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.15.jar,\
+		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.16.jar,\
             ${workspace}/cnf/plugins/biz.aQute.repository-4.0.0.jar"; \
         name=JGrapes; \
         server="https://oss.sonatype.org"; \
-        query="g=org.jgrapes"; \
+        query="a=org.jgrapes.portal.bootstrap4,\
+            a=org.jgrapes.portal.jqueryui,\
+            a=org.jgrapes.portal.providers.vuejs,\
+            a=org.jgrapes.portal.providers.chartjs,\
+            a=org.jgrapes.portal.providers.markdownit,\
+            a=org.jgrapes.portlets.sysinfo,\
+            a=org.jgrapes.portlets.markdowndisplay"; \
         searchBreadth="2"
 
 -baselinerepo: JGrapes
