@@ -24,7 +24,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-import java.util.ResourceBundle;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -51,7 +50,6 @@ import org.jgrapes.portal.base.Portal;
 import org.jgrapes.portal.base.PortalLocalBackedKVStore;
 import org.jgrapes.portal.base.PortalWeblet;
 import org.jgrapes.portal.base.PortletComponentFactory;
-import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
 import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -127,10 +125,7 @@ public class Application extends Component implements BundleActivator {
         PortalWeblet portalWeblet
             = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
                 new URI("/jqportal/")))
-                .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
-                    getClass().getPackage().getName() + ".portal-l10n", l,
-                    ResourceBundle.Control.getNoFallbackControl(
-                        ResourceBundle.Control.FORMAT_DEFAULT)));
+                .prependResourceBundleProvider(getClass());
         Portal portal = portalWeblet.portal();
         portal.attach(new PortalLocalBackedKVStore(
             portal, portalWeblet.prefix().getPath()));
@@ -145,12 +140,8 @@ public class Application extends Component implements BundleActivator {
     private void createBootstrap4Portal(BundleContext context)
             throws URISyntaxException {
         PortalWeblet portalWeblet
-            = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
-                new URI("/b4portal/")))
-                .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
-                    getClass().getPackage().getName() + ".portal-l10n", l,
-                    ResourceBundle.Control.getNoFallbackControl(
-                        ResourceBundle.Control.FORMAT_DEFAULT)));
+            = app.attach(new DemoPortalWeblet(app.channel(), Channel.SELF,
+                new URI("/b4portal/")));
         Portal portal = portalWeblet.portal();
         portal.attach(new PortalLocalBackedKVStore(
             portal, portalWeblet.prefix().getPath()));
