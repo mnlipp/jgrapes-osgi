@@ -116,10 +116,7 @@ public class Application extends Component implements BundleActivator {
         PortalWeblet portalWeblet
             = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
                 new URI("/portal/")))
-                .setResourceBundleSupplier(l -> ResourceBundle.getBundle(
-                    getClass().getPackage().getName() + ".portal-l10n", l,
-                    ResourceBundle.Control.getNoFallbackControl(
-                        ResourceBundle.Control.FORMAT_DEFAULT)));
+                .prependPortalResourceProvider(getClass());
         Portal portal = portalWeblet.portal();
         portal.attach(new PortalLocalBackedKVStore(
             portal, portalWeblet.prefix().getPath()));
