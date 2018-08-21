@@ -39,93 +39,89 @@ var orgJGrapesOsgiPortletsBundles = {
     
     orgJGrapesOsgiPortletsBundles.initPreviewTable = function(portletId) {
         let portlet = JGPortal.findPortletPreview(portletId);
-        JGPortal.createIfMissing(portlet, "vue-model", function() {
-            return new Vue({
-                el: $(portlet.find(".jgrapes-osgi-bundles-preview-table"))[0],
-                data: {
-                    controller: new JGPortal.TableController([
-                        ["id", "${_("bundleId")}"],
-                        ["name", "${_("bundleName")}"]
-                        ], {
-                        sortKey: "id"
-                    }),
-                    infosById: {},
-                },
-                computed: {
-                    filteredData: function() {
-                        let infos = Object.values(this.infosById);
-                        return this.controller.filter(infos);
-                    }
-                },
-            });
-        });
+        portlet.data("vue-model", new Vue({
+            el: $(portlet.find(".jgrapes-osgi-bundles-preview-table"))[0],
+            data: {
+                controller: new JGPortal.TableController([
+                    ["id", "${_("bundleId")}"],
+                    ["name", "${_("bundleName")}"]
+                    ], {
+                    sortKey: "id"
+                }),
+                infosById: {},
+            },
+            computed: {
+                filteredData: function() {
+                    let infos = Object.values(this.infosById);
+                    return this.controller.filter(infos);
+                }
+            },
+        }));
     }
 
     orgJGrapesOsgiPortletsBundles.initViewTable = function(portletId) {
         let portlet = JGPortal.findPortletView(portletId);
-        JGPortal.createIfMissing(portlet, "vue-model", function() {
-            let dtFormatter = new Intl.DateTimeFormat(
-                    portlet.closest('[lang]').attr('lang') || 'en',
-                    { year: 'numeric', month: 'numeric', day: 'numeric',
-                      hour: 'numeric', minute: 'numeric', second: 'numeric',
-                      hour12: false, timeZoneName: 'short' });
-            return new Vue({
-                el: $(portlet).find(".jgrapes-osgi-bundles-view")[0],
-                data: {
-                    controller: new JGPortal.TableController([
-                        ["id", "${_("bundleId")}"],
-                        ["name", "${_("bundleName")}"],
-                        ["version", "${_("bundleVersion")}"],
-                        ["category", "${_("bundleCategory")}"],
-                        ["state", "${_("bundleState")}"],
-                        ], {
-                        sortKey: "id"
-                    }),
-                    infosById: {},
-                    detailsById: {},
-                },
-                computed: {
-                    filteredData: function() {
-                        let infos = Object.values(this.infosById);
-                        return this.controller.filter(infos);
-                    }
-                },
-                methods: {
-                    bundleAction: function(bundleId, action) {
-                        let portletId = $(this.$el).parent().attr("data-portlet-id");
-                        JGPortal.notifyPortletModel(portletId, action, parseInt(bundleId));
-                    },
-                    toggleDetails: function(bundleId) {
-                        if (bundleId in this.detailsById) {
-                            delete this.detailsById[bundleId];
-                            this.$forceUpdate();
-                            return;
-                        }
-                        let portletId = $(this.$el).parent().attr("data-portlet-id");
-                        JGPortal.notifyPortletModel(portletId, "sendDetails", parseInt(bundleId));
-                    },
-                    addManifestValueBreaks: function(text) {
-                        text = String(text);
-                        let parts = text.split('"');
-                        text = "";
-                        for (let i = 0; i < parts.length; i++) {
-                            if (i > 0) {
-                                text += '"';
-                            }
-                            if (i % 2 == 0) {
-                                text += parts[i].replace(/,/g, ",<br/>");
-                            } else {
-                                text += parts[i];
-                            }
-                        }
-                        return text.replace(/\./g, "&#x200b;.")
-                    },
-                    formatDateTime: function(value) {
-                        return dtFormatter.format(new Date(value));
-                    }
+        let dtFormatter = new Intl.DateTimeFormat(
+                portlet.closest('[lang]').attr('lang') || 'en',
+                { year: 'numeric', month: 'numeric', day: 'numeric',
+                  hour: 'numeric', minute: 'numeric', second: 'numeric',
+                  hour12: false, timeZoneName: 'short' });
+        portlet.data("vue-model", new Vue({
+            el: $(portlet).find(".jgrapes-osgi-bundles-view")[0],
+            data: {
+                controller: new JGPortal.TableController([
+                    ["id", "${_("bundleId")}"],
+                    ["name", "${_("bundleName")}"],
+                    ["version", "${_("bundleVersion")}"],
+                    ["category", "${_("bundleCategory")}"],
+                    ["state", "${_("bundleState")}"],
+                    ], {
+                    sortKey: "id"
+                }),
+                infosById: {},
+                detailsById: {},
+            },
+            computed: {
+                filteredData: function() {
+                    let infos = Object.values(this.infosById);
+                    return this.controller.filter(infos);
                 }
-            });
-        });
+            },
+            methods: {
+                bundleAction: function(bundleId, action) {
+                    let portletId = $(this.$el).parent().attr("data-portlet-id");
+                    JGPortal.notifyPortletModel(portletId, action, parseInt(bundleId));
+                },
+                toggleDetails: function(bundleId) {
+                    if (bundleId in this.detailsById) {
+                        delete this.detailsById[bundleId];
+                        this.$forceUpdate();
+                        return;
+                    }
+                    let portletId = $(this.$el).parent().attr("data-portlet-id");
+                    JGPortal.notifyPortletModel(portletId, "sendDetails", parseInt(bundleId));
+                },
+                addManifestValueBreaks: function(text) {
+                    text = String(text);
+                    let parts = text.split('"');
+                    text = "";
+                    for (let i = 0; i < parts.length; i++) {
+                        if (i > 0) {
+                            text += '"';
+                        }
+                        if (i % 2 == 0) {
+                            text += parts[i].replace(/,/g, ",<br/>");
+                        } else {
+                            text += parts[i];
+                        }
+                    }
+                    return text.replace(/\./g, "&#x200b;.")
+                },
+                formatDateTime: function(value) {
+                    return dtFormatter.format(new Date(value));
+                }
+            }
+        }));
     }
 
     function updateInfos(model, infos, replace) {

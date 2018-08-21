@@ -36,53 +36,49 @@ var orgJGrapesOsgiPortletsServices = {
     
     orgJGrapesOsgiPortletsServices.initPreviewTable = function(portletId) {
         let portlet = JGPortal.findPortletPreview(portletId);
-        JGPortal.createIfMissing(portlet, "vue-model", function() {
-            return new Vue({
-                el: $(portlet.find(".jgrapes-osgi-services-preview-table"))[0],
-                data: {
-                    controller: new JGPortal.TableController([
-                        ["id", "${_("serviceId")}"],
-                        ["type", "${_("serviceType")}"]
-                        ], {
-                        sortKey: "id"
-                    }),
-                    infosById: {},
-                },
-                computed: {
-                    filteredData: function() {
-                        let infos = Object.values(this.infosById);
-                        return this.controller.filter(infos);
-                    }
-                },
-            });
-        });
+        portlet.data("vue-model", new Vue({
+            el: $(portlet.find(".jgrapes-osgi-services-preview-table"))[0],
+            data: {
+                controller: new JGPortal.TableController([
+                    ["id", "${_("serviceId")}"],
+                    ["type", "${_("serviceType")}"]
+                    ], {
+                    sortKey: "id"
+                }),
+                infosById: {},
+            },
+            computed: {
+                filteredData: function() {
+                    let infos = Object.values(this.infosById);
+                    return this.controller.filter(infos);
+                }
+            },
+        }));
     }
 
     orgJGrapesOsgiPortletsServices.initViewTable = function(portletId) {
         let portlet = JGPortal.findPortletView(portletId);
-        JGPortal.createIfMissing(portlet, "vue-model", function() {
-            return new Vue({
-                el: $(portlet.find(".jgrapes-osgi-services-view"))[0],
-                data: {
-                    controller: new JGPortal.TableController([
-                        ["id", "${_("serviceId")}"],
-                        ["type", "${_("serviceType")}"],
-                        ["scopeDisplay", "${_("serviceScope")}"],
-                        ["bundleNameDisplay", "${_("serviceBundle")}"],
-                        ["implementationClass", "${_("serviceImplementedBy")}"],
-                        ], {
-                        sortKey: "id"
-                    }),
-                    infosById: {},
-                },
-                computed: {
-                    filteredData: function() {
-                        let infos = Object.values(this.infosById);
-                        return this.controller.filter(infos);
-                    }
-                },
-            });
-        });
+        portlet.data("vue-model", new Vue({
+            el: $(portlet.find(".jgrapes-osgi-services-view"))[0],
+            data: {
+                controller: new JGPortal.TableController([
+                    ["id", "${_("serviceId")}"],
+                    ["type", "${_("serviceType")}"],
+                    ["scopeDisplay", "${_("serviceScope")}"],
+                    ["bundleNameDisplay", "${_("serviceBundle")}"],
+                    ["implementationClass", "${_("serviceImplementedBy")}"],
+                    ], {
+                    sortKey: "id"
+                }),
+                infosById: {},
+            },
+            computed: {
+                filteredData: function() {
+                    let infos = Object.values(this.infosById);
+                    return this.controller.filter(infos);
+                }
+            },
+        }));
     }
     
     function updateInfos(model, infos, replace) {
