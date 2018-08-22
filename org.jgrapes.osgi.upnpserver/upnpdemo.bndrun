@@ -38,7 +38,7 @@
 	org.jgrapes.osgi.portlets.services;version=snapshot,\
 	org.jgrapes.osgi.upnpserver;version=snapshot,\
 	org.jgrapes.portal.base;version='[0.19.3,0.19.4)',\
-	org.jgrapes.portal.jqueryui;version='[0.19.3,0.19.4)',\
+	org.jgrapes.portal.bootstrap4;version='[0.19.3,0.19.4)',\
 	org.jgrapes.portal.providers.chartjs;version='[0.19.3,0.19.4)',\
 	org.jgrapes.portal.providers.fontawesome;version='[0.19.3,0.19.4)',\
 	org.jgrapes.portal.providers.markdownit;version='[0.19.3,0.19.4)',\

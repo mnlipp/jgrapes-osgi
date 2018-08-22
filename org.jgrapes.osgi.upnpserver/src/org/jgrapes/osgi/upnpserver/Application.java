@@ -49,7 +49,7 @@ import org.jgrapes.portal.base.Portal;
 import org.jgrapes.portal.base.PortalLocalBackedKVStore;
 import org.jgrapes.portal.base.PortalWeblet;
 import org.jgrapes.portal.base.PortletComponentFactory;
-import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
+import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -113,7 +113,7 @@ public class Application extends Component implements BundleActivator {
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65536));
         PortalWeblet portalWeblet
-            = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
+            = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
                 new URI("/portal/")))
                 .prependPortalResourceProvider(getClass());
         Portal portal = portalWeblet.portal();
