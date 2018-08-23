@@ -1,0 +1,24 @@
+/*
+ * Portlet specific styles.
+ */
+.jgrapes-osgi-services-view-search {
+    display: flex; 
+    justify-content: flex-end
+}
+
+.jgrapes-osgi-services-view-search form {
+    white-space: nowrap;
+}
+
+.jgrapes-osgi-services-view-action-list {
+    white-space: nowrap;
+}
+
+.jgrapes-osgi-services-view-action-list .jgportal-button-icon:not(:last-child) {
+    margin-right: 0.5em;
+}
+
+.jgrapes-osgi-services-view td {
+    vertical-align: top;
+}
+
