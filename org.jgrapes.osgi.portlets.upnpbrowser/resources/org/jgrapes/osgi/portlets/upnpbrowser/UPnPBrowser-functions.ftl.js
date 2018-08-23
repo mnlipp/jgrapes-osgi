@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2016, 2018  Michael N. Lipp
+ * Copyright (C) 2018  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by 
@@ -24,15 +24,48 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
 
 (function() {
 
-    var l10n = orgJGrapesOsgiPortletsServices.l10n;
+    var l10n = orgJGrapesOsgiPortletsUPnPBrowser.l10n;
     
     orgJGrapesOsgiPortletsUPnPBrowser.initPreview = function(portletId) {
         let portlet = JGPortal.findPortletPreview(portletId);
+        portlet.data("vue-model", new Vue({
+            el: $(portlet.find(".jgrapes-osgi-upnpbrowser-preview"))[0],
+            data: {
+                devices: [],
+            },
+        }));
     }
 
     orgJGrapesOsgiPortletsUPnPBrowser.initView = function(portletId) {
         let portlet = JGPortal.findPortletView(portletId);
     }
+    
+    function updateInfos(model, infos, replace) {
+        // Update
+        model.devices = infos;
+    }
+
+    JGPortal.registerPortletMethod(
+            "org.jgrapes.osgi.portlets.upnpbrowser.UPnPBrowserPortlet",
+            "deviceUpdates", function(portletId, params) {
+                // Preview
+                if (params[1] === "preview" || params[1] === "*") {
+                    let portlet = JGPortal.findPortletPreview(portletId);
+                    let vm = null;
+                    if (portlet && (vm = portlet.data("vue-model"))) {
+                        updateInfos(vm, params[0], params[2]);
+                    }
+                }
+                
+                // View
+                if (params[1] === "view" || params[1] === "*") {
+                    let portlet = JGPortal.findPortletView(portletId);
+                    let vm = null;
+                    if (portlet && (vm = portlet.data("vue-model"))) {
+                        updateInfos(vm, params[0], params[2]);
+                    }
+                }
+            });
     
 })();
 

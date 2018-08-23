@@ -25,9 +25,15 @@ import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
@@ -46,20 +52,26 @@ import org.jgrapes.portal.base.events.AddPortletRequest;
 import org.jgrapes.portal.base.events.AddPortletType;
 import org.jgrapes.portal.base.events.DeletePortlet;
 import org.jgrapes.portal.base.events.DeletePortletRequest;
+import org.jgrapes.portal.base.events.NotifyPortletView;
 import org.jgrapes.portal.base.events.PortalReady;
 import org.jgrapes.portal.base.events.RenderPortletRequest;
 import org.jgrapes.portal.base.events.RenderPortletRequestBase;
 import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceListener;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.runtime.ServiceComponentRuntime;
+import org.osgi.service.upnp.UPnPDevice;
 
 /**
  * A portlet for inspecting the services in an OSGi runtime.
  */
-public class UPnPBrowserPortlet extends FreeMarkerPortlet {
+public class UPnPBrowserPortlet extends FreeMarkerPortlet
+        implements ServiceListener {
 
-    private final ServiceComponentRuntime scr;
     private static final Set<RenderMode> MODES = RenderMode.asSet(
         DeleteablePreview, View);
     private final BundleContext context;
@@ -71,11 +83,11 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet {
      *            on by default and that {@link Manager#fire(Event, Channel...)}
      *            sends the event to
      */
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     public UPnPBrowserPortlet(Channel componentChannel, BundleContext context,
             ServiceComponentRuntime scr) {
         super(componentChannel, true);
         this.context = context;
-        this.scr = scr;
     }
 
     /**
@@ -160,6 +172,8 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet {
         renderPortlet(event, channel, portletModel);
     }
 
+    @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
+        "PMD.DataflowAnomalyAnalysis" })
     private void renderPortlet(RenderPortletRequestBase<?> event,
             PortalSession channel,
             UPnPBrowserModel portletModel) throws TemplateNotFoundException,
@@ -168,14 +182,31 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet {
         switch (event.renderMode()) {
         case Preview:
         case DeleteablePreview: {
-            Template tpl
-                = freemarkerConfig()
-                    .getTemplate("UPnPBrowser-preview.ftl.html");
+            Template tpl = freemarkerConfig()
+                .getTemplate("UPnPBrowser-preview.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
                 UPnPBrowserPortlet.class, portletModel.getPortletId(),
                 tpl, fmModel(event, channel, portletModel))
                     .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
+            List<Map<String, Object>> serviceInfos = Arrays.stream(
+                context.getAllServiceReferences(null,
+                    "(&" + "(" + Constants.OBJECTCLASS
+                        + "=" + UPnPDevice.class.getName() + ")"
+                        + "(" + UPnPDevice.UDN + "=*)" + ")"))
+                .map(svc -> createServiceInfo(svc))
+                .sorted(new Comparator<Map<String, Object>>() {
+                    @Override
+                    public int compare(Map<String, Object> arg0,
+                            Map<String, Object> arg1) {
+                        return ((String) arg0.get("friendlyName"))
+                            .compareTo((String) arg1.get("friendlyName"));
+                    }
+                })
+                .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "deviceUpdates", serviceInfos,
+                "preview", true));
             break;
         }
         case View: {
@@ -186,11 +217,50 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet {
                 tpl, fmModel(event, channel, portletModel))
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
+            List<Map<String, Object>> serviceInfos = Arrays.stream(
+                context.getAllServiceReferences(UPnPDevice.class.toString(),
+                    null))
+                .map(svc -> createServiceInfo(svc))
+                .sorted(new Comparator<Map<String, Object>>() {
+                    @Override
+                    public int compare(Map<String, Object> arg0,
+                            Map<String, Object> arg1) {
+                        return ((String) arg0.get("friendlyName"))
+                            .compareTo((String) arg1.get("friendlyName"));
+                    }
+                })
+                .collect(Collectors.toList());
+            channel.respond(new NotifyPortletView(type(),
+                portletModel.getPortletId(), "deviceUpdates", serviceInfos,
+                "view", true));
             break;
         }
         default:
             break;
         }
+    }
+
+    @SuppressWarnings({ "PMD.NcssCount" })
+    private Map<String, Object>
+            createServiceInfo(ServiceReference<?> serviceRef) {
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
+        Map<String, Object> result = new HashMap<>();
+        result.put("id", serviceRef.getProperty(Constants.SERVICE_ID));
+        String[] props = serviceRef.getPropertyKeys();
+        result.put("friendlyName",
+            serviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));
+        return result;
+    }
+
+    /**
+     * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
+     * on all known portal session channels.
+     *
+     * @param event the event
+     */
+    @Override
+    public void serviceChanged(ServiceEvent event) {
+        // TODO
     }
 
     /*

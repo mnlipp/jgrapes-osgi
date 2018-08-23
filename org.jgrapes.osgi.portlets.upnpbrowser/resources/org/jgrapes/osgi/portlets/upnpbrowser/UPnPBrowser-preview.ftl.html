@@ -1,4 +1,9 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-preview"> 
+  <div class="jgportal-basic-table jgrapes-osgi-upnpbrowser-preview">
+    <div v-for="device of devices">
+      {{ device.friendlyName }}
+    </div>
+  </div>
 </div>
 
 <script>
