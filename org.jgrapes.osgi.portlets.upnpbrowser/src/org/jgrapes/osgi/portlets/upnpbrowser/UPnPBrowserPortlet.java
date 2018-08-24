@@ -195,14 +195,6 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                         + "=" + UPnPDevice.class.getName() + ")"
                         + "(" + UPnPDevice.UDN + "=*)" + ")"))
                 .map(svc -> createServiceInfo(svc))
-                .sorted(new Comparator<Map<String, Object>>() {
-                    @Override
-                    public int compare(Map<String, Object> arg0,
-                            Map<String, Object> arg1) {
-                        return ((String) arg0.get("friendlyName"))
-                            .compareTo((String) arg1.get("friendlyName"));
-                    }
-                })
                 .collect(Collectors.toList());
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "deviceUpdates", serviceInfos,
@@ -221,14 +213,6 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 context.getAllServiceReferences(UPnPDevice.class.toString(),
                     null))
                 .map(svc -> createServiceInfo(svc))
-                .sorted(new Comparator<Map<String, Object>>() {
-                    @Override
-                    public int compare(Map<String, Object> arg0,
-                            Map<String, Object> arg1) {
-                        return ((String) arg0.get("friendlyName"))
-                            .compareTo((String) arg1.get("friendlyName"));
-                    }
-                })
                 .collect(Collectors.toList());
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "deviceUpdates", serviceInfos,
@@ -245,7 +229,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
             createServiceInfo(ServiceReference<?> serviceRef) {
         @SuppressWarnings("PMD.UseConcurrentHashMap")
         Map<String, Object> result = new HashMap<>();
-        result.put("id", serviceRef.getProperty(Constants.SERVICE_ID));
+        result.put("serviceId", serviceRef.getProperty(Constants.SERVICE_ID));
         String[] props = serviceRef.getPropertyKeys();
         result.put("friendlyName",
             serviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));

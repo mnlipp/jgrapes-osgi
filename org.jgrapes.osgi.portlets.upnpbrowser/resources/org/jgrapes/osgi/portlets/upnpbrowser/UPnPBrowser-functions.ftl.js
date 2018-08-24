@@ -32,6 +32,7 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
             el: $(portlet.find(".jgrapes-osgi-upnpbrowser-preview"))[0],
             data: {
                 devices: [],
+                lang: $(portlet.closest("[lang]").attr("lang")),
             },
         }));
     }
@@ -43,6 +44,10 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
     function updateInfos(model, infos, replace) {
         // Update
         model.devices = infos;
+        model.devices.sort(function(a, b) {
+            return String(a.friendlyName)
+                .localeCompare(b.friendlyName, model.lang);
+        });
     }
 
     JGPortal.registerPortletMethod(
