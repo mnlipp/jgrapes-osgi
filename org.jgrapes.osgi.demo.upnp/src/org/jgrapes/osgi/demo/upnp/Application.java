@@ -35,12 +35,11 @@ import org.jgrapes.core.events.Stop;
 import org.jgrapes.http.HttpServer;
 import org.jgrapes.http.InMemorySessionManager;
 import org.jgrapes.http.LanguageSelector;
-import org.jgrapes.http.events.GetRequest;
-import org.jgrapes.http.events.PostRequest;
+import org.jgrapes.http.events.Request;
 import org.jgrapes.io.FileStorage;
 import org.jgrapes.io.NioDispatcher;
 import org.jgrapes.io.util.PermitsPool;
-import org.jgrapes.net.SslServer;
+import org.jgrapes.net.SslCodec;
 import org.jgrapes.net.TcpServer;
 import org.jgrapes.osgi.core.ComponentCollector;
 import org.jgrapes.portal.base.KVStoreBasedPortalPolicy;
@@ -101,12 +100,12 @@ public class Application extends Component implements BundleActivator {
                 .setBacklog(3000).setConnectionLimiter(new PermitsPool(50)));
         // Network level unencrypted channel.
         Channel httpTransport = new NamedChannel("httpTransport");
-        app.attach(new SslServer(httpTransport, securedNetwork, sslContext));
+        app.attach(new SslCodec(httpTransport, securedNetwork, sslContext));
 
         // Create an HTTP server as converter between transport and application
         // layer.
         app.attach(new HttpServer(app,
-            httpTransport, GetRequest.class, PostRequest.class));
+            httpTransport, Request.In.Get.class, Request.In.Post.class));
 
         // Build application layer
         app.attach(new InMemorySessionManager(app.channel()));
