@@ -48,7 +48,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalWeblet;
+import org.jgrapes.portal.base.PortalUtils;
 
 import static org.jgrapes.portal.base.Portlet.RenderMode;
 
@@ -123,7 +123,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Bundles-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalWeblet.uriFromPath("Bundles-style.css"))
+                PortalUtils.uriFromPath("Bundles-style.css"))
             .setInstantiable());
     }
 

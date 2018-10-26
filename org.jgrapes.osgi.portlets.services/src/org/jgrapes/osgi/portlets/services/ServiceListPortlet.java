@@ -41,7 +41,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalWeblet;
+import org.jgrapes.portal.base.PortalUtils;
 import org.jgrapes.portal.base.Portlet.RenderMode;
 
 import static org.jgrapes.portal.base.Portlet.RenderMode.DeleteablePreview;
@@ -117,7 +117,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Services-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalWeblet.uriFromPath("Services-style.css"))
+                PortalUtils.uriFromPath("Services-style.css"))
             .setInstantiable());
     }
 
