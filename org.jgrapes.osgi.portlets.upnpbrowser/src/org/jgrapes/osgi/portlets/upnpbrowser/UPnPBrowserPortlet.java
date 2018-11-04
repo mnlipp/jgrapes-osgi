@@ -25,7 +25,9 @@ import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -35,18 +37,23 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.jdrupes.httpcodec.types.Converters;
+import org.jdrupes.httpcodec.types.MediaType;
 import org.jgrapes.core.Channel;
+import org.jgrapes.core.Components;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
+import org.jgrapes.io.IOSubchannel;
 import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalWeblet;
+import org.jgrapes.portal.base.PortalUtils;
 import org.jgrapes.portal.base.Portlet.RenderMode;
-
 import static org.jgrapes.portal.base.Portlet.RenderMode.DeleteablePreview;
 import static org.jgrapes.portal.base.Portlet.RenderMode.View;
-
+import org.jgrapes.portal.base.RenderSupport;
+import org.jgrapes.portal.base.ResourceByInputStream;
+import org.jgrapes.portal.base.ResourceNotModified;
 import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.portal.base.events.AddPortletRequest;
 import org.jgrapes.portal.base.events.AddPortletType;
@@ -54,6 +61,7 @@ import org.jgrapes.portal.base.events.DeletePortlet;
 import org.jgrapes.portal.base.events.DeletePortletRequest;
 import org.jgrapes.portal.base.events.NotifyPortletView;
 import org.jgrapes.portal.base.events.PortalReady;
+import org.jgrapes.portal.base.events.PortletResourceRequest;
 import org.jgrapes.portal.base.events.RenderPortletRequest;
 import org.jgrapes.portal.base.events.RenderPortletRequestBase;
 import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
@@ -65,10 +73,12 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.runtime.ServiceComponentRuntime;
 import org.osgi.service.upnp.UPnPDevice;
+import org.osgi.service.upnp.UPnPIcon;
 
 /**
  * A portlet for inspecting the services in an OSGi runtime.
  */
+@SuppressWarnings({ "PMD.ExcessiveImports" })
 public class UPnPBrowserPortlet extends FreeMarkerPortlet
         implements ServiceListener {
 
@@ -114,7 +124,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "UPnPBrowser-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalWeblet.uriFromPath("UPnPBrowser-style.css"))
+                PortalUtils.uriFromPath("UPnPBrowser-style.css"))
             .setInstantiable());
     }
 
@@ -133,7 +143,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
      * 
      * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "PMD.AvoidDuplicateLiterals" })
     @Override
     protected <T extends Serializable> Optional<T> stateFromSession(
             Session session, String portletId, Class<T> type) {
@@ -189,15 +199,17 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 tpl, fmModel(event, channel, portletModel))
                     .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            List<Map<String, Object>> serviceInfos = Arrays.stream(
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> deviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null,
                     "(&" + "(" + Constants.OBJECTCLASS
                         + "=" + UPnPDevice.class.getName() + ")"
-                        + "(" + UPnPDevice.UDN + "=*)" + ")"))
-                .map(svc -> createServiceInfo(svc))
+                        + "(!(" + UPnPDevice.PARENT_UDN + "=*)" + "))"))
+                .map(svc -> createDeviceInfo(context,
+                    (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .collect(Collectors.toList());
             channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "deviceUpdates", serviceInfos,
+                portletModel.getPortletId(), "deviceUpdates", deviceInfos,
                 "preview", true));
             break;
         }
@@ -209,13 +221,15 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 tpl, fmModel(event, channel, portletModel))
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            List<Map<String, Object>> serviceInfos = Arrays.stream(
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> deviceInfos = Arrays.stream(
                 context.getAllServiceReferences(UPnPDevice.class.toString(),
                     null))
-                .map(svc -> createServiceInfo(svc))
+                .map(svc -> createDeviceInfo(context,
+                    (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .collect(Collectors.toList());
             channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "deviceUpdates", serviceInfos,
+                portletModel.getPortletId(), "deviceUpdates", deviceInfos,
                 "view", true));
             break;
         }
@@ -225,15 +239,93 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
     }
 
     @SuppressWarnings({ "PMD.NcssCount" })
-    private Map<String, Object>
-            createServiceInfo(ServiceReference<?> serviceRef) {
-        @SuppressWarnings("PMD.UseConcurrentHashMap")
-        Map<String, Object> result = new HashMap<>();
-        result.put("serviceId", serviceRef.getProperty(Constants.SERVICE_ID));
-        String[] props = serviceRef.getPropertyKeys();
-        result.put("friendlyName",
-            serviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));
-        return result;
+    private Map<String, Object> createDeviceInfo(BundleContext context,
+            ServiceReference<UPnPDevice> deviceRef,
+            RenderSupport renderSupport) {
+        UPnPDevice device = context.getService(deviceRef);
+        if (device == null) {
+            return null;
+        }
+        try {
+            @SuppressWarnings("PMD.UseConcurrentHashMap")
+            Map<String, Object> result = new HashMap<>();
+            result.put("friendlyName",
+                deviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));
+            if (device.getIcons(null) != null) {
+                result.put("iconUrl", PortalUtils.mergeQuery(
+                    renderSupport.portletResource(type(), ""),
+                    Components.mapOf("udn", (String) deviceRef
+                        .getProperty(UPnPDevice.UDN), "resource", "icon"))
+                    .toASCIIString());
+            }
+            return result;
+        } finally {
+            context.ungetService(deviceRef);
+        }
+    }
+
+    @Override
+    @SuppressWarnings({ "PMD.DataflowAnomalyAnalysis" })
+    protected void doGetResource(PortletResourceRequest event,
+            IOSubchannel channel) {
+        Map<String, List<String>> query
+            = PortalUtils.queryAsMap(event.resourceUri());
+        if (!query.containsKey("udn")) {
+            super.doGetResource(event, channel);
+            return;
+        }
+        try {
+            Arrays.stream(context.getAllServiceReferences(null,
+                String.format("(&(%s=%s)(%s=%s))", Constants.OBJECTCLASS,
+                    UPnPDevice.class.getName(), UPnPDevice.UDN,
+                    query.get("udn").get(0))))
+                .findFirst().ifPresent(deviceRef -> {
+                    @SuppressWarnings("unchecked")
+                    UPnPDevice device = context
+                        .getService((ServiceReference<UPnPDevice>) deviceRef);
+                    if (query.getOrDefault("resource", Collections.emptyList())
+                        .contains("icon")) {
+                        provideIcon(event, device);
+                    }
+                });
+        } catch (InvalidSyntaxException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    @SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.DataflowAnomalyAnalysis" })
+    private void provideIcon(PortletResourceRequest event, UPnPDevice device) {
+        UPnPIcon[] icons = device
+            .getIcons(event.session().locale().toLanguageTag());
+        if (icons == null) {
+            icons = device.getIcons(null);
+        }
+        if (icons == null) {
+            return;
+        }
+        Arrays.sort(icons,
+            Comparator.comparingInt(UPnPIcon::getHeight).reversed());
+        UPnPIcon icon = icons[0];
+        try {
+            if (event.ifModifiedSince().isPresent()) {
+                event.setResult(new ResourceNotModified(event, Instant.now(),
+                    365 * 24 * 3600));
+            } else {
+                MediaType mediaType = null;
+                if (icon.getMimeType() != null
+                    && !icon.getMimeType().isEmpty()) {
+                    mediaType
+                        = Converters.MEDIA_TYPE
+                            .fromFieldValue(icon.getMimeType());
+                }
+                event.setResult(new ResourceByInputStream(event,
+                    icon.getInputStream(), mediaType, Instant.now(),
+                    365 * 24 * 3600));
+            }
+            event.stop();
+        } catch (IOException | java.text.ParseException e) {
+            // Handle as if no match
+        }
     }
 
     /**

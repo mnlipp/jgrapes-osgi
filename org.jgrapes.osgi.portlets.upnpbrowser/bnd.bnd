@@ -27,6 +27,7 @@ Private-Package: org.jgrapes.osgi.portlets.upnpbrowser
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal.base;version=latest,\
     org.jdrupes.json;version=latest,\
+    org.jdrupes.httpcodec;version=latest,\
 	org.freemarker.freemarker;version='[2.3.27,2.4)'
 
 -fixupmessages: \
