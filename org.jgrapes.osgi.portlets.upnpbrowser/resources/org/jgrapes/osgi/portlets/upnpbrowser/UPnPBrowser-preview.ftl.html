@@ -1,11 +1,18 @@
-<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-preview"> 
-  <div class="jgportal-basic-table jgrapes-osgi-upnpbrowser-preview">
-    <div v-for="device of devices">
-      <img v-if="'iconUrl' in device" style="width: 1.5em;" v-bind:src="device.iconUrl">
-      <i v-else class="fas fa-server"></i>
-      {{ device.friendlyName }}
-    </div>
-  </div>
+<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-upnpbrowser-preview"> 
+  <table class="jgportal-basic-table jgrapes-osgi-upnpbrowser-preview-table">
+    <tbody>
+      <tr v-for="device of devices">
+        <td>
+          <img v-if="'iconUrl' in device" class="device-icon" 
+            v-bind:src="device.iconUrl">
+          <i v-else class="fas fa-server device-icon"></i>
+        </td>
+        <td>
+          {{ device.friendlyName }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <script>
