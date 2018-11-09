@@ -38,18 +38,57 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
     }
 
     orgJGrapesOsgiPortletsUPnPBrowser.initView = function(portletId) {
+        let expandedDevices = {};
+        Vue.component('upnpbrowser-device-tree', {
+            template: '#upnpbrowser-device-tree-template',
+            props: {
+              devices: Object,
+            },
+            data: function () {
+              return {
+                  expanded: expandedDevices,
+              }
+            },
+            methods: {
+                isExpandable: function(device) {
+                    return 'childDevices' in device && 
+                        device.childDevices.length && !this.expanded[device.udn];
+                },
+                isExpanded: function(device) {
+                    return this.expanded[device.udn];
+                },
+                toggle: function(device, event) {
+                    if (expandedDevices[device.udn]) {
+                        delete expandedDevices[device.udn];
+                    } else {
+                        expandedDevices[device.udn] = true;
+                    }
+                    this.expanded = Object.assign({}, expandedDevices);
+                    event.stopPropagation();
+                },
+                deviceClasses: function(device) {
+                    return {
+                        expanded: 'childDevices' in device && 
+                            device.childDevices.length && this.expanded[device.udn],
+                        expandable: 'childDevices' in device && 
+                            device.childDevices.length && !this.expanded[device.udn],
+                        unexpandable: !('childDevices' in device) || 
+                            device.childDevices.length == 0,
+                    }
+                }
+            }
+        });
         let portlet = JGPortal.findPortletView(portletId);
+        let content = $(portlet.find(".jgrapes-osgi-upnpbrowser-view"))[0];
+        portlet.data("vue-model", new Vue({
+            el: content,
+            data: {
+                devices: [],
+                lang: $(portlet.closest("[lang]").attr("lang")),
+            },
+        }));
     }
     
-    function updateInfos(model, infos, replace) {
-        // Update
-        model.devices = infos;
-        model.devices.sort(function(a, b) {
-            return String(a.friendlyName)
-                .localeCompare(b.friendlyName, model.lang);
-        });
-    }
-
     JGPortal.registerPortletMethod(
             "org.jgrapes.osgi.portlets.upnpbrowser.UPnPBrowserPortlet",
             "deviceUpdates", function(portletId, params) {
@@ -72,5 +111,14 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
                 }
             });
     
+    function updateInfos(model, infos, replace) {
+        // Update
+        model.devices = infos;
+        model.devices.sort(function(a, b) {
+            return String(a.friendlyName)
+                .localeCompare(b.friendlyName, model.lang);
+        });
+    }
+
 })();
 

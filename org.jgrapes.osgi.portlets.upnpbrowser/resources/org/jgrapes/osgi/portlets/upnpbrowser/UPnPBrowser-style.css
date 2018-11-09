@@ -2,16 +2,79 @@
  * Portlet specific styles.
  */
 
-.jgrapes-osgi-upnpbrowser-preview-table tbody td:not(:last-child) {
+/* Preview */
 
-    padding-right: 0.325em;
-
+.jgrapes-osgi-upnpbrowser-preview li {
+    text-indent: -1.825em;
 }
-.jgrapes-osgi-upnpbrowser-preview img.device-icon {
-	width: 1.5em;
+
+.jgrapes-osgi-upnpbrowser-preview li * {
+    text-indent: 0;
 }
  
-.jgrapes-osgi-upnpbrowser-preview .fas {
-    font-size: 1.5em;
+.jgrapes-osgi-upnpbrowser-preview .device-icon {
+	width: 1.5em;
 }
 
+.jgrapes-osgi-upnpbrowser-preview .device-icon.fas {
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 125%;
+    text-align: center;
+    color: var(--gray);
+}
+
+/* View */
+
+/* Adjust icon widths */
+.jgrapes-osgi-upnpbrowser-view .device-icon {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.jgrapes-osgi-upnpbrowser-view .device-icon.fas {
+    width: 1.2em;
+    height: 1.2em;
+	font-size: 125%;
+	text-align: center;
+	color: var(--gray);
+}
+
+/* Negative indent first lines to make icon stick out */ 
+.jgrapes-osgi-upnpbrowser-view li p {
+    text-indent: -1.825em;
+    margin-left: 2em;
+    margin-bottom: 0;
+    display: inline-block;
+}
+ 
+.jgrapes-osgi-upnpbrowser-view li p > * {
+    text-indent: initial;
+}
+
+/* Remove default bullets and position toggle icons as replacements */
+
+.jgrapes-osgi-upnpbrowser-view ul {
+    list-style-type: none;
+    padding-left: 1.25em;
+}
+
+.jgrapes-osgi-upnpbrowser-view li {
+    position: relative;
+}
+
+.jgrapes-osgi-upnpbrowser-view .toggle-icon {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+	position: absolute;
+	left: -1.25em;
+	width: 1em;
+	text-align: right;
+	cursor: default;
+}
+
+/* Move nested lists to the left */
+.jgrapes-osgi-upnpbrowser-view p ul {
+	margin-left: -1.25em;
+}
+ 

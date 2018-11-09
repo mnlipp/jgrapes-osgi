@@ -1,0 +1,15 @@
+<ul>
+  <li v-for="device of devices">
+    <span v-if="isExpandable(device)" class="toggle-icon"
+      @click="toggle(device, $event)">&#xf0da;</span>
+    <span v-if="isExpanded(device)" class="toggle-icon"
+      @click="toggle(device, $event)">&#xf0d7;</span>
+    <p><img v-if="'iconUrl' in device" class="device-icon" 
+      v-bind:src="device.iconUrl">
+      <span v-else class="fas fa-plug device-icon"></span>
+      {{ device.friendlyName }}
+      <upnpbrowser-device-tree v-if="isExpanded(device)" 
+        :devices="device.childDevices"></upnpbrowser-device-tree>
+    </p>
+  </li>
+</ul>

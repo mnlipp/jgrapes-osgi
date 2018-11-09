@@ -24,8 +24,11 @@ import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -116,6 +119,8 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
         ResourceBundle resourceBundle = resourceBundle(channel.locale());
+        Reader deviceTemplate = new InputStreamReader(UPnPBrowserPortlet.class
+            .getResourceAsStream("device-tree-template.html"));
         // Add portlet resources to page
         channel.respond(new AddPortletType(type())
             .setDisplayName(resourceBundle.getString("portletName"))
@@ -123,6 +128,11 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 .setRequires(new String[] { "vuejs.org" })
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "UPnPBrowser-functions.ftl.js")))
+            .addScript(
+                new ScriptResource()
+                    .setScriptId("upnpbrowser-device-tree-template")
+                    .setScriptType("text/x-template")
+                    .loadScriptSource(deviceTemplate))
             .addCss(event.renderSupport(),
                 PortalUtils.uriFromPath("UPnPBrowser-style.css"))
             .setInstantiable());
@@ -183,7 +193,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
     }
 
     @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
-        "PMD.DataflowAnomalyAnalysis" })
+        "PMD.DataflowAnomalyAnalysis", "unchecked" })
     private void renderPortlet(RenderPortletRequestBase<?> event,
             PortalSession channel,
             UPnPBrowserModel portletModel) throws TemplateNotFoundException,
@@ -199,12 +209,9 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 tpl, fmModel(event, channel, portletModel))
                     .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            @SuppressWarnings("unchecked")
             List<Map<String, Object>> deviceInfos = Arrays.stream(
-                context.getAllServiceReferences(null,
-                    "(&" + "(" + Constants.OBJECTCLASS
-                        + "=" + UPnPDevice.class.getName() + ")"
-                        + "(!(" + UPnPDevice.PARENT_UDN + "=*)" + "))"))
+                context.getAllServiceReferences(UPnPDevice.class.getName(),
+                    "(!(" + UPnPDevice.PARENT_UDN + "=*))"))
                 .map(svc -> createDeviceInfo(context,
                     (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .collect(Collectors.toList());
@@ -221,16 +228,17 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                 tpl, fmModel(event, channel, portletModel))
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            @SuppressWarnings("unchecked")
-            List<Map<String, Object>> deviceInfos = Arrays.stream(
-                context.getAllServiceReferences(UPnPDevice.class.toString(),
-                    null))
+            @SuppressWarnings("PMD.UseConcurrentHashMap")
+            Map<String, Map<String, Object>> deviceInfos = new HashMap<>();
+            Arrays.stream(context
+                .getAllServiceReferences(UPnPDevice.class.getName(), null))
                 .map(svc -> createDeviceInfo(context,
                     (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
-                .collect(Collectors.toList());
+                .forEach(devInfo -> deviceInfos.put((String) devInfo.get("udn"),
+                    devInfo));
             channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "deviceUpdates", deviceInfos,
-                "view", true));
+                portletModel.getPortletId(), "deviceUpdates",
+                treeify(deviceInfos), "view", true));
             break;
         }
         default:
@@ -238,7 +246,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
         }
     }
 
-    @SuppressWarnings({ "PMD.NcssCount" })
+    @SuppressWarnings({ "PMD.NcssCount", "PMD.AvoidDuplicateLiterals" })
     private Map<String, Object> createDeviceInfo(BundleContext context,
             ServiceReference<UPnPDevice> deviceRef,
             RenderSupport renderSupport) {
@@ -249,6 +257,9 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
         try {
             @SuppressWarnings("PMD.UseConcurrentHashMap")
             Map<String, Object> result = new HashMap<>();
+            result.put("udn", (String) deviceRef.getProperty(UPnPDevice.UDN));
+            result.computeIfAbsent("parentUdn",
+                k -> (String) deviceRef.getProperty(UPnPDevice.PARENT_UDN));
             result.put("friendlyName",
                 deviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));
             if (device.getIcons(null) != null) {
@@ -262,6 +273,22 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
         } finally {
             context.ungetService(deviceRef);
         }
+    }
+
+    @SuppressWarnings({ "unchecked", "PMD.AvoidInstantiatingObjectsInLoops" })
+    private List<Map<String, Object>>
+            treeify(Map<String, Map<String, Object>> deviceInfos) {
+        for (Map.Entry<String, Map<String, Object>> e : deviceInfos
+            .entrySet()) {
+            Optional.ofNullable(e.getValue().get("parentUdn")).ifPresent(
+                parentUdn -> ((List<Map<String, Object>>) deviceInfos
+                    .get(parentUdn).computeIfAbsent("childDevices",
+                        k -> new ArrayList<Map<String, Object>>()))
+                            .add(e.getValue()));
+        }
+        return deviceInfos.values().stream()
+            .filter(deviceInfo -> !deviceInfo.containsKey("parentUdn"))
+            .collect(Collectors.toList());
     }
 
     @Override
