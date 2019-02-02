@@ -19,5 +19,5 @@
 /**
  *
  */
-@org.osgi.annotation.versioning.Version("0.9.0")
+@org.osgi.annotation.versioning.Version("${api_version}")
 package org.jgrapes.osgi.core;
