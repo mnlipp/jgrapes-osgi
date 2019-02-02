@@ -24,7 +24,7 @@ that can be used as OSGi bundles but do not depend on the OSGi framework.
 Building
 --------
 
-The project is organized as `bnd` 
+The project is organized as a `bnd` 
 [workspace build](https://github.com/bndtools/bnd/blob/master/biz.aQute.bnd.gradle/README.md#gradle-plugins-for-bnd-workspace-builds).
 The bundles can 
 be built with `gradle build`. For working with the project in Eclipse 
