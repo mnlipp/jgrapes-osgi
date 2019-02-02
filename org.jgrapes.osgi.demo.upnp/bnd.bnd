@@ -2,7 +2,7 @@ Bundle-Name: JGrapes OSGi UPnP Demo
 Bundle-SymbolicName: org.jgrapes.osgi.demo.upnp
 Bundle-Version: 0.0.4.-${tstamp}-SNAPSHOT
 Bundle-Copyright: Michael N. Lipp (c) 2017
-Bundle-License: http://www.gnu.org/licenses/gpl-3.0.txt
+Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Bundle-Activator: org.jgrapes.osgi.demo.upnp.Application
 Private-Package: org.jgrapes.osgi.demo.upnp
 
