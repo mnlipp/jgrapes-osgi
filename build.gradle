@@ -31,12 +31,15 @@ if (System.properties['org.ajoberstar.grgit.auth.username'] == null) {
 allprojects {
     repositories {
         jcenter()
+        // My packages, until linked
+        maven { url 'https://dl.bintray.com/mnlipp/forge/' }
+        
         mavenCentral()
         // Sometimes, synchronization with central is too slow
         maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
         // Snapshots
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        // Experimental, not sure if this is the way tpo go...
+        // Experimental, not sure if this is the way to go...
         maven { url 'https://jitpack.io' }
     }
 	
