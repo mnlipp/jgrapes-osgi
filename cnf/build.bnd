@@ -13,18 +13,10 @@ bundleVersionQualifier: ga
 -plugin.2.Bintray: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
         name="Bintray"; \
-        snapshotUrls="https://oss.jfrog.org/artifactory/jcenter-cache/"; \
+        snapshotUrls="https://oss.jfrog.org/oss-snapshot-local/"; \
         releaseUrls="https://dl.bintray.com/mnlipp/forge,https://http://dl.bintray.com/bintray/jcenter/"; \
-        revision="de.mnl.osgi:de.mnl.osgi.jul2osgi.lib:1.0.0, \
-            de.mnl.osgi:de.mnl.osgi.jul2osgi:1.0.0"
-
--plugin.3.JitPack: \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name="JitPack (POM)"; \
-        snapshotUrls="https://jitpack.io/,https://oss.sonatype.org/content/repositories/snapshots/"; \
-        releaseUrls="https://jitpack.io/,https://repo1.maven.org/maven2/"; \
-        pom=${build}/jitpack.pom; \
-        location=${build}/cache/jitpack-pom.xml
+        revision="de.mnl.osgi:de.mnl.osgi.jul2osgi.lib:1.1.0, \
+            de.mnl.osgi:de.mnl.osgi.jul2osgi:1.1.0"
 
 -plugin.4.OSGi: \
     aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
@@ -54,6 +46,34 @@ bundleVersionQualifier: ga
             a=org.jgrapes.portlets.sysinfo,\
             a=org.jgrapes.portlets.markdowndisplay"; \
         searchBreadth="2"
+
+-plugin.7.MnlOSGi: \
+    de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
+        path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.16.jar,\
+            ${workspace}/cnf/plugins/biz.aQute.repository-4.0.0.jar"; \
+        name="Mnl OSGi"; \
+        server="https://oss.sonatype.org"; \
+        query="g=de.mnl.osgi"; \
+        searchBreadth="2"
+
+#-plugin.3.JitPack: \
+#    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+#        name="JitPack (POM)"; \
+#        snapshotUrls="https://jitpack.io/,https://oss.sonatype.org/content/repositories/snapshots/"; \
+#        releaseUrls="https://jitpack.io/,https://repo1.maven.org/maven2/"; \
+#        pom=${build}/jitpack.pom; \
+#        location=${build}/cache/jitpack-pom.xml
+
+#-plugin.8.MavenLocal: \
+#    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+#        index=${.}/local.mvn; \
+#        name="MavenLocal"
+        
+#-plugin.7.Local: \
+#    aQute.bnd.deployer.repository.LocalIndexedRepo; \
+#        name = Local; \
+#        pretty = true; \
+#        local = ${build}/local
 
 -baselinerepo: JGrapes
 -baseline: *
