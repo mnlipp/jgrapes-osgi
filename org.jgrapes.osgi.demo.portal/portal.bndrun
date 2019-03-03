@@ -83,9 +83,8 @@
     bnd.identity; id=org.jgrapes.osgi.demo.portal; version='latest'
 	
 # - SLF4J 1.8 is still alpha and backward compatibility is unclear
-# - For some unknown reason, the resolver adds slf4j.smple although
-#   its import of "org.slf4j.impl;version=1.6.0" is satisfied by
-#   de.mnl.osgi.slf4j2osgi.
+# - Make sure that the import "org.slf4j.impl;version=1.6.0" is only 
+#   satisfied by de.mnl.osgi.slf4j2osgi.
 # - no deprecated portal component versions
 -runblacklist: \
     osgi.identity;filter:='(&(osgi.identity=slf4j.api)(version>=1.8.0))',\
