@@ -64,7 +64,7 @@
     bnd.identity; id=de.mnl.osgi.log4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.slf4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.osgi2jul; version='latest',\
-    bnd.identity; id=org.apache.felix.scr; version='[2.0.8,3)',\
+    bnd.identity; id=org.apache.felix.scr; version='[2.0.12,3)',\
     bnd.identity; id=org.apache.felix.configadmin; version='latest',\
     bnd.identity; id=org.apache.felix.gogo.shell; version='latest',\
     bnd.identity; id=org.apache.felix.gogo.command; version='latest',\
