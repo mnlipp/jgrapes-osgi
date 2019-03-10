@@ -6,16 +6,20 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.bundling.Jar
 
 class ConfigurePublishing implements Plugin<Project> {
-	
-	void apply(Project project) {
 
-		project.extensions.create("configurePublishing", ConfigurePublishingExtension)
+    void apply(Project project) {
 
-		project.publishing {
-			publications {
-				maven(MavenPublication) {
+        project.extensions.create("configurePublishing", ConfigurePublishingExtension)
+
+        project.publishing {
+            publications {
+                maven(MavenPublication) {
                     from project.components.java
-                    project.afterEvaluate {  
+
+                    // Make available in closure below
+                    def publication = it
+
+                    project.afterEvaluate {
                         artifactId = project.archivesBaseName
                         artifact(project.tasks.sourcesJar) {
                             classifier = 'sources'
@@ -24,7 +28,7 @@ class ConfigurePublishing implements Plugin<Project> {
                             classifier = 'javadoc'
                         }
                         pom.packaging = "jar"
-					
+
                         // Until https://github.com/gradle/gradle/issues/1232 is fixed:
                         pom.withXml {
                             // Generate map of resolved versions
@@ -66,15 +70,46 @@ class ConfigurePublishing implements Plugin<Project> {
                             }
                         }
                         pom.withXml(project.configurePublishing.withPomXml)
+
+                        // Depend on jar built by bnd
+                        def jarFile = project.components.java.artifacts.first().file
+                        def pomTask = project.tasks.generatePomFileForMavenPublication
+                        def jarTask = project.tasks.jar
+                        pomTask.dependsOn(jarTask)
+
+                        // Continue "configuring" with information from bnd
+                        // after jar jas been built.
+                        pomTask.doFirst {
+                            def jarFiles = project.zipTree(jarFile)
+                            def pomFiles = jarFiles.matching {
+                                include "META-INF/maven/**/pom.xml" }.files
+                            if (pomFiles) {
+                                def top = new XmlParser().parse(pomFiles.first())
+                                pom.withXml { mergeDependencyInfo(it.asNode(), top) }
+                            }
+
+                        }
                     }
                 }
             }
-		}
-        
+        }
+
         if (project.hasProperty("signing.keyId")) {
             project.signing.sign(project.publishing.publications.maven)
         }
 
-	}
+    }
+
+    void mergeDependencyInfo(Node target, Node source) {
+        if (!source.dependencies) {
+            return;
+        }
+        if (!target.dependencies) {
+            target.appendNode('dependencies')
+        }
+        source.dependencies.first().each {
+            target.dependencies*.append(it)
+        }
+    }
 
 }

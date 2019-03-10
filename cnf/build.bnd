@@ -96,9 +96,6 @@ bundleVersionQualifier: ga
 #        pretty = true; \
 #        local = ${build}/local
 
--baselinerepo: JGrapes
--baseline: *
-
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
 
@@ -113,6 +110,11 @@ artifact_version: ${versionmask;===s;${Bundle-Version}}
 
 bin=bin/main
 testbin=bin/test
+
+-pom: true
+
+-baselinerepo: JGrapes
+-baseline: *
 
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
