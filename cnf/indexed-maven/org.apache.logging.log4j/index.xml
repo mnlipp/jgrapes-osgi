@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752584">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="org.apache.logging.log4j.api"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="documentation" value="https://www.apache.org/"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.apache.logging.log4j.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.apache.logging.log4j.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j.message,org.apache.logging.log4j.spi,org.apache.logging.log4j.util"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j.util"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.message"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j,org.apache.logging.log4j.message,org.apache.logging.log4j.spi,org.apache.logging.log4j.util"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.simple"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j,org.apache.logging.log4j.message,org.apache.logging.log4j.util"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j,org.apache.logging.log4j.message,org.apache.logging.log4j.spi"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.status"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.logging.log4j.message,org.apache.logging.log4j.spi,org.osgi.framework"/>
+      <attribute name="version" value="2.11.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.logging.log4j.util"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="266283" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="09B8CE1740491DEEFDB3C336855822B64609B457C2966D806348456C0DA261D2"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.logging.log4j:log4j-api:2.11.2"/>
+      <attribute name="from" value="org.apache.logging.log4j:log4j-api:2.11.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j.message))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j.simple))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j.spi))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j.status))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.logging.log4j.util))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.6.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=sun.reflect))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
+  </resource>
+</repository>

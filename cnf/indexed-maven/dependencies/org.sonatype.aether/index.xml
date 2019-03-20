@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752611">
+  <resource>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="89666" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/sonatype/aether/aether-api/1.13.1/aether-api-1.13.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="AE8DC80232771F8913FEBFA410C5719E9BA8DED81FB99788E214FD676DBBE13F"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.sonatype.aether:aether-api:1.13.1"/>
+      <attribute name="from" value="org.sonatype.aether:aether-api:1.13.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+  </resource>
+</repository>

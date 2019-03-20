@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752756">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache License, Version 2.0; see: http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="org.freemarker.freemarker"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.freemarker.freemarker"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.freemarker.freemarker"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,org.jaxen,freemarker.template.utility,freemarker.log,org.jaxen.dom4j,org.dom4j,org.dom4j.tree,org.jaxen.dom,org.w3c.dom,org.jaxen.jdom,org.jdom.output,org.jdom"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template.utility,freemarker.core,freemarker.template,freemarker.log,javax.servlet"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.cache"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,freemarker.debug.impl,freemarker.template.utility"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.debug"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,freemarker.ext.beans,freemarker.ext.util,org.w3c.dom,org.python.core,org.python.util,freemarker.log,freemarker.ext.dom"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.template.utility"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,freemarker.core,freemarker.template.utility,freemarker.ext.util,freemarker.log,org.zeroturnaround.javarebel"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.beans"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.log,freemarker.debug,freemarker.template.utility,freemarker.core,freemarker.template,freemarker.cache,javax.swing.tree"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.debug.impl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,org.w3c.dom,freemarker.template,org.jaxen,freemarker.template.utility,org.jaxen.dom,org.xml.sax,javax.xml.parsers,freemarker.log,freemarker.ext.util,com.sun.org.apache.xml.internal.utils,com.sun.org.apache.xpath.internal.objects,com.sun.org.apache.xpath.internal,javax.xml.transform,org.w3c.dom.traversal,org.apache.xml.utils,org.apache.xpath,org.apache.xpath.objects"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.cache,freemarker.template.utility,freemarker.log,freemarker.ext.util,freemarker.ext.beans,org.w3c.dom,freemarker.ext.dom,javax.swing.tree,freemarker.debug.impl"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.template"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.commons.logging,org.slf4j,org.slf4j.spi,org.apache.log,org.apache.log4j"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.log"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,org.jdom,org.jdom.output,org.jaxen,org.jaxen.jdom,org.jdom.input"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.jdom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,freemarker.template.utility,freemarker.ext.beans,freemarker.ext.dom,freemarker.debug.impl,freemarker.cache,freemarker.log,javax.swing.tree,javax.swing,freemarker.ext.util"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.python.core,freemarker.template,freemarker.ext.util,freemarker.ext.beans,freemarker.template.utility"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.jython"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.w3c.dom,freemarker.ext.xml,freemarker.template.utility,freemarker.ext.dom,freemarker.template,javax.xml.parsers,freemarker.core,org.apache.tools.ant.taskdefs,org.xml.sax,org.apache.tools.ant,org.python.util"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.ant"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.ext.beans,freemarker.template,freemarker.template.utility,javax.servlet,javax.servlet.http,freemarker.log,javax.el,javax.servlet.jsp.el,javax.servlet.jsp,javax.servlet.jsp.tagext,freemarker.ext.servlet,freemarker.ext.util,org.xml.sax,org.xml.sax.helpers,javax.xml.parsers"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.jsp"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.ext.beans,org.mozilla.javascript,freemarker.template,freemarker.ext.util,freemarker.template.utility"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.rhino"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet,javax.servlet.http,freemarker.template,freemarker.template.utility,freemarker.cache,freemarker.log,freemarker.core,freemarker.ext.jsp"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template"/>
+      <attribute name="version" value="2.3.28.stable" type="Version"/>
+      <attribute name="osgi.wiring.package" value="freemarker.ext.util"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="1524587" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.28/freemarker-2.3.28.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="DE92D103D3A86C2287307218FF50DC1C941DE283F7B9E1FB23E93FC7220838BF"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.freemarker:freemarker:2.3.28"/>
+      <attribute name="from" value="org.freemarker:freemarker:2.3.28"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.org.apache.xml.internal.utils))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.org.apache.xpath.internal))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.org.apache.xpath.internal.objects))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.el))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.jsp))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.jsp.el))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.jsp.tagext))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.swing))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.swing.tree))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.xml.parsers))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.xml.transform))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.commons.logging))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.log))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.log4j))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.tools.ant))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.tools.ant.taskdefs))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.xml.utils))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.xpath))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.apache.xpath.objects))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.dom4j))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.dom4j.tree))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jaxen))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jaxen.dom))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jaxen.dom4j))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jaxen.jdom))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdom))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdom.input))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdom.output))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.mozilla.javascript))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.python.core))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.python.util))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j.spi))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.w3c.dom))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.w3c.dom.traversal))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.xml.sax))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.xml.sax.helpers))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.zeroturnaround.javarebel))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+</repository>

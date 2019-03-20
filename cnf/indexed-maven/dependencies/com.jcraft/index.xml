@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752710">
+  <resource>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="122011" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/com/jcraft/jsch/0.1.27/jsch-0.1.27.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="C813B291CEFF6572EE3B75307F95BC95B11046AC8696D5CC0EC5A0309F635244"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.jcraft:jsch:0.1.27"/>
+      <attribute name="from" value="com.jcraft:jsch:0.1.27"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="com.jcraft:jzlib:1.0.7"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="48521" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/com/jcraft/jzlib/1.0.7/jzlib-1.0.7.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="16BD0E082C12BE28A76FF26E356219246CD57BEF5290E50045E75A3CFB12081C"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.jcraft:jzlib:1.0.7"/>
+      <attribute name="from" value="com.jcraft:jzlib:1.0.7"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+  </resource>
+</repository>

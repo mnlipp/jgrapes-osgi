@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752613">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/lgpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jdrupes.httpcodec"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.0.1.rel" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.0.1.rel" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jdrupes.httpcodec"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.0.1.rel" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jdrupes.httpcodec"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http"/>
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.plugin"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.types"/>
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.protocols.http"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http"/>
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.protocols.http.client"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http"/>
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.protocols.http.server"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.plugin,org.jdrupes.httpcodec.protocols.http"/>
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.protocols.websocket"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.types"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.0.0.201810111921" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jdrupes.httpcodec.util"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="org.jdrupes.httpcodec.plugin.UpgradeProvider"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="307755" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jdrupes/httpcodec/httpcodec/2.0.1/httpcodec-2.0.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="A31DD8296A496C72FF0E2CA0E25338D2E8D2E9D72C613F8810186AD7187462F2"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jdrupes.httpcodec:httpcodec:2.0.1"/>
+      <attribute name="from" value="org.jdrupes.httpcodec:httpcodec:2.0.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="com.sun.activation:javax.activation:1.2.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.activation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.plugin)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.types)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.util)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.processor)"/>
+    </requirement>
+    <requirement namespace="osgi.serviceloader">
+      <directive name="filter" value="(osgi.serviceloader=org.jdrupes.httpcodec.plugin.UpgradeProvider)"/>
+      <directive name="cardinality" value="multiple"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+</repository>

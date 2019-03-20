@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752606">
+  <resource>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="87776" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/commons/commons-io/1.3.2/commons-io-1.3.2.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="551C13E49DAB32AEBDB7A70EC9C2767372E58864AE115EF389582E548CFFEE38"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.commons:commons-io:1.3.2"/>
+      <attribute name="from" value="org.apache.commons:commons-io:1.3.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+  </resource>
+</repository>

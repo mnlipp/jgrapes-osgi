@@ -3,27 +3,13 @@
 bundleVersionQualifier: ga
 
 # Configure Repositories
--plugin.1.CentralMvn: \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name="Central (Maven)"; \
-        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
-        releaseUrls=https://repo1.maven.org/maven2; \
-        revision='javax.json:javax.json-api:1.1, \
-            org.glassfish:javax.json:1.1, \
-            javax.annotation:javax.annotation-api:1.3.1, \
-            org.apache.aries:org.apache.aries.util:1.0.0, \
-            org.apache.aries:org.apache.aries.util:1.1.3,\
-            org.apache.aries.spifly:org.apache.aries.spifly.dynamic.bundle:1.0.12, \
-            org.ow2.asm:asm-all:5.2, \
-            org.ow2.asm:asm:6.2, \
-            org.ow2.asm:asm-commons:6.2, \
-            org.ow2.asm:asm-tree:6.2, \
-            org.apache.servicemix.bundles:org.apache.servicemix.bundles.junit:4.12_1, \
-            org.freemarker:freemarker:2.3.27-incubating, \
-            org.apache.felix:org.apache.felix.framework:5.6.10, \
-            org.slf4j:slf4j-api:1.7.13, \
-            org.apache.logging.log4j:log4j-api:2.11.2, \
-            org.apache.logging.log4j:log4j-core:2.11.2'
+-plugin.1.IndexedMaven: \
+    de.mnl.osgi.bnd.repository.maven.provider.IndexedMavenRepositoryProvider; \
+        path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.18.jar,\
+            ${workspace}/cnf/plugins/biz.aQute.repository-4.2.0.jar"; \
+        name=IndexedMaven; \
+        location=cnf/indexed-maven; \
+        releaseUrls="https://repo.maven.apache.org/maven2/"
 
 -plugin.2.Local: \
     aQute.bnd.deployer.repository.LocalIndexedRepo; \
@@ -31,51 +17,28 @@ bundleVersionQualifier: ga
         pretty = true; \
         local = ${build}/local
 
--plugin.3.Bintray: \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name="Bintray"; \
-        snapshotUrls="https://oss.jfrog.org/oss-snapshot-local/"; \
-        releaseUrls="https://dl.bintray.com/mnlipp/forge,https://http://dl.bintray.com/bintray/jcenter/"; \
-        revision="de.mnl.osgi:de.mnl.osgi.jul2osgi.lib:1.1.0, \
-            de.mnl.osgi:de.mnl.osgi.jul2osgi:1.1.0"
+#-plugin.5.Felix: \
+#    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+#        name=Felix; \
+#        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+#        releaseUrls=https://repo1.maven.org/maven2; \
+#        query='q=g:%22org.apache.felix%22%20OR%20g:%22org.apache.felix.gogo%22&rows=5000'
 
--plugin.4.OSGi: \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name=OSGi; \
-    	snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
-        releaseUrls=https://repo1.maven.org/maven2; \
-        query='q=g:%22org.osgi%22&rows=10000'
-
--plugin.5.Felix: \
-    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
-        name=Felix; \
-        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
-        releaseUrls=https://repo1.maven.org/maven2; \
-        query='q=g:%22org.apache.felix%22%20OR%20g:%22org.apache.felix.gogo%22&rows=5000'
-
--plugin.6.JGrapes: \
-    de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.16.jar,\
-            ${workspace}/cnf/plugins/biz.aQute.repository-4.0.0.jar"; \
-        name=JGrapes; \
-        server="https://oss.sonatype.org"; \
-        query="a=org.jgrapes.portal.bootstrap4,\
-            a=org.jgrapes.portal.jqueryui,\
-            a=org.jgrapes.portal.providers.vuejs,\
-            a=org.jgrapes.portal.providers.chartjs,\
-            a=org.jgrapes.portal.providers.markdownit,\
-            a=org.jgrapes.portlets.sysinfo,\
-            a=org.jgrapes.portlets.markdowndisplay"; \
-        searchBreadth="2"
-
--plugin.7.MnlOSGi: \
-    de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-        path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.16.jar,\
-            ${workspace}/cnf/plugins/biz.aQute.repository-4.0.0.jar"; \
-        name="Mnl OSGi"; \
-        server="https://oss.sonatype.org"; \
-        query="g=de.mnl.osgi"; \
-        searchBreadth="2"
+# Replaced!
+#-plugin.6.JGrapes: \
+#    de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
+#		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-0.0.18.jar,\
+#            ${workspace}/cnf/plugins/biz.aQute.repository-4.2.0.jar"; \
+#        name=JGrapes; \
+#        server="https://oss.sonatype.org"; \
+#        query="a=org.jgrapes.portal.bootstrap4,\
+#            a=org.jgrapes.portal.jqueryui,\
+#            a=org.jgrapes.portal.providers.vuejs,\
+#            a=org.jgrapes.portal.providers.chartjs,\
+#            a=org.jgrapes.portal.providers.markdownit,\
+#            a=org.jgrapes.portlets.sysinfo,\
+#            a=org.jgrapes.portlets.markdowndisplay"; \
+#        searchBreadth="2"
 
 #-plugin.3.JitPack: \
 #    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
@@ -90,11 +53,6 @@ bundleVersionQualifier: ga
 #        index=${.}/local.mvn; \
 #        name="MavenLocal"
         
-#-plugin.7.Local: \
-#    aQute.bnd.deployer.repository.LocalIndexedRepo; \
-#        name = Local; \
-#        pretty = true; \
-#        local = ${build}/local
 
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
@@ -113,7 +71,7 @@ testbin=bin/test
 
 -pom: true
 
--baselinerepo: JGrapes
+#-baselinerepo: IndexedMaven
 -baseline: *
 
 -fixupmessages: \

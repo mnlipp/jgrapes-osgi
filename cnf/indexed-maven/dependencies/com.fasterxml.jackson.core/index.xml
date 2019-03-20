@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752618">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.core.jackson-core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="documentation" value="https://github.com/FasterXML/jackson-core"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="com.fasterxml.jackson.core.jackson-core"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.host" value="com.fasterxml.jackson.core.jackson-core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core.async,com.fasterxml.jackson.core.format,com.fasterxml.jackson.core.io,com.fasterxml.jackson.core.sym,com.fasterxml.jackson.core.type,com.fasterxml.jackson.core.util"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.async"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.io,com.fasterxml.jackson.core.json,com.fasterxml.jackson.core.util"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.base"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.util"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.filter"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.format"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.util"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.io"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.base,com.fasterxml.jackson.core.format,com.fasterxml.jackson.core.io,com.fasterxml.jackson.core.sym"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.json"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.async,com.fasterxml.jackson.core.base,com.fasterxml.jackson.core.io,com.fasterxml.jackson.core.sym"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.json.async"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.sym"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.type"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.core,com.fasterxml.jackson.core.io"/>
+      <attribute name="version" value="2.9.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.util"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="320923" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.9.4/jackson-core-2.9.4.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="66C2F96A70873328429C941A60F883173233F07A5E16E8B973D095FFC29F620C"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.fasterxml.jackson.core:jackson-core:2.9.4"/>
+      <attribute name="from" value="com.fasterxml.jackson.core:jackson-core:2.9.4"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
+</repository>
