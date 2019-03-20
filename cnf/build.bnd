@@ -71,7 +71,7 @@ testbin=bin/test
 
 -pom: true
 
-#-baselinerepo: IndexedMaven
+-baselinerepo: IndexedMaven
 -baseline: *
 
 -fixupmessages: \
