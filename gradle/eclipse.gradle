@@ -11,6 +11,21 @@ eclipse {
         }
         downloadJavadoc = true
         downloadSources = true
+        file {
+            whenMerged {
+                // Classpath is completely handled by bnd container above
+                entries.removeAll {
+                    it in org.gradle.plugins.ide.eclipse.model.Library
+                }
+                // Mark test source folders
+                entries.each {
+                    if (it in org.gradle.plugins.ide.eclipse.model.AbstractClasspathEntry &&
+                    it.entryAttributes['gradle_used_by_scope'] == 'test') {
+                        it.entryAttributes['test'] = true
+                    }
+                }
+            }
+        }
     }
     project {
         // buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
