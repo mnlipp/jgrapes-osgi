@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752638">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553294889355">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -208,48 +208,6 @@
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-      <attribute name="osgi.identity" value="net.bytebuddy.byte-buddy-agent"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.8.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.8.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="net.bytebuddy.byte-buddy-agent"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.8.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="net.bytebuddy.byte-buddy-agent"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="version" value="1.8.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="net.bytebuddy.agent"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="42924" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.8.0/byte-buddy-agent-1.8.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="CE02F5FCE024D51D4A117B3E413FC4A0A6977EB7723A1C87834A4093401C8893"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="net.bytebuddy:byte-buddy-agent:1.8.0"/>
-      <attribute name="from" value="net.bytebuddy:byte-buddy-agent:1.8.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.tools.attach))"/>
-      <directive name="resolution" value="optional"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.ibm.tools.attach))"/>
-      <directive name="resolution" value="optional"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
       <attribute name="osgi.identity" value="net.bytebuddy.byte-buddy"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="1.8.0" type="Version"/>
@@ -409,5 +367,47 @@
       <attribute name="from" value="net.bytebuddy:byte-buddy:1.8.0"/>
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="net.bytebuddy.byte-buddy-agent"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.8.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.8.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="net.bytebuddy.byte-buddy-agent"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.8.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="net.bytebuddy.byte-buddy-agent"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="1.8.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="net.bytebuddy.agent"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="42924" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.8.0/byte-buddy-agent-1.8.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="CE02F5FCE024D51D4A117B3E413FC4A0A6977EB7723A1C87834A4093401C8893"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="net.bytebuddy:byte-buddy-agent:1.8.0"/>
+      <attribute name="from" value="net.bytebuddy:byte-buddy-agent:1.8.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.tools.attach))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.ibm.tools.attach))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
   </resource>
 </repository>

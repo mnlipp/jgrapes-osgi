@@ -1,18 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752603">
-  <resource>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="189188" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/asm/asm-all/3.0/asm-all-3.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="EA234736827F1CE31926E024052FDC092932CC130E59C3216AA5BC314C796BB6"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="asm:asm-all:3.0"/>
-      <attribute name="from" value="asm:asm-all:3.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-  </resource>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553294889347">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.objectweb.asm.all"/>

@@ -1,18 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553094752647">
-  <resource>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="81133" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/easymock/easymock/2.4/easymock-2.4.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="7C48D8BA6E070409F65A45AFC4904824B7702598AB0BEC273CDD0CE6F4C2C64F"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.easymock:easymock:2.4"/>
-      <attribute name="from" value="org.easymock:easymock:2.4"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-  </resource>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553294889355">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
