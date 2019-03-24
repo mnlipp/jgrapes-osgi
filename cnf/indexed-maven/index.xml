@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<repository increment="1553294889549" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1553438312576" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
 <referral url="org.jgrapes/index.xml"/>
+<referral url="org.json/index.xml"/>
 <referral url="dependencies/biz.aQute.bnd/index.xml"/>
 <referral url="dependencies/org.mockito/index.xml"/>
 <referral url="dependencies/com.sun.activation/index.xml"/>
@@ -20,17 +21,13 @@
 <referral url="dependencies/commons-io/index.xml"/>
 <referral url="dependencies/org.apache.aries/index.xml"/>
 <referral url="dependencies/org.jdrupes.json/index.xml"/>
-<referral url="dependencies/org.fusesource.jansi/index.xml"/>
 <referral url="org.apache.aries.spifly/index.xml"/>
+<referral url="dependencies/org.fusesource.jansi/index.xml"/>
 <referral url="dependencies/net.bytebuddy/index.xml"/>
-<referral url="dependencies/org.easymock/index.xml"/>
 <referral url="dependencies/biz.aQute/index.xml"/>
 <referral url="dependencies/commons-fileupload/index.xml"/>
 <referral url="dependencies/org.eclipse.jetty/index.xml"/>
 <referral url="de.mnl.osgi/index.xml"/>
-<referral url="dependencies/org.jline/index.xml"/>
-<referral url="dependencies/org.codehaus.woodstox/index.xml"/>
-<referral url="dependencies/de.twentyeleven.skysail/index.xml"/>
 <referral url="dependencies/org.eclipse.jetty.websocket/index.xml"/>
 <referral url="dependencies/org.freemarker/index.xml"/>
 </repository>
