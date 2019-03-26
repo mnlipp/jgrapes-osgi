@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553285201472">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553630911533">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -51,7 +51,7 @@
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm-debug-all:5.0.3,org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.12,org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.12"/>
+      <attribute name="compile" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.12;org.ow2.asm:asm-debug-all:5.0.3;org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.12"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(&amp;(version&gt;=5.0.0)(!(version&gt;=7.0.0))))"/>
@@ -133,7 +133,7 @@
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm-debug-all:5.0.3,org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.14,org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.14"/>
+      <attribute name="compile" value="org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.14;org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.14;org.ow2.asm:asm-debug-all:5.0.3"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(&amp;(version&gt;=5.0.0)(!(version&gt;=7.0.0))))"/>
@@ -212,7 +212,7 @@
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm:7.0,org.ow2.asm:asm-commons:7.0,org.ow2.asm:asm-util:7.0"/>
+      <attribute name="compile" value="org.ow2.asm:asm-commons:7.0;org.ow2.asm:asm:7.0;org.ow2.asm:asm-util:7.0"/>
       <attribute name="runtime" value="org.apache.felix:org.apache.felix.framework:6.0.1"/>
     </capability>
     <requirement namespace="osgi.wiring.package">

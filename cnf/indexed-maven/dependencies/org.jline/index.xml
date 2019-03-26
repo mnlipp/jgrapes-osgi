@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553449391382">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553630911595">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.opensource.org/licenses/bsd-license.php"/>
@@ -111,7 +111,7 @@
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="com.googlecode.juniversalchardet:juniversalchardet:1.0.3,net.java.dev.jna:jna:4.2.2,org.fusesource.jansi:jansi:1.14"/>
+      <attribute name="compile" value="com.googlecode.juniversalchardet:juniversalchardet:1.0.3;org.fusesource.jansi:jansi:1.14;net.java.dev.jna:jna:4.2.2"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=com.sun.jna))"/>
