@@ -85,6 +85,7 @@
     osgi.identity;filter:='(&(osgi.identity=slf4j.api)(version>=1.8.0))',\
     osgi.identity;filter:='(osgi.identity=slf4j.simple)',\
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
+    osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.chartjs)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.datatables)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)'
