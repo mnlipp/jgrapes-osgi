@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553630911533">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555276410097">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -82,6 +82,38 @@
     </requirement>
   </resource>
   <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.12"/>
+      <attribute name="from" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.12"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="47665" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.core-internal/1.0.12/org.apache.aries.spifly.core-internal-1.0.12.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="37B61BDD2C026464332F5934C59A56AE0658B49D96E0C9A75B097F2555FD841E"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.apache.aries:org.apache.aries.util:1.0.0"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.12"/>
+      <attribute name="from" value="org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.12"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="12988" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.weaver-internal/1.0.12/org.apache.aries.spifly.weaver-internal-1.0.12.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="A6C91AC5CBCD87B1CD91551646846051B2DBE87439B8A07931B0D2BB0BDA039B"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.12"/>
+    </capability>
+  </resource>
+  <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
       <attribute name="osgi.identity" value="org.apache.aries.spifly.dynamic.bundle"/>
@@ -159,6 +191,38 @@
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.14"/>
+      <attribute name="from" value="org.apache.aries.spifly:org.apache.aries.spifly.weaver-internal:1.0.14"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13108" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.weaver-internal/1.0.14/org.apache.aries.spifly.weaver-internal-1.0.14.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="94A4A601DCE2F351B929BFBFBBACD3801813C7B1509F719AF27576161A2549D5"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.14"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.14"/>
+      <attribute name="from" value="org.apache.aries.spifly:org.apache.aries.spifly.core-internal:1.0.14"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="48222" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.core-internal/1.0.14/org.apache.aries.spifly.core-internal-1.0.14.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="85740FB2407C4F315EBD855D85AB2BF6F6544E5E5EA839D2ED0A524E31151C2A"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.apache.aries:org.apache.aries.util:1.0.0"/>
+    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
