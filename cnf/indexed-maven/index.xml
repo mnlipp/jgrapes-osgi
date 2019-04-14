@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<repository increment="1554804835210" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1555266980303" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
 <referral url="org.jgrapes/index.xml"/>
 <referral url="org.json/index.xml"/>
 <referral url="dependencies/biz.aQute.bnd/index.xml"/>
-<referral url="dependencies/com.google.code.findbugs/index.xml"/>
 <referral url="dependencies/org.mockito/index.xml"/>
 <referral url="dependencies/com.sun.activation/index.xml"/>
 <referral url="org.osgi/index.xml"/>
 <referral url="dependencies/org.objenesis/index.xml"/>
-<referral url="dependencies/commons-codec/index.xml"/>
 <referral url="org.apache.logging.log4j/index.xml"/>
+<referral url="dependencies/commons-codec/index.xml"/>
+<referral url="dependencies/org.eclipse.aether/index.xml"/>
 <referral url="org.apache.felix/index.xml"/>
 <referral url="dependencies/org.ow2.asm/index.xml"/>
 <referral url="dependencies/javax.servlet/index.xml"/>
