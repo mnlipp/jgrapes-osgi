@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1553630911527">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555441416817">
   <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.slf4j:slf4j-api:1.7.25"/>
+      <attribute name="from" value="org.slf4j:slf4j-api:1.7.25"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="slf4j.api"/>
       <attribute name="type" value="osgi.bundle"/>
@@ -35,11 +40,6 @@
       <attribute name="url" value="https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="18C4A0095D5C1DA6B817592E767BB23D29DD2F560AD74DF75FF3961DBDE25B79"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.slf4j:slf4j-api:1.7.25"/>
-      <attribute name="from" value="org.slf4j:slf4j-api:1.7.25"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j.impl)(version&gt;=1.6.0))"/>
