@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555276410183">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555690136274">
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="junit:junit:4.12"/>
@@ -40,19 +40,6 @@
       <attribute name="url" value="https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="ECDCC08183708EA3F7B0DDC96F19678A0DB8AF1FB397791D484AED63200558B0"/>
-    </capability>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="junit:junit:3.7"/>
-      <attribute name="from" value="junit:junit:3.7"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="117522" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/junit/junit/3.7/junit-3.7.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="170D31297CD401B6338679F393900421E64D38B542538B549F3F1A0F26BCD848"/>
     </capability>
   </resource>
 </repository>

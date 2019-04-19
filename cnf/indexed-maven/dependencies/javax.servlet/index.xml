@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555276410083">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555690136278">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html"/>
@@ -61,19 +61,6 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="javax.servlet:servlet-api:2.3"/>
-      <attribute name="from" value="javax.servlet:servlet-api:2.3"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="77977" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="8478B902D0815ED066DB860FB14CC5D404548D4B6348AB930B46270FCDDEBA68"/>
-    </capability>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
       <attribute name="name" value="javax.servlet:servlet-api:2.5"/>
       <attribute name="from" value="javax.servlet:servlet-api:2.5"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -83,6 +70,78 @@
       <attribute name="url" value="https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="C658EA360A70FAEEADB66FB3C90A702E4142A0AB7768F9AE9828678E0D9AD4DC"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="javax.servlet:javax.servlet-api:3.0.1"/>
+      <attribute name="from" value="javax.servlet:javax.servlet-api:3.0.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html"/>
+      <attribute name="osgi.identity" value="javax.servlet-api"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="3.0.1" type="Version"/>
+      <attribute name="documentation" value="https://glassfish.dev.java.net"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="3.0.1" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="javax.servlet-api"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="3.0.1" type="Version"/>
+      <attribute name="osgi.wiring.host" value="javax.servlet-api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet.descriptor,javax.servlet.annotation"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.descriptor"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="85353" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="377D8BDE87AC6BC7F83F27DF8E02456D5870BB78C832DAC656CEACC28B016E56"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.0.0))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.annotation)(version&gt;=3.0.0))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.descriptor)(version&gt;=3.0.0))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.0.0))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="javax.servlet:servlet-api:2.3"/>
+      <attribute name="from" value="javax.servlet:servlet-api:2.3"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="77977" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="8478B902D0815ED066DB860FB14CC5D404548D4B6348AB930B46270FCDDEBA68"/>
     </capability>
   </resource>
   <resource>

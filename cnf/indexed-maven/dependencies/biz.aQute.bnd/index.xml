@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555270783409">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555691390987">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.opensource.org/licenses/apache2.0.php; description=&quot;Apache Software License 2.0&quot;; link=http://www.apache.org/licenses/LICENSE-2.0.html"/>
@@ -195,6 +195,11 @@
     </requirement>
   </resource>
   <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="biz.aQute.bnd:bndlib:2.3.0"/>
+      <attribute name="from" value="biz.aQute.bnd:bndlib:2.3.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.opensource.org/licenses/apache2.0.php; description=&quot;Apache Software License 2.0&quot;; link=http://www.apache.org/licenses/LICENSE-2.0.html"/>
       <attribute name="osgi.identity" value="biz.aQute.bndlib"/>
@@ -355,13 +360,8 @@
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="C7718BAC112AE1ABD4D999936D4DB85F42EFBD8CC36ABA4CC08DFA8BBA0BF3F7"/>
     </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="biz.aQute.bnd:bndlib:2.3.0"/>
-      <attribute name="from" value="biz.aQute.bnd:bndlib:2.3.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:org.osgi.core:4.3.1;org.osgi:org.osgi.compendium:4.3.1;junit:junit:3.8.2"/>
+      <attribute name="compile" value="org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=junit.framework)(&amp;(version&gt;=3.8.0)(!(version&gt;=4.0.0))))"/>
