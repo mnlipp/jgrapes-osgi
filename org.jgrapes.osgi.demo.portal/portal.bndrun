@@ -51,19 +51,16 @@
 	json;version='[20180813.0.0,20180813.0.1)',\
 	org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)'
 
-# The "trick" here is to request org.apache.felix.scr; version='[2.0.12,2.0.13)'
-# else it won't resolve. Blacklisting lower versions does not work!
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
     bnd.identity; id=de.mnl.osgi.jul2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.log4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.slf4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.osgi2jul; version='latest',\
-    bnd.identity; id=org.apache.felix.scr; version='[2.0.14,2.0.15)',\
-    bnd.identity; id=org.apache.felix.configadmin; version='[1.9.14,2)',\
+    bnd.identity; id=org.apache.felix.configadmin; version='latest',\
     bnd.identity; id=org.apache.felix.gogo.shell; version='latest',\
     bnd.identity; id=org.apache.felix.gogo.command; version='latest',\
-    bnd.identity; id=org.apache.felix.http.jetty; version='[4.0.8,5)',\
+    bnd.identity; id=org.apache.felix.http.jetty; version='latest',\
     bnd.identity; id=org.apache.felix.webconsole; version='latest',\
     bnd.identity; id=org.apache.felix.webconsole.plugins.memoryusage; version='latest',\
     bnd.identity; id=org.apache.felix.webconsole.plugins.useradmin; version='latest',\
@@ -86,7 +83,7 @@
     osgi.identity;filter:='(osgi.identity=slf4j.simple)',\
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
     osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
-    osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\    
+    osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.chartjs)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.datatables)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)'
