@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<repository increment="1555692621733" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1555946154305" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
 <referral url="org.jgrapes/index.xml"/>
 <referral url="org.slf4j/index.xml"/>
 <referral url="dependencies/org.jdrupes.httpcodec/index.xml"/>
@@ -14,8 +14,8 @@
 <referral url="dependencies/com.google.code.findbugs/index.xml"/>
 <referral url="dependencies/org.mockito/index.xml"/>
 <referral url="org.apache.aries.spifly/index.xml"/>
-<referral url="dependencies/org.cometd.java/index.xml"/>
 <referral url="dependencies/org.fusesource.jansi/index.xml"/>
+<referral url="dependencies/org.cometd.java/index.xml"/>
 <referral url="dependencies/com.sun.activation/index.xml"/>
 <referral url="dependencies/net.bytebuddy/index.xml"/>
 <referral url="dependencies/org.apache.tomcat/index.xml"/>
@@ -34,8 +34,8 @@
 <referral url="dependencies/org.apache.maven/index.xml"/>
 <referral url="dependencies/org.codehaus.mojo/index.xml"/>
 <referral url="org.apache.felix/index.xml"/>
-<referral url="dependencies/org.ow2.asm/index.xml"/>
 <referral url="dependencies/net.sf.kxml/index.xml"/>
+<referral url="dependencies/org.ow2.asm/index.xml"/>
 <referral url="dependencies/org.jetbrains/index.xml"/>
 <referral url="dependencies/com.google.dexmaker/index.xml"/>
 <referral url="dependencies/org.codehaus.woodstox/index.xml"/>
@@ -46,7 +46,7 @@
 <referral url="dependencies/javax.servlet/index.xml"/>
 <referral url="dependencies/org.eclipse.jetty.websocket/index.xml"/>
 <referral url="dependencies/it.cnr.isti.domoware.cyberdomo/index.xml"/>
-<referral url="dependencies/asm/index.xml"/>
 <referral url="dependencies/org.freemarker/index.xml"/>
+<referral url="dependencies/asm/index.xml"/>
 <referral url="dependencies/org.hamcrest/index.xml"/>
 </repository>
