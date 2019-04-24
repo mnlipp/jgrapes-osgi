@@ -46,13 +46,13 @@
 	org.apache.felix.configadmin;version='[1.9.14,1.9.15)',\
 	org.apache.felix.scr;version='[2.0.14,2.0.15)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.9.4,2.9.5)',\
-	json;version='[20180813.0.0,20180813.0.1)',\
 	org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)',\
 	org.jgrapes.osgi.demo.upnp;version=snapshot,\
 	org.apache.felix.webconsole.plugins.upnp;version='[1.0.6,1.0.7)',\
 	osgi.cmpn;version='[4.3.1,4.3.2)',\
 	org.apache.felix.upnp.basedriver;version='[0.8.0,0.8.1)',\
-	org.jgrapes.osgi.portlets.upnpbrowser;version=snapshot
+	org.jgrapes.osgi.portlets.upnpbrowser;version=snapshot,\
+	de.twentyeleven.skysail.org.json-osgi;version='[20080701.0.0,20080701.0.1)'
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
