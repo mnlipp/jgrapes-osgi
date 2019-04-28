@@ -134,8 +134,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
                     .setScriptType("text/x-template")
                     .loadScriptSource(deviceTemplate))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("UPnPBrowser-style.css"))
-            .setInstantiable());
+                PortalUtils.uriFromPath("UPnPBrowser-style.css")));
     }
 
     /*
@@ -199,7 +198,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
             UPnPBrowserModel portletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        switch (event.renderMode()) {
+        switch (event.preferredRenderMode()) {
         case Preview:
         case DeleteablePreview: {
             Template tpl = freemarkerConfig()

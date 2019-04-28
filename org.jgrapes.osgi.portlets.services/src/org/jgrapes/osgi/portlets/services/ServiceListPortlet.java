@@ -117,8 +117,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Services-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("Services-style.css"))
-            .setInstantiable());
+                PortalUtils.uriFromPath("Services-style.css")));
     }
 
     /*
@@ -180,7 +179,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
             ServiceListModel portletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        switch (event.renderMode()) {
+        switch (event.preferredRenderMode()) {
         case Preview:
         case DeleteablePreview: {
             Template tpl

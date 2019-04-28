@@ -123,8 +123,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
                 .setScriptUri(event.renderSupport().portletResource(
                     type(), "Bundles-functions.ftl.js")))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("Bundles-style.css"))
-            .setInstantiable());
+                PortalUtils.uriFromPath("Bundles-style.css")));
     }
 
     /*
@@ -199,7 +198,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
             PortalSession channel,
             BundleListModel portletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException {
-        switch (event.renderMode()) {
+        switch (event.preferredRenderMode()) {
         case Preview:
         case DeleteablePreview: {
             Template tpl
