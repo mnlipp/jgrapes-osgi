@@ -39,7 +39,7 @@
     bnd.identity; id=org.apache.felix.webconsole.plugins.memoryusage; version='latest',\
     bnd.identity; id=org.apache.felix.metatype; version='latest'
 
-# These cause (no longer working) webconsole 4.2.8 to be used (which fails):
+# These cause (no longer working) webconsole 4.2.8 to be used:
 #    bnd.identity; id=org.apache.felix.webconsole.plugins.obr; version='latest',\
 #    bnd.identity; id=org.apache.felix.webconsole.plugins.useradmin; version='latest'
 
