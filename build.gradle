@@ -3,7 +3,6 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url bnd_repourl }
-		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url 'https://jitpack.io' }
     }
     dependencies {
