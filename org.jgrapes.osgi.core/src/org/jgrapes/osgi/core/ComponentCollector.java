@@ -33,6 +33,8 @@ import org.jgrapes.core.Component;
 import org.jgrapes.core.ComponentFactory;
 import org.jgrapes.core.ComponentType;
 import org.jgrapes.core.Components;
+import org.jgrapes.core.Manager;
+import org.jgrapes.core.events.Stop;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
@@ -146,7 +148,9 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
             }
         }
         for (ComponentType item : toBeRemoved) {
-            Components.manager(item).detach();
+            Manager mgr = Components.manager(item);
+            mgr.detach();
+            mgr.activeEventPipeline().fire(new Stop());
         }
     }
 }
