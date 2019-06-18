@@ -12,7 +12,7 @@ api_version = 1.0.0.${tstamp}
 -buildpath: \
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
-	org.jgrapes.core;version='[1.0.2.ga,1.1)'
+	org.jgrapes.core;version='[1.1.1.ga,2)'
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \

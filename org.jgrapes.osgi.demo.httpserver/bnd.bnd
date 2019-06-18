@@ -9,9 +9,9 @@ Bundle-Activator: org.jgrapes.osgi.demo.httpserver.BasicServer
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
 	osgi.cmpn;version=6.0,\
-	org.jgrapes.core;version=latest,\
-	org.jgrapes.io;version=latest,\
-	org.jgrapes.http;version=latest,\
+	org.jgrapes.core;version='[1.1.1.ga,2)',\
+	org.jgrapes.io;version='[1.1.1.ga,2)',\
+	org.jgrapes.http;version='[1.1.1.ga,2)',\
     org.jgrapes.osgi.core;version=latest
 
 -includeresource: \
