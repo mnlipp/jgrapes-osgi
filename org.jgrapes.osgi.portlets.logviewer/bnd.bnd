@@ -1,0 +1,37 @@
+Bundle-Name: JGrapes OSGi Log Viewer
+Bundle-SymbolicName: org.jgrapes.osgi.portlets.logviewer
+Bundle-Version: 0.0.0.${bundleVersionQualifier}
+Bundle-Copyright: Michael N. Lipp (c) 2019
+Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
+Require-Capability: \
+    org.jgrapes.portal.page.resource;filter:="(name=vuejs.org)", \
+    org.jgrapes.portal.page.resource;filter:="(name=fontawesome.com)"
+Bundle-Category: portlet
+Private-Package: org.jgrapes.osgi.portlets.logviewer
+
+-sources: true
+-runee: JavaSE-1.8
+
+-includeresource: \
+	resources
+
+-baseline: *
+
+-buildpath: \
+	osgi.core;version=6.0.0,\
+	osgi.annotation;version=6.0.1,\
+    org.osgi.service.log;version='[1.4,2)',\
+    osgi.cmpn;version=6.0,\
+    de.mnl.osgi.coreutils;version=latest,\
+    de.mnl.osgi.lf4osgi;version=latest,\
+	org.jgrapes.core;version='[1.0.3.ga,2)',\
+	org.jgrapes.io;version='[1.0.3.ga,2)',\
+	org.jgrapes.http;version='[1.0.3.ga,2)',\
+	org.jgrapes.portal.base;version=latest,\
+    org.jdrupes.json;version=latest,\
+    org.jdrupes.httpcodec;version=latest,\
+	org.freemarker.freemarker;version='[2.3.27,2.4)'
+
+-fixupmessages: \
+    "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
+    "The .classpath contains a library that will not be available during continuous integration:"
