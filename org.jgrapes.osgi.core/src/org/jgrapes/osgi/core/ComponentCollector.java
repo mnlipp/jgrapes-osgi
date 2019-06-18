@@ -78,9 +78,10 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
     /**
      * Utility constructor that uses each factory to create a single instance,
      * using an empty map as properties.
-     * 
-     * @param factoryClass the factory class
+     *
      * @param componentChannel this component's channel
+     * @param context the bundle context
+     * @param factoryClass the factory class
      */
     public ComponentCollector(Channel componentChannel, BundleContext context,
             Class<F> factoryClass) {
@@ -134,7 +135,8 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
 
     /**
      * Removes all child component with the type produced by the factory that is
-     * removed.
+     * removed. A (possibly) final {@link Stop} event is send to the
+     * detached subtrees which may be used to deactivate bundles.
      * 
      * @see ServiceTrackerCustomizer#removedService(ServiceReference, Object)
      */
