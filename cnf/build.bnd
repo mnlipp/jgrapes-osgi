@@ -18,22 +18,6 @@ bundleVersionQualifier: ga
         pretty = true; \
         local = ${build}/local
 
-# Used for snapshot access
-#-plugin.6.JGrapes: \
-#    de.mnl.osgi.bnd.repository.maven.provider.NexusSearchRepositoryProvider; \
-#		path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-2.0.1.jar,\
-#            ${workspace}/cnf/plugins/biz.aQute.repository-4.2.0.jar"; \
-#        name=JGrapes; \
-#        server="https://oss.sonatype.org"; \
-#        query="a=org.jgrapes.portal.bootstrap4,\
-#            a=org.jgrapes.portal.jqueryui,\
-#            a=org.jgrapes.portal.providers.vuejs,\
-#            a=org.jgrapes.portal.providers.chartjs,\
-#            a=org.jgrapes.portal.providers.markdownit,\
-#            a=org.jgrapes.portlets.sysinfo,\
-#            a=org.jgrapes.portlets.markdowndisplay"; \
-#        searchBreadth="2"
-
 #-plugin.3.JitPack: \
 #    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
 #        name="JitPack (POM)"; \
@@ -42,11 +26,22 @@ bundleVersionQualifier: ga
 #        pom=${build}/jitpack.pom; \
 #        location=${build}/cache/jitpack-pom.xml
 
-#-plugin.8.MavenLocal: \
-#    aQute.bnd.repository.maven.provider.MavenBndRepository; \
-#        index=${.}/local.mvn; \
-#        name="MavenLocal"
-        
+# Used for local snapshots
+-plugin.8.MavenLocal: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        index=${.}/local.mvn; \
+        name="MavenLocal"
+
+#-plugin.9.JGrapes-Prerelease: \
+#    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+#        name=JGrapes-Prerelease; \
+#        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+#        releaseUrls=https://oss.sonatype.org/content/repositories/staging/; \
+#        revision='org.jgrapes:org.jgrapes.core:1.1.1, \
+#            org.jgrapes:org.jgrapes.io:1.1.1, \
+#            org.jgrapes:org.jgrapes.util:1.1.1, \
+#            org.jgrapes:org.jgrapes.http:1.1.1, \
+#            org.jgrapes:org.jgrapes.http.freemarker:1.1.1'
 
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
