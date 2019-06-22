@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<repository increment="1560851441448" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1561205050564" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
 <referral url="org.jgrapes/index.xml"/>
 <referral url="org.slf4j/index.xml"/>
-<referral url="dependencies/org.jdrupes.httpcodec/index.xml"/>
 <referral url="dependencies/ch.qos.logback/index.xml"/>
+<referral url="dependencies/org.jdrupes.httpcodec/index.xml"/>
 <referral url="dependencies/com.fasterxml.jackson.core/index.xml"/>
 <referral url="dependencies/commons-io/index.xml"/>
 <referral url="dependencies/org.apache.aries/index.xml"/>
-<referral url="dependencies/org.json/index.xml"/>
 <referral url="dependencies/org.jdrupes.json/index.xml"/>
+<referral url="dependencies/org.json/index.xml"/>
 <referral url="dependencies/biz.aQute.bnd/index.xml"/>
 <referral url="dependencies/com.googlecode.juniversalchardet/index.xml"/>
 <referral url="dependencies/com.google.code.findbugs/index.xml"/>
 <referral url="dependencies/org.mockito/index.xml"/>
 <referral url="org.apache.aries.spifly/index.xml"/>
 <referral url="dependencies/org.cometd.java/index.xml"/>
-<referral url="dependencies/org.fusesource.jansi/index.xml"/>
 <referral url="dependencies/com.sun.activation/index.xml"/>
 <referral url="dependencies/net.bytebuddy/index.xml"/>
 <referral url="dependencies/org.apache.tomcat/index.xml"/>
@@ -39,8 +38,8 @@
 <referral url="dependencies/org.jetbrains/index.xml"/>
 <referral url="dependencies/com.google.dexmaker/index.xml"/>
 <referral url="dependencies/org.codehaus.woodstox/index.xml"/>
-<referral url="dependencies/junit/index.xml"/>
 <referral url="dependencies/de.twentyeleven.skysail/index.xml"/>
+<referral url="dependencies/junit/index.xml"/>
 <referral url="dependencies/org.mongodb/index.xml"/>
 <referral url="dependencies/stax/index.xml"/>
 <referral url="dependencies/javax.servlet/index.xml"/>
