@@ -1,7 +1,7 @@
 Bundle-Name: JGrapes OSGi Portlets for Services
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.services
-# Bundle-Version: 0.9.20.-${tstamp}-SNAPSHOT
-Bundle-Version: 0.9.19.ga
+# Bundle-Version: 0.9.21.-${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.20.ga
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Require-Capability: \
@@ -25,7 +25,7 @@ Private-Package: org.jgrapes.osgi.portlets.services
 	org.jgrapes.core;version='[1.1.1.ga,2)',\
 	org.jgrapes.io;version='[1.1.1.ga,2)',\
 	org.jgrapes.http;version='[1.1.1.ga,2)',\
-	org.jgrapes.portal.base;version=latest,\
+	org.jgrapes.portal.base;version='[0.23.0.ga,2)',\
     org.jdrupes.json;version=latest,\
 	org.freemarker.freemarker;version='[2.3.27,2.4)'
 
