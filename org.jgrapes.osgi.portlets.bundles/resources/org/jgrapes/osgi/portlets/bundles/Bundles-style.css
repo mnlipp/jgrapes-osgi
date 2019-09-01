@@ -22,14 +22,11 @@
 	vertical-align: top;
 }
 
-.jgrapes-osgi-bundles-view table table {
-    border-style: groove;
- }
-
-.jgrapes-osgi-bundles-view table table td:first-child {
-	padding-left: 0.5em;
- }
-
-.jgrapes-osgi-bundles-view table table table {
-    border-style: groove;
+.jgrapes-osgi-bundles-view table tr.bundle-row td:first-child {
+    white-space: nowrap;
 }
+
+.jgrapes-osgi-bundles-view table td.details {
+    padding-left: 1em;
+}
+

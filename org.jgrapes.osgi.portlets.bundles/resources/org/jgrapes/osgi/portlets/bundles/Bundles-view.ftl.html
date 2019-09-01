@@ -22,22 +22,37 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in ((entry.id in detailsById) ? ['id', 'name'] : controller.keys)" 
-          v-bind:title="key == 'name' ? entry['symbolicName']: false"
-          v-bind:colspan="(key == 'name') && (entry.id in detailsById) ? 5 : false">
-          <span v-if="key != 'name'" v-html="controller.breakBeforeDots(entry[key])"></span>
-          <template v-else>
-            <template v-if="!(entry.id in detailsById)"> 
-              <span role="button"
-                class="jgportal-button-icon fas fa-caret-right"
-                v-on:click="toggleDetails(entry.id)"></span>
-              <span v-html="controller.breakBeforeDots(entry[key])"></span>
-            </template>
-            <div v-else style="display: flex; flex-direction: row;">
-              <span role="button" style="margin-right: 0.5em;"
-                class="jgportal-button-icon fas fa-caret-down"
-                  v-on:click="toggleDetails(entry.id)"></span>
+      <template v-for="entry in filteredData">
+        <tr class="bundle-row">
+          <td v-for="key in controller.keys" 
+            v-bind:title="key == 'name' ? entry['symbolicName']: false"
+            v-bind:rowspan="(key == 'id') && (entry.id in detailsById) ? 3 : false">
+            <span v-if="key == 'id'"
+              role="button" class="jgportal-button-icon fas"
+              v-bind:class="[(entry.id in detailsById) ? 'fa-caret-down' : 'fa-caret-right']"
+              v-on:click="toggleDetails(entry.id)"></span>
+            <span v-html="controller.breakBeforeDots(entry[key])"></span>
+          </td>
+          <td class="jgrapes-osgi-bundles-view-action-list">
+            <span role="button" v-if="entry.startable" 
+              class="jgportal-button-icon fas fa-play" title="${_("bundleStart")}"
+              v-on:click="bundleAction(entry.id, 'start')"></span>
+            <span role="button" v-if="entry.stoppable"
+              class="jgportal-button-icon fas fa-stop" title="${_("bundleStop")}"
+              v-on:click="bundleAction(entry.id, 'stop')"></span>
+            <span role="button" class="jgportal-button-icon fas fa-sync"
+              title="${_("bundleUpdate")}"
+              v-on:click="bundleAction(entry.id, 'update')"></span>
+            <span role="button" class="jgportal-button-icon fas fa-eject"
+              title="${_("bundleUninstall")}"
+              v-bind:disabled="!entry.uninstallable"
+              v-on:click="bundleAction(entry.id, 'uninstall')"></span>
+          </td>
+        </tr>
+        <template v-if="(entry.id in detailsById)"> 
+          <tr></tr>
+          <tr>
+            <td colspan="5" class="details">
               <table>
                 <tr>
                   <td>{{ controller.label('name') }}</td>
@@ -60,26 +75,10 @@
                   <td v-else><span v-html="detail[1]"></span></td>
                 </tr>
               </table>
-            </div>
-          </template>
-        </td>
-        <td  v-if="!(entry.id in detailsById)"
-          class="jgrapes-osgi-bundles-view-action-list">
-          <span role="button" v-if="entry.startable" 
-            class="jgportal-button-icon fas fa-play" title="${_("bundleStart")}"
-            v-on:click="bundleAction(entry.id, 'start')"></span>
-          <span role="button" v-if="entry.stoppable"
-            class="jgportal-button-icon fas fa-stop" title="${_("bundleStop")}"
-            v-on:click="bundleAction(entry.id, 'stop')"></span>
-          <span role="button" class="jgportal-button-icon fas fa-sync"
-            title="${_("bundleUpdate")}"
-            v-on:click="bundleAction(entry.id, 'update')"></span>
-          <span role="button" class="jgportal-button-icon fas fa-eject"
-            title="${_("bundleUninstall")}"
-            v-bind:disabled="!entry.uninstallable"
-            v-on:click="bundleAction(entry.id, 'uninstall')"></span>
-        </td>
-      </tr>
+            </td>
+          </tr>
+        </template>
+      </template>
     </tbody>
   </table>
 </div>
