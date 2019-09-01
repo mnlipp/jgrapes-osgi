@@ -39,15 +39,28 @@ var orgJGrapesOsgiPortletsLogViewer = {
                     ["service", "${_("service")}"],
                     ["exception", "${_("exception")}"],
                     ], {
-                    sortKey: "time"
+                    sortKey: "sequence",
+                    sortOrder: "down"
                 }),
-                entriesBySeq: {},
+                entries: [],
+                lang: portlet.closest('[lang]').attr('lang') || 'en'
+
             },
             computed: {
                 filteredData: function() {
-                    let infos = Object.values(this.entriesBySeq);
-                    return this.controller.filter(infos);
+                    return this.controller.filter(this.entries);
                 }
+            },
+            methods: {
+                resync: function(event) {
+                        let portletId = $(this.$el).parent().attr("data-portlet-id");
+                        JGPortal.notifyPortletModel(portletId, "resync");
+                },
+                formatTimestamp: function(timestamp) {
+                    let ts = moment(timestamp);
+                    ts.locale(this.lang)
+                    return ts.format("L HH:mm:ss.SSS");
+                } 
             },
         }));
     }
@@ -59,19 +72,26 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 let portlet = JGPortal.findPortletView(portletId);
                 let vm = null;
                 if (portlet && (vm = portlet.data("vue-model"))) {
-                    updateInfos(vm, params[0], params[2]);
+                    vm.entries = params[0];
                 }
+                Vue.nextTick(function () {
+                    portlet.find('[data-toggle="popover"]').popover({
+                        trigger: 'focus',
+                        template: "<div class='jgrapes-osgi-logviewer-stacktrace popover' role='tooltip'><div class='arrow'></div><h3 class='popover-header'></h3><div class='popover-body'></div></div>"
+                    })
+                })
             });
      
-    function updateInfos(model, infos, replace) {
-        // Update
-//        alert ("Update")
-        model.entriesBySeq = infos;
-//        model.devices.sort(function(a, b) {
-//            return String(a.friendlyName)
-//                .localeCompare(b.friendlyName, model.lang);
-//        });
-    }
+    JGPortal.registerPortletMethod(
+            "org.jgrapes.osgi.portlets.logviewer.LogViewerPortlet",
+            "addEntry", function(portletId, params) {
+                // View only
+                let portlet = JGPortal.findPortletView(portletId);
+                let vm = null;
+                if (portlet && (vm = portlet.data("vue-model"))) {
+                    vm.entries = Object.assign([params[0]], vm.entries);
+                }
+            });
 
 })();
 

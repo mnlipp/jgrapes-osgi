@@ -1,27 +1,43 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-logviewer-view">
-  <div class="jgrapes-osgi-logviewer-search">
+  <div class="jgrapes-osgi-logviewer-control">
     <form>
-      ${_("Filter:")} <input type="search" v-on:input="controller.updateFilter($event)">
-      <span role="button" class="jgportal-button-icon fas fa-backspace" 
-        v-on:click="controller.clearFilter($event)"></span>
+      <span role="button" class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
+        v-on:click="resync($event)"></span>
+      <span class="jgrapes-osgi-logviewer-search">${_("Filter:")} 
+        <input type="search" v-on:input="controller.updateFilter($event)">
+        <span role="button" class="jgportal-button-icon fas fa-backspace" 
+          v-on:click="controller.clearFilter($event)"></span></span>
     </form>
   </div>
   <table class="jgportal-basic-table jgrapes-osgi-logviewer-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
-          v-on:click="controller.sortBy(key)">
-          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+          class="sortable" 
+          v-on:click="controller.sortBy(key === 'time' ? 'sequence' : key)">
+          {{ controller.label(key) }}<span 
+            v-if="controller.sortedByAsc(key === 'time' ? 'sequence' : key)"
             role="button" class="jgportal-button-icon">&#x25B2;</span><span
-            v-if="controller.sortedByDesc(key)"
+            v-if="controller.sortedByDesc(key === 'time' ? 'sequence' : key)"
             role="button" class="jgportal-button-icon">&#x25BC;</span>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in controller.keys" v-html="controller.breakBeforeDots(entry[key])">
-        </td>
+      <tr v-for="(entry, rowIndex) in filteredData"
+        :class="{even: rowIndex % 2, odd: !(rowIndex % 2)}">
+        <template v-for="key in controller.keys">
+          <td v-if="key === 'exception'">
+            <a href="#" tabindex="0" 
+              data-toggle="popover" 
+              v-bind:title="entry['exception']" 
+              v-bind:data-content="entry['stacktrace']"
+              v-html="entry[key]"></a>
+          </td>
+          <td v-else
+            v-html="key === 'time' ? formatTimestamp(entry[key]) : entry[key]">
+          </td>
+        </template>
       </tr>
     </tbody>
   </table>

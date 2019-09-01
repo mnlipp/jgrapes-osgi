@@ -4,3 +4,49 @@
 
 /* View */
 
+.jgrapes-osgi-logviewer-control form {
+    display: flex; 
+}
+
+.jgrapes-osgi-logviewer-search {
+    margin-left: auto;
+}
+
+.jgrapes-osgi-logviewer-table tr,td {
+	vertical-align: top;
+}
+
+.jgrapes-osgi-logviewer-table table {
+  border-collapse: collapse;
+}
+
+.jgrapes-osgi-logviewer-table tr { 
+  border: solid;
+  border-width: 1px 0;
+}
+
+.jgrapes-osgi-logviewer-table tr:first-child {
+  border-top: none;
+}
+
+.jgrapes-osgi-logviewer-stacktrace {
+  max-width: 80%;
+}
+
+.jgrapes-osgi-logviewer-stacktrace.popover {
+    font-size: 100%;
+}
+
+.jgrapes-osgi-logviewer-stacktrace .popover-header {
+  padding: 0.5rem 1.25rem;
+}
+
+.jgrapes-osgi-logviewer-stacktrace .popover-body {
+	padding: 1rem 1.25rem;
+}
+
+.jgrapes-osgi-logviewer-reload {
+	font-size: 125%;
+    margin-left: 1em;
+	margin-right: 1em;
+}

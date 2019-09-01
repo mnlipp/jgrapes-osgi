@@ -31,24 +31,17 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import org.jdrupes.json.JsonBeanEncoder;
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
-import org.jgrapes.core.events.Detached;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.http.Session;
 import org.jgrapes.portal.base.PortalSession;
@@ -60,6 +53,7 @@ import org.jgrapes.portal.base.events.AddPortletRequest;
 import org.jgrapes.portal.base.events.AddPortletType;
 import org.jgrapes.portal.base.events.DeletePortlet;
 import org.jgrapes.portal.base.events.DeletePortletRequest;
+import org.jgrapes.portal.base.events.NotifyPortletModel;
 import org.jgrapes.portal.base.events.NotifyPortletView;
 import org.jgrapes.portal.base.events.PortalReady;
 import org.jgrapes.portal.base.events.RenderPortletRequest;
@@ -92,6 +86,12 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public LogViewerPortlet(Channel componentChannel, BundleContext context) {
         super(componentChannel, true);
+        logReaderListener = new LogListener() {
+            @Override
+            public void logged(LogEntry entry) {
+                addEntry(entry);
+            }
+        };
         logReaderCollector
             = new ServiceCollector<>(context, LogReaderService.class);
         logReaderCollector.setOnBound((ref, svc) -> subscribeTo(svc))
@@ -105,12 +105,13 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             && logReaderResolved.equals(logReaderService)) {
             return;
         }
-        if (logReaderListener != null) {
+        // Got a new log reader service.
+        if (logReaderResolved != null) {
             logReaderResolved.removeLogListener(logReaderListener);
         }
         logReaderResolved = logReaderService;
         if (logReaderResolved != null) {
-//            logListener = logReaderResolved.addLogListener(listener);
+            logReaderResolved.addLogListener(logReaderListener);
         }
 
     }
@@ -214,7 +215,8 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             Logger log = LoggerFactory.getLogger(LogViewerPortlet.class);
-            log.error(() -> "Test", new UnsupportedOperationException());
+            log.error(() -> "Test",
+                new UnsupportedOperationException("Test exception"));
             sendAllEntries(channel, portletModel.getPortletId());
             break;
         }
@@ -259,52 +261,65 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
         if (logReader == null) {
             return;
         }
-//        channel.respond(new NotifyPortletView(type(),
-//            portletId, "entries", Collections.list(logReader.getLog()).stream()
-//                .map(entry -> logEntryAsMap(entry)).toArray(),
-//            true));
-        try {
-            List<Map<?, ?>> entries = Collections.list(
-                logReader.getLog()).stream() // .limit(50)
-                .map(entry -> logEntryAsMap(entry))
-                .collect(Collectors.toList());
-//            List<Map<?, ?>> entries = new ArrayList<Map<?, ?>>();
-//            for (int i = 0; i < 100; i++) {
-//                entries.add(new HashMap<>());
-//            }
+        channel.respond(new NotifyPortletView(type(),
+            portletId, "entries",
+            (Object) Collections.list(logReader.getLog()).stream()
+                .map(entry -> logEntryAsMap(entry)).toArray()));
+    }
 
-            channel.respond(new NotifyPortletView(type(),
-                portletId, "entries", entries,
-                true));
-        } catch (Throwable t) {
-            t.printStackTrace();
+    private void addEntry(LogEntry entry) {
+        for (PortalSession portalSession : trackedSessions()) {
+            for (String portletId : portletIds(portalSession)) {
+//                portalSession.respond(new NotifyPortletView(type(),
+//                    portletId, "addEntry", logEntryAsMap(entry)));
+            }
         }
     }
 
     private Map<String, Object> logEntryAsMap(LogEntry entry) {
         Map<String, Object> result = new HashMap<>();
-        result.put("bundle", entry.getBundle().getSymbolicName());
-//        result.put("exception", Optional.ofNullable(entry.getException())
-//            .map(exc -> exc.getMessage()).orElse(""));
-//        result.put("stacktrace", Optional.ofNullable(entry.getException())
-//            .map(exc -> {
-//                ByteArrayOutputStream out = new ByteArrayOutputStream();
-//                PrintWriter pw = new PrintWriter(out);
-//                exc.printStackTrace(pw);
-//                pw.close();
-//                return out.toString();
-//            }).orElse(""));
-//        result.put("location", Optional.ofNullable(entry.getLocation())
-//            .map(loc -> loc.toString()).orElse(""));
+        result.put("bundle",
+            Optional
+                .ofNullable(entry.getBundle().getHeaders().get("Bundle-Name"))
+                .orElse(entry.getBundle().getSymbolicName()));
+        result.put("exception", Optional.ofNullable(entry.getException())
+            .map(exc -> exc.getMessage()).orElse(""));
+        result.put("stacktrace", Optional.ofNullable(entry.getException())
+            .map(exc -> {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                PrintWriter pw = new PrintWriter(out);
+                exc.printStackTrace(pw);
+                pw.close();
+                return out.toString();
+            }).orElse(""));
+        result.put("location", Optional.ofNullable(entry.getLocation())
+            .map(loc -> loc.toString()).orElse(""));
         result.put("loggerName", entry.getLoggerName());
         result.put("logLevel", entry.getLogLevel().toString());
         result.put("message", entry.getMessage());
         result.put("sequence", entry.getSequence());
-//        result.put("service", Optional.ofNullable(entry.getServiceReference())
-//            .map(Object::toString).orElse(""));
-//        result.put("threadInfo", entry.getThreadInfo());
+        result.put("service", Optional.ofNullable(entry.getServiceReference())
+            .map(Object::toString).orElse(""));
+        result.put("threadInfo", entry.getThreadInfo());
         result.put("time", entry.getTime());
         return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel
+     */
+    @Override
+    protected void doNotifyPortletModel(NotifyPortletModel event,
+            PortalSession channel, Serializable portletState)
+            throws Exception {
+        event.stop();
+        switch (event.method()) {
+        case "resync":
+            sendAllEntries(channel, event.portletId());
+            break;
+        }
     }
 
     /**
