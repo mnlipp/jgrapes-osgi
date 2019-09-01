@@ -22,3 +22,11 @@
     vertical-align: top;
 }
 
+.jgrapes-osgi-services-view table tr td:first-child {
+    white-space: nowrap;
+}
+
+.jgrapes-osgi-services-view table td.details {
+    padding-left: 1em;
+}
+

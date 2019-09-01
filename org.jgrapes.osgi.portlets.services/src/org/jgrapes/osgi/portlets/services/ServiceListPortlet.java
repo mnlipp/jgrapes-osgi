@@ -25,6 +25,7 @@ import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -225,8 +226,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
             createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {
         @SuppressWarnings("PMD.UseConcurrentHashMap")
         Map<String, Object> result = new HashMap<>();
-        result.put("id",
-            serviceRef.getProperty(Constants.SERVICE_ID));
+        result.put("id", serviceRef.getProperty(Constants.SERVICE_ID));
         String[] interfaces
             = (String[]) serviceRef.getProperty(Constants.OBJECTCLASS);
         result.put("type", String.join(", ", interfaces));
@@ -237,12 +237,10 @@ public class ServiceListPortlet extends FreeMarkerPortlet
         if (bundle == null) {
             result.put("bundleName", "");
         } else {
-            result
-                .put(
-                    "bundleName", Optional
-                        .ofNullable(bundle.getHeaders(locale.toString())
-                            .get("Bundle-Name"))
-                        .orElse(bundle.getSymbolicName()));
+            result.put("bundleName", Optional
+                .ofNullable(bundle.getHeaders(locale.toString())
+                    .get("Bundle-Name"))
+                .orElse(bundle.getSymbolicName()));
         }
         String scope;
         switch ((String) serviceRef.getProperty(Constants.SERVICE_SCOPE)) {
@@ -281,6 +279,20 @@ public class ServiceListPortlet extends FreeMarkerPortlet
             } else {
                 result.put("implementationClass", "");
             }
+        }
+        Map<String, Object> properties = new HashMap<>();
+        for (String property : serviceRef.getPropertyKeys()) {
+            properties.put(property, serviceRef.getProperty(property));
+        }
+        result.put("properties", properties);
+        if (serviceRef.getUsingBundles() != null) {
+            List<String> using = new ArrayList<>();
+            for (Bundle bdl : serviceRef.getUsingBundles()) {
+                using
+                    .add(
+                        bdl.getSymbolicName() + " (" + bdl.getBundleId() + ")");
+            }
+            result.put("usingBundles", using);
         }
         return result;
     }

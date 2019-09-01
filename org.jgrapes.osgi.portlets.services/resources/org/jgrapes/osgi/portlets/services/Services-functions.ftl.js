@@ -27,6 +27,7 @@ var orgJGrapesOsgiPortletsServices = {
         "serviceScopeBundle": "${_("serviceScopeBundle")}",
         "serviceScopePrototype": "${_("serviceScopePrototype")}",
         "serviceScopeSingleton": "${_("serviceScopeSingleton")}",
+        "serviceUsingBundles": "${_("serviceUsingBundles")}",
     }
 };
 
@@ -71,12 +72,29 @@ var orgJGrapesOsgiPortletsServices = {
                     sortKey: "id"
                 }),
                 infosById: {},
+                detailsFor: new Set(),
             },
             computed: {
                 filteredData: function() {
                     let infos = Object.values(this.infosById);
                     return this.controller.filter(infos);
-                }
+                },
+            },
+            methods: {
+                toggleDetails: function(serviceId) {
+                    if (this.detailsFor.has(serviceId)) {
+                        this.detailsFor.delete(serviceId);
+                        this.$forceUpdate();
+                        return;
+                    }
+                    this.detailsFor.add(serviceId);
+                    this.$forceUpdate();
+                },
+                sortedProperties: function(properties) {
+                    let entries = Object.entries(properties);
+                    entries.sort();
+                    return entries;
+                },
             },
         }));
     }
