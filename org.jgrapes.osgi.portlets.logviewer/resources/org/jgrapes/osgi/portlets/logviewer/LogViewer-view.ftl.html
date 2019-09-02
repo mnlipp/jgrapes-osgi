@@ -36,7 +36,7 @@
     </thead>
     <tbody>
       <tr v-for="(entry, rowIndex) in filteredData"
-        :class="{even: rowIndex % 2, odd: !(rowIndex % 2)}">
+        :class="[(rowIndex % 2) ? 'odd' : 'even']">
         <template v-for="key in controller.keys">
           <td v-if="key === 'exception'">
             <a href="#" tabindex="0" 
