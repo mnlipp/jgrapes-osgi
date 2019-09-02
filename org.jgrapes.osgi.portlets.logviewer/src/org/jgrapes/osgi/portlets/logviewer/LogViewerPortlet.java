@@ -19,8 +19,6 @@
 package org.jgrapes.osgi.portlets.logviewer;
 
 import de.mnl.osgi.coreutils.ServiceCollector;
-import de.mnl.osgi.lf4osgi.Logger;
-import de.mnl.osgi.lf4osgi.LoggerFactory;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
@@ -62,7 +60,6 @@ import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.log.LogEntry;
-import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
 
 /**
@@ -74,7 +71,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     private ServiceCollector<LogReaderService,
             LogReaderService> logReaderCollector;
     private LogReaderService logReaderResolved;
-    private LogListener logReaderListener;
 
     /**
      * Creates a new component with its channel set to the given channel.
@@ -86,12 +82,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public LogViewerPortlet(Channel componentChannel, BundleContext context) {
         super(componentChannel, true);
-        logReaderListener = new LogListener() {
-            @Override
-            public void logged(LogEntry entry) {
-                addEntry(entry);
-            }
-        };
         logReaderCollector
             = new ServiceCollector<>(context, LogReaderService.class);
         logReaderCollector.setOnBound((ref, svc) -> subscribeTo(svc))
@@ -106,14 +96,7 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             return;
         }
         // Got a new log reader service.
-        if (logReaderResolved != null) {
-            logReaderResolved.removeLogListener(logReaderListener);
-        }
         logReaderResolved = logReaderService;
-        if (logReaderResolved != null) {
-            logReaderResolved.addLogListener(logReaderListener);
-        }
-
     }
 
     @Handler(channels = Channel.class)
@@ -214,9 +197,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
                 tpl, fmModel(event, channel, portletModel))
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            Logger log = LoggerFactory.getLogger(LogViewerPortlet.class);
-            log.error(() -> "Test",
-                new UnsupportedOperationException("Test exception"));
             sendAllEntries(channel, portletModel.getPortletId());
             break;
         }
@@ -237,25 +217,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
         channel.respond(new DeletePortlet(portletId));
     }
 
-//    /**
-//     * Handles a {@link BundleChanged} event by updating the information in the
-//     * portal sessions.
-//     *
-//     * @param event the event
-//     */
-//    @Handler
-//    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-//    public void onBundleChanged(BundleChanged event,
-//            PortalSession portalSession) {
-//        for (String portletId : portletIds(portalSession)) {
-//            portalSession.respond(new NotifyPortletView(type(), portletId,
-//                "bundleUpdates",
-//                (Object) new Object[] { createBundleInfo(
-//                    event.bundleEvent().getBundle(), portalSession.locale()) },
-//                "*", false));
-//        }
-//    }
-
     private void sendAllEntries(PortalSession channel, String portletId) {
         final LogReaderService logReader = logReaderResolved;
         if (logReader == null) {
@@ -265,15 +226,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             portletId, "entries",
             (Object) Collections.list(logReader.getLog()).stream()
                 .map(entry -> logEntryAsMap(entry)).toArray()));
-    }
-
-    private void addEntry(LogEntry entry) {
-        for (PortalSession portalSession : trackedSessions()) {
-            for (String portletId : portletIds(portalSession)) {
-//                portalSession.respond(new NotifyPortletView(type(),
-//                    portletId, "addEntry", logEntryAsMap(entry)));
-            }
-        }
     }
 
     private Map<String, Object> logEntryAsMap(LogEntry entry) {
