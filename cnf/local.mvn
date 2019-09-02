@@ -4,4 +4,4 @@
 #org.jgrapes:org.jgrapes.http:1.1.1-SNAPSHOT
 #org.jgrapes:org.jgrapes.http.freemarker:1.1.1-SNAPSHOT
 
-#org.jgrapes:org.jgrapes.portal.base:0.24.0
+#org.jgrapes:org.jgrapes.portal.base:0.24.2
