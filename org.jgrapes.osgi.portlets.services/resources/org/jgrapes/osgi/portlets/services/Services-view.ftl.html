@@ -6,7 +6,7 @@
         v-on:click="controller.clearFilter($event)"></span>
     </form>
   </div>
-  <table class="jgportal-basic-table jgrapes-osgi-services-view-table table-striped">
+  <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-services-view-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -19,10 +19,10 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="entry in filteredData">
-        <tr>
+      <template v-for="(entry, rowIndex) in filteredData">
+        <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td v-for="key in controller.keys"
-            v-bind:rowspan="key == 'id' && detailsFor.has(entry.id) ? '3' : false">
+            v-bind:rowspan="key == 'id' && detailsFor.has(entry.id) ? '2' : false">
             <span v-if="key == 'id'"
               role="button" class="jgportal-button-icon fas"
               v-bind:class="[detailsFor.has(entry.id) ? 'fa-caret-down' : 'fa-caret-right']"
@@ -31,10 +31,9 @@
           </td>
         </tr>
         <template v-if="detailsFor.has(entry.id)">
-          <tr></tr>
-          <tr>
+          <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
             <td colspan="4" class="details">
-              <table>
+              <table class="jgportal-auto-striped-table">
                 <tr v-for="[key, value] of sortedProperties(entry.properties)">
                   <td>{{ key }}</td>
                   <td>{{ value }}</td>
