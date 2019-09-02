@@ -28,6 +28,14 @@ var orgJGrapesOsgiPortletsLogViewer = {
     
     orgJGrapesOsgiPortletsLogViewer.initView = function(portletId) {
         let portlet = JGPortal.findPortletView(portletId);
+        let levelsToNum = {
+                "AUDIT": 5,
+                "ERROR": 4,
+                "WARN": 3,
+                "INFO": 2,
+                "DEBUG": 1,
+                "TRACE": 0
+        }
         portlet.data("vue-model", new Vue({
             el: $(portlet.find(".jgrapes-osgi-logviewer-view"))[0],
             data: {
@@ -42,13 +50,21 @@ var orgJGrapesOsgiPortletsLogViewer = {
                     sortKey: "sequence",
                     sortOrder: "down"
                 }),
+                messageThreshold: "INFO",
                 entries: [],
-                lang: portlet.closest('[lang]').attr('lang') || 'en'
-
+                lang: portlet.closest('[lang]').attr('lang') || 'en',
+                portletId: portletId
             },
             computed: {
                 filteredData: function() {
-                    return this.controller.filter(this.entries);
+                    let entries = [];
+                    let threshold = levelsToNum[this.messageThreshold];
+                    for (let entry of this.entries) {
+                        if (levelsToNum[entry.logLevel] >= threshold) {
+                            entries.push(entry);
+                        }
+                    }
+                    return this.controller.filter(entries);
                 }
             },
             methods: {

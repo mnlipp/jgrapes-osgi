@@ -3,13 +3,24 @@
     <form>
       <span role="button" class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
         v-on:click="resync($event)"></span>
-      <span class="jgrapes-osgi-logviewer-search">${_("Filter:")} 
+      <span class="jgrapes-osgi-logviewer-level">
+        <label v-bind:for="portletId + '-Level'">${_("severityAtLeast")}</label>
+        <select v-bind:id="portletId + '-Level'" v-model="messageThreshold">
+          <option value="AUDIT">${_("AUDIT")}</option>
+          <option value="ERROR">${_("ERROR")}</option>
+          <option value="WARN">${_("WARN")}</option>
+          <option value="INFO">${_("INFO")}</option>
+          <option value="DEBUG">${_("DEBUG")}</option>
+          <option value="TRACE">${_("TRACE")}</option>
+        </select>
+      </span>
+      <span class="jgrapes-osgi-logviewer-search">${_("Filter")} 
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span role="button" class="jgportal-button-icon fas fa-backspace" 
           v-on:click="controller.clearFilter($event)"></span></span>
     </form>
   </div>
-  <table class="jgportal-basic-table jgrapes-osgi-logviewer-table">
+  <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-logviewer-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -34,8 +45,10 @@
               v-bind:data-content="entry['stacktrace']"
               v-html="entry[key]"></a>
           </td>
+          <td v-else-if="key === 'time'" v-html="formatTimestamp(entry[key])">
+          </td>
           <td v-else
-            v-html="key === 'time' ? formatTimestamp(entry[key]) : entry[key]">
+            v-html="controller.breakBeforeDots(entry[key])">
           </td>
         </template>
       </tr>

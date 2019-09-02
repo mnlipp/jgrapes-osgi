@@ -8,7 +8,11 @@
     display: flex; 
 }
 
-.jgrapes-osgi-logviewer-search {
+.jgrapes-osgi-logviewer-control form span:not(:first-child) {
+    margin-left: 1em; 
+}
+
+.jgrapes-osgi-logviewer-control form span.jgrapes-osgi-logviewer-level {
     margin-left: auto;
 }
 
@@ -17,20 +21,15 @@
 }
 
 .jgrapes-osgi-logviewer-table table {
-  border-collapse: collapse;
-}
-
-.jgrapes-osgi-logviewer-table tr { 
-  border: solid;
-  border-width: 1px 0;
+    border-collapse: collapse;
 }
 
 .jgrapes-osgi-logviewer-table tr:first-child {
-  border-top: none;
+    border-top: none;
 }
 
 .jgrapes-osgi-logviewer-stacktrace {
-  max-width: 80%;
+    max-width: 80%;
 }
 
 .jgrapes-osgi-logviewer-stacktrace.popover {
@@ -38,7 +37,7 @@
 }
 
 .jgrapes-osgi-logviewer-stacktrace .popover-header {
-  padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1.25rem;
 }
 
 .jgrapes-osgi-logviewer-stacktrace .popover-body {
