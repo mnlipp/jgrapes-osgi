@@ -6,7 +6,7 @@
         v-on:click="controller.clearFilter($event)"></span>
     </form>
   </div>
-  <table class="jgportal-basic-table jgrapes-striped-table jgrapes-osgi-bundles-view-table">
+  <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-bundles-view-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -52,7 +52,7 @@
         <template v-if="(entry.id in detailsById)"> 
           <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
             <td colspan="5" class="details">
-              <table>
+              <table class="jgportal-auto-striped-table">
                 <tr>
                   <td>{{ controller.label('name') }}</td>
                   <td><span v-html="controller.breakBeforeDots(entry['name'])"></span></td>
@@ -60,7 +60,7 @@
                 <tr v-for="detail in detailsById[entry.id]">
                   <td>{{ detail[0] }}</td>
                   <td v-if="detail[2] == 'table'">
-                    <table>
+                    <table class="jgportal-auto-striped-table">
                       <tr v-for="row in detail[1]">
                         <td v-html="controller.breakBeforeDots(row[0])"></td>
                         <td v-if="/.*-Package/i.test(row[0])"
