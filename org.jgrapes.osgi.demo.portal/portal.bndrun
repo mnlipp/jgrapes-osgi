@@ -43,6 +43,7 @@
 	com.fasterxml.jackson.core.jackson-core;version='[2.9.4,2.9.5)',\
 	org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)',\
 	org.apache.felix.metatype;version='[1.2.2,1.2.3)',\
+	org.osgi.compendium;version='[4.1.0,4.1.1)',\
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
 	org.jgrapes.osgi.portlets.bundles;version=snapshot,\
 	org.jgrapes.osgi.portlets.services;version=snapshot,\
