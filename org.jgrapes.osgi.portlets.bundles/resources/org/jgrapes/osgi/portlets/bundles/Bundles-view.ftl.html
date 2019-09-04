@@ -1,9 +1,16 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-bundles-view">
   <div class="jgrapes-osgi-bundles-view-search">
     <form>
-      ${_("Filter:")} <input type="search" v-on:input="controller.updateFilter($event)">
-      <span role="button" class="jgportal-button-icon fas fa-backspace" 
-        v-on:click="controller.clearFilter($event)"></span>
+      <span class="jgportal-input-group">
+        <span class="jgportal-item jgportal-input-label">${_("Filter")}</span>
+        <span class="jgportal-item">
+          <input type="search" v-on:input="controller.updateFilter($event)">
+        </span>
+        <span class="jgportal-item">
+          <span role="button" class="jgportal-button-icon fas fa-backspace" 
+            v-on:click="controller.clearFilter($event)"></span>
+        </span>
+      </span>
     </form>
   </div>
   <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-bundles-view-table">
