@@ -11,9 +11,11 @@ buildscript {
 }
 
 plugins {
+    id "maven-publish"
 	id "signing"
 	id "org.jdrupes.mdoclet" version "1.0.3"
 	id 'org.ajoberstar.git-publish' version '0.4.0-rc.2'
+    id "com.jfrog.bintray" version "1.8.4"
 }
 
 apply plugin: 'biz.aQute.bnd.workspace'
@@ -51,6 +53,9 @@ allprojects {
 subprojects {
     apply from: "${project.rootDir}/gradle/subprojects.gradle"
 }
+
+// Don't know why this task exists in the first place...
+project.tasks.bintrayUpload.enabled = false
 
 configurations {
     javadocTaglets

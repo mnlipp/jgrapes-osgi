@@ -68,6 +68,35 @@ configurePublishing {
     }
 }
 
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = project.properties['bintrayUser'] ?: "nouser"
+    key = project.properties['bintrayApiKey'] ?: "nokey"
+    publications = ['maven']
+    // publish = true
+    pkg {
+        repo = "jgrapes"
+        name = "org.jgrapes:" + project.name
+        licenses = ['AGPL-V3']
+        vcsUrl = 'https://github.com/mnlipp/jgrapes-osgi.git'
+        githubRepo = 'mnlipp/jgrapes-osgi'
+        githubReleaseNotesFile = 'README.md'
+        version {
+             name = project.version
+             gpg {
+                 sign = true
+             }
+             mavenCentralSync {
+                sync = true
+                user = project.properties['sonatypeTokenKey'] ?: "nokey"
+                password = project.properties['sonatypeTokenSecret'] ?: "nosecret"
+                close = '1'
+             }
+        }
+    }
+}
+
 // Disable un-applicable publishing mode
 afterEvaluate {
     if (bnd.artifact_version.contains("SNAPSHOT")) {
