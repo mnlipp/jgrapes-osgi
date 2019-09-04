@@ -1,23 +1,38 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-logviewer-view">
   <div class="jgrapes-osgi-logviewer-control">
     <form>
-      <span role="button" class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
+      <span role="button" 
+        class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
         v-on:click="resync($event)"></span>
-      <span class="jgrapes-osgi-logviewer-level">
-        <label v-bind:for="portletId + '-Level'">${_("severityAtLeast")}</label>
-        <select v-bind:id="portletId + '-Level'" v-model="messageThreshold">
-          <option value="AUDIT">${_("AUDIT")}</option>
-          <option value="ERROR">${_("ERROR")}</option>
-          <option value="WARN">${_("WARN")}</option>
-          <option value="INFO">${_("INFO")}</option>
-          <option value="DEBUG">${_("DEBUG")}</option>
-          <option value="TRACE">${_("TRACE")}</option>
-        </select>
+      <span class="jgrapes-osgi-logviewer-level jgportal-input-group">
+        <span class="jgportal-item jgportal-input-label">
+          <label 
+            v-bind:for="portletId + '-Level'">${_("severityAtLeast")}</label>
+        </span>
+        <span class="jgportal-item">
+          <select v-bind:id="portletId + '-Level'" v-model="messageThreshold">
+            <option value="AUDIT">${_("AUDIT")}</option>
+            <option value="ERROR">${_("ERROR")}</option>
+            <option value="WARN">${_("WARN")}</option>
+            <option value="INFO">${_("INFO")}</option>
+            <option value="DEBUG">${_("DEBUG")}</option>
+            <option value="TRACE">${_("TRACE")}</option>
+          </select>
+        </span>
       </span>
-      <span class="jgrapes-osgi-logviewer-search">${_("Filter")} 
-        <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" class="jgportal-button-icon fas fa-backspace" 
-          v-on:click="controller.clearFilter($event)"></span></span>
+      <span class="jgrapes-osgi-logviewer-search jgportal-input-group">
+        <span class="jgportal-item jgportal-input-label">
+          <label v-bind:for="portletId + '-Filter'">${_("Filter")}</label> 
+        </span>
+        <span class="jgportal-item">
+          <input v-bind:id="portletId + '-Filter'"
+            type="search" v-on:input="controller.updateFilter($event)">
+        </span>
+        <span class="jgportal-item">
+          <span role="button" class="jgportal-button-icon fas fa-backspace" 
+            v-on:click="controller.clearFilter($event)"></span>
+        </span>
+      </span>
     </form>
   </div>
   <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-logviewer-table">

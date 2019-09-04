@@ -8,12 +8,16 @@
     display: flex; 
 }
 
-.jgrapes-osgi-logviewer-control form span:not(:first-child) {
+.jgrapes-osgi-logviewer-control form .jgportal-input-group:not(:first-child) {
     margin-left: 1em; 
 }
 
-.jgrapes-osgi-logviewer-control form span.jgrapes-osgi-logviewer-level {
-    margin-left: auto;
+.jgrapes-osgi-logviewer-control form .jgrapes-osgi-logviewer-level {
+    margin-left: auto !important;
+}
+
+.jgrapes-osgi-logviewer-control form .jgrapes-osgi-logviewer-level select {
+    width: 10em;
 }
 
 .jgrapes-osgi-logviewer-table tr,td {
