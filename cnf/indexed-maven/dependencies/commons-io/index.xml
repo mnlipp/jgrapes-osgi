@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1567444521879">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1567615131128">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -129,6 +129,19 @@
       <attribute name="name" value="commons-io:commons-io:2.2"/>
       <attribute name="from" value="commons-io:commons-io:2.2"/>
       <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="commons-io:commons-io:1.1"/>
+      <attribute name="from" value="commons-io:commons-io:1.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="61562" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/commons-io/commons-io/1.1/commons-io-1.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="7A34134A135460AE766F8038C09FD3164EC3BF9949D7ABCB676BDBC5B674427E"/>
     </capability>
   </resource>
 </repository>

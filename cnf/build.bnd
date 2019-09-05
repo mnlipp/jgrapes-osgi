@@ -9,7 +9,8 @@ bundleVersionQualifier: ga
             ${workspace}/cnf/plugins/biz.aQute.repository-4.2.0.jar"; \
         name=IndexedMaven; \
         location=cnf/indexed-maven; \
-        releaseUrls="https://repo.maven.apache.org/maven2/"; \
+        releaseUrls="https://repo.maven.apache.org/maven2/,\
+            https://dl.bintray.com/bintray/jcenter/"; \
         logIndexing=true
 
 -plugin.2.Local: \

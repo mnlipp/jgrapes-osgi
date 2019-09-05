@@ -1,5 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555276410181">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1567615131144">
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="net.sf.kxml:kxml2:2.1.8"/>
+      <attribute name="from" value="net.sf.kxml:kxml2:2.1.8"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="31371" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/net/sf/kxml/kxml2/2.1.8/kxml2-2.1.8.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="DA8F9FDF2D759EF48A55FE26D097FB29A32F2050344F5BDACFF953553138B4CC"/>
+    </capability>
+  </resource>
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="net.sf.kxml:kxml2:2.2.2"/>
@@ -14,6 +27,19 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="xmlpull:xmlpull:1.1.3.1"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="net.sf.kxml:kxml2:2.3.0"/>
+      <attribute name="from" value="net.sf.kxml:kxml2:2.3.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="43858" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="F264DD9F79A1FDE10CE5ECC53221EFF24BE4C9331C830B7D52F2F08A7B633DE2"/>
     </capability>
   </resource>
 </repository>
