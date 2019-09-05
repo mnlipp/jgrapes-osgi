@@ -83,7 +83,6 @@ bintray {
         githubRepo = 'mnlipp/jgrapes-osgi'
         githubReleaseNotesFile = 'README.md'
         version {
-             name = project.version
              gpg {
                  sign = true
              }
@@ -95,6 +94,11 @@ bintray {
              }
         }
     }
+}
+
+afterEvaluate {
+    bintray.pkg.version.name = project.version
+    bintrayUpload.mustRunAfter "releaseTag"
 }
 
 // Disable un-applicable publishing mode
