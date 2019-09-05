@@ -48,6 +48,8 @@ allprojects {
 	
 	// Makes Eclipse-groovy handle *.gradle file properly
 	apply plugin:'groovy'
+    
+    group = 'org.jgrapes'
 }
 
 /* Configure the subprojects */
