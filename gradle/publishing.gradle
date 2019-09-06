@@ -98,7 +98,29 @@ bintray {
 
 afterEvaluate {
     bintray.pkg.version.name = project.version
-    bintrayUpload.mustRunAfter "releaseTag"
+    bintrayUpload.mustRunAfter "build"
+}
+
+task releaseTag {
+    doLast {
+        String name = project.name.startsWith(project.group + ".") ?
+            project.name.substring(project.group.length() + 1) : project.name
+        name = name.replace('.', '-')
+        String tag = name + "-" + project.version
+        grgit.tag.add(name: tag, message: "Released.")
+        grgit.push(refsOrSpecs: [tag])
+    }
+}
+
+build.mustRunAfter "releaseTag"
+
+task releaseToBintray {
+    group = "publishing"
+    
+    dependsOn "releaseTag"
+    dependsOn "clean"
+    dependsOn "build"
+    dependsOn "bintrayUpload"
 }
 
 // Disable un-applicable publishing mode
@@ -109,6 +131,15 @@ afterEvaluate {
         }
     } else {
         tasks.matching { it.name == "publishMavenJavaPublicationToSnapshotRepository" }.all {
+            enabled = false
+        }
+    }
+}
+
+afterEvaluate {
+    if(project.name == "cnf") {
+        tasks.matching { it.group == "upload" ||
+            it.group == "publishing" }.all {
             enabled = false
         }
     }
