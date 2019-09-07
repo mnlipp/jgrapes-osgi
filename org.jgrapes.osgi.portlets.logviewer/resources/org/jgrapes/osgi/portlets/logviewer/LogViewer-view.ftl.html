@@ -4,12 +4,12 @@
       <span role="button" 
         class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
         v-on:click="resync($event)"></span>
-      <span class="jgrapes-osgi-logviewer-level jgportal-input-group">
-        <span class="jgportal-item jgportal-input-label">
-          <label 
+      <span class="jgrapes-osgi-logviewer-level form-group form-group--panel">
+        <span class="form-item">
+          <label
             v-bind:for="portletId + '-Level'">${_("severityAtLeast")}</label>
         </span>
-        <span class="jgportal-item">
+        <span class="form-item">
           <select v-bind:id="portletId + '-Level'" v-model="messageThreshold">
             <option value="AUDIT">${_("AUDIT")}</option>
             <option value="ERROR">${_("ERROR")}</option>
@@ -20,15 +20,15 @@
           </select>
         </span>
       </span>
-      <span class="jgrapes-osgi-logviewer-search jgportal-input-group">
-        <span class="jgportal-item jgportal-input-label">
+      <span class="jgrapes-osgi-logviewer-search form-group form-group--panel">
+        <span class="form-item">
           <label v-bind:for="portletId + '-Filter'">${_("Filter")}</label> 
         </span>
-        <span class="jgportal-item">
+        <span class="form-item">
           <input v-bind:id="portletId + '-Filter'"
             type="search" v-on:input="controller.updateFilter($event)">
         </span>
-        <span class="jgportal-item">
+        <span class="form-item">
           <span role="button" class="jgportal-button-icon fas fa-backspace" 
             v-on:click="controller.clearFilter($event)"></span>
         </span>
