@@ -44,6 +44,7 @@
           <td v-if="key === 'exception'">
             <a href="#" tabindex="0" 
               data-toggle="popover" 
+              data-placement="auto"
               v-bind:title="entry['exception']" 
               v-bind:data-content="entry['stacktrace']"
               v-html="entry[key]"></a>
