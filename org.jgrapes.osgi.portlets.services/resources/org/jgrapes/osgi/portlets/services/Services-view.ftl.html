@@ -13,7 +13,7 @@
       </span>
     </form>
   </div>
-  <table class="jgportal-basic-table jgportal-striped-table jgrapes-osgi-services-view-table">
+  <table class="table--basic table--basic--striped jgrapes-osgi-services-view-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -47,7 +47,7 @@
                 </tr>
                 <tr v-if="entry.usingBundles && entry.usingBundles.length > 0">
                   <td>{{ orgJGrapesOsgiPortletsServices.l10n.serviceUsingBundles }}</td>
-                  <td>{{ entry.usingBundles.join(", ") }}</td>
+                  <td v-html="entry.usingBundles.join(',<br>')"></td>
                 </tr>
               </table>
             </td>
