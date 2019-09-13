@@ -38,24 +38,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(entry, rowIndex) in filteredData"
-        :class="[(rowIndex % 2) ? 'odd' : 'even']">
-        <template v-for="key in controller.keys">
-          <td v-if="key === 'exception'">
-            <a href="#" tabindex="0" 
-              data-toggle="popover" 
-              data-placement="auto"
-              v-bind:title="entry['exception']" 
-              v-bind:data-content="entry['stacktrace']"
-              v-html="entry[key]"></a>
+      <template v-for="(entry, rowIndex) in filteredData">
+        <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
+          <template v-for="key in controller.keys">
+            <td v-if="key === 'exception'">
+              <span v-if="entry['stacktrace']" role="button" 
+                onclick="$(this).parent().parent().next().toggle()"
+                v-html="entry[key]"></span>
+            </td>
+            <td v-else-if="key === 'time'" v-html="formatTimestamp(entry[key])">
+            </td>
+            <td v-else
+              v-html="controller.breakBeforeDots(entry[key])">
+            </td>
+          </template>
+        </tr>
+        <tr v-if="entry['stacktrace']" style="display: none;" 
+          :class="[(rowIndex % 2) ? 'odd' : 'even']">
+          <td colspan="6">
+            <pre v-html="entry['stacktrace']"></pre>
           </td>
-          <td v-else-if="key === 'time'" v-html="formatTimestamp(entry[key])">
-          </td>
-          <td v-else
-            v-html="controller.breakBeforeDots(entry[key])">
-          </td>
-        </template>
-      </tr>
+        </tr>
+      </template>
     </tbody>
   </table>
 </div>
