@@ -18,6 +18,9 @@
 
 package org.jgrapes.osgi.demo.portal;
 
+import de.mnl.osgi.lf4osgi.Logger;
+import de.mnl.osgi.lf4osgi.LoggerFactory;
+
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -58,6 +61,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Application extends Component implements BundleActivator {
 
+    private static Logger LOG = LoggerFactory.getLogger(Application.class);
     private static BundleContext context;
     private Application app;
 
@@ -117,6 +121,7 @@ public class Application extends Component implements BundleActivator {
         createJQueryUiPortal(context);
         createBootstrap4Portal(context);
         Components.start(app);
+        LOG.info("Application started.");
     }
 
     private void createJQueryUiPortal(BundleContext context)
