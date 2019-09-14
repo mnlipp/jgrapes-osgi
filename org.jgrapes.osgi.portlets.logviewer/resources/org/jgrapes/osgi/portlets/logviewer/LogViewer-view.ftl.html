@@ -41,10 +41,15 @@
       <template v-for="(entry, rowIndex) in filteredData">
         <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <template v-for="key in controller.keys">
-            <td v-if="key === 'exception'">
-              <span v-if="entry['stacktrace']" role="button" 
-                onclick="$(this).parent().parent().next().toggle()"
-                v-html="entry[key]"></span>
+            <td v-if="key === 'exception'"
+              onclick="$(this).parent().next().toggle();
+                $(this).find('.jgportal-button-icon').toggleClass('fa-caret-right fa-caret-down')">
+              <template v-if="entry['stacktrace']">
+                <span role="button" 
+                  class="jgportal-button-icon fas fa-caret-right"></span>
+                <span v-if="entry['stacktrace']" role="button"
+                  v-html="entry[key]"></span>
+              </template>
             </td>
             <td v-else-if="key === 'time'" v-html="formatTimestamp(entry[key])">
             </td>
