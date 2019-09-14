@@ -72,7 +72,6 @@ var orgJGrapesOsgiPortletsServices = {
                     sortKey: "id"
                 }),
                 infosById: {},
-                detailsFor: new Set(),
             },
             computed: {
                 filteredData: function() {
@@ -81,15 +80,6 @@ var orgJGrapesOsgiPortletsServices = {
                 },
             },
             methods: {
-                toggleDetails: function(serviceId) {
-                    if (this.detailsFor.has(serviceId)) {
-                        this.detailsFor.delete(serviceId);
-                        this.$forceUpdate();
-                        return;
-                    }
-                    this.detailsFor.add(serviceId);
-                    this.$forceUpdate();
-                },
                 sortedProperties: function(properties) {
                     let entries = Object.entries(properties);
                     entries.sort();

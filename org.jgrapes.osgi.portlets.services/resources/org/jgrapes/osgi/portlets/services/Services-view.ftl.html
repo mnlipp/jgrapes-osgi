@@ -25,30 +25,30 @@
       <template v-for="(entry, rowIndex) in filteredData">
         <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td v-for="key in controller.keys"
-            v-bind:rowspan="key == 'id' && detailsFor.has(entry.id) ? '2' : false">
+            v-bind:rowspan="key == 'id' ? '1' : false">
             <span v-if="key == 'id'"
-              role="button" class="jgportal-button-icon fas"
-              v-bind:class="[detailsFor.has(entry.id) ? 'fa-caret-down' : 'fa-caret-right']"
-              v-on:click="toggleDetails(entry.id)"></span>
+              role="button" class="jgportal-button-icon fas fa-caret-right"
+              onclick="$(this).parent().parent().next().toggle();
+                  $(this).toggleClass('fa-caret-right fa-caret-down');
+                  $(this).parent().attr('rowspan', 3 - $(this).parent().attr('rowspan'))"></span>
             <span v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
         </tr>
-        <template v-if="detailsFor.has(entry.id)">
-          <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
-            <td colspan="4" class="details">
-              <table class="jgportal-auto-striped-table">
-                <tr v-for="[key, value] of sortedProperties(entry.properties)">
-                  <td>{{ key }}</td>
-                  <td>{{ value }}</td>
-                </tr>
-                <tr v-if="entry.usingBundles && entry.usingBundles.length > 0">
-                  <td>{{ orgJGrapesOsgiPortletsServices.l10n.serviceUsingBundles }}</td>
-                  <td v-html="entry.usingBundles.join(',<br>')"></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </template>
+        <tr style="display: none;"
+          :class="[(rowIndex % 2) ? 'odd' : 'even']">
+          <td colspan="4" class="details">
+            <table class="jgportal-auto-striped-table">
+              <tr v-for="[key, value] of sortedProperties(entry.properties)">
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+              </tr>
+              <tr v-if="entry.usingBundles && entry.usingBundles.length > 0">
+                <td>{{ orgJGrapesOsgiPortletsServices.l10n.serviceUsingBundles }}</td>
+                <td v-html="entry.usingBundles.join(',<br>')"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </template>
     </tbody>
   </table>
