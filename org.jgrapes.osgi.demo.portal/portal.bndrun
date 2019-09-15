@@ -36,7 +36,7 @@
 	org.jgrapes.portal.providers.markdownit;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.vuejs;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portlets.markdowndisplay;version='[0.27.0,0.27.1)',\
-	org.jgrapes.portlets.sysinfo;version='[0.24.2,0.24.3)',\
+	org.jgrapes.portlets.sysinfo;version='[0.26.0,0.26.1)',\
 	org.jgrapes.osgi.demo.portal;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.16,1.9.17)',\
 	org.apache.felix.scr;version='[2.0.14,2.0.15)',\
