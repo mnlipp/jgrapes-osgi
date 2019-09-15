@@ -12,9 +12,9 @@ Private-Package: org.jgrapes.osgi.demo.portal
 	osgi.cmpn;version=6.0,\
 	org.osgi.service.log;version=latest,\
 	de.mnl.osgi.lf4osgi;version=latest,\
-	org.jgrapes.core;version='[1.1.1.ga,2)',\
-	org.jgrapes.io;version='[1.1.1.ga,2)',\
-	org.jgrapes.http;version='[1.1.1.ga,2)',\
+	org.jgrapes.core;version=latest,\
+	org.jgrapes.io;version=latest,\
+	org.jgrapes.http;version=latest,\
 	org.jgrapes.portal.base;version=latest,\
 	org.jgrapes.portal.jqueryui;version=latest,\
 	org.jgrapes.portal.bootstrap4;version=latest,\
