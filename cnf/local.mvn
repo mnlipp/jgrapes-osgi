@@ -4,5 +4,6 @@
 #org.jgrapes:org.jgrapes.http:1.1.1-SNAPSHOT
 #org.jgrapes:org.jgrapes.http.freemarker:1.1.1-SNAPSHOT
 
-#org.jgrapes:org.jgrapes.portal.base:0.24.3
-#org.jgrapes:org.jgrapes.portal.bootstrap4:0.24.3
+#org.jgrapes:org.jgrapes.portal.base:0.27.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.portal.bootstrap4:0.27.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.portlets.markdowndisplay:0.27.0-SNAPSHOT
