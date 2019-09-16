@@ -30,14 +30,14 @@
 	org.jgrapes.osgi.core;version=snapshot,\
 	org.jgrapes.portal.base;version='[0.27.0,0.27.1)',\
 	org.jgrapes.portal.bootstrap4;version='[0.27.0,0.27.1)',\
-	org.jgrapes.portal.jqueryui;version='[0.26.0,0.26.1)',\
+	org.jgrapes.portal.jqueryui;version='[0.27.0,0.27.1)',\
 	org.jgrapes.portal.providers.chartjs;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.fontawesome;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.markdownit;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.vuejs;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portlets.markdowndisplay;version='[0.27.0,0.27.1)',\
 	org.jgrapes.portlets.sysinfo;version='[0.26.0,0.26.1)',\
-	org.jgrapes.osgi.demo.portal;version='snapshot',\
+	org.jgrapes.osgi.demo.portal;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.16,1.9.17)',\
 	org.apache.felix.scr;version='[2.0.14,2.0.15)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.9.4,2.9.5)',\
@@ -48,7 +48,7 @@
 	org.jgrapes.osgi.portlets.bundles;version=snapshot,\
 	org.jgrapes.osgi.portlets.services;version=snapshot,\
 	org.jgrapes.osgi.portlets.logviewer;version=snapshot,\
-	org.jgrapes.core;version='[1.1.0,1.1.1)'
+	org.jgrapes.portal.jqueryui.themes.blitzer;version=0.19.0
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
@@ -67,7 +67,7 @@
     \
     bnd.identity; id=org.jgrapes.portal.base; version='[0.27.0,2.0.0)',\
     bnd.identity; id=org.jgrapes.portal.bootstrap4; version='[0.27.0,2.0.0)',\
-    bnd.identity; id=org.jgrapes.portal.jqueryui; version='[0.26.0,2.0.0)',\
+    bnd.identity; id=org.jgrapes.portal.jqueryui; version='[0.27.0,2.0.0)',\
     bnd.identity; id=org.jgrapes.portlets.sysinfo; version='latest',\
     bnd.identity; id=org.jgrapes.portlets.markdowndisplay; version='latest',\
     bnd.identity; id=org.jgrapes.osgi.portlets.bundles; version='latest',\
@@ -92,6 +92,7 @@
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
     osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
     osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.chartjs)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.datatables)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)'
