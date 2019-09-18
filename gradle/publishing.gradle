@@ -98,10 +98,11 @@ bintray {
 
 afterEvaluate {
     bintray.pkg.version.name = project.version
-    bintrayUpload.mustRunAfter "build"
+    bintrayUpload.dependsOn "build"
 }
 
 task releaseTag {
+    dependsOn "cleanJar"
     doLast {
         String name = project.name.startsWith(project.group + ".") ?
             project.name.substring(project.group.length() + 1) : project.name
