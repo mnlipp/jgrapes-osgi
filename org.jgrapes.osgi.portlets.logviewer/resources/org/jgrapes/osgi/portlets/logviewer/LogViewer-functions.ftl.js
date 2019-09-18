@@ -90,12 +90,6 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 if (portlet && (vm = portlet.data("vue-model"))) {
                     vm.entries = params[0];
                 }
-                Vue.nextTick(function () {
-                    portlet.find('[data-toggle="popover"]').popover({
-                        trigger: 'focus',
-                        template: "<div class='jgrapes-osgi-logviewer-stacktrace popover' role='tooltip'><div class='arrow'></div><h3 class='popover-header'></h3><div class='popover-body'></div></div>"
-                    })
-                })
             });
      
     JGPortal.registerPortletMethod(
