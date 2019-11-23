@@ -1,7 +1,7 @@
 Bundle-Name: JGrapes OSGi Log Viewer
 Bundle-SymbolicName: org.jgrapes.osgi.portlets.logviewer
 #Bundle-Version: 0.9.5.-${tstamp}-SNAPSHOT
-Bundle-Version: 0.9.5.ga
+Bundle-Version: 0.9.6.ga
 Bundle-Copyright: Michael N. Lipp (c) 2019
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Require-Capability: \
@@ -25,7 +25,7 @@ Private-Package: org.jgrapes.osgi.portlets.logviewer
     osgi.cmpn;version=6.0,\
     de.mnl.osgi.coreutils;version=latest,\
     de.mnl.osgi.lf4osgi;version=latest,\
-	org.jgrapes.core;version='[1.0.3.ga,2)',\
+	org.jgrapes.core;version='[1.2.0,2)',\
 	org.jgrapes.io;version='[1.0.3.ga,2)',\
 	org.jgrapes.http;version='[1.0.3.ga,2)',\
 	org.jgrapes.portal.base;version=latest,\

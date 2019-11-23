@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2018  Michael N. Lipp
+ * Copyright (C) 2018,2019  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -40,12 +40,12 @@ var orgJGrapesOsgiPortletsLogViewer = {
             el: $(portlet.find(".jgrapes-osgi-logviewer-view"))[0],
             data: {
                 controller: new JGPortal.TableController([
-                    ["time", "${_("timestamp")}"],
-                    ["logLevel", "${_("level")}"],
-                    ["message", "${_("message")}"],
-                    ["bundle", "${_("bundle")}"],
-                    ["service", "${_("service")}"],
-                    ["exception", "${_("exception")}"],
+                    ["time", '${_("timestamp")}'],
+                    ["logLevel", '${_("level")}'],
+                    ["message", '${_("message")}'],
+                    ["bundle", '${_("bundle")}'],
+                    ["service", '${_("service")}'],
+                    ["exception", '${_("exception")}'],
                     ], {
                     sortKey: "sequence",
                     sortOrder: "down"
@@ -53,7 +53,8 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 messageThreshold: "INFO",
                 entries: [],
                 lang: portlet.closest('[lang]').attr('lang') || 'en',
-                portletId: portletId
+                portletId: portletId,
+				autoUpdate: true
             },
             computed: {
                 filteredData: function() {
@@ -68,7 +69,7 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 }
             },
             methods: {
-                resync: function(event) {
+                resync: function() {
                         let portletId = $(this.$el).parent().attr("data-portlet-id");
                         JGPortal.notifyPortletModel(portletId, "resync");
                 },
@@ -78,6 +79,13 @@ var orgJGrapesOsgiPortletsLogViewer = {
                     return ts.format("L HH:mm:ss.SSS");
                 } 
             },
+            watch: {
+	            autoUpdate: function(newValue, oldValue) {
+		            if (newValue) {
+			            this.resync();
+		            }
+	            }
+            }
         }));
     }
     
@@ -99,7 +107,14 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 let portlet = JGPortal.findPortletView(portletId);
                 let vm = null;
                 if (portlet && (vm = portlet.data("vue-model"))) {
-                    vm.entries = Object.assign([params[0]], vm.entries);
+					if (!vm.autoUpdate) {
+						return;
+					}
+					if (vm.entries) {
+						vm.entries.unshift(params[0]);
+					} else {
+						vm.entries = [params[0]];
+					}
                 }
             });
 

@@ -1,10 +1,22 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-logviewer-view">
   <div class="jgrapes-osgi-logviewer-control">
-    <form>
-      <span role="button" 
-        class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync" 
-        v-on:click="resync($event)"></span>
-      <label class="jgrapes-osgi-logviewer-level">
+	<form class="block--paragraph">
+	  <fieldset class="form-fieldset--horizontal form-fieldset--panel">
+		<span>
+		  <legend>${_("Update")}</legend>
+		    <span>
+			  <label>
+			    <input type="checkbox" v-model="autoUpdate">
+				  <span>${_("auto")}</span>
+			  </label>
+		    <span role="button" class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync"
+			  v-on:click="resync($event)">
+		   </span>
+		  </span>
+	    </span>
+	  </fieldset>
+
+      <label class="form-labeledInput--panel jgrapes-osgi-logviewer-level">
         <span>${_("severityAtLeast")}</span>
         <select v-model="messageThreshold">
           <option value="AUDIT">${_("AUDIT")}</option>
@@ -15,12 +27,15 @@
           <option value="TRACE">${_("TRACE")}</option>
         </select>
       </label>
-      <label>
+
+      <label class="form-labeledInput--panel">
         <span>${_("Filter")}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" class="jgportal-button-icon fas fa-backspace" 
-          v-on:click="controller.clearFilter($event)"></span>
-      </label> 
+        <span class="form-item">
+          <span role="button" class="jgportal-button-icon fas fa-backspace" 
+            v-on:click="controller.clearFilter($event)"></span>
+        </span>
+      </label>
     </form>
   </div>
   <table class="table--basic table--basic--striped jgrapes-osgi-logviewer-table">

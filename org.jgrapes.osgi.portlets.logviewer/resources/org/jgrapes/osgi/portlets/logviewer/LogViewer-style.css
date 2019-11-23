@@ -17,7 +17,7 @@
 }
 
 .jgrapes-osgi-logviewer-control form .jgrapes-osgi-logviewer-level select {
-    width: 10em;
+    min-width: 10em;
 }
 
 .jgrapes-osgi-logviewer-table tr,td {
@@ -49,7 +49,6 @@
 }
 
 .jgrapes-osgi-logviewer-reload {
-	font-size: 125%;
     margin-left: 1em;
 	margin-right: 1em;
 }

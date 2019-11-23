@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2016, 2018  Michael N. Lipp
+ * Copyright (C) 2016, 2019  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -60,6 +60,7 @@ import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.log.LogEntry;
+import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
 
 /**
@@ -71,6 +72,7 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     private ServiceCollector<LogReaderService,
             LogReaderService> logReaderCollector;
     private LogReaderService logReaderResolved;
+    private LogListener logReaderListener;
 
     /**
      * Creates a new component with its channel set to the given channel.
@@ -82,6 +84,12 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public LogViewerPortlet(Channel componentChannel, BundleContext context) {
         super(componentChannel, true);
+        logReaderListener = new LogListener() {
+            @Override
+            public void logged(LogEntry entry) {
+                addEntry(entry);
+            }
+        };
         logReaderCollector
             = new ServiceCollector<>(context, LogReaderService.class);
         logReaderCollector.setOnBound((ref, svc) -> subscribeTo(svc))
@@ -96,7 +104,14 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             return;
         }
         // Got a new log reader service.
+        if (logReaderResolved != null) {
+            logReaderResolved.removeLogListener(logReaderListener);
+        }
         logReaderResolved = logReaderService;
+        if (logReaderResolved != null) {
+            logReaderResolved.addLogListener(logReaderListener);
+        }
+
     }
 
     @Handler(channels = Channel.class)
@@ -226,6 +241,16 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             portletId, "entries",
             (Object) Collections.list(logReader.getLog()).stream()
                 .map(entry -> logEntryAsMap(entry)).toArray()));
+    }
+
+    private void addEntry(LogEntry entry) {
+        for (PortalSession portalSession : trackedSessions()) {
+            for (String portletId : portletIds(portalSession)) {
+                portalSession.respond(new NotifyPortletView(type(),
+                    portletId, "addEntry", logEntryAsMap(entry))
+                        .disableTracking());
+            }
+        }
     }
 
     private Map<String, Object> logEntryAsMap(LogEntry entry) {
