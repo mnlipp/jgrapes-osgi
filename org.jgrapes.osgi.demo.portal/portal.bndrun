@@ -31,6 +31,7 @@
 	org.jgrapes.portal.base;version='[0.27.1,0.27.2)',\
 	org.jgrapes.portal.bootstrap4;version='[0.27.2,0.27.3)',\
 	org.jgrapes.portal.jqueryui;version='[0.27.0,0.27.1)',\
+    org.jgrapes.portal.jqueryui.themes.uidarkness;version='[0.19.1,0.19.2)',\
 	org.jgrapes.portal.providers.chartjs;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.fontawesome;version='[0.25.0,0.25.1)',\
 	org.jgrapes.portal.providers.markdownit;version='[0.24.2,0.24.3)',\
@@ -47,8 +48,7 @@
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
 	org.jgrapes.osgi.portlets.bundles;version=snapshot,\
 	org.jgrapes.osgi.portlets.services;version=snapshot,\
-	org.jgrapes.osgi.portlets.logviewer;version=snapshot,\
-	org.jgrapes.portal.jqueryui.themes.uidarkness;version='[0.19.1,0.19.2)'
+	org.jgrapes.osgi.portlets.logviewer;version=snapshot
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\

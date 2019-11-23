@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Demo Portal
-# Bundle-Version: 0.9.10.-${tstamp}-SNAPSHOT
-Bundle-Version: 0.9.9.ga
+#Bundle-Version: 0.9.10.-${tstamp}-SNAPSHOT
+Bundle-Version: 0.9.10.ga
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Bundle-Activator: org.jgrapes.osgi.demo.portal.Application
