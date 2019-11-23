@@ -4,17 +4,17 @@
 	de.mnl.osgi.coreutils;version='[1.0.3,1.0.4)',\
 	de.mnl.osgi.jul2osgi;version='[1.4.3,1.4.4)',\
 	de.mnl.osgi.lf4osgi;version='[2.1.3,2.1.4)',\
-	de.mnl.osgi.log4j2osgi;version='[1.0.3,1.0.4)',\
+	de.mnl.osgi.log4j2osgi;version='[1.1.0,1.1.1)',\
 	de.mnl.osgi.osgi2jul;version='[1.1.4,1.1.5)',\
 	de.mnl.osgi.slf4j2osgi;version='[2.1.4,2.1.5)',\
-	slf4j.api;version='[1.7.28,1.7.29)',\
+	slf4j.api;version='[1.7.29,1.7.30)',\
 	org.apache.commons.fileupload;version='[1.3.3,1.3.4)',\
 	org.apache.commons.io;version='[2.6.0,2.6.1)',\
 	com.sun.activation.javax.activation;version='[1.2.0,1.2.1)',\
 	javax.servlet-api;version='[4.0.0,4.0.1)',\
 	org.apache.felix.gogo.command;version='[1.1.0,1.1.1)',\
 	org.apache.felix.gogo.shell;version='[1.1.2,1.1.3)',\
-	org.apache.felix.http.jetty;version='[4.0.12,4.0.13)',\
+	org.apache.felix.http.jetty;version='[4.0.10,4.0.11)',\
 	org.apache.felix.http.servlet-api;version='[1.1.2,1.1.3)',\
 	org.apache.felix.log;version='[1.2.0,1.2.1)',\
 	org.apache.felix.webconsole;version='[4.3.16,4.3.17)',\
@@ -23,16 +23,16 @@
 	org.freemarker.freemarker;version='[2.3.29,2.3.30)',\
 	org.jdrupes.httpcodec;version='[2.0.3,2.0.4)',\
 	org.jdrupes.json;version='[2.0.1,2.0.2)',\
-	org.jgrapes.core;version='[1.1.2,1.1.3)',\
-	org.jgrapes.http;version='[1.1.2,1.1.3)',\
-	org.jgrapes.io;version='[1.1.2,1.1.3)',\
-	org.jgrapes.util;version='[1.1.2,1.1.3)',\
+	org.jgrapes.core;version='[1.2.0,1.2.1)',\
+	org.jgrapes.http;version='[1.2.0,1.2.1)',\
+	org.jgrapes.io;version='[1.2.0,1.2.1)',\
+	org.jgrapes.util;version='[1.2.0,1.2.1)',\
 	org.jgrapes.osgi.core;version=snapshot,\
-	org.jgrapes.portal.base;version='[0.27.0,0.27.1)',\
-	org.jgrapes.portal.bootstrap4;version='[0.27.0,0.27.1)',\
+	org.jgrapes.portal.base;version='[0.27.1,0.27.2)',\
+	org.jgrapes.portal.bootstrap4;version='[0.27.2,0.27.3)',\
 	org.jgrapes.portal.jqueryui;version='[0.27.0,0.27.1)',\
 	org.jgrapes.portal.providers.chartjs;version='[0.24.2,0.24.3)',\
-	org.jgrapes.portal.providers.fontawesome;version='[0.24.2,0.24.3)',\
+	org.jgrapes.portal.providers.fontawesome;version='[0.25.0,0.25.1)',\
 	org.jgrapes.portal.providers.markdownit;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portal.providers.vuejs;version='[0.24.2,0.24.3)',\
 	org.jgrapes.portlets.markdowndisplay;version='[0.27.0,0.27.1)',\
@@ -48,7 +48,7 @@
 	org.jgrapes.osgi.portlets.bundles;version=snapshot,\
 	org.jgrapes.osgi.portlets.services;version=snapshot,\
 	org.jgrapes.osgi.portlets.logviewer;version=snapshot,\
-	org.jgrapes.portal.jqueryui.themes.blitzer;version=0.19.0
+	org.jgrapes.portal.jqueryui.themes.uidarkness;version='[0.19.1,0.19.2)'
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
@@ -95,12 +95,15 @@
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.chartjs)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.datatables)',\
-    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)'
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)',\
+    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.inventory)(!(version>=1.0.6)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.http.jetty)(|(version=4.0.12)(version=4.0.14)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.osgi.compendium)(!(version>=6.0.0)))'
 
 #     osgi.identity;filter:='(&(osgi.identity=org.jdrupes.httpcodec)(!(version>=2.0.3)))'
 
 # -consumer-policy: ${range;[===,+)}
-    
+
 -runprogramargs: -console
 -runproperties: \
     java.util.logging.config.file=jul-debug.properties,\
@@ -109,6 +112,8 @@
     de.mnl.osgi.osgi2jul.handlers='java.util.logging.ConsoleHandler[1]', \
     de.mnl.osgi.osgi2jul.handler.1.format='{0} [{2}/{4}]'
 -runee: JavaSE-1.8
--runpath: de.mnl.osgi.jul2osgi.lib;version='latest'
--runvm: -ea, -Djava.util.logging.manager=de.mnl.osgi.jul2osgi.lib.LogManager
+-runvm: -ea, -Xbootclasspath/a:${repo;de.mnl.osgi.jul2osgi.lib;latest}, \
+    -Djava.util.logging.manager=de.mnl.osgi.jul2osgi.lib.LogManager
+-runsystempackages: \
+    de.mnl.osgi.jul2osgi.lib; version=1.4.2
 -runee: JavaSE-1.8
