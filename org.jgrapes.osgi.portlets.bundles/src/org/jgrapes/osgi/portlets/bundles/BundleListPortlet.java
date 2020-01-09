@@ -24,7 +24,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +46,7 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
+import org.jgrapes.portal.base.AbstractPortlet;
 import org.jgrapes.portal.base.PortalSession;
 import org.jgrapes.portal.base.PortalUtils;
 
@@ -75,7 +75,8 @@ import org.osgi.framework.wiring.BundleRevision;
 /**
  * 
  */
-public class BundleListPortlet extends FreeMarkerPortlet
+public class BundleListPortlet
+        extends FreeMarkerPortlet<BundleListPortlet.BundleListModel>
         implements BundleListener {
 
     private static final Logger logger
@@ -94,7 +95,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
      */
     public BundleListPortlet(Channel componentChannel, BundleContext context,
             Map<Object, Object> properties) {
-        super(componentChannel, true);
+        super(componentChannel);
         this.context = context;
         context.addBundleListener(this);
     }
@@ -114,10 +115,10 @@ public class BundleListPortlet extends FreeMarkerPortlet
     public void onPortalReady(PortalReady event, PortalSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        ResourceBundle resourceBundle = resourceBundle(channel.locale());
         // Add portlet resources to page
         channel.respond(new AddPortletType(type())
-            .setDisplayName(resourceBundle.getString("portletName"))
+            .setDisplayNames(
+                displayNames(channel.supportedLocales(), "portletName"))
             .addScript(new ScriptResource()
                 .setRequires(new String[] { "vuejs.org" })
                 .setScriptUri(event.renderSupport().portletResource(
@@ -141,12 +142,11 @@ public class BundleListPortlet extends FreeMarkerPortlet
      * 
      * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
      */
-    @SuppressWarnings("unchecked")
     @Override
-    protected <T extends Serializable> Optional<T> stateFromSession(
-            Session session, String portletId, Class<T> type) {
+    protected Optional<BundleListModel> stateFromSession(
+            Session session, String portletId) {
         if (portletId.startsWith(type() + "-")) {
-            return Optional.of((T) new BundleListModel(portletId));
+            return Optional.of(new BundleListModel(portletId));
         }
         return Optional.empty();
     }
@@ -188,9 +188,8 @@ public class BundleListPortlet extends FreeMarkerPortlet
     @Override
     protected void doRenderPortlet(RenderPortletRequest event,
             PortalSession channel, String portletId,
-            Serializable retrievedState)
+            BundleListModel portletModel)
             throws Exception {
-        BundleListModel portletModel = (BundleListModel) retrievedState;
         renderPortlet(event, channel, portletModel);
     }
 
@@ -198,9 +197,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
             PortalSession channel,
             BundleListModel portletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException {
-        switch (event.preferredRenderMode()) {
-        case Preview:
-        case DeleteablePreview: {
+        if (event.renderPreview()) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -216,9 +213,8 @@ public class BundleListPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "bundleUpdates", bundleInfos,
                 "preview", true));
-            break;
         }
-        case View: {
+        if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -233,10 +229,6 @@ public class BundleListPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "bundleUpdates", bundleInfos,
                 "view", true));
-            break;
-        }
-        default:
-            break;
         }
     }
 
@@ -281,7 +273,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
     @Override
     protected void doDeletePortlet(DeletePortletRequest event,
             PortalSession channel, String portletId,
-            Serializable retrievedState) throws Exception {
+            BundleListModel retrievedState) throws Exception {
         channel.respond(new DeletePortlet(portletId));
     }
 
@@ -292,7 +284,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
      */
     @Override
     protected void doNotifyPortletModel(NotifyPortletModel event,
-            PortalSession channel, Serializable portletState)
+            PortalSession channel, BundleListModel portletState)
             throws Exception {
         event.stop();
         Bundle bundle = context.getBundle(event.params().asInt(0));
@@ -318,8 +310,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
             case "sendDetails":
                 sendBundleDetails(event.portletId(), channel, bundle);
                 break;
-            default:
-                // ignore
+            default:// ignore
                 break;
             }
         } catch (BundleException e) {
@@ -426,7 +417,7 @@ public class BundleListPortlet extends FreeMarkerPortlet
      * The bundle's model.
      */
     @SuppressWarnings("serial")
-    public class BundleListModel extends PortletBaseModel {
+    public class BundleListModel extends AbstractPortlet.PortletBaseModel {
 
         /**
          * Instantiates a new bundle list model.

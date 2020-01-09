@@ -26,7 +26,6 @@ import freemarker.template.TemplateNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -49,6 +47,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
+import org.jgrapes.portal.base.AbstractPortlet;
 import org.jgrapes.portal.base.PortalSession;
 import org.jgrapes.portal.base.PortalUtils;
 import org.jgrapes.portal.base.Portlet.RenderMode;
@@ -82,7 +81,8 @@ import org.osgi.service.upnp.UPnPIcon;
  * A portlet for inspecting the services in an OSGi runtime.
  */
 @SuppressWarnings({ "PMD.ExcessiveImports" })
-public class UPnPBrowserPortlet extends FreeMarkerPortlet
+public class UPnPBrowserPortlet
+        extends FreeMarkerPortlet<UPnPBrowserPortlet.UPnPBrowserModel>
         implements ServiceListener {
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
@@ -99,7 +99,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public UPnPBrowserPortlet(Channel componentChannel, BundleContext context,
             ServiceComponentRuntime scr) {
-        super(componentChannel, true);
+        super(componentChannel);
         this.context = context;
     }
 
@@ -118,12 +118,12 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
     public void onPortalReady(PortalReady event, PortalSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        ResourceBundle resourceBundle = resourceBundle(channel.locale());
         Reader deviceTemplate = new InputStreamReader(UPnPBrowserPortlet.class
             .getResourceAsStream("device-tree-template.html"));
         // Add portlet resources to page
         channel.respond(new AddPortletType(type())
-            .setDisplayName(resourceBundle.getString("portletName"))
+            .setDisplayNames(
+                displayNames(channel.supportedLocales(), "portletName"))
             .addScript(new ScriptResource()
                 .setRequires(new String[] { "vuejs.org" })
                 .setScriptUri(event.renderSupport().portletResource(
@@ -152,12 +152,12 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
      * 
      * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
      */
-    @SuppressWarnings({ "unchecked", "PMD.AvoidDuplicateLiterals" })
+    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
     @Override
-    protected <T extends Serializable> Optional<T> stateFromSession(
-            Session session, String portletId, Class<T> type) {
+    protected Optional<UPnPBrowserModel> stateFromSession(
+            Session session, String portletId) {
         if (portletId.startsWith(type() + "-")) {
-            return Optional.of((T) new UPnPBrowserModel(portletId));
+            return Optional.of(new UPnPBrowserModel(portletId));
         }
         return Optional.empty();
     }
@@ -185,22 +185,19 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
     @Override
     protected void doRenderPortlet(RenderPortletRequest event,
             PortalSession channel, String portletId,
-            Serializable retrievedState)
+            UPnPBrowserModel portletModel)
             throws Exception {
-        UPnPBrowserModel portletModel = (UPnPBrowserModel) retrievedState;
         renderPortlet(event, channel, portletModel);
     }
 
     @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
         "PMD.DataflowAnomalyAnalysis", "unchecked" })
     private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel,
-            UPnPBrowserModel portletModel) throws TemplateNotFoundException,
+            PortalSession channel, UPnPBrowserModel portletModel)
+            throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        switch (event.preferredRenderMode()) {
-        case Preview:
-        case DeleteablePreview: {
+        if (event.renderPreview()) {
             Template tpl = freemarkerConfig()
                 .getTemplate("UPnPBrowser-preview.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -217,9 +214,8 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "deviceUpdates", deviceInfos,
                 "preview", true));
-            break;
         }
-        case View: {
+        if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("UPnPBrowser-view.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -238,10 +234,6 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "deviceUpdates",
                 treeify(deviceInfos), "view", true));
-            break;
-        }
-        default:
-            break;
         }
     }
 
@@ -372,8 +364,8 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
      */
     @Override
     protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel,
-            String portletId, Serializable portletState) throws Exception {
+            PortalSession channel, String portletId,
+            UPnPBrowserModel portletState) throws Exception {
         channel.respond(new DeletePortlet(portletId));
     }
 
@@ -381,7 +373,7 @@ public class UPnPBrowserPortlet extends FreeMarkerPortlet
      * The portlet's model.
      */
     @SuppressWarnings("serial")
-    public class UPnPBrowserModel extends PortletBaseModel {
+    public class UPnPBrowserModel extends AbstractPortlet.PortletBaseModel {
 
         /**
          * Instantiates a new service list model.

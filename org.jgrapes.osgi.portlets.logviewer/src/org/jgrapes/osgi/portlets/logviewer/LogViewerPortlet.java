@@ -28,12 +28,10 @@ import freemarker.template.TemplateNotFoundException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 import org.jgrapes.core.Channel;
@@ -42,6 +40,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.http.Session;
+import org.jgrapes.portal.base.AbstractPortlet;
 import org.jgrapes.portal.base.PortalSession;
 import org.jgrapes.portal.base.PortalUtils;
 import org.jgrapes.portal.base.Portlet.RenderMode;
@@ -66,7 +65,8 @@ import org.osgi.service.log.LogReaderService;
 /**
  * A portlet for displaying the OSGi log.
  */
-public class LogViewerPortlet extends FreeMarkerPortlet {
+public class LogViewerPortlet
+        extends FreeMarkerPortlet<AbstractPortlet.PortletBaseModel> {
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(View);
     private ServiceCollector<LogReaderService,
@@ -83,7 +83,7 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
      */
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public LogViewerPortlet(Channel componentChannel, BundleContext context) {
-        super(componentChannel, true);
+        super(componentChannel);
         logReaderListener = new LogListener() {
             @Override
             public void logged(LogEntry entry) {
@@ -134,10 +134,10 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     public void onPortalReady(PortalReady event, PortalSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        ResourceBundle resourceBundle = resourceBundle(channel.locale());
         // Add portlet resources to page
         channel.respond(new AddPortletType(type())
-            .setDisplayName(resourceBundle.getString("portletName"))
+            .setDisplayNames(
+                displayNames(channel.supportedLocales(), "portletName"))
             .addRenderMode(RenderMode.View)
             .addScript(new ScriptResource()
                 .setRequires(new String[] { "vuejs.org" })
@@ -162,12 +162,12 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
      * 
      * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
      */
-    @SuppressWarnings({ "unchecked", "PMD.AvoidDuplicateLiterals" })
+    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
     @Override
-    protected <T extends Serializable> Optional<T> stateFromSession(
-            Session session, String portletId, Class<T> type) {
+    protected Optional<PortletBaseModel> stateFromSession(
+            Session session, String portletId) {
         if (portletId.startsWith(type() + "-")) {
-            return Optional.of((T) new LogViewerModel(portletId));
+            return Optional.of(new PortletBaseModel(portletId));
         }
         return Optional.empty();
     }
@@ -180,7 +180,8 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     @Override
     protected String doAddPortlet(AddPortletRequest event,
             PortalSession channel) throws Exception {
-        LogViewerModel portletModel = new LogViewerModel(generatePortletId());
+        PortletBaseModel portletModel
+            = new PortletBaseModel(generatePortletId());
         renderPortlet(event, channel, portletModel);
         return portletModel.getPortletId();
     }
@@ -193,18 +194,16 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
     @Override
     protected void doRenderPortlet(RenderPortletRequest event,
             PortalSession channel, String portletId,
-            Serializable retrievedState) throws Exception {
-        LogViewerModel portletModel = (LogViewerModel) retrievedState;
+            PortletBaseModel portletModel) throws Exception {
         renderPortlet(event, channel, portletModel);
     }
 
     private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel, LogViewerModel portletModel)
+            PortalSession channel, PortletBaseModel portletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        switch (event.preferredRenderMode()) {
-        case View: {
+        if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -213,10 +212,6 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             sendAllEntries(channel, portletModel.getPortletId());
-            break;
-        }
-        default:
-            break;
         }
     }
 
@@ -227,8 +222,8 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
      */
     @Override
     protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel,
-            String portletId, Serializable portletState) throws Exception {
+            PortalSession channel, String portletId,
+            PortletBaseModel portletState) throws Exception {
         channel.respond(new DeletePortlet(portletId));
     }
 
@@ -289,7 +284,7 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
      */
     @Override
     protected void doNotifyPortletModel(NotifyPortletModel event,
-            PortalSession channel, Serializable portletState)
+            PortalSession channel, PortletBaseModel portletState)
             throws Exception {
         event.stop();
         switch (event.method()) {
@@ -297,22 +292,5 @@ public class LogViewerPortlet extends FreeMarkerPortlet {
             sendAllEntries(channel, event.portletId());
             break;
         }
-    }
-
-    /**
-     * The portlet's model.
-     */
-    @SuppressWarnings("serial")
-    public class LogViewerModel extends PortletBaseModel {
-
-        /**
-         * Instantiates a new service list model.
-         *
-         * @param portletId the portlet id
-         */
-        public LogViewerModel(String portletId) {
-            super(portletId);
-        }
-
     }
 }

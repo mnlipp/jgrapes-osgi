@@ -24,7 +24,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,7 +31,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -41,6 +39,7 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
+import org.jgrapes.portal.base.AbstractPortlet;
 import org.jgrapes.portal.base.PortalSession;
 import org.jgrapes.portal.base.PortalUtils;
 import org.jgrapes.portal.base.Portlet.RenderMode;
@@ -71,7 +70,8 @@ import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
 /**
  * A portlet for inspecting the services in an OSGi runtime.
  */
-public class ServiceListPortlet extends FreeMarkerPortlet
+public class ServiceListPortlet
+        extends FreeMarkerPortlet<AbstractPortlet.PortletBaseModel>
         implements ServiceListener {
 
     private final ServiceComponentRuntime scr;
@@ -88,7 +88,7 @@ public class ServiceListPortlet extends FreeMarkerPortlet
      */
     public ServiceListPortlet(Channel componentChannel, BundleContext context,
             ServiceComponentRuntime scr) {
-        super(componentChannel, true);
+        super(componentChannel);
         this.context = context;
         this.scr = scr;
         context.addServiceListener(this);
@@ -109,10 +109,10 @@ public class ServiceListPortlet extends FreeMarkerPortlet
     public void onPortalReady(PortalReady event, PortalSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        ResourceBundle resourceBundle = resourceBundle(channel.locale());
         // Add portlet resources to page
         channel.respond(new AddPortletType(type())
-            .setDisplayName(resourceBundle.getString("portletName"))
+            .setDisplayNames(
+                displayNames(channel.supportedLocales(), "portletName"))
             .addScript(new ScriptResource()
                 .setRequires(new String[] { "vuejs.org" })
                 .setScriptUri(event.renderSupport().portletResource(
@@ -136,12 +136,11 @@ public class ServiceListPortlet extends FreeMarkerPortlet
      * 
      * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
      */
-    @SuppressWarnings("unchecked")
     @Override
-    protected <T extends Serializable> Optional<T> stateFromSession(
-            Session session, String portletId, Class<T> type) {
+    protected Optional<PortletBaseModel> stateFromSession(
+            Session session, String portletId) {
         if (portletId.startsWith(type() + "-")) {
-            return Optional.of((T) new ServiceListModel(portletId));
+            return Optional.of(new PortletBaseModel(portletId));
         }
         return Optional.empty();
     }
@@ -155,8 +154,8 @@ public class ServiceListPortlet extends FreeMarkerPortlet
     protected String doAddPortlet(AddPortletRequest event,
             PortalSession channel)
             throws Exception {
-        ServiceListModel portletModel
-            = new ServiceListModel(generatePortletId());
+        PortletBaseModel portletModel
+            = new PortletBaseModel(generatePortletId());
         renderPortlet(event, channel, portletModel);
         return portletModel.getPortletId();
     }
@@ -169,20 +168,16 @@ public class ServiceListPortlet extends FreeMarkerPortlet
     @Override
     protected void doRenderPortlet(RenderPortletRequest event,
             PortalSession channel, String portletId,
-            Serializable retrievedState)
-            throws Exception {
-        ServiceListModel portletModel = (ServiceListModel) retrievedState;
+            PortletBaseModel portletModel) throws Exception {
         renderPortlet(event, channel, portletModel);
     }
 
     private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel,
-            ServiceListModel portletModel) throws TemplateNotFoundException,
+            PortalSession channel, PortletBaseModel portletModel)
+            throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        switch (event.preferredRenderMode()) {
-        case Preview:
-        case DeleteablePreview: {
+        if (event.renderPreview()) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-preview.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -197,9 +192,8 @@ public class ServiceListPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "serviceUpdates", serviceInfos,
                 "preview", true));
-            break;
         }
-        case View: {
+        if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-view.ftl.html");
             channel.respond(new RenderPortletFromTemplate(event,
@@ -214,10 +208,6 @@ public class ServiceListPortlet extends FreeMarkerPortlet
             channel.respond(new NotifyPortletView(type(),
                 portletModel.getPortletId(), "serviceUpdates", serviceInfos,
                 "view", true));
-            break;
-        }
-        default:
-            break;
         }
     }
 
@@ -304,8 +294,8 @@ public class ServiceListPortlet extends FreeMarkerPortlet
      */
     @Override
     protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel,
-            String portletId, Serializable portletState) throws Exception {
+            PortalSession channel, String portletId,
+            PortletBaseModel portletState) throws Exception {
         channel.respond(new DeletePortlet(portletId));
     }
 
@@ -361,22 +351,5 @@ public class ServiceListPortlet extends FreeMarkerPortlet
         public ServiceEvent serviceEvent() {
             return serviceEvent;
         }
-    }
-
-    /**
-     * The portlet's model.
-     */
-    @SuppressWarnings("serial")
-    public class ServiceListModel extends PortletBaseModel {
-
-        /**
-         * Instantiates a new service list model.
-         *
-         * @param portletId the portlet id
-         */
-        public ServiceListModel(String portletId) {
-            super(portletId);
-        }
-
     }
 }

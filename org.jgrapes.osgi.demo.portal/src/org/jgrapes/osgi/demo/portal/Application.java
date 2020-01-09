@@ -27,6 +27,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -152,7 +154,16 @@ public class Application extends Component implements BundleActivator {
         portal.attach(new KVStoreBasedPortalPolicy(portal));
         portal.attach(new NewPortalSessionPolicy(portal));
         portal.attach(new ComponentCollector<>(
-            portal, context, PageResourceProviderFactory.class));
+            portal, context, PageResourceProviderFactory.class,
+            type -> {
+                switch (type) {
+                case "org.jgrapes.portal.providers.gridstack.GridstackProvider":
+                    return Arrays.asList(
+                        Components.mapOf("configuration", "CoreWithJQueryUI"));
+                default:
+                    return Arrays.asList(Collections.emptyMap());
+                }
+            }));
         portal.attach(new ComponentCollector<>(
             portal, context, PortletComponentFactory.class));
     }
