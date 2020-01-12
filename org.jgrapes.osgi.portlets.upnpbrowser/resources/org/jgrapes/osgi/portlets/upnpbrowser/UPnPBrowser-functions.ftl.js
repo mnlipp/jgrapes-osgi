@@ -27,7 +27,7 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
     var l10n = orgJGrapesOsgiPortletsUPnPBrowser.l10n;
     
     orgJGrapesOsgiPortletsUPnPBrowser.initPreview = function(portletId) {
-        let portlet = JGPortal.findPortletPreview(portletId);
+        let portlet = $(JGPortal.findPortletPreview(portletId));
         portlet.data("vue-model", new Vue({
             el: $(portlet.find(".jgrapes-osgi-upnpbrowser-preview"))[0],
             data: {
@@ -78,7 +78,7 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
                 }
             }
         });
-        let portlet = JGPortal.findPortletView(portletId);
+        let portlet = $(JGPortal.findPortletView(portletId));
         let content = $(portlet.find(".jgrapes-osgi-upnpbrowser-view"))[0];
         portlet.data("vue-model", new Vue({
             el: content,
@@ -94,7 +94,7 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
             "deviceUpdates", function(portletId, params) {
                 // Preview
                 if (params[1] === "preview" || params[1] === "*") {
-                    let portlet = JGPortal.findPortletPreview(portletId);
+                    let portlet = $(JGPortal.findPortletPreview(portletId));
                     let vm = null;
                     if (portlet && (vm = portlet.data("vue-model"))) {
                         updateInfos(vm, params[0], params[2]);
@@ -105,7 +105,7 @@ var orgJGrapesOsgiPortletsUPnPBrowser = {
                 if (params[1] === "view" || params[1] === "*") {
                     let portlet = JGPortal.findPortletView(portletId);
                     let vm = null;
-                    if (portlet && (vm = portlet.data("vue-model"))) {
+                    if (portlet && (vm = $(portlet).data("vue-model"))) {
                         updateInfos(vm, params[0], params[2]);
                     }
                 }
