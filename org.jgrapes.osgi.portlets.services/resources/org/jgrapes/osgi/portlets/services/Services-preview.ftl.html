@@ -1,4 +1,5 @@
-<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-preview"> 
+<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-preview"
+  data-jgp-on-load="orgJGrapesOsgiPortletsServices.initPreviewTable"> 
   <table class="table--basic jgrapes-osgi-services-preview-table">
     <thead>
       <tr>
@@ -20,7 +21,3 @@
     </tbody>
   </table>
 </div>
-
-<script>
-	orgJGrapesOsgiPortletsServices.initPreviewTable("${portlet.portletId}");
-</script>

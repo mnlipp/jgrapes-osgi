@@ -199,7 +199,7 @@ public class ServiceListPortlet
             channel.respond(new RenderPortletFromTemplate(event,
                 ServiceListPortlet.class, portletModel.getPortletId(),
                 tpl, fmModel(event, channel, portletModel))
-                    .setSupportedModes(MODES)
+                    .setRenderMode(RenderMode.View).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null, null))

@@ -19,15 +19,15 @@
 
 var orgJGrapesOsgiPortletsServices = {
     l10n: {
-        "serviceAbbrevDS": "${_("serviceAbbrevDS")}",
-        "serviceBundle": "${_("serviceBundle")}",
-        "serviceImplementedBy": "${_("serviceImplementedBy")}",
-        "serviceRanking": "${_("serviceRanking")}",
-        "serviceScope": "${_("serviceScope")}",
-        "serviceScopeBundle": "${_("serviceScopeBundle")}",
-        "serviceScopePrototype": "${_("serviceScopePrototype")}",
-        "serviceScopeSingleton": "${_("serviceScopeSingleton")}",
-        "serviceUsingBundles": "${_("serviceUsingBundles")}",
+        "serviceAbbrevDS": '${_("serviceAbbrevDS")}',
+        "serviceBundle": '${_("serviceBundle")}',
+        "serviceImplementedBy": '${_("serviceImplementedBy")}',
+        "serviceRanking": '${_("serviceRanking")}',
+        "serviceScope": '${_("serviceScope")}',
+        "serviceScopeBundle": '${_("serviceScopeBundle")}',
+        "serviceScopePrototype": '${_("serviceScopePrototype")}',
+        "serviceScopeSingleton": '${_("serviceScopeSingleton")}',
+        "serviceUsingBundles": '${_("serviceUsingBundles")}',
     }
 };
 
@@ -35,14 +35,14 @@ var orgJGrapesOsgiPortletsServices = {
 
     var l10n = orgJGrapesOsgiPortletsServices.l10n;
     
-    orgJGrapesOsgiPortletsServices.initPreviewTable = function(portletId) {
-        let portlet = JGPortal.findPortletPreview(portletId);
-        portlet.data("vue-model", new Vue({
-            el: $(portlet.find(".jgrapes-osgi-services-preview-table"))[0],
+    orgJGrapesOsgiPortletsServices.initPreviewTable = function(content) {
+        let previewTable = $(content).find(".jgrapes-osgi-services-preview-table");
+        new Vue({
+            el: previewTable[0],
             data: {
                 controller: new JGPortal.TableController([
-                    ["id", "${_("serviceId")}"],
-                    ["type", "${_("serviceType")}"]
+                    ["id", '${_("serviceId")}'],
+                    ["type", '${_("serviceType")}']
                     ], {
                     sortKey: "id"
                 }),
@@ -54,20 +54,20 @@ var orgJGrapesOsgiPortletsServices = {
                     return this.controller.filter(infos);
                 }
             },
-        }));
+        });
     }
 
-    orgJGrapesOsgiPortletsServices.initViewTable = function(portletId) {
-        let portlet = JGPortal.findPortletView(portletId);
-        portlet.data("vue-model", new Vue({
-            el: $(portlet.find(".jgrapes-osgi-services-view"))[0],
+    orgJGrapesOsgiPortletsServices.initView = function(content) {
+        new Vue({
+            el: $(content)[0],
             data: {
+                portletId: $(content).closest("[data-portlet-id]").data("portlet-id"),
                 controller: new JGPortal.TableController([
-                    ["id", "${_("serviceId")}"],
-                    ["type", "${_("serviceType")}"],
-                    ["scopeDisplay", "${_("serviceScope")}"],
-                    ["bundleNameDisplay", "${_("serviceBundle")}"],
-                    ["implementationClass", "${_("serviceImplementedBy")}"],
+                    ["id", '${_("serviceId")}'],
+                    ["type", '${_("serviceType")}'],
+                    ["scopeDisplay", '${_("serviceScope")}'],
+                    ["bundleNameDisplay", '${_("serviceBundle")}'],
+                    ["implementationClass", '${_("serviceImplementedBy")}'],
                     ], {
                     sortKey: "id"
                 }),
@@ -86,7 +86,7 @@ var orgJGrapesOsgiPortletsServices = {
                     return entries;
                 },
             },
-        }));
+        });
     }
     
     function updateInfos(model, infos, replace) {
@@ -125,18 +125,20 @@ var orgJGrapesOsgiPortletsServices = {
                 let serviceInfos = params[0];
                 // Preview
                 if (params[1] === "preview" || params[1] === "*") {
-                    let portlet = JGPortal.findPortletPreview(portletId);
+                    let table = $(JGPortal.findPortletPreview(portletId))
+                        .find(".jgrapes-osgi-services-preview-table");
                     let vm = null;
-                    if (portlet && (vm = portlet.data("vue-model"))) {
+                    if (table.length && (vm = table[0].__vue__)) {
                         updateInfos(vm, params[0], params[2]);
                     }
                 }
                 
                 // View
                 if (params[1] === "view" || params[1] === "*") {
-                    let portlet = JGPortal.findPortletView(portletId);
+                    let view = $(JGPortal.findPortletView(portletId))
+                        .find(".jgrapes-osgi-services-view");
                     let vm = null;
-                    if (portlet && (vm = portlet.data("vue-model"))) {
+                    if (view.length && (vm = view[0].__vue__)) {
                         updateInfos(vm, params[0], params[2]);
                     }
                 }
