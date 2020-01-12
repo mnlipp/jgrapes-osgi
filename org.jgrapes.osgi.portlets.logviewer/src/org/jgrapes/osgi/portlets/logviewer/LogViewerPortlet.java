@@ -209,7 +209,7 @@ public class LogViewerPortlet
             channel.respond(new RenderPortletFromTemplate(event,
                 LogViewerPortlet.class, portletModel.getPortletId(),
                 tpl, fmModel(event, channel, portletModel))
-                    .setSupportedModes(MODES)
+                    .setRenderMode(RenderMode.View).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             sendAllEntries(channel, portletModel.getPortletId());
         }
