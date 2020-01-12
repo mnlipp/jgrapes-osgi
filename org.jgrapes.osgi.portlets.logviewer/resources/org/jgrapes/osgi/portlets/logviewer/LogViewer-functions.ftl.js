@@ -26,8 +26,7 @@ var orgJGrapesOsgiPortletsLogViewer = {
 
     var l10n = orgJGrapesOsgiPortletsLogViewer.l10n;
     
-    orgJGrapesOsgiPortletsLogViewer.initView = function(portletId) {
-        let portlet = JGPortal.findPortletView(portletId);
+    orgJGrapesOsgiPortletsLogViewer.initView = function(content) {
         let levelsToNum = {
                 "AUDIT": 5,
                 "ERROR": 4,
@@ -36,9 +35,10 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 "DEBUG": 1,
                 "TRACE": 0
         }
-        portlet.data("vue-model", new Vue({
-            el: $(portlet.find(".jgrapes-osgi-logviewer-view"))[0],
+        new Vue({
+            el: content,
             data: {
+                portletId: $(content).closest("[data-portlet-id]").data("portlet-id"),
                 controller: new JGPortal.TableController([
                     ["time", '${_("timestamp")}'],
                     ["logLevel", '${_("level")}'],
@@ -52,8 +52,7 @@ var orgJGrapesOsgiPortletsLogViewer = {
                 }),
                 messageThreshold: "INFO",
                 entries: [],
-                lang: portlet.closest('[lang]').attr('lang') || 'en',
-                portletId: portletId,
+                lang: $(content).closest('[lang]').attr('lang') || 'en',
 				autoUpdate: true
             },
             computed: {
@@ -70,8 +69,7 @@ var orgJGrapesOsgiPortletsLogViewer = {
             },
             methods: {
                 resync: function() {
-                        let portletId = $(this.$el).parent().attr("data-portlet-id");
-                        JGPortal.notifyPortletModel(portletId, "resync");
+                        JGPortal.notifyPortletModel(this.portletId, "resync");
                 },
                 formatTimestamp: function(timestamp) {
                     let ts = moment(timestamp);
@@ -86,16 +84,17 @@ var orgJGrapesOsgiPortletsLogViewer = {
 		            }
 	            }
             }
-        }));
+        });
     }
     
     JGPortal.registerPortletMethod(
             "org.jgrapes.osgi.portlets.logviewer.LogViewerPortlet",
             "entries", function(portletId, params) {
                 // View only
-                let portlet = JGPortal.findPortletView(portletId);
+                let view = $(JGPortal.findPortletView(portletId))
+                    .find(".jgrapes-osgi-bundles-view");
                 let vm = null;
-                if (portlet && (vm = portlet.data("vue-model"))) {
+                if (view.length && (vm = view[0].__vue__)) {
                     vm.entries = params[0];
                 }
             });
@@ -104,9 +103,10 @@ var orgJGrapesOsgiPortletsLogViewer = {
             "org.jgrapes.osgi.portlets.logviewer.LogViewerPortlet",
             "addEntry", function(portletId, params) {
                 // View only
-                let portlet = JGPortal.findPortletView(portletId);
+                let view = $(JGPortal.findPortletView(portletId))
+                    .find(".jgrapes-osgi-logviewer-view");
                 let vm = null;
-                if (portlet && (vm = portlet.data("vue-model"))) {
+                if (view.length && (vm = view[0].__vue__)) {
 					if (!vm.autoUpdate) {
 						return;
 					}
