@@ -20,16 +20,16 @@
 
 var orgJGrapesOsgiPortletsBundles = {
     l10n: {
-        "bundleCategory": "${_("bundleCategory")}",
-        "bundleRefresh": "${_("bundleRefresh")}",
-        "bundleStart": "${_("bundleStart")}",
-        "bundleState": "${_("bundleState")}",
-        "bundleStop": "${_("bundleStop")}",
-        "bundleSymbolicName": "${_("bundleSymbolicName")}",
-        "bundleUpdate": "${_("bundleUpdate")}",
-        "bundleUninstall": "${_("bundleUninstall")}",
-        "bundleVersion": "${_("bundleVersion")}",
-        "detailsBeingLoaded": "${_("detailsBeingLoaded")}",
+        "bundleCategory": '${_("bundleCategory")}',
+        "bundleRefresh": '${_("bundleRefresh")}',
+        "bundleStart": '${_("bundleStart")}',
+        "bundleState": '${_("bundleState")}',
+        "bundleStop": '${_("bundleStop")}',
+        "bundleSymbolicName": '${_("bundleSymbolicName")}',
+        "bundleUpdate": '${_("bundleUpdate")}',
+        "bundleUninstall": '${_("bundleUninstall")}',
+        "bundleVersion": '${_("bundleVersion")}',
+        "detailsBeingLoaded": '${_("detailsBeingLoaded")}',
     }
 };
 
@@ -37,14 +37,14 @@ var orgJGrapesOsgiPortletsBundles = {
 
     var l10n = orgJGrapesOsgiPortletsBundles.l10n;
     
-    orgJGrapesOsgiPortletsBundles.initPreviewTable = function(portletId) {
-        let portlet = JGPortal.findPortletPreview(portletId);
-        portlet.data("vue-model", new Vue({
-            el: $(portlet.find(".jgrapes-osgi-bundles-preview-table"))[0],
+    orgJGrapesOsgiPortletsBundles.initPreviewTable = function(content) {
+        let previewTable = $(content).find(".jgrapes-osgi-bundles-preview-table");
+        new Vue({
+            el: previewTable[0],
             data: {
                 controller: new JGPortal.TableController([
-                    ["id", "${_("bundleId")}"],
-                    ["name", "${_("bundleName")}"]
+                    ["id", '${_("bundleId")}'],
+                    ["name", '${_("bundleName")}']
                     ], {
                     sortKey: "id"
                 }),
@@ -56,25 +56,25 @@ var orgJGrapesOsgiPortletsBundles = {
                     return this.controller.filter(infos);
                 }
             },
-        }));
+        });
     }
 
-    orgJGrapesOsgiPortletsBundles.initViewTable = function(portletId) {
-        let portlet = JGPortal.findPortletView(portletId);
+    orgJGrapesOsgiPortletsBundles.initView = function(content) {
         let dtFormatter = new Intl.DateTimeFormat(
-                portlet.closest('[lang]').attr('lang') || 'en',
+                $(content).closest('[lang]').attr('lang') || 'en',
                 { year: 'numeric', month: 'numeric', day: 'numeric',
                   hour: 'numeric', minute: 'numeric', second: 'numeric',
                   hour12: false, timeZoneName: 'short' });
-        portlet.data("vue-model", new Vue({
-            el: $(portlet).find(".jgrapes-osgi-bundles-view")[0],
+        new Vue({
+            el: $(content)[0],
             data: {
+                portletId: $(content).closest("[data-portlet-id]").data("portlet-id"),
                 controller: new JGPortal.TableController([
-                    ["id", "${_("bundleId")}"],
-                    ["name", "${_("bundleName")}"],
-                    ["version", "${_("bundleVersion")}"],
-                    ["category", "${_("bundleCategory")}"],
-                    ["state", "${_("bundleState")}"],
+                    ["id", '${_("bundleId")}'],
+                    ["name", '${_("bundleName")}'],
+                    ["version", '${_("bundleVersion")}'],
+                    ["category", '${_("bundleCategory")}'],
+                    ["state", '${_("bundleState")}'],
                     ], {
                     sortKey: "id"
                 }),
@@ -89,8 +89,7 @@ var orgJGrapesOsgiPortletsBundles = {
             },
             methods: {
                 bundleAction: function(bundleId, action) {
-                    let portletId = $(this.$el).parent().attr("data-portlet-id");
-                    JGPortal.notifyPortletModel(portletId, action, parseInt(bundleId));
+                    JGPortal.notifyPortletModel(this.portletId, action, parseInt(bundleId));
                 },
                 toggleDetails: function(bundleId) {
                     if (bundleId in this.detailsById) {
@@ -98,8 +97,7 @@ var orgJGrapesOsgiPortletsBundles = {
                         this.$forceUpdate();
                         return;
                     }
-                    let portletId = $(this.$el).parent().attr("data-portlet-id");
-                    JGPortal.notifyPortletModel(portletId, "sendDetails", parseInt(bundleId));
+                    JGPortal.notifyPortletModel(this.portletId, "sendDetails", parseInt(bundleId));
                 },
                 addManifestValueBreaks: function(text) {
                     text = String(text);
@@ -121,7 +119,7 @@ var orgJGrapesOsgiPortletsBundles = {
                     return dtFormatter.format(new Date(value));
                 }
             }
-        }));
+        });
     }
 
     function updateInfos(model, infos, replace) {
@@ -150,18 +148,20 @@ var orgJGrapesOsgiPortletsBundles = {
                 let bundleInfos = params[0];
                 // Preview
                 if (params[1] === "preview" || params[1] === "*") {
-                    let portlet = JGPortal.findPortletPreview(portletId);
+                    let table = $(JGPortal.findPortletPreview(portletId))
+                        .find(".jgrapes-osgi-bundles-preview-table");
                     let vm = null;
-                    if (portlet && (vm = portlet.data("vue-model"))) {
+                    if (table.length && (vm = table[0].__vue__)) {
                         updateInfos(vm, params[0], params[2]);
                     }
                 }
                 
                 // View
                 if (params[1] === "view" || params[1] === "*") {
-                    let portlet = JGPortal.findPortletView(portletId);
+                    let view = $(JGPortal.findPortletView(portletId))
+                        .find(".jgrapes-osgi-bundles-view");
                     let vm = null;
-                    if (portlet && (vm = portlet.data("vue-model"))) {
+                    if (view.length && (vm = view[0].__vue__)) {
                         updateInfos(vm, params[0], params[2]);
                     }
                 }
@@ -170,9 +170,10 @@ var orgJGrapesOsgiPortletsBundles = {
     JGPortal.registerPortletMethod(
             "org.jgrapes.osgi.portlets.bundles.BundleListPortlet",
             "bundleDetails", function(portletId, params) {
-                let portlet = JGPortal.findPortletView(portletId);
+                let view = $(JGPortal.findPortletView(portletId))
+                    .find(".jgrapes-osgi-bundles-view");
                 let vm = null;
-                if (!portlet || !(vm = portlet.data("vue-model"))) {
+                if (!view.length || !(vm = view[0].__vue__)) {
                     return;
                 }
                 let bundleId = params[0];
