@@ -54,6 +54,7 @@ import org.jgrapes.portal.base.Portal;
 import org.jgrapes.portal.base.PortalLocalBackedKVStore;
 import org.jgrapes.portal.base.PortalWeblet;
 import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
 import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -122,6 +123,7 @@ public class Application extends Component implements BundleActivator {
 
         createJQueryUiPortal(context);
         createBootstrap4Portal(context);
+        createVueJsPortal(context);
         Components.start(app);
         LOG.info("Application started.");
     }
@@ -146,8 +148,33 @@ public class Application extends Component implements BundleActivator {
     private void createBootstrap4Portal(BundleContext context)
             throws URISyntaxException {
         PortalWeblet portalWeblet
-            = app.attach(new DemoPortalWeblet(app.channel(), Channel.SELF,
+            = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
                 new URI("/b4portal/")));
+        Portal portal = portalWeblet.portal();
+        portal.attach(new PortalLocalBackedKVStore(
+            portal, portalWeblet.prefix().getPath()));
+        portal.attach(new KVStoreBasedPortalPolicy(portal));
+        portal.attach(new NewPortalSessionPolicy(portal));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PageResourceProviderFactory.class,
+            type -> {
+                switch (type) {
+                case "org.jgrapes.portal.providers.gridstack.GridstackProvider":
+                    return Arrays.asList(
+                        Components.mapOf("configuration", "CoreWithJQueryUI"));
+                default:
+                    return Arrays.asList(Collections.emptyMap());
+                }
+            }));
+        portal.attach(new ComponentCollector<>(
+            portal, context, PortletComponentFactory.class));
+    }
+
+    private void createVueJsPortal(BundleContext context)
+            throws URISyntaxException {
+        PortalWeblet portalWeblet
+            = app.attach(new DemoPortalWeblet(app.channel(), Channel.SELF,
+                new URI("/vjportal/")));
         Portal portal = portalWeblet.portal();
         portal.attach(new PortalLocalBackedKVStore(
             portal, portalWeblet.prefix().getPath()));

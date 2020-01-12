@@ -18,6 +18,7 @@ Private-Package: org.jgrapes.osgi.demo.portal
 	org.jgrapes.portal.base;version=latest,\
 	org.jgrapes.portal.jqueryui;version=latest,\
 	org.jgrapes.portal.bootstrap4;version=latest,\
+    org.jgrapes.portal.vuejs;version=latest,\
 	org.jgrapes.osgi.core;version=latest,\
 	org.jdrupes.httpcodec;version=latest
 

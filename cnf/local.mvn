@@ -18,6 +18,8 @@ org.jgrapes:org.jgrapes.portal.providers.jquitouchpunch:0.0.0-SNAPSHOT
 org.jgrapes:org.jgrapes.portal.providers.lodash:0.0.0-SNAPSHOT
 org.jgrapes:org.jgrapes.portal.providers.moment:0.0.0-SNAPSHOT
 org.jgrapes:org.jgrapes.portal.providers.vue:0.0.0-SNAPSHOT
+org.jgrapes:org.jgrapes.portal.providers.vuex:0.0.0-SNAPSHOT
+org.jgrapes:org.jgrapes.portal.providers.jgpvuecomponents:0.0.0-SNAPSHOT
 org.jgrapes:org.jgrapes.portal.providers.vuejs:0.26.0-SNAPSHOT
 
 org.jgrapes:org.jgrapes.portlets.markdowndisplay:0.28.0-SNAPSHOT

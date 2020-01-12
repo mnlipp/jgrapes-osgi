@@ -21,12 +21,12 @@ package org.jgrapes.osgi.demo.portal;
 import java.net.URI;
 
 import org.jgrapes.core.Channel;
-import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
+import org.jgrapes.portal.vuejs.VueJsPortalWeblet;
 
 /**
  *
  */
-public class DemoPortalWeblet extends Bootstrap4Weblet {
+public class DemoPortalWeblet extends VueJsPortalWeblet {
 
     /**
      * Instantiates a new demo portal weblet.
