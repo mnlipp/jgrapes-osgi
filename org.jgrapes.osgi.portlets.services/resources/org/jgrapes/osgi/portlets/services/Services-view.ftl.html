@@ -5,7 +5,7 @@
       <label>
         <span>${_("Filter")}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" class="jgportal-button-icon fas fa-backspace" 
+        <span role="button" tabindex="0" class="fas fa-backspace" 
           v-on:click="controller.clearFilter($event)"></span>
       </label>
     </form>
@@ -16,9 +16,9 @@
         <th v-for="key in controller.keys"
           v-on:click="controller.sortBy(key)">
           {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
-            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)"
-            role="button" class="jgportal-button-icon">&#x25BC;</span>
+            role="button" tabindex="0">&#x25BC;</span>
         </th>
       </tr>
     </thead>
@@ -27,8 +27,8 @@
         <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td v-for="key in controller.keys"
             v-bind:rowspan="key == 'id' ? '1' : false">
-            <span v-if="key == 'id'"
-              role="button" class="jgportal-button-icon fas fa-caret-right"
+            <span v-if="key == 'id'" tabindex="0"
+              role="button" class="fas fa-caret-right"
               onclick="$(this).parent().parent().next().toggle();
                   $(this).toggleClass('fa-caret-right fa-caret-down');
                   $(this).parent().attr('rowspan', 3 - $(this).parent().attr('rowspan'))"></span>
@@ -38,7 +38,7 @@
         <tr style="display: none;"
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td colspan="4" class="details">
-            <table class="jgportal-auto-striped-table">
+            <table class="table--basic table--basic--autoStriped">
               <tr v-for="[key, value] of sortedProperties(entry.properties)">
                 <td>{{ key }}</td>
                 <td>{{ value }}</td>

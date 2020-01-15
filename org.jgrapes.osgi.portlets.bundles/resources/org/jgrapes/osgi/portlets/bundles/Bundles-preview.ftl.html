@@ -6,9 +6,9 @@
         <th v-for="key in controller.keys"
           v-on:click="controller.sortBy(key)">
           {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
-            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)"
-            role="button" class="jgportal-button-icon">&#x25BC;</span>
+            role="button" tabindex="0">&#x25BC;</span>
         </th>
       </tr>
     </thead>

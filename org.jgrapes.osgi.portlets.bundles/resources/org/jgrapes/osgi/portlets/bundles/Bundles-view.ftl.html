@@ -5,7 +5,7 @@
       <label>
         <span>${_("Filter")}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" class="jgportal-button-icon fas fa-backspace" 
+        <span role="button" tabindex="0" class="fas fa-backspace" 
           v-on:click="controller.clearFilter($event)"></span>
       </label>
     </form>
@@ -16,9 +16,9 @@
         <th v-for="key in controller.keys"
           class="sortable" v-on:click="controller.sortBy(key)">
           {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
-            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)" role="button" 
-            class="jgportal-button-icon">&#x25BC;</span>
+            tabindex="0">&#x25BC;</span>
         </th>
         <th>
           ${_("bundleActions")}
@@ -31,23 +31,22 @@
           <td v-for="key in controller.keys" 
             v-bind:title="key == 'name' ? entry['symbolicName']: false"
             v-bind:rowspan="(key == 'id') && (entry.id in detailsById) ? 2 : false">
-            <span v-if="key == 'id'"
-              role="button" class="jgportal-button-icon fas"
+            <span v-if="key == 'id'" role="button" tabindex="0" class="fas"
               v-bind:class="[(entry.id in detailsById) ? 'fa-caret-down' : 'fa-caret-right']"
               v-on:click="toggleDetails(entry.id)"></span>
             <span v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
           <td class="jgrapes-osgi-bundles-view-action-list">
             <span role="button" v-if="entry.startable" 
-              class="jgportal-button-icon fas fa-play" title="${_("bundleStart")}"
+              tabindex="0" class="fas fa-play" title="${_("bundleStart")}"
               v-on:click="bundleAction(entry.id, 'start')"></span>
             <span role="button" v-if="entry.stoppable"
-              class="jgportal-button-icon fas fa-stop" title="${_("bundleStop")}"
+              tabindex="0" class="fas fa-stop" title="${_("bundleStop")}"
               v-on:click="bundleAction(entry.id, 'stop')"></span>
-            <span role="button" class="jgportal-button-icon fas fa-sync"
+            <span role="button" class="fas fa-sync" tabindex="0"
               title="${_("bundleUpdate")}"
               v-on:click="bundleAction(entry.id, 'update')"></span>
-            <span role="button" class="jgportal-button-icon fas fa-eject"
+            <span role="button" class="fas fa-eject" tabindex="0"
               title="${_("bundleUninstall")}"
               v-bind:disabled="!entry.uninstallable"
               v-on:click="bundleAction(entry.id, 'uninstall')"></span>
@@ -56,7 +55,7 @@
         <template v-if="(entry.id in detailsById)"> 
           <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
             <td colspan="5" class="details">
-              <table class="jgportal-auto-striped-table">
+              <table class="table--basic table--basic--autoStriped">
                 <tr>
                   <td>{{ controller.label('name') }}</td>
                   <td><span v-html="controller.breakBeforeDots(entry['name'])"></span></td>
@@ -64,7 +63,7 @@
                 <tr v-for="detail in detailsById[entry.id]">
                   <td>{{ detail[0] }}</td>
                   <td v-if="detail[2] == 'table'">
-                    <table class="jgportal-auto-striped-table">
+                    <table class="table--basic table--basic--autoStriped">
                       <tr v-for="row in detail[1]">
                         <td v-html="controller.breakBeforeDots(row[0])"></td>
                         <td v-if="/.*-Package/i.test(row[0])"
