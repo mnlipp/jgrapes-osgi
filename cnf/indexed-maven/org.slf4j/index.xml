@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1578579517106">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1578953819807">
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.slf4j:slf4j-api:1.7.30"/>
