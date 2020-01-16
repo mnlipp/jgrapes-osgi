@@ -5,7 +5,13 @@
 /* View */
 
 .jgrapes-osgi-logviewer-control form {
-    display: flex; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.jgrapes-osgi-logviewer-control form > fieldset:first-child > span > span {
+    display: inline-flex;
+    align-items: center;
 }
 
 .jgrapes-osgi-logviewer-control form label:not(:first-child) {

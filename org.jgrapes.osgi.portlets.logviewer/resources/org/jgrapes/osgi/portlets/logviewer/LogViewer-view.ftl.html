@@ -1,7 +1,7 @@
 <div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-logviewer-view"
   data-jgp-on-load="orgJGrapesOsgiPortletsLogViewer.initView">
   <div class="jgrapes-osgi-logviewer-control">
-	<form class="block--paragraph">
+	<form class="flow-content--paragraph">
 	  <fieldset class="form__fieldset--horizontal form__fieldset--panel">
 		<span>
 		  <legend>${_("Update")}</legend>
@@ -17,7 +17,7 @@
 	    </span>
 	  </fieldset>
 
-      <label class="jgrapes-osgi-logviewer-level">
+      <label class="form__label--horizontal jgrapes-osgi-logviewer-level">
         <span>${_("severityAtLeast")}</span>
         <select v-model="messageThreshold">
           <option value="AUDIT">${_("AUDIT")}</option>
@@ -29,7 +29,7 @@
         </select>
       </label>
 
-      <label>
+      <label class="form__label--horizontal">
         <span>${_("Filter")}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span class="form-item">
