@@ -33,9 +33,9 @@ bundleVersionQualifier: ga
         index=${.}/snapshots.mvn; \
         name="LocalSnapshots"
 
--plugin.8.PublishedSnapshots: \
+-plugin.9.PublishedSnapshots: \
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
-        snapshotUrls=https://oss.sonatype.org/content/repositories/snapshots/; \
+        snapshotUrl=https://oss.sonatype.org/content/repositories/snapshots/; \
         index=${.}/snapshots.mvn; \
         name="PublishedSnapshots"
 
