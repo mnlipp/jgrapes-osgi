@@ -16,7 +16,7 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.demo.portal;
+package org.jgrapes.osgi.demo.console;
 
 import java.util.Optional;
 
@@ -25,20 +25,20 @@ import org.jgrapes.core.Component;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
-import org.jgrapes.portal.base.events.PortalConfigured;
-import org.jgrapes.portal.base.events.RenderPortlet;
+import org.jgrapes.webconsole.base.events.ConsoleConfigured;
+import org.jgrapes.webconsole.base.events.RenderConlet;
 
 /**
  * 
  */
-public class NewPortalSessionPolicy extends Component {
+public class NewConsoleSessionPolicy extends Component {
 
     private final String renderedFlagName = getClass().getName() + ".rendered";
 
     /**
      * Creates a new component with its channel set to itself.
      */
-    public NewPortalSessionPolicy() {
+    public NewConsoleSessionPolicy() {
         // Everything is done by super.
     }
 
@@ -47,24 +47,24 @@ public class NewPortalSessionPolicy extends Component {
      * 
      * @param componentChannel
      */
-    public NewPortalSessionPolicy(Channel componentChannel) {
+    public NewConsoleSessionPolicy(Channel componentChannel) {
         super(componentChannel);
     }
 
     /**
-     * Handles a portlet render request.
+     * Handles a conlet render request.
      *
      * @param event the event
      * @param channel the channel
      */
     @Handler
-    public void onRenderPortlet(RenderPortlet event, IOSubchannel channel) {
+    public void onRenderConlet(RenderConlet event, IOSubchannel channel) {
         channel.associated(Session.class)
             .ifPresent(session -> session.put(renderedFlagName, true));
     }
 
     /**
-     * On portal configured.
+     * On console configured.
      *
      * @param event the event
      * @param channel the channel
@@ -72,8 +72,8 @@ public class NewPortalSessionPolicy extends Component {
      */
     @Handler
     @SuppressWarnings("PMD.CollapsibleIfStatements")
-    public void onPortalConfigured(PortalConfigured event, IOSubchannel channel)
-            throws InterruptedException {
+    public void onConsoleConfigured(ConsoleConfigured event,
+            IOSubchannel channel) throws InterruptedException {
         Optional<Session> optSession = channel.associated(Session.class);
         if (optSession.isPresent()) {
             if ((Boolean) optSession.get().getOrDefault(

@@ -16,28 +16,28 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.demo.portal;
+package org.jgrapes.osgi.demo.console;
 
 import java.net.URI;
 
 import org.jgrapes.core.Channel;
-import org.jgrapes.portal.vuejs.VueJsPortalWeblet;
+import org.jgrapes.webconsole.vuejs.VueJsConsoleWeblet;
 
 /**
  *
  */
-public class DemoPortalWeblet extends VueJsPortalWeblet {
+public class DemoConsoleWeblet extends VueJsConsoleWeblet {
 
     /**
-     * Instantiates a new demo portal weblet.
+     * Instantiates a new demo console weblet.
      *
      * @param webletChannel the weblet channel
-     * @param portalChannel the portal channel
-     * @param portalPrefix the portal prefix
+     * @param consoleChannel the web console channel
+     * @param consolePrefix the web console prefix
      */
-    public DemoPortalWeblet(Channel webletChannel, Channel portalChannel,
-            URI portalPrefix) {
-        super(webletChannel, portalChannel, portalPrefix);
+    public DemoConsoleWeblet(Channel webletChannel, Channel consoleChannel,
+            URI consolePrefix) {
+        super(webletChannel, consoleChannel, consolePrefix);
     }
 
 }

@@ -16,4 +16,4 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.demo.portal;
+package org.jgrapes.osgi.demo.console;

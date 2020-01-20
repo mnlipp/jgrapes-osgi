@@ -49,7 +49,6 @@
 # - SLF4J 1.8 is still alpha and backward compatibility is unclear
 # - Make sure that the import "org.slf4j.impl;version=1.6.0" is only 
 #   satisfied by de.mnl.osgi.slf4j2osgi.
-# - no deprecated portal component versions
 -runblacklist: \
     osgi.identity;filter:='(&(osgi.identity=slf4j.api)(version>=1.8.0))',\
     osgi.identity;filter:='(osgi.identity=slf4j.simple)',\

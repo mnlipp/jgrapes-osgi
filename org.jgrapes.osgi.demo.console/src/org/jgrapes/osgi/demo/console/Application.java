@@ -16,7 +16,7 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.demo.portal;
+package org.jgrapes.osgi.demo.console;
 
 import de.mnl.osgi.lf4osgi.Logger;
 import de.mnl.osgi.lf4osgi.LoggerFactory;
@@ -48,14 +48,14 @@ import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslCodec;
 import org.jgrapes.net.TcpServer;
 import org.jgrapes.osgi.core.ComponentCollector;
-import org.jgrapes.portal.base.KVStoreBasedPortalPolicy;
-import org.jgrapes.portal.base.PageResourceProviderFactory;
-import org.jgrapes.portal.base.Portal;
-import org.jgrapes.portal.base.PortalLocalBackedKVStore;
-import org.jgrapes.portal.base.PortalWeblet;
-import org.jgrapes.portal.base.PortletComponentFactory;
-import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
-import org.jgrapes.portal.jqueryui.JQueryUiWeblet;
+import org.jgrapes.webconsole.base.BrowserLocalBackedKVStore;
+import org.jgrapes.webconsole.base.ConletComponentFactory;
+import org.jgrapes.webconsole.base.ConsoleWeblet;
+import org.jgrapes.webconsole.base.KVStoreBasedConsolePolicy;
+import org.jgrapes.webconsole.base.PageResourceProviderFactory;
+import org.jgrapes.webconsole.base.WebConsole;
+import org.jgrapes.webconsole.bootstrap4.Bootstrap4Weblet;
+import org.jgrapes.webconsole.jqueryui.JQueryUiWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -121,78 +121,78 @@ public class Application extends Component implements BundleActivator {
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65536));
 
-        createJQueryUiPortal(context);
-        createBootstrap4Portal(context);
-        createVueJsPortal(context);
+        createJQueryUiConsole(context);
+        createBootstrap4Console(context);
+        createVueJsConsole(context);
         Components.start(app);
         LOG.info("Application started.");
     }
 
-    private void createJQueryUiPortal(BundleContext context)
+    private void createJQueryUiConsole(BundleContext context)
             throws URISyntaxException {
-        PortalWeblet portalWeblet
+        ConsoleWeblet consoleWeblet
             = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
-                new URI("/jqportal/")))
+                new URI("/jqconsole/")))
                 .prependResourceBundleProvider(getClass());
-        Portal portal = portalWeblet.portal();
-        portal.attach(new PortalLocalBackedKVStore(
-            portal, portalWeblet.prefix().getPath()));
-        portal.attach(new KVStoreBasedPortalPolicy(portal));
-        portal.attach(new NewPortalSessionPolicy(portal));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PageResourceProviderFactory.class));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PortletComponentFactory.class));
+        WebConsole console = consoleWeblet.console();
+        console.attach(new BrowserLocalBackedKVStore(
+            console, consoleWeblet.prefix().getPath()));
+        console.attach(new KVStoreBasedConsolePolicy(console));
+        console.attach(new NewConsoleSessionPolicy(console));
+        console.attach(new ComponentCollector<>(
+            console, context, PageResourceProviderFactory.class));
+        console.attach(new ComponentCollector<>(
+            console, context, ConletComponentFactory.class));
     }
 
-    private void createBootstrap4Portal(BundleContext context)
+    private void createBootstrap4Console(BundleContext context)
             throws URISyntaxException {
-        PortalWeblet portalWeblet
+        ConsoleWeblet consoleWeblet
             = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
-                new URI("/b4portal/")));
-        Portal portal = portalWeblet.portal();
-        portal.attach(new PortalLocalBackedKVStore(
-            portal, portalWeblet.prefix().getPath()));
-        portal.attach(new KVStoreBasedPortalPolicy(portal));
-        portal.attach(new NewPortalSessionPolicy(portal));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PageResourceProviderFactory.class,
+                new URI("/b4console/")));
+        WebConsole console = consoleWeblet.console();
+        console.attach(new BrowserLocalBackedKVStore(
+            console, consoleWeblet.prefix().getPath()));
+        console.attach(new KVStoreBasedConsolePolicy(console));
+        console.attach(new NewConsoleSessionPolicy(console));
+        console.attach(new ComponentCollector<>(
+            console, context, PageResourceProviderFactory.class,
             type -> {
                 switch (type) {
-                case "org.jgrapes.portal.providers.gridstack.GridstackProvider":
+                case "org.jgrapes.webconsole.providers.gridstack.GridstackProvider":
                     return Arrays.asList(
                         Components.mapOf("configuration", "CoreWithJQueryUI"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
             }));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PortletComponentFactory.class));
+        console.attach(new ComponentCollector<>(
+            console, context, ConletComponentFactory.class));
     }
 
-    private void createVueJsPortal(BundleContext context)
+    private void createVueJsConsole(BundleContext context)
             throws URISyntaxException {
-        PortalWeblet portalWeblet
-            = app.attach(new DemoPortalWeblet(app.channel(), Channel.SELF,
-                new URI("/vjportal/")));
-        Portal portal = portalWeblet.portal();
-        portal.attach(new PortalLocalBackedKVStore(
-            portal, portalWeblet.prefix().getPath()));
-        portal.attach(new KVStoreBasedPortalPolicy(portal));
-        portal.attach(new NewPortalSessionPolicy(portal));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PageResourceProviderFactory.class,
+        ConsoleWeblet consoleWeblet
+            = app.attach(new DemoConsoleWeblet(app.channel(), Channel.SELF,
+                new URI("/vjconsole/")));
+        WebConsole console = consoleWeblet.console();
+        console.attach(new BrowserLocalBackedKVStore(
+            console, consoleWeblet.prefix().getPath()));
+        console.attach(new KVStoreBasedConsolePolicy(console));
+        console.attach(new NewConsoleSessionPolicy(console));
+        console.attach(new ComponentCollector<>(
+            console, context, PageResourceProviderFactory.class,
             type -> {
                 switch (type) {
-                case "org.jgrapes.portal.providers.gridstack.GridstackProvider":
+                case "org.jgrapes.webconsole.providers.gridstack.GridstackProvider":
                     return Arrays.asList(
                         Components.mapOf("configuration", "CoreWithJQueryUI"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
             }));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PortletComponentFactory.class));
+        console.attach(new ComponentCollector<>(
+            console, context, ConletComponentFactory.class));
     }
 
     /*
