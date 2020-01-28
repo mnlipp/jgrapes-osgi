@@ -1,14 +1,10 @@
-Bundle-Name: JGrapes OSGi Portlets for Services
-Bundle-SymbolicName: org.jgrapes.osgi.portlets.services
-Bundle-Version: 0.9.27.-${tstamp}-SNAPSHOT
+Bundle-Name: JGrapes OSGi Conlet for Services
+Bundle-Version: 0.10.0.-${tstamp}-SNAPSHOT
 #Bundle-Version: 0.9.26.ga
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2018
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
-Require-Capability: \
-    org.jgrapes.portal.page.resource;filter:="(name=vuejs.org)", \
-    org.jgrapes.portal.page.resource;filter:="(name=fontawesome-free)"
-Bundle-Category: portlet
-Private-Package: org.jgrapes.osgi.portlets.services
+Bundle-Category: conlet
+Private-Package: org.jgrapes.osgi.webconlet.services
 
 -sources: true
 -runee: JavaSE-1.8
@@ -25,9 +21,15 @@ Private-Package: org.jgrapes.osgi.portlets.services
 	org.jgrapes.core;version='[1.1.1.ga,2)',\
 	org.jgrapes.io;version='[1.1.1.ga,2)',\
 	org.jgrapes.http;version='[1.1.1.ga,2)',\
-	org.jgrapes.portal.base;version=latest,\
+	org.jgrapes.webconsole.base;version=latest,\
     org.jdrupes.json;version=latest,\
 	org.freemarker.freemarker;version='[2.3.27,2.4)'
+
+Require-Capability: \
+    osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=jquery)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=vue)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \

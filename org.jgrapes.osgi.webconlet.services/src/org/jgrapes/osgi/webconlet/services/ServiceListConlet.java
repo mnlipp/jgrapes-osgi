@@ -16,13 +16,12 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.services;
+package org.jgrapes.osgi.webconlet.services;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,30 +32,25 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
-import org.jgrapes.portal.base.AbstractPortlet;
-import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalUtils;
-import org.jgrapes.portal.base.Portlet.RenderMode;
-
-import static org.jgrapes.portal.base.Portlet.RenderMode.DeleteablePreview;
-import static org.jgrapes.portal.base.Portlet.RenderMode.View;
-
-import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
-import org.jgrapes.portal.base.events.AddPortletRequest;
-import org.jgrapes.portal.base.events.AddPortletType;
-import org.jgrapes.portal.base.events.DeletePortlet;
-import org.jgrapes.portal.base.events.DeletePortletRequest;
-import org.jgrapes.portal.base.events.NotifyPortletView;
-import org.jgrapes.portal.base.events.PortalReady;
-import org.jgrapes.portal.base.events.RenderPortletRequest;
-import org.jgrapes.portal.base.events.RenderPortletRequestBase;
-import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
+import org.jgrapes.webconsole.base.AbstractConlet;
+import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.WebConsoleUtils;
+import org.jgrapes.webconsole.base.events.AddConletRequest;
+import org.jgrapes.webconsole.base.events.AddConletType;
+import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
+import org.jgrapes.webconsole.base.events.ConsoleReady;
+import org.jgrapes.webconsole.base.events.DeleteConlet;
+import org.jgrapes.webconsole.base.events.DeleteConletRequest;
+import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConletRequest;
+import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
@@ -68,15 +62,16 @@ import org.osgi.service.component.runtime.ServiceComponentRuntime;
 import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
 
 /**
- * A portlet for inspecting the services in an OSGi runtime.
+ * A conlet for inspecting the services in an OSGi runtime.
  */
-public class ServiceListPortlet
-        extends FreeMarkerPortlet<AbstractPortlet.PortletBaseModel>
+@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+public class ServiceListConlet
+        extends FreeMarkerConlet<AbstractConlet.ConletBaseModel>
         implements ServiceListener {
 
     private final ServiceComponentRuntime scr;
     private static final Set<RenderMode> MODES = RenderMode.asSet(
-        DeleteablePreview, View);
+        RenderMode.DeleteablePreview, RenderMode.View);
     private final BundleContext context;
 
     /**
@@ -86,7 +81,7 @@ public class ServiceListPortlet
      *            on by default and that {@link Manager#fire(Event, Channel...)}
      *            sends the event to
      */
-    public ServiceListPortlet(Channel componentChannel, BundleContext context,
+    public ServiceListConlet(Channel componentChannel, BundleContext context,
             ServiceComponentRuntime scr) {
         super(componentChannel);
         this.context = context;
@@ -95,7 +90,7 @@ public class ServiceListPortlet
     }
 
     /**
-     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     * On {@link ConsoleReady}, fire the {@link AddConletType}.
      *
      * @param event the event
      * @param channel the channel
@@ -106,112 +101,94 @@ public class ServiceListPortlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onPortalReady(PortalReady event, PortalSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        // Add portlet resources to page
-        channel.respond(new AddPortletType(type())
+        // Add conlet resources to page
+        channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "portletName"))
+                displayNames(channel.supportedLocales(), "conletName"))
             .addScript(new ScriptResource()
-                .setRequires(new String[] { "vuejs.org" })
-                .setScriptUri(event.renderSupport().portletResource(
-                    type(), "Services-functions.ftl.js")))
+                .setScriptUri(event.renderSupport().conletResource(
+                    type(), "Services-functions.ftl.js"))
+                .setScriptType("module"))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("Services-style.css")));
+                WebConsoleUtils.uriFromPath("Services-style.css")));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
-     */
     @Override
-    protected String generatePortletId() {
-        return type() + "-" + super.generatePortletId();
+    protected String generateConletId() {
+        return type() + "-" + super.generateConletId();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
-     */
     @Override
-    protected Optional<PortletBaseModel> stateFromSession(
-            Session session, String portletId) {
-        if (portletId.startsWith(type() + "-")) {
-            return Optional.of(new PortletBaseModel(portletId));
+    protected Optional<ConletBaseModel> stateFromSession(
+            Session session, String conletId) {
+        if (conletId.startsWith(type() + "-")) {
+            return Optional.of(new ConletBaseModel(conletId));
         }
         return Optional.empty();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
-     */
     @Override
-    protected String doAddPortlet(AddPortletRequest event,
-            PortalSession channel)
+    protected String doAddConlet(AddConletRequest event,
+            ConsoleSession channel)
             throws Exception {
-        PortletBaseModel portletModel
-            = new PortletBaseModel(generatePortletId());
-        renderPortlet(event, channel, portletModel);
-        return portletModel.getPortletId();
+        ConletBaseModel conletModel
+            = new ConletBaseModel(generateConletId());
+        renderConlet(event, channel, conletModel);
+        return conletModel.getConletId();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
-     */
     @Override
-    protected void doRenderPortlet(RenderPortletRequest event,
-            PortalSession channel, String portletId,
-            PortletBaseModel portletModel) throws Exception {
-        renderPortlet(event, channel, portletModel);
+    protected void doRenderConlet(RenderConletRequest event,
+            ConsoleSession channel, String conletId,
+            ConletBaseModel conletModel) throws Exception {
+        renderConlet(event, channel, conletModel);
     }
 
-    private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel, PortletBaseModel portletModel)
+    private void renderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel, ConletBaseModel conletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
         if (event.renderPreview()) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                ServiceListPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
-                    .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+            channel.respond(new RenderConletFromTemplate(event,
+                ServiceListConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
+                    .setRenderMode(RenderMode.DeleteablePreview)
+                    .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null, null))
                 .map(svc -> createServiceInfo(svc, channel.locale()))
                 .collect(Collectors.toList());
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "serviceUpdates", serviceInfos,
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "serviceUpdates", serviceInfos,
                 "preview", true));
         }
         if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-view.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                ServiceListPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
+            channel.respond(new RenderConletFromTemplate(event,
+                ServiceListConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
                     .setRenderMode(RenderMode.View).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null, null))
                 .map(svc -> createServiceInfo(svc, channel.locale()))
                 .collect(Collectors.toList());
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "serviceUpdates", serviceInfos,
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "serviceUpdates", serviceInfos,
                 "view", true));
         }
     }
 
-    @SuppressWarnings({ "PMD.NcssCount", "PMD.ConfusingTernary" })
+    @SuppressWarnings({ "PMD.NcssCount", "PMD.ConfusingTernary",
+        "PMD.NPathComplexity", "PMD.AssignmentInOperand" })
     private Map<String, Object>
             createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {
         @SuppressWarnings("PMD.UseConcurrentHashMap")
@@ -270,6 +247,7 @@ public class ServiceListPortlet
                 result.put("implementationClass", "");
             }
         }
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
         Map<String, Object> properties = new HashMap<>();
         for (String property : serviceRef.getPropertyKeys()) {
             properties.put(property, serviceRef.getProperty(property));
@@ -287,21 +265,16 @@ public class ServiceListPortlet
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
-     */
     @Override
-    protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel, String portletId,
-            PortletBaseModel portletState) throws Exception {
-        channel.respond(new DeletePortlet(portletId));
+    protected void doDeleteConlet(DeleteConletRequest event,
+            ConsoleSession channel, String conletId,
+            ConletBaseModel conletState) throws Exception {
+        channel.respond(new DeleteConlet(conletId));
     }
 
     /**
      * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
-     * on all known portal session channels.
+     * on all known console session channels.
      *
      * @param event the event
      */
@@ -312,7 +285,7 @@ public class ServiceListPortlet
 
     /**
      * Handles a {@link ServiceChanged} event by updating the information in the
-     * portal sessions.
+     * console sessions.
      *
      * @param event the event
      */
@@ -320,15 +293,16 @@ public class ServiceListPortlet
     @SuppressWarnings({ "PMD.AvoidInstantiatingObjectsInLoops",
         "PMD.DataflowAnomalyAnalysis" })
     public void onServiceChanged(ServiceChanged event,
-            PortalSession portalSession) {
+            ConsoleSession consoleSession) {
         Map<String, Object> info = createServiceInfo(
-            event.serviceEvent().getServiceReference(), portalSession.locale());
+            event.serviceEvent().getServiceReference(),
+            consoleSession.locale());
         if (event.serviceEvent().getType() == ServiceEvent.UNREGISTERING) {
             info.put("updateType", "unregistering");
         }
-        for (String portletId : portletIds(portalSession)) {
-            portalSession.respond(new NotifyPortletView(
-                type(), portletId, "serviceUpdates",
+        for (String conletId : conletIds(consoleSession)) {
+            consoleSession.respond(new NotifyConletView(
+                type(), conletId, "serviceUpdates",
                 (Object) new Object[] { info }, "*", false));
         }
     }

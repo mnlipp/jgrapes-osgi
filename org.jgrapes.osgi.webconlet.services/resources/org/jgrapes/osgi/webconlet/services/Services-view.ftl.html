@@ -1,5 +1,6 @@
-<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-services-view"
-  data-jgp-on-load="orgJGrapesOsgiPortletsServices.initView">
+<div data-conlet-title="${_("conletName")}" class="jgrapes-osgi-services-view"
+  data-jgwc-on-load="orgJGrapesOsgiConletServices.initView"
+  data-jgwc-on-unload="orgJGrapesOsgiConletServices.onUnload">
   <div class="jgrapes-osgi-services-view-search">
     <form>
       <label>
@@ -44,7 +45,7 @@
                 <td>{{ value }}</td>
               </tr>
               <tr v-if="entry.usingBundles && entry.usingBundles.length > 0">
-                <td>{{ orgJGrapesOsgiPortletsServices.l10n.serviceUsingBundles }}</td>
+                <td>{{ l10n.serviceUsingBundles }}</td>
                 <td v-html="entry.usingBundles.join(',<br>')"></td>
               </tr>
             </table>

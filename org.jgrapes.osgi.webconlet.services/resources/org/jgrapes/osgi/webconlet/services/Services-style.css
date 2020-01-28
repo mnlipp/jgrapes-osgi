@@ -1,5 +1,5 @@
 /*
- * Portlet specific styles.
+ * Conlet specific styles.
  */
 .jgrapes-osgi-services-view-search {
     display: flex; 
@@ -14,7 +14,7 @@
     white-space: nowrap;
 }
 
-.jgrapes-osgi-services-view-action-list .jgportal-button-icon:not(:last-child) {
+.jgrapes-osgi-services-view-action-list [role=button]:not(:last-child) {
     margin-right: 0.5em;
 }
 
