@@ -16,7 +16,7 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.bundles;
+package org.jgrapes.osgi.webconlet.bundles;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
@@ -46,24 +46,21 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
-import org.jgrapes.portal.base.AbstractPortlet;
-import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalUtils;
-
-import static org.jgrapes.portal.base.Portlet.RenderMode;
-
-import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
-import org.jgrapes.portal.base.events.AddPortletRequest;
-import org.jgrapes.portal.base.events.AddPortletType;
-import org.jgrapes.portal.base.events.DeletePortlet;
-import org.jgrapes.portal.base.events.DeletePortletRequest;
-import org.jgrapes.portal.base.events.NotifyPortletModel;
-import org.jgrapes.portal.base.events.NotifyPortletView;
-import org.jgrapes.portal.base.events.PortalReady;
-import org.jgrapes.portal.base.events.RenderPortletRequest;
-import org.jgrapes.portal.base.events.RenderPortletRequestBase;
-import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
-
+import org.jgrapes.webconsole.base.AbstractConlet;
+import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.WebConsoleUtils;
+import org.jgrapes.webconsole.base.events.AddConletRequest;
+import org.jgrapes.webconsole.base.events.AddConletType;
+import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
+import org.jgrapes.webconsole.base.events.ConsoleReady;
+import org.jgrapes.webconsole.base.events.DeleteConlet;
+import org.jgrapes.webconsole.base.events.DeleteConletRequest;
+import org.jgrapes.webconsole.base.events.NotifyConletModel;
+import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConletRequest;
+import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
@@ -75,12 +72,12 @@ import org.osgi.framework.wiring.BundleRevision;
 /**
  * 
  */
-public class BundleListPortlet
-        extends FreeMarkerPortlet<BundleListPortlet.BundleListModel>
+public class BundleListConlet
+        extends FreeMarkerConlet<BundleListConlet.BundleListModel>
         implements BundleListener {
 
-    private static final Logger logger
-        = Logger.getLogger(BundleListPortlet.class.getName());
+    private static final Logger LOG
+        = Logger.getLogger(BundleListConlet.class.getName());
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
         RenderMode.DeleteablePreview, RenderMode.View);
@@ -93,7 +90,8 @@ public class BundleListPortlet
      *            on by default and that {@link Manager#fire(Event, Channel...)}
      *            sends the event to
      */
-    public BundleListPortlet(Channel componentChannel, BundleContext context,
+    @SuppressWarnings("PMD.UnusedFormalParameter")
+    public BundleListConlet(Channel componentChannel, BundleContext context,
             Map<Object, Object> properties) {
         super(componentChannel);
         this.context = context;
@@ -101,7 +99,7 @@ public class BundleListPortlet
     }
 
     /**
-     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     * On {@link ConsoleReady}, fire the {@link AddConletType}.
      *
      * @param event the event
      * @param channel the channel
@@ -112,61 +110,46 @@ public class BundleListPortlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onPortalReady(PortalReady event, PortalSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        // Add portlet resources to page
-        channel.respond(new AddPortletType(type())
+        // Add conlet resources to page
+        channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "portletName"))
+                displayNames(channel.supportedLocales(), "conletName"))
             .addScript(new ScriptResource()
-                .setRequires(new String[] { "vuejs.org" })
-                .setScriptUri(event.renderSupport().portletResource(
-                    type(), "Bundles-functions.ftl.js")))
+                .setScriptUri(event.renderSupport().conletResource(
+                    type(), "Bundles-functions.ftl.js"))
+                .setScriptType("module"))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("Bundles-style.css")));
+                WebConsoleUtils.uriFromPath("Bundles-style.css")));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
-     */
     @Override
-    protected String generatePortletId() {
-        return type() + "-" + super.generatePortletId();
+    protected String generateConletId() {
+        return type() + "-" + super.generateConletId();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
-     */
     @Override
     protected Optional<BundleListModel> stateFromSession(
-            Session session, String portletId) {
-        if (portletId.startsWith(type() + "-")) {
-            return Optional.of(new BundleListModel(portletId));
+            Session session, String conletId) {
+        if (conletId.startsWith(type() + "-")) {
+            return Optional.of(new BundleListModel(conletId));
         }
         return Optional.empty();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
-     */
     @Override
     @SuppressWarnings("PMD.AvoidDuplicateLiterals")
-    protected String doAddPortlet(AddPortletRequest event,
-            PortalSession channel)
+    protected String doAddConlet(AddConletRequest event,
+            ConsoleSession channel)
             throws Exception {
-        BundleListModel portletModel = new BundleListModel(generatePortletId());
+        BundleListModel conletModel = new BundleListModel(generateConletId());
         Template tpl
             = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-        channel.respond(new RenderPortletFromTemplate(event,
-            BundleListPortlet.class, portletModel.getPortletId(),
-            tpl, fmModel(event, channel, portletModel))
+        channel.respond(new RenderConletFromTemplate(event,
+            BundleListConlet.class, conletModel.getConletId(),
+            tpl, fmModel(event, channel, conletModel))
                 .setRenderMode(RenderMode.DeleteablePreview)
                 .setSupportedModes(MODES)
                 .setForeground(true));
@@ -174,35 +157,30 @@ public class BundleListPortlet
             = Arrays.stream(context.getBundles())
                 .map(bndl -> createBundleInfo(bndl, channel.locale()))
                 .collect(Collectors.toList());
-        channel.respond(new NotifyPortletView(type(),
-            portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+        channel.respond(new NotifyConletView(type(),
+            conletModel.getConletId(), "bundleUpdates", bundleInfos,
             "preview", true));
-        return portletModel.getPortletId();
+        return conletModel.getConletId();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
-     */
     @Override
-    protected void doRenderPortlet(RenderPortletRequest event,
-            PortalSession channel, String portletId,
-            BundleListModel portletModel)
+    protected void doRenderConlet(RenderConletRequest event,
+            ConsoleSession channel, String conletId,
+            BundleListModel conletModel)
             throws Exception {
-        renderPortlet(event, channel, portletModel);
+        renderConlet(event, channel, conletModel);
     }
 
-    private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel,
-            BundleListModel portletModel) throws TemplateNotFoundException,
+    private void renderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel,
+            BundleListModel conletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException {
         if (event.renderPreview()) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                BundleListPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
+            channel.respond(new RenderConletFromTemplate(event,
+                BundleListConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
                     .setRenderMode(RenderMode.DeleteablePreview)
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
@@ -210,24 +188,24 @@ public class BundleListPortlet
                 = Arrays.stream(context.getBundles())
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
                     .collect(Collectors.toList());
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "bundleUpdates", bundleInfos,
                 "preview", true));
         }
         if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                BundleListPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
+            channel.respond(new RenderConletFromTemplate(event,
+                BundleListConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
                     .setRenderMode(RenderMode.View).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             List<Map<String, Object>> bundleInfos
                 = Arrays.stream(context.getBundles())
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
                     .collect(Collectors.toList());
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "bundleUpdates", bundleInfos,
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "bundleUpdates", bundleInfos,
                 "view", true));
         }
     }
@@ -265,26 +243,16 @@ public class BundleListPortlet
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
-     */
     @Override
-    protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel, String portletId,
+    protected void doDeleteConlet(DeleteConletRequest event,
+            ConsoleSession channel, String conletId,
             BundleListModel retrievedState) throws Exception {
-        channel.respond(new DeletePortlet(portletId));
+        channel.respond(new DeleteConlet(conletId));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel
-     */
     @Override
-    protected void doNotifyPortletModel(NotifyPortletModel event,
-            PortalSession channel, BundleListModel portletState)
+    protected void doNotifyConletModel(NotifyConletModel event,
+            ConsoleSession channel, BundleListModel conletState)
             throws Exception {
         event.stop();
         Bundle bundle = context.getBundle(event.params().asInt(0));
@@ -308,19 +276,19 @@ public class BundleListPortlet
                 bundle.uninstall();
                 break;
             case "sendDetails":
-                sendBundleDetails(event.portletId(), channel, bundle);
+                sendBundleDetails(event.conletId(), channel, bundle);
                 break;
             default:// ignore
                 break;
             }
         } catch (BundleException e) {
             // ignore
-            logger.log(Level.WARNING, "Cannot update bundle state", e);
+            LOG.log(Level.WARNING, "Cannot update bundle state", e);
         }
     }
 
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-    private void sendBundleDetails(String portletId, PortalSession channel,
+    private void sendBundleDetails(String conletId, ConsoleSession channel,
             Bundle bundle) {
         Locale locale = channel.locale();
         ResourceBundle resources = resourceBundle(locale);
@@ -353,13 +321,13 @@ public class BundleListPortlet
         data.add(
             new Object[] { resources.getString("manifestHeaders"), headerList,
                 "table" });
-        channel.respond(new NotifyPortletView(type(),
-            portletId, "bundleDetails", bundle.getBundleId(), data));
+        channel.respond(new NotifyConletView(type(),
+            conletId, "bundleDetails", bundle.getBundleId(), data));
     }
 
     /**
      * Translates the OSGi {@link BundleEvent} to a JGrapes event and fires it
-     * on all known portal session channels.
+     * on all known console session channels.
      *
      * @param event the event
      */
@@ -370,19 +338,19 @@ public class BundleListPortlet
 
     /**
      * Handles a {@link BundleChanged} event by updating the information in the
-     * portal sessions.
+     * console sessions.
      *
      * @param event the event
      */
     @Handler
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public void onBundleChanged(BundleChanged event,
-            PortalSession portalSession) {
-        for (String portletId : portletIds(portalSession)) {
-            portalSession.respond(new NotifyPortletView(type(), portletId,
+            ConsoleSession consoleSession) {
+        for (String conletId : conletIds(consoleSession)) {
+            consoleSession.respond(new NotifyConletView(type(), conletId,
                 "bundleUpdates",
                 (Object) new Object[] { createBundleInfo(
-                    event.bundleEvent().getBundle(), portalSession.locale()) },
+                    event.bundleEvent().getBundle(), consoleSession.locale()) },
                 "*", false));
         }
     }
@@ -417,15 +385,15 @@ public class BundleListPortlet
      * The bundle's model.
      */
     @SuppressWarnings("serial")
-    public class BundleListModel extends AbstractPortlet.PortletBaseModel {
+    public class BundleListModel extends AbstractConlet.ConletBaseModel {
 
         /**
          * Instantiates a new bundle list model.
          *
-         * @param portletId the portlet id
+         * @param conletId the web console component id
          */
-        public BundleListModel(String portletId) {
-            super(portletId);
+        public BundleListModel(String conletId) {
+            super(conletId);
         }
 
         /**

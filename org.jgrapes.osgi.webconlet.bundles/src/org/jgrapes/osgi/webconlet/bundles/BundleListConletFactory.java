@@ -16,24 +16,23 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.bundles;
+package org.jgrapes.osgi.webconlet.bundles;
 
 import java.util.Map;
 import java.util.Optional;
 
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.ComponentType;
-import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.webconsole.base.ConletComponentFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.ServiceScope;
 
 /**
- * The factory service for {@link BundleListPortlet}s.
+ * The factory service for {@link BundleListConlet}s.
  */
 @org.osgi.service.component.annotations.Component(
     scope = ServiceScope.SINGLETON)
-public class BundleListPortletFactory
-        implements PortletComponentFactory {
+public class BundleListConletFactory implements ConletComponentFactory {
 
     /*
      * (non-Javadoc)
@@ -42,7 +41,7 @@ public class BundleListPortletFactory
      */
     @Override
     public Class<? extends ComponentType> componentType() {
-        return BundleListPortlet.class;
+        return BundleListConlet.class;
     }
 
     /*
@@ -54,7 +53,7 @@ public class BundleListPortletFactory
     @Override
     public Optional<ComponentType> create(
             Channel componentChannel, Map<Object, Object> properties) {
-        return Optional.of(new BundleListPortlet(componentChannel,
+        return Optional.of(new BundleListConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class), properties));
     }
 

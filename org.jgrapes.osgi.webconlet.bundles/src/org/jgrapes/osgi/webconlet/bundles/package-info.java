@@ -16,4 +16,4 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.bundles;
+package org.jgrapes.osgi.webconlet.bundles;
