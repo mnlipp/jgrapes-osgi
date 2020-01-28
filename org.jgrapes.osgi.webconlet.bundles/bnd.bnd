@@ -1,11 +1,8 @@
 Bundle-Name: JGrapes OSGi Conlet for Bundles
 #Bundle-Version: 0.10.0.-${tstamp}-SNAPSHOT
-Bundle-Version: 0.10.0.ga
+Bundle-Version: 0.10.1.ga
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2020
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
-Require-Capability: \
-    org.jgrapes.webconsole.page.resource;filter:="(name=vue)", \
-    org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
 Bundle-Category: conlet
 Private-Package: org.jgrapes.osgi.webconlet.bundles
 
@@ -31,7 +28,8 @@ Private-Package: org.jgrapes.osgi.webconlet.bundles
 Require-Capability: \
     osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=jquery)",\
-    org.jgrapes.webconsole.page.resource;filter:="(name=vue)"
+    org.jgrapes.webconsole.page.resource;filter:="(name=vue)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
