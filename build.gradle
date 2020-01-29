@@ -5,9 +5,6 @@ buildscript {
         maven { url bnd_repourl }
         maven { url 'https://jitpack.io' }
     }
-    dependencies {
-        classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:${bnd_version}"
-    }
 }
 
 plugins {
