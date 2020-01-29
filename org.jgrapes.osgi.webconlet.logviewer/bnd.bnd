@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Log Viewer
-Bundle-Version: 0.10.0.-${tstamp}-SNAPSHOT
-#Bundle-Version: 0.9.6.ga
+#Bundle-Version: 0.10.0.-${tstamp}-SNAPSHOT
+Bundle-Version: 0.10.0.ga
 Bundle-Copyright: Michael N. Lipp (c) 2019, 2020
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Bundle-Category: conlet
