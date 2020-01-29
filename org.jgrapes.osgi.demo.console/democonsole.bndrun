@@ -38,15 +38,14 @@
 	org.jgrapes.webconsole.provider.chartjs;version='[0.26.0,0.26.1)',\
 	org.jgrapes.webconsole.provider.fontawesome;version='[0.26.0,0.26.1)',\
 	org.jgrapes.webconsole.provider.markdownit;version='[0.26.0,0.26.1)',\
-    org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
-	org.jgrapes.webconsole.provider.vuejs;version='[0.26.0,0.26.1)',\
+	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.1.0,0.1.1)',\
-    org.jgrapes.webconsole.provider.vuex;version='[0.1.0,0.1.1)',\
-    org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.1.0,0.1.1)',\
+	org.jgrapes.webconsole.provider.vuex;version='[0.1.0,0.1.1)',\
+	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.1.1,0.1.2)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.gridstack;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.1.0,0.1.1)',\
-	org.jgrapes.webconlet.markdowndisplay;version='[0.28.0,0.28.1)',\
+	org.jgrapes.webconlet.markdowndisplay;version='[0.28.1,0.28.2)',\
 	org.jgrapes.webconlet.sysinfo;version='[0.27.0,0.27.1)',\
 	org.jgrapes.osgi.demo.console;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.16,1.9.17)',\
@@ -66,6 +65,7 @@
     bnd.identity; id=de.mnl.osgi.log4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.slf4j2osgi; version='latest',\
     bnd.identity; id=de.mnl.osgi.osgi2jul; version='latest',\
+    \
     bnd.identity; id=org.apache.felix.configadmin; version='latest',\
     bnd.identity; id=org.apache.felix.useradmin; version='latest',\
     bnd.identity; id=org.apache.felix.metatype; version='latest',\
@@ -81,9 +81,9 @@
     bnd.identity; id=org.jgrapes.webconsole.jqueryui; version=latest,\
     bnd.identity; id=org.jgrapes.webconlet.sysinfo; version='latest',\
     bnd.identity; id=org.jgrapes.webconlet.markdowndisplay; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.portlets.bundles; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.portlets.services; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.portlets.logviewer; version='latest',\
+    bnd.identity; id=org.jgrapes.osgi.webconlet.bundles; version='latest',\
+    bnd.identity; id=org.jgrapes.osgi.webconlet.services; version='latest',\
+    bnd.identity; id=org.jgrapes.osgi.webconlet.logviewer; version='latest',\
     bnd.identity; id=org.jgrapes.osgi.demo.console; version='latest'
 
 # These cause (no longer working) webconsole 4.2.8 to be used:
@@ -103,10 +103,10 @@
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
     osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
     osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.28.4.ga)))',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
-    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.chartjs)',\
-    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.datatables)',\
-    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.providers.markdownit)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
     osgi.identity;filter:='(&(osgi.identity=org.apache.felix.inventory)(!(version>=1.0.6)))',\
     osgi.identity;filter:='(&(osgi.identity=org.apache.felix.http.jetty)(|(version=4.0.12)(version=4.0.14)))',\
     osgi.identity;filter:='(&(osgi.identity=org.osgi.compendium)(!(version>=6.0.0)))'
