@@ -15,8 +15,8 @@ Private-Package: org.jgrapes.osgi.demo.upnp
 	org.jgrapes.core;version='[1.1.1.ga,2)',\
 	org.jgrapes.io;version='[1.1.1.ga,2)',\
 	org.jgrapes.http;version='[1.1.1.ga,2)',\
-	org.jgrapes.portal.base;version=latest,\
-    org.jgrapes.portal.bootstrap4;version=latest,\
+	org.jgrapes.webconsole.base;version=latest,\
+    org.jgrapes.webconsole.vuejs;version=latest,\
     org.jgrapes.osgi.core;version=latest
 
 -includeresource: \

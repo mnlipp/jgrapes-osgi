@@ -23,10 +23,8 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Component;
 import org.jgrapes.core.Components;
@@ -42,13 +40,13 @@ import org.jgrapes.io.util.PermitsPool;
 import org.jgrapes.net.SslCodec;
 import org.jgrapes.net.TcpServer;
 import org.jgrapes.osgi.core.ComponentCollector;
-import org.jgrapes.portal.base.KVStoreBasedPortalPolicy;
-import org.jgrapes.portal.base.PageResourceProviderFactory;
-import org.jgrapes.portal.base.Portal;
-import org.jgrapes.portal.base.PortalLocalBackedKVStore;
-import org.jgrapes.portal.base.PortalWeblet;
-import org.jgrapes.portal.base.PortletComponentFactory;
-import org.jgrapes.portal.bootstrap4.Bootstrap4Weblet;
+import org.jgrapes.webconsole.base.BrowserLocalBackedKVStore;
+import org.jgrapes.webconsole.base.ConletComponentFactory;
+import org.jgrapes.webconsole.base.ConsoleWeblet;
+import org.jgrapes.webconsole.base.KVStoreBasedConsolePolicy;
+import org.jgrapes.webconsole.base.PageResourceProviderFactory;
+import org.jgrapes.webconsole.base.WebConsole;
+import org.jgrapes.webconsole.vuejs.VueJsConsoleWeblet;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -111,21 +109,21 @@ public class Application extends Component implements BundleActivator {
         app.attach(new InMemorySessionManager(app.channel()));
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65536));
-        PortalWeblet portalWeblet
-            = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
+        ConsoleWeblet consoleWeblet
+            = app.attach(new VueJsConsoleWeblet(app.channel(), Channel.SELF,
                 new URI("/portal/")))
                 .prependClassTemplateLoader(getClass())
-                .prependPortalResourceProvider(getClass())
+                .prependConsoleResourceProvider(getClass())
                 .prependResourceBundleProvider(getClass());
-        Portal portal = portalWeblet.portal();
-        portal.attach(new PortalLocalBackedKVStore(
-            portal, portalWeblet.prefix().getPath()));
-        portal.attach(new KVStoreBasedPortalPolicy(portal));
-        portal.attach(new NewPortalSessionPolicy(portal));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PageResourceProviderFactory.class));
-        portal.attach(new ComponentCollector<>(
-            portal, context, PortletComponentFactory.class));
+        WebConsole console = consoleWeblet.console();
+        console.attach(new BrowserLocalBackedKVStore(
+            console, consoleWeblet.prefix().getPath()));
+        console.attach(new KVStoreBasedConsolePolicy(console));
+        console.attach(new NewConsoleSessionPolicy(console));
+        console.attach(new ComponentCollector<>(
+            console, context, PageResourceProviderFactory.class));
+        console.attach(new ComponentCollector<>(
+            console, context, ConletComponentFactory.class));
         Components.start(app);
 
 //		context().addServiceListener(new RootDeviceListener(),
