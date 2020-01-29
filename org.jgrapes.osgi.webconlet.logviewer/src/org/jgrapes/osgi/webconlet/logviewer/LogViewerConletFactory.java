@@ -16,23 +16,22 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.logviewer;
+package org.jgrapes.osgi.webconlet.logviewer;
 
 import java.util.Map;
 import java.util.Optional;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.ComponentType;
-import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.webconsole.base.ConletComponentFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.ServiceScope;
 
 /**
- * The factory service for {@link LogViewerPortlet}s.
+ * The factory service for {@link LogViewerConlet}s.
  */
 @org.osgi.service.component.annotations.Component(
     scope = ServiceScope.SINGLETON)
-public class LogViewerPortletFactory implements PortletComponentFactory {
+public class LogViewerConletFactory implements ConletComponentFactory {
 
     /*
      * (non-Javadoc)
@@ -41,7 +40,7 @@ public class LogViewerPortletFactory implements PortletComponentFactory {
      */
     @Override
     public Class<? extends ComponentType> componentType() {
-        return LogViewerPortlet.class;
+        return LogViewerConlet.class;
     }
 
     /*
@@ -53,7 +52,7 @@ public class LogViewerPortletFactory implements PortletComponentFactory {
     @Override
     public Optional<ComponentType> create(Channel componentChannel,
             Map<Object, Object> properties) {
-        return Optional.of(new LogViewerPortlet(componentChannel,
+        return Optional.of(new LogViewerConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class)));
     }
 

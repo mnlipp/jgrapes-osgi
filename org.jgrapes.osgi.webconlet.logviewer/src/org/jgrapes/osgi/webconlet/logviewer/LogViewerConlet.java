@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2016, 2019  Michael N. Lipp
+ * Copyright (C) 2016, 2020  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -16,15 +16,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.logviewer;
+package org.jgrapes.osgi.webconlet.logviewer;
 
 import de.mnl.osgi.coreutils.ServiceCollector;
-
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,29 +31,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.http.Session;
-import org.jgrapes.portal.base.AbstractPortlet;
-import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalUtils;
-import org.jgrapes.portal.base.Portlet.RenderMode;
-import static org.jgrapes.portal.base.Portlet.RenderMode.View;
-import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
-import org.jgrapes.portal.base.events.AddPortletRequest;
-import org.jgrapes.portal.base.events.AddPortletType;
-import org.jgrapes.portal.base.events.DeletePortlet;
-import org.jgrapes.portal.base.events.DeletePortletRequest;
-import org.jgrapes.portal.base.events.NotifyPortletModel;
-import org.jgrapes.portal.base.events.NotifyPortletView;
-import org.jgrapes.portal.base.events.PortalReady;
-import org.jgrapes.portal.base.events.RenderPortletRequest;
-import org.jgrapes.portal.base.events.RenderPortletRequestBase;
-import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
+import org.jgrapes.webconsole.base.AbstractConlet;
+import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.WebConsoleUtils;
+import org.jgrapes.webconsole.base.events.AddConletRequest;
+import org.jgrapes.webconsole.base.events.AddConletType;
+import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
+import org.jgrapes.webconsole.base.events.ConsoleReady;
+import org.jgrapes.webconsole.base.events.DeleteConlet;
+import org.jgrapes.webconsole.base.events.DeleteConletRequest;
+import org.jgrapes.webconsole.base.events.NotifyConletModel;
+import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConletRequest;
+import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.log.LogEntry;
@@ -63,12 +59,13 @@ import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
 
 /**
- * A portlet for displaying the OSGi log.
+ * A conlet for displaying the OSGi log.
  */
-public class LogViewerPortlet
-        extends FreeMarkerPortlet<AbstractPortlet.PortletBaseModel> {
+public class LogViewerConlet
+        extends FreeMarkerConlet<AbstractConlet.ConletBaseModel> {
 
-    private static final Set<RenderMode> MODES = RenderMode.asSet(View);
+    private static final Set<RenderMode> MODES
+        = RenderMode.asSet(RenderMode.View);
     private ServiceCollector<LogReaderService,
             LogReaderService> logReaderCollector;
     private LogReaderService logReaderResolved;
@@ -82,7 +79,7 @@ public class LogViewerPortlet
      *            sends the event to
      */
     @SuppressWarnings("PMD.UnusedFormalParameter")
-    public LogViewerPortlet(Channel componentChannel, BundleContext context) {
+    public LogViewerConlet(Channel componentChannel, BundleContext context) {
         super(componentChannel);
         logReaderListener = new LogListener() {
             @Override
@@ -120,7 +117,7 @@ public class LogViewerPortlet
     }
 
     /**
-     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     * On {@link ConsoleReady}, fire the {@link AddConletType}.
      *
      * @param event the event
      * @param channel the channel
@@ -131,43 +128,43 @@ public class LogViewerPortlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onPortalReady(PortalReady event, PortalSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        // Add portlet resources to page
-        channel.respond(new AddPortletType(type())
+        // Add conlet resources to page
+        channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "portletName"))
+                displayNames(channel.supportedLocales(), "conletName"))
             .addRenderMode(RenderMode.View)
             .addScript(new ScriptResource()
-                .setRequires(new String[] { "vuejs.org" })
-                .setScriptUri(event.renderSupport().portletResource(
-                    type(), "LogViewer-functions.ftl.js")))
+                .setScriptUri(event.renderSupport().conletResource(
+                    type(), "LogViewer-functions.ftl.js"))
+                .setScriptType("module"))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("LogViewer-style.css")));
+                WebConsoleUtils.uriFromPath("LogViewer-style.css")));
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
+     * @see org.jgrapes.console.AbstractConlet#generateConletId()
      */
     @Override
-    protected String generatePortletId() {
-        return type() + "-" + super.generatePortletId();
+    protected String generateConletId() {
+        return type() + "-" + super.generateConletId();
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
+     * @see org.jgrapes.console.AbstractConlet#modelFromSession
      */
     @SuppressWarnings("PMD.AvoidDuplicateLiterals")
     @Override
-    protected Optional<PortletBaseModel> stateFromSession(
-            Session session, String portletId) {
-        if (portletId.startsWith(type() + "-")) {
-            return Optional.of(new PortletBaseModel(portletId));
+    protected Optional<ConletBaseModel> stateFromSession(
+            Session session, String conletId) {
+        if (conletId.startsWith(type() + "-")) {
+            return Optional.of(new ConletBaseModel(conletId));
         }
         return Optional.empty();
     }
@@ -175,74 +172,74 @@ public class LogViewerPortlet
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
+     * @see org.jgrapes.console.AbstractConlet#doAddConlet
      */
     @Override
-    protected String doAddPortlet(AddPortletRequest event,
-            PortalSession channel) throws Exception {
-        PortletBaseModel portletModel
-            = new PortletBaseModel(generatePortletId());
-        renderPortlet(event, channel, portletModel);
-        return portletModel.getPortletId();
+    protected String doAddConlet(AddConletRequest event,
+            ConsoleSession channel) throws Exception {
+        ConletBaseModel conletModel
+            = new ConletBaseModel(generateConletId());
+        renderConlet(event, channel, conletModel);
+        return conletModel.getConletId();
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
+     * @see org.jgrapes.console.AbstractConlet#doRenderConlet
      */
     @Override
-    protected void doRenderPortlet(RenderPortletRequest event,
-            PortalSession channel, String portletId,
-            PortletBaseModel portletModel) throws Exception {
-        renderPortlet(event, channel, portletModel);
+    protected void doRenderConlet(RenderConletRequest event,
+            ConsoleSession channel, String conletId,
+            ConletBaseModel conletModel) throws Exception {
+        renderConlet(event, channel, conletModel);
     }
 
-    private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel, PortletBaseModel portletModel)
+    private void renderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel, ConletBaseModel conletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
         if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                LogViewerPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
+            channel.respond(new RenderConletFromTemplate(event,
+                LogViewerConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
                     .setRenderMode(RenderMode.View).setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
-            sendAllEntries(channel, portletModel.getPortletId());
+            sendAllEntries(channel, conletModel.getConletId());
         }
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
+     * @see org.jgrapes.console.AbstractConlet#doDeleteConlet
      */
     @Override
-    protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel, String portletId,
-            PortletBaseModel portletState) throws Exception {
-        channel.respond(new DeletePortlet(portletId));
+    protected void doDeleteConlet(DeleteConletRequest event,
+            ConsoleSession channel, String conletId,
+            ConletBaseModel conletState) throws Exception {
+        channel.respond(new DeleteConlet(conletId));
     }
 
-    private void sendAllEntries(PortalSession channel, String portletId) {
+    private void sendAllEntries(ConsoleSession channel, String conletId) {
         final LogReaderService logReader = logReaderResolved;
         if (logReader == null) {
             return;
         }
-        channel.respond(new NotifyPortletView(type(),
-            portletId, "entries",
+        channel.respond(new NotifyConletView(type(),
+            conletId, "entries",
             (Object) Collections.list(logReader.getLog()).stream()
                 .map(entry -> logEntryAsMap(entry)).toArray()));
     }
 
     private void addEntry(LogEntry entry) {
-        for (PortalSession portalSession : trackedSessions()) {
-            for (String portletId : portletIds(portalSession)) {
-                portalSession.respond(new NotifyPortletView(type(),
-                    portletId, "addEntry", logEntryAsMap(entry))
+        for (ConsoleSession consoleSession : trackedSessions()) {
+            for (String conletId : conletIds(consoleSession)) {
+                consoleSession.respond(new NotifyConletView(type(),
+                    conletId, "addEntry", logEntryAsMap(entry))
                         .disableTracking());
             }
         }
@@ -280,16 +277,16 @@ public class LogViewerPortlet
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doNotifyPortletModel
+     * @see org.jgrapes.console.AbstractConlet#doNotifyConletModel
      */
     @Override
-    protected void doNotifyPortletModel(NotifyPortletModel event,
-            PortalSession channel, PortletBaseModel portletState)
+    protected void doNotifyConletModel(NotifyConletModel event,
+            ConsoleSession channel, ConletBaseModel conletState)
             throws Exception {
         event.stop();
         switch (event.method()) {
         case "resync":
-            sendAllEntries(channel, event.portletId());
+            sendAllEntries(channel, event.conletId());
             break;
         }
     }

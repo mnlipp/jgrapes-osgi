@@ -1,5 +1,6 @@
-<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-logviewer-view"
-  data-jgp-on-load="orgJGrapesOsgiPortletsLogViewer.initView">
+<div data-conlet-title="${_("conletName")}" class="jgrapes-osgi-logviewer-view"
+  data-jgwc-on-load="orgJGrapesOsgiConletLogViewer.initView"
+  data-jgwc-on-unload="orgJGrapesOsgiConletLogViewer.onUnload">
   <div class="jgrapes-osgi-logviewer-control">
 	<form class="flow-content--paragraph">
 	  <fieldset class="form__fieldset--horizontal form__fieldset--panel">
@@ -10,7 +11,7 @@
 			    <input type="checkbox" v-model="autoUpdate">
 				  <span>${_("auto")}</span>
 			  </label>
-		    <span role="button" class="jgrapes-osgi-logviewer-reload jgportal-button-icon fas fa-sync"
+		    <span role="button" class="jgrapes-osgi-logviewer-reload fas fa-sync"
 			  v-on:click="resync($event)">
 		   </span>
 		  </span>
@@ -33,7 +34,7 @@
         <span>${_("Filter")}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span class="form-item">
-          <span role="button" class="jgportal-button-icon fas fa-backspace" 
+          <span role="button" class="fas fa-backspace" 
             v-on:click="controller.clearFilter($event)"></span>
         </span>
       </label>
@@ -47,9 +48,9 @@
           v-on:click="controller.sortBy(key === 'time' ? 'sequence' : key)">
           {{ controller.label(key) }}<span 
             v-if="controller.sortedByAsc(key === 'time' ? 'sequence' : key)"
-            role="button" class="jgportal-button-icon">&#x25B2;</span><span
+            role="button">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key === 'time' ? 'sequence' : key)"
-            role="button" class="jgportal-button-icon">&#x25BC;</span>
+            role="button">&#x25BC;</span>
         </th>
       </tr>
     </thead>
@@ -59,10 +60,9 @@
           <template v-for="key in controller.keys">
             <td v-if="key === 'exception'"
               onclick="$(this).parent().next().toggle();
-                $(this).find('.jgportal-button-icon').toggleClass('fa-caret-right fa-caret-down')">
+                $(this).find('.jgconsole-button-icon').toggleClass('fa-caret-right fa-caret-down')">
               <template v-if="entry['stacktrace']">
-                <span role="button" 
-                  class="jgportal-button-icon fas fa-caret-right"></span>
+                <span role="button" class="fas fa-caret-right"></span>
                 <span v-if="entry['stacktrace']" role="button"
                   v-html="entry[key]"></span>
               </template>
