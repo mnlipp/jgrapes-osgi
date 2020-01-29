@@ -35,7 +35,7 @@ allprojects {
     repositories {
         jcenter()
         // My packages, until linked
-        maven { url 'https://dl.bintray.com/mnlipp/forge/' }
+        // maven { url 'https://dl.bintray.com/mnlipp/jgrapes' }
         
         mavenCentral()
         // Sometimes, synchronization with central is too slow
