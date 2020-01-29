@@ -1,13 +1,9 @@
-Bundle-Name: JGrapes OSGi UPnPBrowser
-Bundle-SymbolicName: org.jgrapes.osgi.portlets.upnpbrowser
+Bundle-Name: JGrapes OSGi UPnPBrowser Conlet
 Bundle-Version: 0.0.0.${bundleVersionQualifier}
-Bundle-Copyright: Michael N. Lipp (c) 2018
+Bundle-Copyright: Michael N. Lipp (c) 2018, 2020
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
-Require-Capability: \
-    org.jgrapes.portal.page.resource;filter:="(name=vuejs.org)", \
-    org.jgrapes.portal.page.resource;filter:="(name=fontawesome-free)"
-Bundle-Category: portlet
-Private-Package: org.jgrapes.osgi.portlets.upnpbrowser
+Bundle-Category: conlet
+Private-Package: org.jgrapes.osgi.webconlet.upnpbrowser
 
 -sources: true
 -runee: JavaSE-1.8
@@ -25,10 +21,16 @@ Private-Package: org.jgrapes.osgi.portlets.upnpbrowser
 	org.jgrapes.core;version='[1.1.1.ga,2)',\
 	org.jgrapes.io;version='[1.1.1.ga,2)',\
 	org.jgrapes.http;version='[1.1.1.ga,2)',\
-	org.jgrapes.portal.base;version=latest,\
+	org.jgrapes.webconsole.base;version=latest,\
     org.jdrupes.json;version=latest,\
     org.jdrupes.httpcodec;version=latest,\
 	org.freemarker.freemarker;version='[2.3.27,2.4)'
+
+Require-Capability: \
+    osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=jquery)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=vue)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \

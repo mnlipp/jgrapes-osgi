@@ -16,25 +16,24 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.upnpbrowser;
+package org.jgrapes.osgi.webconlet.upnpbrowser;
 
 import java.util.Map;
 import java.util.Optional;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.ComponentType;
-import org.jgrapes.portal.base.PortletComponentFactory;
+import org.jgrapes.webconsole.base.ConletComponentFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.component.runtime.ServiceComponentRuntime;
 
 /**
- * The factory service for {@link UPnPBrowserPortlet}s.
+ * The factory service for {@link UPnPBrowserConlet}s.
  */
 @org.osgi.service.component.annotations.Component(
     scope = ServiceScope.SINGLETON)
-public class UPnPBrowserPortletFactory implements PortletComponentFactory {
+public class UPnPBrowserConletFactory implements ConletComponentFactory {
 
     private ServiceComponentRuntime scr;
 
@@ -50,7 +49,7 @@ public class UPnPBrowserPortletFactory implements PortletComponentFactory {
      */
     @Override
     public Class<? extends ComponentType> componentType() {
-        return UPnPBrowserPortlet.class;
+        return UPnPBrowserConlet.class;
     }
 
     /*
@@ -62,7 +61,7 @@ public class UPnPBrowserPortletFactory implements PortletComponentFactory {
     @Override
     public Optional<ComponentType> create(Channel componentChannel,
             Map<Object, Object> properties) {
-        return Optional.of(new UPnPBrowserPortlet(componentChannel,
+        return Optional.of(new UPnPBrowserConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class), scr));
     }
 

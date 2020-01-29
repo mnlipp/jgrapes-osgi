@@ -16,13 +16,12 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.portlets.upnpbrowser;
+package org.jgrapes.osgi.webconlet.upnpbrowser;
 
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -37,7 +36,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.jdrupes.httpcodec.types.Converters;
 import org.jdrupes.httpcodec.types.MediaType;
 import org.jgrapes.core.Channel;
@@ -47,26 +45,24 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
-import org.jgrapes.portal.base.AbstractPortlet;
-import org.jgrapes.portal.base.PortalSession;
-import org.jgrapes.portal.base.PortalUtils;
-import org.jgrapes.portal.base.Portlet.RenderMode;
-import static org.jgrapes.portal.base.Portlet.RenderMode.DeleteablePreview;
-import static org.jgrapes.portal.base.Portlet.RenderMode.View;
-import org.jgrapes.portal.base.RenderSupport;
-import org.jgrapes.portal.base.ResourceByInputStream;
-import org.jgrapes.portal.base.ResourceNotModified;
-import org.jgrapes.portal.base.events.AddPageResources.ScriptResource;
-import org.jgrapes.portal.base.events.AddPortletRequest;
-import org.jgrapes.portal.base.events.AddPortletType;
-import org.jgrapes.portal.base.events.DeletePortlet;
-import org.jgrapes.portal.base.events.DeletePortletRequest;
-import org.jgrapes.portal.base.events.NotifyPortletView;
-import org.jgrapes.portal.base.events.PortalReady;
-import org.jgrapes.portal.base.events.PortletResourceRequest;
-import org.jgrapes.portal.base.events.RenderPortletRequest;
-import org.jgrapes.portal.base.events.RenderPortletRequestBase;
-import org.jgrapes.portal.base.freemarker.FreeMarkerPortlet;
+import org.jgrapes.webconsole.base.AbstractConlet;
+import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.RenderSupport;
+import org.jgrapes.webconsole.base.ResourceByInputStream;
+import org.jgrapes.webconsole.base.ResourceNotModified;
+import org.jgrapes.webconsole.base.WebConsoleUtils;
+import org.jgrapes.webconsole.base.events.AddConletRequest;
+import org.jgrapes.webconsole.base.events.AddConletType;
+import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
+import org.jgrapes.webconsole.base.events.ConletResourceRequest;
+import org.jgrapes.webconsole.base.events.ConsoleReady;
+import org.jgrapes.webconsole.base.events.DeleteConlet;
+import org.jgrapes.webconsole.base.events.DeleteConletRequest;
+import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConletRequest;
+import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.framework.InvalidSyntaxException;
@@ -78,15 +74,15 @@ import org.osgi.service.upnp.UPnPDevice;
 import org.osgi.service.upnp.UPnPIcon;
 
 /**
- * A portlet for inspecting the services in an OSGi runtime.
+ * A conlet for inspecting the services in an OSGi runtime.
  */
 @SuppressWarnings({ "PMD.ExcessiveImports" })
-public class UPnPBrowserPortlet
-        extends FreeMarkerPortlet<UPnPBrowserPortlet.UPnPBrowserModel>
+public class UPnPBrowserConlet
+        extends FreeMarkerConlet<UPnPBrowserConlet.UPnPBrowserModel>
         implements ServiceListener {
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
-        DeleteablePreview, View);
+        RenderMode.DeleteablePreview, RenderMode.View);
     private final BundleContext context;
 
     /**
@@ -97,14 +93,14 @@ public class UPnPBrowserPortlet
      *            sends the event to
      */
     @SuppressWarnings("PMD.UnusedFormalParameter")
-    public UPnPBrowserPortlet(Channel componentChannel, BundleContext context,
+    public UPnPBrowserConlet(Channel componentChannel, BundleContext context,
             ServiceComponentRuntime scr) {
         super(componentChannel);
         this.context = context;
     }
 
     /**
-     * On {@link PortalReady}, fire the {@link AddPortletType}.
+     * On {@link ConsoleReady}, fire the {@link AddConletType}.
      *
      * @param event the event
      * @param channel the channel
@@ -115,49 +111,49 @@ public class UPnPBrowserPortlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onPortalReady(PortalReady event, PortalSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
-        Reader deviceTemplate = new InputStreamReader(UPnPBrowserPortlet.class
+        Reader deviceTemplate = new InputStreamReader(UPnPBrowserConlet.class
             .getResourceAsStream("device-tree-template.html"));
-        // Add portlet resources to page
-        channel.respond(new AddPortletType(type())
+        // Add conlet resources to page
+        channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "portletName"))
+                displayNames(channel.supportedLocales(), "conletName"))
             .addScript(new ScriptResource()
-                .setRequires(new String[] { "vuejs.org" })
-                .setScriptUri(event.renderSupport().portletResource(
-                    type(), "UPnPBrowser-functions.ftl.js")))
+                .setScriptUri(event.renderSupport().conletResource(
+                    type(), "UPnPBrowser-functions.ftl.js"))
+                .setScriptType("module"))
             .addScript(
                 new ScriptResource()
                     .setScriptId("upnpbrowser-device-tree-template")
                     .setScriptType("text/x-template")
                     .loadScriptSource(deviceTemplate))
             .addCss(event.renderSupport(),
-                PortalUtils.uriFromPath("UPnPBrowser-style.css")));
+                WebConsoleUtils.uriFromPath("UPnPBrowser-style.css")));
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#generatePortletId()
+     * @see org.jgrapes.console.AbstractConlet#generateConletId()
      */
     @Override
-    protected String generatePortletId() {
-        return type() + "-" + super.generatePortletId();
+    protected String generateConletId() {
+        return type() + "-" + super.generateConletId();
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#modelFromSession
+     * @see org.jgrapes.console.AbstractConlet#modelFromSession
      */
     @SuppressWarnings("PMD.AvoidDuplicateLiterals")
     @Override
     protected Optional<UPnPBrowserModel> stateFromSession(
-            Session session, String portletId) {
-        if (portletId.startsWith(type() + "-")) {
-            return Optional.of(new UPnPBrowserModel(portletId));
+            Session session, String conletId) {
+        if (conletId.startsWith(type() + "-")) {
+            return Optional.of(new UPnPBrowserModel(conletId));
         }
         return Optional.empty();
     }
@@ -165,45 +161,46 @@ public class UPnPBrowserPortlet
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doAddPortlet
+     * @see org.jgrapes.console.AbstractConlet#doAddConlet
      */
     @Override
-    protected String doAddPortlet(AddPortletRequest event,
-            PortalSession channel)
+    protected String doAddConlet(AddConletRequest event,
+            ConsoleSession channel)
             throws Exception {
-        UPnPBrowserModel portletModel
-            = new UPnPBrowserModel(generatePortletId());
-        renderPortlet(event, channel, portletModel);
-        return portletModel.getPortletId();
+        UPnPBrowserModel conletModel
+            = new UPnPBrowserModel(generateConletId());
+        renderConlet(event, channel, conletModel);
+        return conletModel.getConletId();
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doRenderPortlet
+     * @see org.jgrapes.console.AbstractConlet#doRenderConlet
      */
     @Override
-    protected void doRenderPortlet(RenderPortletRequest event,
-            PortalSession channel, String portletId,
-            UPnPBrowserModel portletModel)
+    protected void doRenderConlet(RenderConletRequest event,
+            ConsoleSession channel, String conletId,
+            UPnPBrowserModel conletModel)
             throws Exception {
-        renderPortlet(event, channel, portletModel);
+        renderConlet(event, channel, conletModel);
     }
 
     @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
         "PMD.DataflowAnomalyAnalysis", "unchecked" })
-    private void renderPortlet(RenderPortletRequestBase<?> event,
-            PortalSession channel, UPnPBrowserModel portletModel)
+    private void renderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel, UPnPBrowserModel conletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
         if (event.renderPreview()) {
             Template tpl = freemarkerConfig()
                 .getTemplate("UPnPBrowser-preview.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                UPnPBrowserPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
-                    .setRenderMode(DeleteablePreview).setSupportedModes(MODES)
+            channel.respond(new RenderConletFromTemplate(event,
+                UPnPBrowserConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
+                    .setRenderMode(RenderMode.DeleteablePreview)
+                    .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             List<Map<String, Object>> deviceInfos = Arrays.stream(
                 context.getAllServiceReferences(UPnPDevice.class.getName(),
@@ -211,16 +208,17 @@ public class UPnPBrowserPortlet
                 .map(svc -> createDeviceInfo(context,
                     (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .collect(Collectors.toList());
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "deviceUpdates", deviceInfos,
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "deviceUpdates", deviceInfos,
                 "preview", true));
         }
         if (event.renderModes().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("UPnPBrowser-view.ftl.html");
-            channel.respond(new RenderPortletFromTemplate(event,
-                UPnPBrowserPortlet.class, portletModel.getPortletId(),
-                tpl, fmModel(event, channel, portletModel))
+            channel.respond(new RenderConletFromTemplate(event,
+                UPnPBrowserConlet.class, conletModel.getConletId(),
+                tpl, fmModel(event, channel, conletModel))
+                    .setRenderMode(RenderMode.View)
                     .setSupportedModes(MODES)
                     .setForeground(event.isForeground()));
             @SuppressWarnings("PMD.UseConcurrentHashMap")
@@ -231,8 +229,8 @@ public class UPnPBrowserPortlet
                     (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .forEach(devInfo -> deviceInfos.put((String) devInfo.get("udn"),
                     devInfo));
-            channel.respond(new NotifyPortletView(type(),
-                portletModel.getPortletId(), "deviceUpdates",
+            channel.respond(new NotifyConletView(type(),
+                conletModel.getConletId(), "deviceUpdates",
                 treeify(deviceInfos), "view", true));
         }
     }
@@ -254,8 +252,8 @@ public class UPnPBrowserPortlet
             result.put("friendlyName",
                 deviceRef.getProperty(UPnPDevice.FRIENDLY_NAME));
             if (device.getIcons(null) != null) {
-                result.put("iconUrl", PortalUtils.mergeQuery(
-                    renderSupport.portletResource(type(), ""),
+                result.put("iconUrl", WebConsoleUtils.mergeQuery(
+                    renderSupport.conletResource(type(), ""),
                     Components.mapOf("udn", (String) deviceRef
                         .getProperty(UPnPDevice.UDN), "resource", "icon"))
                     .toASCIIString());
@@ -284,10 +282,10 @@ public class UPnPBrowserPortlet
 
     @Override
     @SuppressWarnings({ "PMD.DataflowAnomalyAnalysis" })
-    protected void doGetResource(PortletResourceRequest event,
+    protected void doGetResource(ConletResourceRequest event,
             IOSubchannel channel) {
         Map<String, List<String>> query
-            = PortalUtils.queryAsMap(event.resourceUri());
+            = WebConsoleUtils.queryAsMap(event.resourceUri());
         if (!query.containsKey("udn")) {
             super.doGetResource(event, channel);
             return;
@@ -312,7 +310,7 @@ public class UPnPBrowserPortlet
     }
 
     @SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.DataflowAnomalyAnalysis" })
-    private void provideIcon(PortletResourceRequest event, UPnPDevice device) {
+    private void provideIcon(ConletResourceRequest event, UPnPDevice device) {
         UPnPIcon[] icons = device
             .getIcons(event.session().locale().toLanguageTag());
         if (icons == null) {
@@ -348,7 +346,7 @@ public class UPnPBrowserPortlet
 
     /**
      * Translates the OSGi {@link ServiceEvent} to a JGrapes event and fires it
-     * on all known portal session channels.
+     * on all known console session channels.
      *
      * @param event the event
      */
@@ -360,28 +358,28 @@ public class UPnPBrowserPortlet
     /*
      * (non-Javadoc)
      * 
-     * @see org.jgrapes.portal.AbstractPortlet#doDeletePortlet
+     * @see org.jgrapes.console.AbstractConlet#doDeleteConlet
      */
     @Override
-    protected void doDeletePortlet(DeletePortletRequest event,
-            PortalSession channel, String portletId,
-            UPnPBrowserModel portletState) throws Exception {
-        channel.respond(new DeletePortlet(portletId));
+    protected void doDeleteConlet(DeleteConletRequest event,
+            ConsoleSession channel, String conletId,
+            UPnPBrowserModel conletState) throws Exception {
+        channel.respond(new DeleteConlet(conletId));
     }
 
     /**
-     * The portlet's model.
+     * The conlet's model.
      */
     @SuppressWarnings("serial")
-    public class UPnPBrowserModel extends AbstractPortlet.PortletBaseModel {
+    public class UPnPBrowserModel extends AbstractConlet.ConletBaseModel {
 
         /**
          * Instantiates a new service list model.
          *
-         * @param portletId the portlet id
+         * @param conletId the conlet id
          */
-        public UPnPBrowserModel(String portletId) {
-            super(portletId);
+        public UPnPBrowserModel(String conletId) {
+            super(conletId);
         }
 
     }

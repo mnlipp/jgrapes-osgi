@@ -7,4 +7,4 @@ connection.project.dir=..
 derived.resources=.gradle,generated
 eclipse.preferences.version=1
 natures=org.eclipse.jdt.groovy.core.groovyNature,org.eclipse.jdt.core.javanature
-project.path=\:org.jgrapes.osgi.portlets.services
+project.path=\:org.jgrapes.osgi.conlets.services

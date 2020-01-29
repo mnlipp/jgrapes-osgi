@@ -1,4 +1,6 @@
-<div data-portlet-title="${_("portletName")}" class="jgrapes-osgi-upnpbrowser-preview"> 
+<div data-conlet-title="${_("conletName")}" class="jgrapes-osgi-upnpbrowser-preview"
+  data-jgwc-on-load="orgJGrapesOsgiConletUPnPBrowser.initPreview"
+  data-jgwc-on-unload="orgJGrapesOsgiConletUPnPBrowser.onUnload"> 
   <ul style="list-style-type: none;">
     <li v-for="device of devices">
       <img v-if="'iconUrl' in device" class="device-icon" 
@@ -7,7 +9,3 @@
       {{ device.friendlyName }}</li>
   </ul>
 </div>
-
-<script>
-orgJGrapesOsgiPortletsUPnPBrowser.initPreview("${portlet.portletId}");
-</script>
