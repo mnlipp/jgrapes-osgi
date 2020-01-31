@@ -31,49 +31,78 @@ window.orgJGrapesOsgiConletUPnPBrowser.initPreview = function(preview) {
     });
 }
 
-Vue.component('upnpbrowser-device-tree', {
-    template: '#upnpbrowser-device-tree-template',
+Vue.component('jgwc-tree', {
     props: {
-        devices: {
+        level: {
+            type: Number,
+            default: 1
+            },
+        items: {
             type: Array,
             default: []
+        },
+        childItems: Function,
+        onToggle: {
+            type: Function,
+            default: function(item, newStateOpen, event) {
+                return newStateOpen;
+            }
         },
     },
     data: function () {
         return {
-            expanded: {},
+            expanded: [],
         }
     },
     methods: {
-        isExpandable: function(device) {
-            return 'childDevices' in device && 
-                device.childDevices.length && !this.expanded[device.udn];
+        isExpandable: function(item) {
+            let children = this.childItems(item);
+            return children != null && children.length > 0;
         },
-        isExpanded: function(device) {
-            return this.expanded[device.udn];
+        isExpanded: function(item) {
+            return this.expanded.includes(item);
         },
-        toggle: function(device, event) {
-            let expandedDevices = this.expanded;
-            if (expandedDevices[device.udn]) {
-                delete expandedDevices[device.udn];
-            } else {
-                expandedDevices[device.udn] = true;
+        ariaExpanded: function(item) {
+            if (!this.isExpandable(item)) {
+                return null;
             }
-            this.expanded = Object.assign({}, expandedDevices);
-            event.stopPropagation();
+            return new Boolean(this.isExpanded(item)).toString();
         },
-        deviceClasses: function(device) {
-            return {
-                expanded: 'childDevices' in device && 
-                    device.childDevices.length && this.expanded[device.udn],
-                expandable: 'childDevices' in device && 
-                    device.childDevices.length && !this.expanded[device.udn],
-                unexpandable: !('childDevices' in device) || 
-                    device.childDevices.length == 0,
+        toggle: function(item, event) {
+            let index = this.expanded.indexOf(item);
+            let toBeOpened = this.onToggle(item, index < 0, event);
+            if (toBeOpened != (index < 0)) {
+                return;
+            }
+            if (toBeOpened) {
+                this.expanded.push(item);
+            } else {
+                this.expanded.splice(index, 1);
             }
         }
-    }
+    },
+    template: `
+      <ul :role="level == 1 ? 'tree' : 'group'">
+        <li v-for="(item, index) in items" 
+          :role="isExpandable(item) ? 'treeitem' : 'none'"
+          :tabindex="level == 1 && index == 0 ? 0 : -1"
+          :aria-level="level" :aria-setsize="items.length" 
+          :aria-posinset="index + 1" :aria-expanded="ariaExpanded(item)">
+          <span v-if="isExpandable(item)" @click="toggle(item, $event)"
+            ><slot name="label" v-bind:item="item"></slot></span>
+          <span v-else
+            ><slot name="label" v-bind:item="item"></slot></span>
+          <jgwc-tree v-if="isExpanded(item)" 
+            :level="level + 1" :items="childItems(item)"
+            :child-items="childItems" :on-toggle="onToggle">
+            <template v-slot:label="props">
+              <slot name="label" v-bind:item="props.item"></slot>
+            </template>
+          </jgwc-tree>
+        </li>
+      </ul>`,
 });
+
 
 window.orgJGrapesOsgiConletUPnPBrowser.initView = function(view) {
     view = $(view);
@@ -83,6 +112,14 @@ window.orgJGrapesOsgiConletUPnPBrowser.initView = function(view) {
             devices: [],
             lang: $(view.closest("[lang]").attr("lang")),
         },
+        methods: {
+            childItems: function(device) {
+                if ('childDevices' in device) {
+                    return device.childDevices;
+                }
+                return [];
+            },
+        }
     });
 }
 

@@ -2,6 +2,11 @@
   data-jgwc-on-load="orgJGrapesOsgiConletUPnPBrowser.initView"
   data-jgwc-on-unload="orgJGrapesOsgiConletUPnPBrowser.onUnload">
   <div>
-    <upnpbrowser-device-tree :devices="devices"></upnpbrowser-device-tree>
+    <jgwc-tree :items="devices" :child-items="childItems">
+      <template v-slot:label="p"><img v-if="'iconUrl' in p.item" 
+        class="device-icon" v-bind:src="p.item.iconUrl"
+        ><span v-else class="fas fa-plug device-icon"></span> 
+        <span>{{ p.item.friendlyName }}</span></template>
+    </jgwc-tree>
   </div> 
 </div>

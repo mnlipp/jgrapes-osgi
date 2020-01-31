@@ -1,15 +1,16 @@
-<ul>
-  <li v-for="device of devices">
-    <span v-if="isExpandable(device)" class="toggle-icon"
-      @click="toggle(device, $event)">&#xf0da;</span>
-    <span v-if="isExpanded(device)" class="toggle-icon"
-      @click="toggle(device, $event)">&#xf0d7;</span>
-    <p><img v-if="'iconUrl' in device" class="device-icon" 
-      v-bind:src="device.iconUrl">
-      <span v-else class="fas fa-plug device-icon"></span>
-      {{ device.friendlyName }}
-      <upnpbrowser-device-tree v-if="isExpanded(device)" 
-        :devices="device.childDevices"></upnpbrowser-device-tree>
-    </p>
+<ul :role="level == 1 ? 'tree' : 'group'">
+  <li v-for="item of items" 
+    :role="ctrl.isExpandable(item) ? 'treeitem' : 'none'"
+    :aria-expanded="ctrl.ariaExpanded(item)">
+    <span v-if="ctrl.isExpandable(item)" @click="ctrl.toggle(item, $event)"
+      ><slot name="label" v-bind:item="item"></slot></span>
+    <span v-else
+      ><slot name="label" v-bind:item="item"></slot></span>
+    <upnpbrowser-device-tree v-if="ctrl.isExpanded(item)" 
+        :level="level + 1" :items="item.childDevices">
+      <template v-slot:label="props">
+        <slot name="label" v-bind:item="props.item"></slot>
+      </template>
+    </upnpbrowser-device-tree>
   </li>
 </ul>
