@@ -77,8 +77,7 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
             },
             toggleDetails: function(bundleId) {
                 if (bundleId in this.detailsById) {
-                    delete this.detailsById[bundleId];
-                    this.$forceUpdate();
+                    Vue.delete(this.detailsById, bundleId);
                     return;
                 }
                 JGConsole.notifyConletModel(this.conletId, "sendDetails", parseInt(bundleId));
