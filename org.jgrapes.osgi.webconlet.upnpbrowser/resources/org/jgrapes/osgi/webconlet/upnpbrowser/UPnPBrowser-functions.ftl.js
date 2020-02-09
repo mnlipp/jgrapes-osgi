@@ -39,7 +39,7 @@ Vue.component('jgwc-tree', {
             },
         items: {
             type: Array,
-            default: []
+            required: true,
         },
         childItems: Function,
         onToggle: {
@@ -48,10 +48,22 @@ Vue.component('jgwc-tree', {
                 return newStateOpen;
             }
         },
+        focusHolder: {
+            type: Array,
+            default: function() { return [null]; }
+        }
     },
     data: function () {
         return {
             expanded: [],
+        }
+    },
+    watch: {
+        items: function(newItems, oldItems) {
+            if (this.level === 1 && this.focusHolder[0] === null
+                && newItems.length > 0) {
+                this.focusHolder[0] = newItems[0];       
+            }
         }
     },
     methods: {
@@ -69,13 +81,17 @@ Vue.component('jgwc-tree', {
             return new Boolean(this.isExpanded(item)).toString();
         },
         toggle: function(item, event) {
+            this.$set(this.focusHolder, 0, item);
             let index = this.expanded.indexOf(item);
-            let toBeOpened = this.onToggle(item, index < 0, event);
-            if (toBeOpened != (index < 0)) {
+            let isOpen = index >= 0;
+            let isExpandable = this.isExpandable(item);
+            let toBeOpened = this.onToggle(item, isExpandable && !isOpen, event);
+            if (!isExpandable || toBeOpened == isOpen) {
                 return;
             }
             if (toBeOpened) {
                 this.expanded.push(item);
+                let children = this.childItems(item);
             } else {
                 this.expanded.splice(index, 1);
             }
@@ -83,18 +99,17 @@ Vue.component('jgwc-tree', {
     },
     template: `
       <ul :role="level == 1 ? 'tree' : 'group'">
-        <li v-for="(item, index) in items" 
+        <li v-for="(item, index) in items" ref="treeitem" 
           :role="isExpandable(item) ? 'treeitem' : 'none'"
-          :tabindex="level == 1 && index == 0 ? 0 : -1"
+          :tabindex="item === focusHolder[0] ? 0 : -1"
           :aria-level="level" :aria-setsize="items.length" 
           :aria-posinset="index + 1" :aria-expanded="ariaExpanded(item)">
-          <span v-if="isExpandable(item)" @click="toggle(item, $event)"
-            ><slot name="label" v-bind:item="item"></slot></span>
-          <span v-else
+          <span @click="toggle(item, $event)"
             ><slot name="label" v-bind:item="item"></slot></span>
           <jgwc-tree v-if="isExpanded(item)" 
             :level="level + 1" :items="childItems(item)"
-            :child-items="childItems" :on-toggle="onToggle">
+            :child-items="childItems" :on-toggle="onToggle"
+            :focus-holder="focusHolder">
             <template v-slot:label="props">
               <slot name="label" v-bind:item="props.item"></slot>
             </template>
