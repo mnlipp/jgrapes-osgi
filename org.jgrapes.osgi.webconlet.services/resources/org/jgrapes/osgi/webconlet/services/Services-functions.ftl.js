@@ -70,6 +70,7 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
                 sortKey: "id"
             }),
             infosById: {},
+            detailsById: {},
             l10n: l10n,
         },
         computed: {
@@ -83,6 +84,13 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
                 let entries = Object.entries(properties);
                 entries.sort();
                 return entries;
+            },
+            toggleDetails: function(serviceId) {
+                if (serviceId in this.detailsById) {
+                    Vue.delete(this.detailsById, serviceId);
+                    return;
+                }
+                Vue.set(this.detailsById, serviceId, true);
             },
         },
     });

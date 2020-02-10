@@ -11,7 +11,8 @@
       </label>
     </form>
   </div>
-  <table class="table--basic table--basic--striped jgrapes-osgi-bundles-view-table">
+  <table role="treegrid" 
+    class="table--basic--striped jgrapes-osgi-bundles-view-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -28,13 +29,12 @@
     </thead>
     <tbody>
       <template v-for="(entry, rowIndex) in filteredData">
-        <tr class="bundle-row" :class="[(rowIndex % 2) ? 'odd' : 'even']">
+        <tr role="row" :class="[(rowIndex % 2) ? 'odd' : 'even']"
+          :aria-expanded="(entry.id in detailsById) ? 'true' : 'false'">
           <td v-for="key in controller.keys" 
             v-bind:title="key == 'name' ? entry['symbolicName']: false"
-            v-bind:rowspan="(key == 'id') && (entry.id in detailsById) ? 2 : false">
-            <span v-if="key == 'id'" role="button" tabindex="0" class="fas"
-              v-bind:class="[(entry.id in detailsById) ? 'fa-caret-down' : 'fa-caret-right']"
-              v-on:click="toggleDetails(entry.id)"></span>
+            v-bind:rowspan="(key == 'id') && (entry.id in detailsById) ? 2 : false"
+            v-on:click="key == 'id' ? toggleDetails(entry.id) : false">
             <span v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
           <td class="jgrapes-osgi-bundles-view-action-list">

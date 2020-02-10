@@ -11,7 +11,8 @@
       </label>
     </form>
   </div>
-  <table class="table--basic table--basic--striped jgrapes-osgi-services-view-table">
+  <table role="treegrid" 
+    class="table--basic--striped jgrapes-osgi-services-view-table">
     <thead>
       <tr>
         <th v-for="key in controller.keys"
@@ -25,18 +26,17 @@
     </thead>
     <tbody>
       <template v-for="(entry, rowIndex) in filteredData">
-        <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
+        <tr role="row"
+          :class="[(rowIndex % 2) ? 'odd' : 'even']"
+          :aria-expanded="(entry.id in detailsById) ? 'true' : 'false'">
           <td v-for="key in controller.keys"
-            v-bind:rowspan="key == 'id' ? '1' : false">
-            <span v-if="key == 'id'" tabindex="0"
-              role="button" class="fas fa-caret-right"
-              onclick="$(this).parent().parent().next().toggle();
-                  $(this).toggleClass('fa-caret-right fa-caret-down');
-                  $(this).parent().attr('rowspan', 3 - $(this).parent().attr('rowspan'))"></span>
+            v-bind:rowspan="key !== 'id' ? false 
+                : ((entry.id in detailsById) ? 2 : 1)"
+            v-on:click="key == 'id' ? toggleDetails(entry.id) : false">
             <span v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
         </tr>
-        <tr style="display: none;"
+        <tr :hidden="!(entry.id in detailsById)"
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td colspan="4" class="details">
             <table class="table--basic table--basic--autoStriped">
