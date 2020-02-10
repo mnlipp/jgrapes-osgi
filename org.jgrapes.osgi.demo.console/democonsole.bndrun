@@ -30,7 +30,7 @@
 	org.jgrapes.osgi.core;version=snapshot,\
 	org.jgrapes.webconsole.base;version='[0.28.5,0.28.6)',\
 	org.jgrapes.webconsole.vuejs;version='[0.1.5,0.1.6)',\
-	org.jgrapes.webconsole.bootstrap4;version='[0.28.3,0.28.4)',\
+	org.jgrapes.webconsole.bootstrap4;version='[0.28.4,0.28.5)',\
 	org.jgrapes.webconsole.jqueryui;version='[0.28.1,0.28.2)',\
 	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.jquery;version='[0.1.0,0.1.1)',\
@@ -55,9 +55,9 @@
 	org.apache.felix.metatype;version='[1.2.2,1.2.3)',\
 	org.osgi.compendium;version='[4.1.0,4.1.1)',\
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
-    org.jgrapes.osgi.webconlet.bundles;version=snapshot,\
-    org.jgrapes.osgi.webconlet.services;version=snapshot,\
-    org.jgrapes.osgi.webconlet.logviewer;version=snapshot
+	org.jgrapes.osgi.webconlet.bundles;version=snapshot,\
+	org.jgrapes.osgi.webconlet.services;version=snapshot,\
+	org.jgrapes.osgi.webconlet.logviewer;version=snapshot
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
