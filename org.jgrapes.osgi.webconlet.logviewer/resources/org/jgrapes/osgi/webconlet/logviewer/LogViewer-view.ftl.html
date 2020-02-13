@@ -58,26 +58,27 @@
       <template v-for="(entry, rowIndex) in filteredData">
         <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <template v-for="key in controller.keys">
-            <td v-if="key === 'exception'"
-              onclick="$(this).parent().next().toggle();
-                $(this).find('.jgconsole-button-icon').toggleClass('fa-caret-right fa-caret-down')">
-              <template v-if="entry['stacktrace']">
-                <span role="button" class="fas fa-caret-right"></span>
-                <span v-if="entry['stacktrace']" role="button"
-                  v-html="entry[key]"></span>
-              </template>
+            <td v-if="key === 'time'" 
+              :class="'jgrapes-osgi-logviewer-' + key"
+              v-html="formatTimestamp(entry[key])">
             </td>
-            <td v-else-if="key === 'time'" v-html="formatTimestamp(entry[key])">
+            <td v-else-if="key === 'exception'" 
+              :class="'jgrapes-osgi-logviewer-' + key">
+              <jgwc-disclosure-button v-if="entry['stacktrace']"
+                v-bind:id-ref="scopedId(rowIndex)">
+                <span v-html="entry[key]"></span>
+              </jgwc-disclosure-button>
             </td>
             <td v-else
-              v-html="controller.breakBeforeDots(entry[key])">
+              :class="'jgrapes-osgi-logviewer-' + key"
+              v-html="entry[key]">
             </td>
           </template>
         </tr>
-        <tr v-if="entry['stacktrace']" style="display: none;" 
+        <tr :id="scopedId(rowIndex)" is="jgwc-disclosure-section" 
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
-          <td colspan="6">
-            <pre v-html="entry['stacktrace']"></pre>
+          <td colspan="6" class="jgrapes-osgi-logviewer-stacktrace">
+            <div v-html="entry['stacktrace']"></div>
           </td>
         </tr>
       </template>

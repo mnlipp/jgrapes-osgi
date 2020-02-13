@@ -17,6 +17,7 @@
  */
 
 import Vue from "../../page-resource/vue/vue.esm.browser.js"
+import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 
 window.orgJGrapesOsgiConletLogViewer = {};
 
@@ -30,6 +31,7 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
             "TRACE": 0
     }
     new Vue({
+        mixins: [jgwcIdScopeMixin],
         el: content,
         data: {
             conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
@@ -47,7 +49,8 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
             messageThreshold: "INFO",
             entries: [],
             lang: $(content).closest('[lang]').attr('lang') || 'en',
-        	autoUpdate: true
+        	autoUpdate: true,
+            expandedByKey: {}
         },
         computed: {
             filteredData: function() {
@@ -69,7 +72,17 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
                 let ts = moment(timestamp);
                 ts.locale(this.lang)
                 return ts.format("L HH:mm:ss.SSS");
-            } 
+            },
+            toggleExpanded: function(key) {
+                if (key in this.expandedByKey) {
+                    Vue.delete(this.expandedByKey, key);
+                    return;
+                }
+                Vue.set(this.expandedByKey, key, true);
+            },
+            isExpanded: function(key) {
+                return (key in this.expandedByKey);                
+            }
         },
         watch: {
         autoUpdate: function(newValue, oldValue) {
