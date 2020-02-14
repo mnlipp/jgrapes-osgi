@@ -33,6 +33,7 @@ Require-Capability: \
     osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=jquery)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=vue)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=jgwc-vue-components)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
 
 -fixupmessages: \
