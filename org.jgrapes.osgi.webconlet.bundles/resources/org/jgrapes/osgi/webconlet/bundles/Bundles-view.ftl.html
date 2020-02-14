@@ -72,7 +72,8 @@
                   <table class="table--basic table--basic--autoStriped">
                     <tr v-for="row in detail[1]">
                       <td v-html="controller.breakBeforeDots(row[0])"></td>
-                      <td v-if="/.*-Package/i.test(row[0])"
+                      <td v-if="/.*-Package/i.test(row[0])
+                        || /.*-Capability/i.test(row[0])"
                         v-html="addManifestValueBreaks(row[1])"></td>
                       <td v-else
                         v-html="controller.breakBeforeDots(row[1])"></td>

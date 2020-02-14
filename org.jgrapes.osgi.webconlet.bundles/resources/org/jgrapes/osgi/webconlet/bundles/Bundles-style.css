@@ -23,7 +23,7 @@
 	vertical-align: top;
 }
 
-.jgrapes-osgi-bundles-view tbody > tr td:first-child {
+.jgrapes-osgi-bundles-view td:not([colspan]):first-child {
     white-space: nowrap;
 }
 
