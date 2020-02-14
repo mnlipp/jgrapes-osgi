@@ -28,10 +28,10 @@
 	org.jgrapes.io;version='[1.2.0,1.2.1)',\
 	org.jgrapes.util;version='[1.2.0,1.2.1)',\
 	org.jgrapes.osgi.core;version=snapshot,\
-	org.jgrapes.webconsole.base;version='[0.28.6,0.28.7)',\
-	org.jgrapes.webconsole.vuejs;version='[0.1.7,0.1.8)',\
-	org.jgrapes.webconsole.bootstrap4;version='[0.28.6,0.28.7)',\
-	org.jgrapes.webconsole.jqueryui;version='[0.28.4,0.28.5)',\
+	org.jgrapes.webconsole.base;version='[0.28.7,0.28.8)',\
+	org.jgrapes.webconsole.vuejs;version='[0.1.8,0.1.9)',\
+	org.jgrapes.webconsole.bootstrap4;version='[0.28.7,0.28.8)',\
+	org.jgrapes.webconsole.jqueryui;version='[0.28.5,0.28.6)',\
 	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.jquery;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.moment;version='[0.1.0,0.1.1)',\
@@ -41,7 +41,7 @@
 	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.vuex;version='[0.1.0,0.1.1)',\
-	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.1.4,0.1.5)',\
+	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.2.0,0.2.1)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.gridstack;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.1.0,0.1.1)',\
