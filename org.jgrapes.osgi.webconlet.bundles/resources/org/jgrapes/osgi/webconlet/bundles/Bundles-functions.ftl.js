@@ -17,6 +17,7 @@
  */
 
 import Vue from "../../page-resource/vue/vue.esm.browser.js"
+import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 
 window.orgJGrapesOsgiConletBundles = {};
 
@@ -50,6 +51,7 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
               hour12: false, timeZoneName: 'short' });
     let cont = $(content);
     new Vue({
+        mixins: [jgwcIdScopeMixin],
         el: $(content)[0],
         data: {
             conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
@@ -75,12 +77,12 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
             bundleAction: function(bundleId, action) {
                 JGConsole.notifyConletModel(this.conletId, action, parseInt(bundleId));
             },
-            toggleDetails: function(bundleId) {
-                if (bundleId in this.detailsById) {
+            updateDetails: function(bundleId, show) {
+                if (show) {
+                    JGConsole.notifyConletModel(this.conletId, "sendDetails", parseInt(bundleId));
+                } else {
                     Vue.delete(this.detailsById, bundleId);
-                    return;
                 }
-                JGConsole.notifyConletModel(this.conletId, "sendDetails", parseInt(bundleId));
             },
             addManifestValueBreaks: function(text) {
                 text = String(text);

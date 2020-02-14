@@ -11,7 +11,7 @@
       </label>
     </form>
   </div>
-  <table role="treegrid" 
+  <table 
     class="table--basic--striped jgrapes-osgi-services-view-table">
     <thead>
       <tr>
@@ -26,17 +26,19 @@
     </thead>
     <tbody>
       <template v-for="(entry, rowIndex) in filteredData">
-        <tr role="row"
-          :class="[(rowIndex % 2) ? 'odd' : 'even']"
-          :aria-expanded="(entry.id in detailsById) ? 'true' : 'false'">
+        <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td v-for="key in controller.keys"
-            v-bind:rowspan="key !== 'id' ? false 
-                : ((entry.id in detailsById) ? 2 : 1)"
-            v-on:click="key == 'id' ? toggleDetails(entry.id) : false">
-            <span v-html="controller.breakBeforeDots(entry[key])"></span>
+            :rowspan="key !== 'id' ? false 
+                : (jgwc.isDisclosed(scopedId(rowIndex)) ? 2 : 1)">
+            <jgwc-disclosure-button v-if="key == 'id'"
+              :id-ref="scopedId(rowIndex)">
+              <span v-html="controller.breakBeforeDots(entry[key])"></span>
+            </jgwc-disclosure-button>
+            <span v-else
+              v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
         </tr>
-        <tr :hidden="!(entry.id in detailsById)"
+        <tr :id="scopedId(rowIndex)" is="jgwc-disclosure-section"
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td colspan="4" class="details">
             <table class="table--basic table--basic--autoStriped">

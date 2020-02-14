@@ -17,6 +17,7 @@
  */
 
 import Vue from "../../page-resource/vue/vue.esm.browser.js"
+import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 
 window.orgJGrapesOsgiConletServices = {};
 
@@ -57,6 +58,7 @@ window.orgJGrapesOsgiConletServices.initPreviewTable = function(content) {
 
 window.orgJGrapesOsgiConletServices.initView = function(content) {
     new Vue({
+        mixins: [jgwcIdScopeMixin],
         el: $(content)[0],
         data: {
             conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
@@ -84,13 +86,6 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
                 let entries = Object.entries(properties);
                 entries.sort();
                 return entries;
-            },
-            toggleDetails: function(serviceId) {
-                if (serviceId in this.detailsById) {
-                    Vue.delete(this.detailsById, serviceId);
-                    return;
-                }
-                Vue.set(this.detailsById, serviceId, true);
             },
         },
     });

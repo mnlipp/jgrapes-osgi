@@ -11,7 +11,7 @@
       </label>
     </form>
   </div>
-  <table role="treegrid" 
+  <table 
     class="table--basic--striped jgrapes-osgi-bundles-view-table">
     <thead>
       <tr>
@@ -29,13 +29,18 @@
     </thead>
     <tbody>
       <template v-for="(entry, rowIndex) in filteredData">
-        <tr role="row" :class="[(rowIndex % 2) ? 'odd' : 'even']"
+        <tr :class="[(rowIndex % 2) ? 'odd' : 'even']"
           :aria-expanded="(entry.id in detailsById) ? 'true' : 'false'">
           <td v-for="key in controller.keys" 
             v-bind:title="key == 'name' ? entry['symbolicName']: false"
-            v-bind:rowspan="(key == 'id') && (entry.id in detailsById) ? 2 : false"
-            v-on:click="key == 'id' ? toggleDetails(entry.id) : false">
-            <span v-html="controller.breakBeforeDots(entry[key])"></span>
+            v-bind:rowspan="(key == 'id') && jgwc.isDisclosed(scopedId(rowIndex)) ? 2 : false">
+            <jgwc-disclosure-button v-if="key == 'id'"
+              :id-ref="scopedId(rowIndex)"
+              :on-toggle="function(show) { updateDetails(entry.id, show); }">
+              <span v-html="controller.breakBeforeDots(entry[key])"></span>
+            </jgwc-disclosure-button>
+            <span v-else
+	          v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
           <td class="jgrapes-osgi-bundles-view-action-list">
             <span role="button" v-if="entry.startable" 
@@ -53,34 +58,33 @@
               v-on:click="bundleAction(entry.id, 'uninstall')"></span>
           </td>
         </tr>
-        <template v-if="(entry.id in detailsById)"> 
-          <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
-            <td colspan="5" class="details">
-              <table class="table--basic table--basic--autoStriped">
-                <tr>
-                  <td>{{ controller.label('name') }}</td>
-                  <td><span v-html="controller.breakBeforeDots(entry['name'])"></span></td>
-                </tr>
-                <tr v-for="detail in detailsById[entry.id]">
-                  <td>{{ detail[0] }}</td>
-                  <td v-if="detail[2] == 'table'">
-                    <table class="table--basic table--basic--autoStriped">
-                      <tr v-for="row in detail[1]">
-                        <td v-html="controller.breakBeforeDots(row[0])"></td>
-                        <td v-if="/.*-Package/i.test(row[0])"
-                          v-html="addManifestValueBreaks(row[1])"></td>
-                        <td v-else
-                          v-html="controller.breakBeforeDots(row[1])"></td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td v-else-if="detail[2] == 'dateTime'"><span v-html="formatDateTime(detail[1])"></span></td>
-                  <td v-else><span v-html="detail[1]"></span></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </template>
+        <tr :id="scopedId(rowIndex)" is="jgwc-disclosure-section"
+          :class="[(rowIndex % 2) ? 'odd' : 'even']">
+          <td colspan="5" class="details">
+            <table class="table--basic table--basic--autoStriped">
+              <tr>
+                <td>{{ controller.label('name') }}</td>
+                <td><span v-html="controller.breakBeforeDots(entry['name'])"></span></td>
+              </tr>
+              <tr v-for="detail in detailsById[entry.id]">
+                <td>{{ detail[0] }}</td>
+                <td v-if="detail[2] == 'table'">
+                  <table class="table--basic table--basic--autoStriped">
+                    <tr v-for="row in detail[1]">
+                      <td v-html="controller.breakBeforeDots(row[0])"></td>
+                      <td v-if="/.*-Package/i.test(row[0])"
+                        v-html="addManifestValueBreaks(row[1])"></td>
+                      <td v-else
+                        v-html="controller.breakBeforeDots(row[1])"></td>
+                    </tr>
+                  </table>
+                </td>
+                <td v-else-if="detail[2] == 'dateTime'"><span v-html="formatDateTime(detail[1])"></span></td>
+                <td v-else><span v-html="detail[1]"></span></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </template>
     </tbody>
   </table>
