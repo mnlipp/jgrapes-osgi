@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -45,8 +46,6 @@ import org.jgrapes.webconsole.base.events.AddConletRequest;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
-import org.jgrapes.webconsole.base.events.DeleteConlet;
-import org.jgrapes.webconsole.base.events.DeleteConletRequest;
 import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
 import org.jgrapes.webconsole.base.events.RenderConletRequest;
@@ -175,12 +174,12 @@ public class LogViewerConlet
      * @see org.jgrapes.console.AbstractConlet#doAddConlet
      */
     @Override
-    protected String doAddConlet(AddConletRequest event,
+    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
             ConsoleSession channel) throws Exception {
         ConletBaseModel conletModel
             = new ConletBaseModel(generateConletId());
-        renderConlet(event, channel, conletModel);
-        return conletModel.getConletId();
+        return new ConletTrackingInfo(conletModel.getConletId())
+            .addModes(renderConlet(event, channel, conletModel));
     }
 
     /*
@@ -189,39 +188,30 @@ public class LogViewerConlet
      * @see org.jgrapes.console.AbstractConlet#doRenderConlet
      */
     @Override
-    protected void doRenderConlet(RenderConletRequest event,
+    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
             ConsoleSession channel, String conletId,
             ConletBaseModel conletModel) throws Exception {
-        renderConlet(event, channel, conletModel);
+        return renderConlet(event, channel, conletModel);
     }
 
-    private void renderConlet(RenderConletRequestBase<?> event,
+    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
             ConsoleSession channel, ConletBaseModel conletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        if (event.renderModes().contains(RenderMode.View)) {
+        Set<RenderMode> renderedAs = new HashSet<>();
+        if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
                 LogViewerConlet.class, conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
-                    .setRenderMode(RenderMode.View).setSupportedModes(MODES)
-                    .setForeground(event.isForeground()));
+                    .setRenderAs(RenderMode.View.addModifiers(event.renderAs()))
+                    .setSupportedModes(MODES));
             sendAllEntries(channel, conletModel.getConletId());
+            renderedAs.add(RenderMode.View);
         }
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doDeleteConlet
-     */
-    @Override
-    protected void doDeleteConlet(DeleteConletRequest event,
-            ConsoleSession channel, String conletId,
-            ConletBaseModel conletState) throws Exception {
-        channel.respond(new DeleteConlet(conletId));
+        return renderedAs;
     }
 
     private void sendAllEntries(ConsoleSession channel, String conletId) {
