@@ -91,16 +91,6 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
     });
 }
     
-window.orgJGrapesOsgiConletServices.onUnload = function(content) {
-    if ("__vue__" in content) {
-        content.__vue__.$destroy();
-        return;
-    }
-    for (let child of content.children) {
-        window.orgJGrapesOsgiConletServices.onUnload(child);
-    }
-}
-    
 function updateInfos(model, infos, replace) {
     // Augment info for display
     for (let info of infos) {

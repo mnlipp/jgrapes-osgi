@@ -107,16 +107,6 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
     });
     cont = null;
 }
-
-window.orgJGrapesOsgiConletBundles.onUnload = function(content) {
-    if ("__vue__" in content) {
-        content.__vue__.$destroy();
-        return;
-    }
-    for (let child of content.children) {
-        window.orgJGrapesOsgiConletBundles.onUnload(child);
-    }
-}
     
 function updateInfos(model, infos, replace) {
     if (replace) {
