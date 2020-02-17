@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -57,8 +58,6 @@ import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConletResourceRequest;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
-import org.jgrapes.webconsole.base.events.DeleteConlet;
-import org.jgrapes.webconsole.base.events.DeleteConletRequest;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
 import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
@@ -82,7 +81,7 @@ public class UPnPBrowserConlet
         implements ServiceListener {
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
-        RenderMode.DeleteablePreview, RenderMode.View);
+        RenderMode.Preview, RenderMode.View);
     private final BundleContext context;
 
     /**
@@ -164,13 +163,13 @@ public class UPnPBrowserConlet
      * @see org.jgrapes.console.AbstractConlet#doAddConlet
      */
     @Override
-    protected String doAddConlet(AddConletRequest event,
+    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
             ConsoleSession channel)
             throws Exception {
         UPnPBrowserModel conletModel
             = new UPnPBrowserModel(generateConletId());
-        renderConlet(event, channel, conletModel);
-        return conletModel.getConletId();
+        return new ConletTrackingInfo(conletModel.getConletId())
+            .addModes(renderConlet(event, channel, conletModel));
     }
 
     /*
@@ -179,29 +178,30 @@ public class UPnPBrowserConlet
      * @see org.jgrapes.console.AbstractConlet#doRenderConlet
      */
     @Override
-    protected void doRenderConlet(RenderConletRequest event,
+    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
             ConsoleSession channel, String conletId,
             UPnPBrowserModel conletModel)
             throws Exception {
-        renderConlet(event, channel, conletModel);
+        return renderConlet(event, channel, conletModel);
     }
 
     @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
         "PMD.DataflowAnomalyAnalysis", "unchecked" })
-    private void renderConlet(RenderConletRequestBase<?> event,
+    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
             ConsoleSession channel, UPnPBrowserModel conletModel)
             throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException,
             InvalidSyntaxException {
-        if (event.renderPreview()) {
+        Set<RenderMode> renderedAs = new HashSet<>();
+        if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl = freemarkerConfig()
                 .getTemplate("UPnPBrowser-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
                 UPnPBrowserConlet.class, conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
-                    .setRenderMode(RenderMode.DeleteablePreview)
-                    .setSupportedModes(MODES)
-                    .setForeground(event.isForeground()));
+                    .setRenderAs(
+                        RenderMode.Preview.addModifiers(event.renderAs()))
+                    .setSupportedModes(MODES));
             List<Map<String, Object>> deviceInfos = Arrays.stream(
                 context.getAllServiceReferences(UPnPDevice.class.getName(),
                     "(!(" + UPnPDevice.PARENT_UDN + "=*))"))
@@ -211,16 +211,17 @@ public class UPnPBrowserConlet
             channel.respond(new NotifyConletView(type(),
                 conletModel.getConletId(), "deviceUpdates", deviceInfos,
                 "preview", true));
+            renderedAs.add(RenderMode.Preview);
         }
-        if (event.renderModes().contains(RenderMode.View)) {
+        if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("UPnPBrowser-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
                 UPnPBrowserConlet.class, conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
-                    .setRenderMode(RenderMode.View)
-                    .setSupportedModes(MODES)
-                    .setForeground(event.isForeground()));
+                    .setRenderAs(
+                        RenderMode.View.addModifiers(event.renderAs()))
+                    .setSupportedModes(MODES));
             @SuppressWarnings("PMD.UseConcurrentHashMap")
             Map<String, Map<String, Object>> deviceInfos = new HashMap<>();
             Arrays.stream(context
@@ -232,7 +233,9 @@ public class UPnPBrowserConlet
             channel.respond(new NotifyConletView(type(),
                 conletModel.getConletId(), "deviceUpdates",
                 treeify(deviceInfos), "view", true));
+            renderedAs.add(RenderMode.View);
         }
+        return renderedAs;
     }
 
     @SuppressWarnings({ "PMD.NcssCount", "PMD.AvoidDuplicateLiterals" })
@@ -353,18 +356,6 @@ public class UPnPBrowserConlet
     @Override
     public void serviceChanged(ServiceEvent event) {
         // TODO
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doDeleteConlet
-     */
-    @Override
-    protected void doDeleteConlet(DeleteConletRequest event,
-            ConsoleSession channel, String conletId,
-            UPnPBrowserModel conletState) throws Exception {
-        channel.respond(new DeleteConlet(conletId));
     }
 
     /**

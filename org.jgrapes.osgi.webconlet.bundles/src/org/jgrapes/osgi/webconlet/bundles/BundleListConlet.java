@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -52,8 +53,6 @@ import org.jgrapes.webconsole.base.events.AddConletRequest;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
-import org.jgrapes.webconsole.base.events.DeleteConlet;
-import org.jgrapes.webconsole.base.events.DeleteConletRequest;
 import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
 import org.jgrapes.webconsole.base.events.RenderConletRequest;
@@ -78,7 +77,7 @@ public class BundleListConlet
         = Logger.getLogger(BundleListConlet.class.getName());
 
     private static final Set<RenderMode> MODES = RenderMode.asSet(
-        RenderMode.DeleteablePreview, RenderMode.View);
+        RenderMode.Preview, RenderMode.View);
     private final BundleContext context;
 
     /**
@@ -139,7 +138,7 @@ public class BundleListConlet
 
     @Override
     @SuppressWarnings("PMD.AvoidDuplicateLiterals")
-    protected String doAddConlet(AddConletRequest event,
+    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
             ConsoleSession channel)
             throws Exception {
         BundleListModel conletModel = new BundleListModel(generateConletId());
@@ -148,9 +147,8 @@ public class BundleListConlet
         channel.respond(new RenderConletFromTemplate(event,
             BundleListConlet.class, conletModel.getConletId(),
             tpl, fmModel(event, channel, conletModel))
-                .setRenderMode(RenderMode.DeleteablePreview)
-                .setSupportedModes(MODES)
-                .setForeground(true));
+                .setRenderAs(RenderMode.Preview)
+                .setSupportedModes(MODES));
         List<Map<String, Object>> bundleInfos
             = Arrays.stream(context.getBundles())
                 .map(bndl -> createBundleInfo(bndl, channel.locale()))
@@ -158,30 +156,32 @@ public class BundleListConlet
         channel.respond(new NotifyConletView(type(),
             conletModel.getConletId(), "bundleUpdates", bundleInfos,
             "preview", true));
-        return conletModel.getConletId();
+        return new ConletTrackingInfo(conletModel.getConletId())
+            .addModes(RenderMode.asSet(RenderMode.Preview));
     }
 
     @Override
-    protected void doRenderConlet(RenderConletRequest event,
+    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
             ConsoleSession channel, String conletId,
             BundleListModel conletModel)
             throws Exception {
-        renderConlet(event, channel, conletModel);
+        return renderConlet(event, channel, conletModel);
     }
 
-    private void renderConlet(RenderConletRequestBase<?> event,
+    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
             ConsoleSession channel,
             BundleListModel conletModel) throws TemplateNotFoundException,
             MalformedTemplateNameException, ParseException, IOException {
-        if (event.renderPreview()) {
+        Set<RenderMode> renderedAs = new HashSet<>();
+        if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
                 BundleListConlet.class, conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
-                    .setRenderMode(RenderMode.DeleteablePreview)
-                    .setSupportedModes(MODES)
-                    .setForeground(event.isForeground()));
+                    .setRenderAs(
+                        RenderMode.Preview.addModifiers(event.renderAs()))
+                    .setSupportedModes(MODES));
             List<Map<String, Object>> bundleInfos
                 = Arrays.stream(context.getBundles())
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
@@ -189,15 +189,16 @@ public class BundleListConlet
             channel.respond(new NotifyConletView(type(),
                 conletModel.getConletId(), "bundleUpdates", bundleInfos,
                 "preview", true));
+            renderedAs.add(RenderMode.Preview);
         }
-        if (event.renderModes().contains(RenderMode.View)) {
+        if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
                 BundleListConlet.class, conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
-                    .setRenderMode(RenderMode.View).setSupportedModes(MODES)
-                    .setForeground(event.isForeground()));
+                    .setRenderAs(
+                        RenderMode.View.addModifiers(event.renderAs())));
             List<Map<String, Object>> bundleInfos
                 = Arrays.stream(context.getBundles())
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
@@ -205,7 +206,9 @@ public class BundleListConlet
             channel.respond(new NotifyConletView(type(),
                 conletModel.getConletId(), "bundleUpdates", bundleInfos,
                 "view", true));
+            renderedAs.add(RenderMode.View);
         }
+        return renderedAs;
     }
 
     private Map<String, Object> createBundleInfo(Bundle bundle, Locale locale) {
@@ -239,13 +242,6 @@ public class BundleListConlet
             & (Bundle.INSTALLED | Bundle.RESOLVED | Bundle.ACTIVE)) != 0);
         result.put("uninstalled", bundle.getState() == Bundle.UNINSTALLED);
         return result;
-    }
-
-    @Override
-    protected void doDeleteConlet(DeleteConletRequest event,
-            ConsoleSession channel, String conletId,
-            BundleListModel retrievedState) throws Exception {
-        channel.respond(new DeleteConlet(conletId));
     }
 
     @Override
