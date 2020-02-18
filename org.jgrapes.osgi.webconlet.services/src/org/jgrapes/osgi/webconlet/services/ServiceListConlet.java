@@ -106,7 +106,7 @@ public class ServiceListConlet
         // Add conlet resources to page
         channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "conletName"))
+                localizations(channel.supportedLocales(), "conletName"))
             .addScript(new ScriptResource()
                 .setScriptUri(event.renderSupport().conletResource(
                     type(), "Services-functions.ftl.js"))

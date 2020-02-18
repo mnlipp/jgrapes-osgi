@@ -133,7 +133,7 @@ public class LogViewerConlet
         // Add conlet resources to page
         channel.respond(new AddConletType(type())
             .setDisplayNames(
-                displayNames(channel.supportedLocales(), "conletName"))
+                localizations(channel.supportedLocales(), "conletName"))
             .addRenderMode(RenderMode.View)
             .addScript(new ScriptResource()
                 .setScriptUri(event.renderSupport().conletResource(
