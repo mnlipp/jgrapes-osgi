@@ -4,7 +4,7 @@
   <div class="jgrapes-osgi-services-view-search">
     <form>
       <label>
-        <span>${_("Filter")}</span>
+        <span>{{ localize("Filter") }}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span role="button" tabindex="0" class="fas fa-backspace" 
           v-on:click="controller.clearFilter($event)"></span>
@@ -17,7 +17,7 @@
       <tr>
         <th v-for="key in controller.keys"
           v-on:click="controller.sortBy(key)">
-          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+          {{ localize(controller.label(key)) }}<span v-if="controller.sortedByAsc(key)"
             role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)"
             role="button" tabindex="0">&#x25BC;</span>
@@ -47,7 +47,7 @@
                 <td>{{ value }}</td>
               </tr>
               <tr v-if="entry.usingBundles && entry.usingBundles.length > 0">
-                <td>{{ l10n.serviceUsingBundles }}</td>
+                <td>{{ localize("serviceUsingBundles") }}</td>
                 <td v-html="entry.usingBundles.join(',<br>')"></td>
               </tr>
             </table>

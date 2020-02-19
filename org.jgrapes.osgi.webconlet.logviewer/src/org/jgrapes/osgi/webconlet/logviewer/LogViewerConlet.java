@@ -50,6 +50,7 @@ import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
 import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.events.SetLocale;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -279,5 +280,11 @@ public class LogViewerConlet
             sendAllEntries(channel, event.conletId());
             break;
         }
+    }
+
+    @Override
+    protected boolean doSetLocale(SetLocale event, ConsoleSession channel,
+            String conletId) throws Exception {
+        return true;
     }
 }

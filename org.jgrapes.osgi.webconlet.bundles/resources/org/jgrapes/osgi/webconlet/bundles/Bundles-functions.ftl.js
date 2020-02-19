@@ -19,6 +19,16 @@
 import Vue from "../../page-resource/vue/vue.esm.browser.js"
 import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 
+const l10nBundles = {
+    // <#list supportedLanguages() as l>
+    '${l.locale.toLanguageTag()}': {
+        // <#list l.l10nBundle.keys as key>
+        '${key}': '${l.l10nBundle.getString(key)}',
+        // </#list>
+    },
+    // </#list>    
+};
+
 window.orgJGrapesOsgiConletBundles = {};
 
 window.orgJGrapesOsgiConletBundles.initPreviewTable = function(content) {
@@ -27,8 +37,8 @@ window.orgJGrapesOsgiConletBundles.initPreviewTable = function(content) {
         el: previewTable[0],
         data: {
             controller: new JGConsole.TableController([
-                ["id", '${_("bundleId")}'],
-                ["name", '${_("bundleName")}']
+                ["id", "bundleId"],
+                ["name", "bundleName"]
                 ], {
                 sortKey: "id"
             }),
@@ -40,6 +50,12 @@ window.orgJGrapesOsgiConletBundles.initPreviewTable = function(content) {
                 return this.controller.filter(infos);
             }
         },
+        methods: {
+            localize: function(key) {
+                return JGConsole.localize(
+                    l10nBundles, this.jgwc.observed.lang, key);
+            }
+        }
     });
 }
 
@@ -56,11 +72,11 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
         data: {
             conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
             controller: new JGConsole.TableController([
-                ["id", '${_("bundleId")}'],
-                ["name", '${_("bundleName")}'],
-                ["version", '${_("bundleVersion")}'],
-                ["category", '${_("bundleCategory")}'],
-                ["state", '${_("bundleState")}'],
+                ["id", "bundleId"],
+                ["name", "bundleName"],
+                ["version", "bundleVersion"],
+                ["category", "bundleCategory"],
+                ["state", "bundleState"],
                 ], {
                 sortKey: "id"
             }),
@@ -102,6 +118,10 @@ window.orgJGrapesOsgiConletBundles.initView = function(content) {
             },
             formatDateTime: function(value) {
                 return dtFormatter.format(new Date(value));
+            },
+            localize: function(key) {
+                return JGConsole.localize(
+                    l10nBundles, this.jgwc.observed.lang, key);
             }
         }
     });

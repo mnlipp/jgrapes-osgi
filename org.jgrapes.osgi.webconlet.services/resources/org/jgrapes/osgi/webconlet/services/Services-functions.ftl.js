@@ -19,19 +19,17 @@
 import Vue from "../../page-resource/vue/vue.esm.browser.js"
 import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 
-window.orgJGrapesOsgiConletServices = {};
+const l10nBundles = {
+    // <#list supportedLanguages() as l>
+    '${l.locale.toLanguageTag()}': {
+        // <#list l.l10nBundle.keys as key>
+        '${key}': '${l.l10nBundle.getString(key)}',
+        // </#list>
+    },
+    // </#list>    
+};
 
-var l10n = {
-        "serviceAbbrevDS": '${_("serviceAbbrevDS")}',
-        "serviceBundle": '${_("serviceBundle")}',
-        "serviceImplementedBy": '${_("serviceImplementedBy")}',
-        "serviceRanking": '${_("serviceRanking")}',
-        "serviceScope": '${_("serviceScope")}',
-        "serviceScopeBundle": '${_("serviceScopeBundle")}',
-        "serviceScopePrototype": '${_("serviceScopePrototype")}',
-        "serviceScopeSingleton": '${_("serviceScopeSingleton")}',
-        "serviceUsingBundles": '${_("serviceUsingBundles")}',
-    }
+window.orgJGrapesOsgiConletServices = {};
 
 window.orgJGrapesOsgiConletServices.initPreviewTable = function(content) {
     let previewTable = $(content).find(".jgrapes-osgi-services-preview-table");
@@ -39,13 +37,12 @@ window.orgJGrapesOsgiConletServices.initPreviewTable = function(content) {
         el: previewTable[0],
         data: {
             controller: new JGConsole.TableController([
-                ["id", '${_("serviceId")}'],
-                ["type", '${_("serviceType")}']
+                ["id", 'serviceId'],
+                ["type", 'serviceType']
                 ], {
                 sortKey: "id"
             }),
             infosById: {},
-            l10n: l10n,
         },
         computed: {
             filteredData: function() {
@@ -53,6 +50,12 @@ window.orgJGrapesOsgiConletServices.initPreviewTable = function(content) {
                 return this.controller.filter(infos);
             }
         },
+        methods: {
+            localize: function(key) {
+                return JGConsole.localize(
+                    l10nBundles, this.jgwc.observed.lang, key);
+            }
+        }
     });
 }
 
@@ -63,21 +66,29 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
         data: {
             conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
             controller: new JGConsole.TableController([
-                ["id", '${_("serviceId")}'],
-                ["type", '${_("serviceType")}'],
-                ["scopeDisplay", '${_("serviceScope")}'],
-                ["bundleNameDisplay", '${_("serviceBundle")}'],
-                ["implementationClass", '${_("serviceImplementedBy")}'],
+                ["id", 'serviceId'],
+                ["type", 'serviceType'],
+                ["scopeDisplay", 'serviceScope'],
+                ["bundleNameDisplay", 'serviceBundle'],
+                ["implementationClass", 'serviceImplementedBy'],
                 ], {
                 sortKey: "id"
             }),
             infosById: {},
             detailsById: {},
-            l10n: l10n,
         },
         computed: {
             filteredData: function() {
                 let infos = Object.values(this.infosById);
+                for (let info of infos) {
+                    info.scopeDisplay = this.localize(info.scope);
+                    if (info.dsScope !== undefined) {
+                        info.scopeDisplay += " (" 
+                            + this.localize("serviceAbbrevDS") + ": " 
+                            + this.localize(info.dsScope) + ")";
+                    }
+                    info.bundleNameDisplay = info.bundleName + " (" + info.bundleId + ")";
+                }
                 return this.controller.filter(infos);
             },
         },
@@ -87,19 +98,15 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
                 entries.sort();
                 return entries;
             },
+            localize: function(key) {
+                return JGConsole.localize(
+                    l10nBundles, this.jgwc.observed.lang, key);
+            }
         },
     });
 }
     
 function updateInfos(model, infos, replace) {
-    // Augment info for display
-    for (let info of infos) {
-        info.scopeDisplay = l10n[info.scope];
-        if (info.dsScope !== undefined) {
-            info.scopeDisplay += " (" + l10n.serviceAbbrevDS + ": " + l10n[info.dsScope] + ")";
-        }
-        info.bundleNameDisplay = info.bundleName + " (" + info.bundleId + ")";
-    }
     // Update
     if (replace) {
         let infosById = {};

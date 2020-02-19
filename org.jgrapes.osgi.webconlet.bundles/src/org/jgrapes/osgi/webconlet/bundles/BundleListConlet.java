@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -57,6 +56,7 @@ import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
 import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
+import org.jgrapes.webconsole.base.events.SetLocale;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -223,9 +223,7 @@ public class BundleListConlet
         result.put("category",
             Optional.ofNullable(bundle.getHeaders(locale.toString())
                 .get("Bundle-Category")).orElse(""));
-        ResourceBundle resources = resourceBundle(locale);
-        result.put("state",
-            resources.getString("bundleState_" + bundle.getState()));
+        result.put("state", "bundleState_" + bundle.getState());
         result.put("startable", false);
         result.put("stoppable", false);
         if ((bundle.getState()
@@ -285,18 +283,17 @@ public class BundleListConlet
     private void sendBundleDetails(String conletId, ConsoleSession channel,
             Bundle bundle) {
         Locale locale = channel.locale();
-        ResourceBundle resources = resourceBundle(locale);
         List<Object> data = new ArrayList<>();
-        data.add(new Object[] { resources.getString("bundleSymbolicName"),
-            bundle.getSymbolicName() });
-        data.add(new Object[] { resources.getString("bundleVersion"),
-            bundle.getVersion().toString() });
-        data.add(new Object[] { resources.getString("bundleLocation"),
+        data.add(
+            new Object[] { "bundleSymbolicName", bundle.getSymbolicName() });
+        data.add(
+            new Object[] { "bundleVersion", bundle.getVersion().toString() });
+        data.add(new Object[] { "bundleLocation",
             bundle.getLocation().replace(".", ".&#x200b;") });
-        data.add(new Object[] { resources.getString("bundleLastModification"),
+        data.add(new Object[] { "bundleLastModification",
             Instant.ofEpochMilli(bundle.getLastModified()).toString(),
             "dateTime" });
-        data.add(new Object[] { resources.getString("bundleStartLevel"),
+        data.add(new Object[] { "bundleStartLevel",
             bundle.adapt(BundleStartLevel.class).getStartLevel() });
         Dictionary<String, String> dict = bundle.getHeaders(locale.toString());
         @SuppressWarnings("PMD.UseConcurrentHashMap")
@@ -312,9 +309,7 @@ public class BundleListConlet
                     ? e.getValue().replace(".", ".&#x200b;")
                     : e.getValue() });
         }
-        data.add(
-            new Object[] { resources.getString("manifestHeaders"), headerList,
-                "table" });
+        data.add(new Object[] { "manifestHeaders", headerList, "table" });
         channel.respond(new NotifyConletView(type(),
             conletId, "bundleDetails", bundle.getBundleId(), data));
     }
@@ -347,6 +342,12 @@ public class BundleListConlet
                     event.bundleEvent().getBundle(), consoleSession.locale()) },
                 "*", false));
         }
+    }
+
+    @Override
+    protected boolean doSetLocale(SetLocale event, ConsoleSession channel,
+            String conletId) throws Exception {
+        return true;
     }
 
     /**

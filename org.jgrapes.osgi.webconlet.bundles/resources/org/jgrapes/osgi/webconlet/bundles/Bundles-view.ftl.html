@@ -4,7 +4,7 @@
   <div class="jgrapes-osgi-bundles-view-search">
     <form>
       <label>
-        <span>${_("Filter")}</span>
+        <span>{{ localize("Filter") }}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span role="button" tabindex="0" class="fas fa-backspace" 
           v-on:click="controller.clearFilter($event)"></span>
@@ -17,13 +17,13 @@
       <tr>
         <th v-for="key in controller.keys"
           class="sortable" v-on:click="controller.sortBy(key)">
-          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+          {{ localize(controller.label(key)) }}<span v-if="controller.sortedByAsc(key)"
             role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)" role="button" 
             tabindex="0">&#x25BC;</span>
         </th>
         <th>
-          ${_("bundleActions")}
+          {{ localize("bundleActions") }}
         </th>
       </tr>
     </thead>
@@ -34,26 +34,28 @@
           <td v-for="key in controller.keys" 
             v-bind:title="key == 'name' ? entry['symbolicName']: false"
             v-bind:rowspan="(key == 'id') && jgwc.isDisclosed(scopedId(rowIndex)) ? 2 : false">
-            <jgwc-disclosure-button v-if="key == 'id'"
+            <jgwc-disclosure-button v-if="key === 'id'"
               :id-ref="scopedId(rowIndex)"
               :on-toggle="function(show) { updateDetails(entry.id, show); }">
               <span v-html="controller.breakBeforeDots(entry[key])"></span>
             </jgwc-disclosure-button>
+            <span v-else-if="key === 'state'"
+              v-html="localize(entry[key])"></span>
             <span v-else
 	          v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
           <td class="jgrapes-osgi-bundles-view-action-list">
             <span role="button" v-if="entry.startable" 
-              tabindex="0" class="fas fa-play" title="${_("bundleStart")}"
+              tabindex="0" class="fas fa-play" :title="localize('bundleStart')"
               v-on:click="bundleAction(entry.id, 'start')"></span>
             <span role="button" v-if="entry.stoppable"
-              tabindex="0" class="fas fa-stop" title="${_("bundleStop")}"
+              tabindex="0" class="fas fa-stop" :title="localize('bundleStop')"
               v-on:click="bundleAction(entry.id, 'stop')"></span>
             <span role="button" class="fas fa-sync" tabindex="0"
-              title="${_("bundleUpdate")}"
+              :title="localize('bundleUpdate')"
               v-on:click="bundleAction(entry.id, 'update')"></span>
             <span role="button" class="fas fa-eject" tabindex="0"
-              title="${_("bundleUninstall")}"
+              :title="localize('bundleUninstall')"
               v-bind:disabled="!entry.uninstallable"
               v-on:click="bundleAction(entry.id, 'uninstall')"></span>
           </td>
@@ -63,11 +65,11 @@
           <td colspan="5" class="details">
             <table class="table--basic table--basic--autoStriped">
               <tr>
-                <td>{{ controller.label('name') }}</td>
+                <td>{{ localize(controller.label('name')) }}</td>
                 <td><span v-html="controller.breakBeforeDots(entry['name'])"></span></td>
               </tr>
               <tr v-for="detail in detailsById[entry.id]">
-                <td>{{ detail[0] }}</td>
+                <td>{{ localize(detail[0]) }}</td>
                 <td v-if="detail[2] == 'table'">
                   <table class="table--basic table--basic--autoStriped">
                     <tr v-for="row in detail[1]">

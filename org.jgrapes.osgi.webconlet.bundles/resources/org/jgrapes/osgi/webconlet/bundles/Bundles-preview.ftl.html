@@ -6,7 +6,7 @@
       <tr>
         <th v-for="key in controller.keys"
           v-on:click="controller.sortBy(key)">
-          {{ controller.label(key) }}<span v-if="controller.sortedByAsc(key)"
+          {{ localize(controller.label(key)) }}<span v-if="controller.sortedByAsc(key)"
             role="button" tabindex="0">&#x25B2;</span><span
             v-if="controller.sortedByDesc(key)"
             role="button" tabindex="0">&#x25BC;</span>
