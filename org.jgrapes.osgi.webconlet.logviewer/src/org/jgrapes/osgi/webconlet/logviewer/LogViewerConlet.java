@@ -205,8 +205,8 @@ public class LogViewerConlet
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                LogViewerConlet.class, conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletModel.getConletId(), tpl,
+                fmModel(event, channel, conletModel))
                     .setRenderAs(RenderMode.View.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
             sendAllEntries(channel, conletModel.getConletId());

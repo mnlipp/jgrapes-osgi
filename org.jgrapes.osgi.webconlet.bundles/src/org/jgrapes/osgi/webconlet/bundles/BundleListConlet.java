@@ -145,8 +145,8 @@ public class BundleListConlet
         Template tpl
             = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
         channel.respond(new RenderConletFromTemplate(event,
-            BundleListConlet.class, conletModel.getConletId(),
-            tpl, fmModel(event, channel, conletModel))
+            type(), conletModel.getConletId(), tpl,
+            fmModel(event, channel, conletModel))
                 .setRenderAs(RenderMode.Preview)
                 .setSupportedModes(MODES));
         List<Map<String, Object>> bundleInfos
@@ -176,8 +176,8 @@ public class BundleListConlet
         if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-            channel.respond(new RenderConletFromTemplate(event,
-                BundleListConlet.class, conletModel.getConletId(),
+            channel.respond(new RenderConletFromTemplate(event, type(),
+                conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
@@ -195,8 +195,8 @@ public class BundleListConlet
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                BundleListConlet.class, conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletModel.getConletId(), tpl,
+                fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs())));
             List<Map<String, Object>> bundleInfos

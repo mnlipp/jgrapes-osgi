@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1581936140601">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1582217031732">
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.webconlet.bundles:0.10.1"/>
@@ -506,6 +506,117 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.util.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.http:1.2.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.http:1.2.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.http"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.2.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.2.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.http"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.2.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.http"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http,org.jdrupes.httpcodec.types,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http.annotation,org.jgrapes.http.events,org.jgrapes.io,org.jgrapes.io.events,org.jgrapes.net,org.jgrapes.net.events"/>
+      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.http"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.core.internal"/>
+      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.http.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http,org.jdrupes.httpcodec.protocols.websocket,org.jgrapes.core,org.jgrapes.core.events,org.jgrapes.http,org.jgrapes.net,org.jgrapes.net.events"/>
+      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.http.events"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="153673" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.http/1.2.0/org.jgrapes.http-1.2.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="956EA45E0749DDEAACBE9AAEC2640EA282CE42087C6A5E3F0F96018F885DA2E6"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.io:1.2.0;org.jdrupes.httpcodec:httpcodec:[2.0.3,3)"/>
+    </capability>
+    <requirement namespace="osgi.wiring.bundle">
+      <directive name="filter" value="(&amp;(osgi.wiring.bundle=org.jdrupes.httpcodec)(&amp;(bundle-version&gt;=2.0.3)(!(bundle-version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.management))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.net.ssl))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http.client)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http.server)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.websocket)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.types)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.internal)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.annotation)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.util)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.net)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.net.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -1908,117 +2019,6 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.http:1.2.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.http:1.2.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.http"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.2.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.2.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.http"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.2.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.http"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http,org.jdrupes.httpcodec.types,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http.annotation,org.jgrapes.http.events,org.jgrapes.io,org.jgrapes.io.events,org.jgrapes.net,org.jgrapes.net.events"/>
-      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.http"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.core.internal"/>
-      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.http.annotation"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jdrupes.httpcodec,org.jdrupes.httpcodec.protocols.http,org.jdrupes.httpcodec.protocols.websocket,org.jgrapes.core,org.jgrapes.core.events,org.jgrapes.http,org.jgrapes.net,org.jgrapes.net.events"/>
-      <attribute name="version" value="1.1.0.201911231614" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.http.events"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="153673" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.http/1.2.0/org.jgrapes.http-1.2.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="956EA45E0749DDEAACBE9AAEC2640EA282CE42087C6A5E3F0F96018F885DA2E6"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.io:1.2.0;org.jdrupes.httpcodec:httpcodec:[2.0.3,3)"/>
-    </capability>
-    <requirement namespace="osgi.wiring.bundle">
-      <directive name="filter" value="(&amp;(osgi.wiring.bundle=org.jdrupes.httpcodec)(&amp;(bundle-version&gt;=2.0.3)(!(bundle-version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.management))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.net.ssl))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http.client)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http.server)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.websocket)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.types)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.internal)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.annotation)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.util)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.net)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.net.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.2"/>
       <attribute name="from" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.2"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -2746,92 +2746,6 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.4"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.4"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.http.freemarker"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.4.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.4.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.http.freemarker"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.4.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.http.freemarker"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.template,org.jdrupes.httpcodec.types,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http,org.jgrapes.http.events,org.jgrapes.io"/>
-      <attribute name="version" value="1.0.0.201906152125" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.http.freemarker"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="14127" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.http.freemarker/1.0.4/org.jgrapes.http.freemarker-1.0.4.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="B0ED96DCD92EAE32F023220CD27C6716143D86E870B8FBEFD9C92031A7D43C9B"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.freemarker:freemarker:[2.3.27-incubating,2.4);org.jgrapes:org.jgrapes.http:1.0.4"/>
-    </capability>
-    <requirement namespace="osgi.wiring.bundle">
-      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.core)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.bundle">
-      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.io)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.bundle">
-      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.http)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.bundle">
-      <directive name="filter" value="(osgi.wiring.bundle=org.jdrupes.httpcodec)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.types)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.util)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.http:1.1.2"/>
       <attribute name="from" value="org.jgrapes:org.jgrapes.http:1.1.2"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -2936,6 +2850,92 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.net.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.4"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.http.freemarker:1.0.4"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.http.freemarker"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.4.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.4.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.http.freemarker"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.4.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.http.freemarker"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.template,org.jdrupes.httpcodec.types,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http,org.jgrapes.http.events,org.jgrapes.io"/>
+      <attribute name="version" value="1.0.0.201906152125" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.http.freemarker"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="14127" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.http.freemarker/1.0.4/org.jgrapes.http.freemarker-1.0.4.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="B0ED96DCD92EAE32F023220CD27C6716143D86E870B8FBEFD9C92031A7D43C9B"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.freemarker:freemarker:[2.3.27-incubating,2.4);org.jgrapes:org.jgrapes.http:1.0.4"/>
+    </capability>
+    <requirement namespace="osgi.wiring.bundle">
+      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.core)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.bundle">
+      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.io)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.bundle">
+      <directive name="filter" value="(osgi.wiring.bundle=org.jgrapes.http)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.bundle">
+      <directive name="filter" value="(osgi.wiring.bundle=org.jdrupes.httpcodec)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.protocols.http)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jdrupes.httpcodec.types)(&amp;(version&gt;=2.0.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.events)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.io.util)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -3447,6 +3447,72 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:0.1.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.vue"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.vue"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.vue"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.vue"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="vue" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="253403" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.vue/0.1.0/org.jgrapes.webconsole.provider.vue-0.1.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="61BD227FD6C14F5B9A8B7ECC1F49DBB3E2793F90C472E6DF39BE17791E31AF54"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.vuejs:0.26.0"/>
       <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.vuejs:0.26.0"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -3482,6 +3548,72 @@
       <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.vuejs/0.26.0/org.jgrapes.webconsole.provider.vuejs-0.26.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="9A4D28A2A9CB469C9E28BC69ECDB1D1A9458E20CBEFCB8006C82A843C4259645"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.moment:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.moment:0.1.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.moment"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.moment"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.moment"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.moment"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="moment,moment-with-locales" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="675004" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.moment/0.1.0/org.jgrapes.webconsole.provider.moment-0.1.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="506BD79DF3DCD891756B72A11D24DCD12BDCA082D94E1952A73CE881318A2BBA"/>
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
@@ -3625,138 +3757,6 @@
     </requirement>
     <requirement namespace="org.jgrapes.webconsole.page.resource">
       <directive name="filter" value="(name=jquery)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:0.1.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.vue"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.vue"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.vue"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.vue"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="vue" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="253403" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.vue/0.1.0/org.jgrapes.webconsole.provider.vue-0.1.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="61BD227FD6C14F5B9A8B7ECC1F49DBB3E2793F90C472E6DF39BE17791E31AF54"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.moment:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.moment:0.1.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.moment"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.moment"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.moment"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.moment"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="moment,moment-with-locales" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="675004" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.moment/0.1.0/org.jgrapes.webconsole.provider.moment-0.1.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="506BD79DF3DCD891756B72A11D24DCD12BDCA082D94E1952A73CE881318A2BBA"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -3926,72 +3926,6 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.gridstack"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.gridstack"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.gridstack"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.gridstack"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="gridstack" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="226769" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.gridstack/0.1.0/org.jgrapes.webconsole.provider.gridstack-0.1.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="B74080035401DF3473F84DD46A97029FC8FD532385861D7D35BF4BD344360BDC"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.webconlet.logviewer:0.10.0"/>
       <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.webconlet.logviewer:0.10.0"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -4069,6 +4003,352 @@
     </requirement>
     <requirement namespace="osgi.extender">
       <directive name="filter" value="(&amp;(osgi.extender=osgi.component)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.gridstack"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="gridstack" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="226769" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.gridstack/0.1.0/org.jgrapes.webconsole.provider.gridstack-0.1.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="B74080035401DF3473F84DD46A97029FC8FD532385861D7D35BF4BD344360BDC"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.1"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.gridstack:0.1.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.gridstack"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.1.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.gridstack"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="gridstack" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="227420" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.gridstack/0.1.1/org.jgrapes.webconsole.provider.gridstack-0.1.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="9FBAA64DEC11F3D65BE5A3EDCE46359438E77CBF86537E8FF51F09BD5129C279"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.29.0-SNAPSHOT"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=jquery)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconlet.sysinfo:0.27.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconlet.sysinfo:0.27.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconlet.sysinfo"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.27.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.27.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconlet.sysinfo"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.27.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconlet.sysinfo"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events,org.jgrapes.webconsole.base.freemarker"/>
+      <attribute name="version" value="0.11.0.202001242021" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconlet.sysinfo"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.ConletComponentFactory"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="18209" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconlet.sysinfo/0.27.0/org.jgrapes.webconlet.sysinfo-0.27.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="18E1DF2B7E23927752C8982BBD510366BDB3C41C5C0863BF96BAC206B34F6EA3"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.chartjs:null;org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.freemarker)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=fontawesome-free)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=chart.js)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.1"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.1.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jquery-ui.touch-punch" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="11479" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jquitouchpunch/0.1.1/org.jgrapes.webconsole.provider.jquitouchpunch-0.1.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="713FC9603FD50318C93A50979C6998667A039FFE030E63977DE0D0045FF5614B"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.29.0-SNAPSHOT"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=jquery-ui)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jquery-ui.touch-punch" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="11462" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.jquitouchpunch/0.1.0/org.jgrapes.webconsole.provider.jquitouchpunch-0.1.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="2611887E7DFF35C2CC1812D8B4985290B0CE97C82C66F16995A29356649959E5"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
     </requirement>
     <requirement namespace="osgi.extender">
       <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
@@ -5127,148 +5407,6 @@
     </requirement>
     <requirement namespace="org.jgrapes.webconsole.page.resource">
       <directive name="filter" value="(name=jquery-ui.touch-punch)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconlet.sysinfo:0.27.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconlet.sysinfo:0.27.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconlet.sysinfo"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.27.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.27.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconlet.sysinfo"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.27.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconlet.sysinfo"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.http,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events,org.jgrapes.webconsole.base.freemarker"/>
-      <attribute name="version" value="0.11.0.202001242021" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconlet.sysinfo"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.ConletComponentFactory"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="18209" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconlet.sysinfo/0.27.0/org.jgrapes.webconlet.sysinfo-0.27.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="18E1DF2B7E23927752C8982BBD510366BDB3C41C5C0863BF96BAC206B34F6EA3"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.chartjs:null;org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.http)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.freemarker)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=fontawesome-free)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=chart.js)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.1.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jquitouchpunch"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jquery-ui.touch-punch" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="11462" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.jquitouchpunch/0.1.0/org.jgrapes.webconsole.provider.jquitouchpunch-0.1.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="2611887E7DFF35C2CC1812D8B4985290B0CE97C82C66F16995A29356649959E5"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -6417,6 +6555,630 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
+      <attribute name="version" value="1.0.0.201902021623" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="8163" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.osgi.core/1.0.0/org.jgrapes.osgi.core-1.0.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="159E768970D1706CD57D948725282371FF79CC88F15DB89BC52676DE1EA62B53"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.1"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.1.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
+      <attribute name="version" value="1.0.0.202002141613" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="9765" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.osgi.core/1.0.1/org.jgrapes.osgi.core-1.0.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="CA1F3D1382E84C177203B235AB618237B69C6AE615155599C40CACB6CB18BB79"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.2"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.2.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
+      <attribute name="version" value="1.0.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="9758" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.osgi.core/1.0.2/org.jgrapes.osgi.core-1.0.2.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="4776D6DBCC10FA1F7B314B7FFBB1DB85AA02B0BAAF5B622B721526197058932E"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:0.26.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:0.26.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.fontawesome"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.26.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.26.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.fontawesome"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.26.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.fontawesome"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.26.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.fontawesome"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="fontawesome-free" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="9297955" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.fontawesome/0.26.0/org.jgrapes.webconsole.provider.fontawesome-0.26.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="0FD55925700210EF7BCF1DEE20726A551331E341135F2277A1E9829B0A434BC6"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.1"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.1"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.1.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="12813" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.1/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="B92C1C98AEA62B2666688B98626508A24A8D00702E210187C39093E886B4777F"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.2-SNAPSHOT"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.2"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.2.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13563" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.2/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.2.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="CCA475D173E521AC20D5050F1068505201C882FAB66BCB04CFEE1C5CCF3EC2AA"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.3"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.3"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.3.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.3.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.3.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13571" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.3/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.3.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="CC72F16DD421070181B7F2170C6B1FE1790154D691917F533A165948D5653695"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.4"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.4"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.4.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.4.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.4.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13572" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.4/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.4.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="B39FEBBA23B5D99335BC1A06C2E37498CF0B360B172D6EDE95815B2A310A24E6"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.2.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.2.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.2.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.2.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.2.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.2.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13869" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.2.0/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.2.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="FDD5919A1D267C077C230EAB0751E6FB01DFEB31CE005A0D9ED1095DA98B8395"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.7"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.0"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.0.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="12658" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.0/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.0.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="97C4EE1249CC4BEBBBB10A950F4B87CD787645C660E2AE2A49B72DED2979D0BB"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
+      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=vue)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
       <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.bootstrap4:0.28.1"/>
       <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.bootstrap4:0.28.1"/>
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -6921,461 +7683,44 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:0.26.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:0.26.0"/>
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.1.0"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.1.0"/>
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.fontawesome"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.26.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.26.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.fontawesome"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.26.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.fontawesome"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.26.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.fontawesome"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="fontawesome-free" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="9297955" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.fontawesome/0.26.0/org.jgrapes.webconsole.provider.fontawesome-0.26.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="0FD55925700210EF7BCF1DEE20726A551331E341135F2277A1E9829B0A434BC6"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.1"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.1"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.1.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.1" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="12813" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.1/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.1.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="B92C1C98AEA62B2666688B98626508A24A8D00702E210187C39093E886B4777F"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.2-SNAPSHOT"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.2"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.2"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.2.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.2" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="13563" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.2/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.2.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="CCA475D173E521AC20D5050F1068505201C882FAB66BCB04CFEE1C5CCF3EC2AA"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.3"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.3"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.3.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.3.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.3.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.3" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="13571" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.3/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.3.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="CC72F16DD421070181B7F2170C6B1FE1790154D691917F533A165948D5653695"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.4"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.4"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.4.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.4.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.4.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.4" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="13572" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.4/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.4.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="B39FEBBA23B5D99335BC1A06C2E37498CF0B360B172D6EDE95815B2A310A24E6"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.6"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.2.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.2.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.2.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.2.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.2.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.2.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
-      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
-    </capability>
-    <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="13869" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.2.0/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.2.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="FDD5919A1D267C077C230EAB0751E6FB01DFEB31CE005A0D9ED1095DA98B8395"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.7"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.1.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.vuex"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="0.1.0.ga" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.vuex"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.vuex"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
       <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jgwcvuecomponents"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.vuex"/>
     </capability>
     <capability namespace="osgi.serviceloader">
       <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
       <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
     </capability>
     <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="jgwc-vue-components" type="List&lt;String&gt;"/>
+      <attribute name="name" value="vuex" type="List&lt;String&gt;"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="12658" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.jgwcvuecomponents/0.1.0/org.jgrapes.webconsole.provider.jgwcvuecomponents-0.1.0.jar"/>
+      <attribute name="size" value="30325" type="Long"/>
+      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.vuex/0.1.0/org.jgrapes.webconsole.provider.vuex-0.1.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="97C4EE1249CC4BEBBBB10A950F4B87CD787645C660E2AE2A49B72DED2979D0BB"/>
+      <attribute name="osgi.content" value="5105C5B0A69716244D3BDC214A1A733C96969D77D2625BEE261EFEDF2B77950C"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.0"/>
-      <attribute name="runtime" value="org.jgrapes:org.jgrapes.webconsole.provider.vue:null"/>
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.1"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
@@ -7397,9 +7742,6 @@
     </requirement>
     <requirement namespace="osgi.extender">
       <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-    </requirement>
-    <requirement namespace="org.jgrapes.webconsole.page.resource">
-      <directive name="filter" value="(name=vue)"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -7473,44 +7815,44 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.1.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.1.0"/>
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.1.1"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.1.1"/>
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.vuex"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jqueryui"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.1.0.ga" type="Version"/>
+      <attribute name="version" value="0.1.1.ga" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.vuex"/>
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jqueryui"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.1.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.vuex"/>
+      <attribute name="bundle-version" value="0.1.1.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jqueryui"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
-      <attribute name="version" value="0.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.vuex"/>
+      <attribute name="version" value="0.1.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jqueryui"/>
     </capability>
     <capability namespace="osgi.serviceloader">
       <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
       <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
     </capability>
     <capability namespace="org.jgrapes.webconsole.page.resource">
-      <attribute name="name" value="vuex" type="List&lt;String&gt;"/>
+      <attribute name="name" value="jquery-ui" type="List&lt;String&gt;"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="30325" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/mnlipp/jgrapes/org/jgrapes/org.jgrapes.webconsole.provider.vuex/0.1.0/org.jgrapes.webconsole.provider.vuex-0.1.0.jar"/>
+      <attribute name="size" value="263745" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jqueryui/0.1.1/org.jgrapes.webconsole.provider.jqueryui-0.1.1.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="5105C5B0A69716244D3BDC214A1A733C96969D77D2625BEE261EFEDF2B77950C"/>
+      <attribute name="osgi.content" value="40A6B4CC05589CAD6624F15099FDC9442E8080D845FBB147188BD5F60C342946"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.28.1"/>
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.29.0-SNAPSHOT"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
@@ -7532,6 +7874,78 @@
     </requirement>
     <requirement namespace="osgi.extender">
       <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=jquery)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.1.2"/>
+      <attribute name="from" value="org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.1.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
+      <attribute name="osgi.identity" value="org.jgrapes.webconsole.provider.jqueryui"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.1.2.ga" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.jgrapes.webconsole.provider.jqueryui"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.1.2.ga" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.jgrapes.webconsole.provider.jqueryui"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="freemarker.core,freemarker.template,org.jgrapes.core,org.jgrapes.core.annotation,org.jgrapes.webconsole.base,org.jgrapes.webconsole.base.events"/>
+      <attribute name="version" value="0.1.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.jgrapes.webconsole.provider.jqueryui"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <directive name="uses" value="org.jgrapes.webconsole.base,org.jgrapes.core"/>
+      <attribute name="osgi.serviceloader" value="org.jgrapes.webconsole.base.PageResourceProviderFactory"/>
+    </capability>
+    <capability namespace="org.jgrapes.webconsole.page.resource">
+      <attribute name="name" value="jquery-ui" type="List&lt;String&gt;"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="263747" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.webconsole.provider.jqueryui/0.1.2/org.jgrapes.webconsole.provider.jqueryui-0.1.2.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="301FBD458469E54A7B91CACEA47BA3491C128466975430BB84A08EB858DB8681"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.jgrapes:org.jgrapes.webconsole.base:0.29.0-SNAPSHOT"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.core)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=freemarker.template)(&amp;(version&gt;=2.3.0)(!(version&gt;=3.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.annotation)(&amp;(version&gt;=1.2.0)(!(version&gt;=2.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.webconsole.base.events)(&amp;(version&gt;=0.0.0)(!(version&gt;=1.0.0))))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+    </requirement>
+    <requirement namespace="org.jgrapes.webconsole.page.resource">
+      <directive name="filter" value="(name=jquery)"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -7902,144 +8316,6 @@
     </requirement>
     <requirement namespace="org.jgrapes.webconsole.page.resource">
       <directive name="filter" value="(name=jquery)"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.0"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
-      <attribute name="version" value="1.0.0.201902021623" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="8163" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/jgrapes/org.jgrapes.osgi.core/1.0.0/org.jgrapes.osgi.core-1.0.0.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="159E768970D1706CD57D948725282371FF79CC88F15DB89BC52676DE1EA62B53"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.0.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.1"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.1"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.1.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.1.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.1.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
-      <attribute name="version" value="1.0.0.202002141613" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="9765" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.osgi.core/1.0.1/org.jgrapes.osgi.core-1.0.1.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="CA1F3D1382E84C177203B235AB618237B69C6AE615155599C40CACB6CB18BB79"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.jgrapes:org.jgrapes.osgi.core:1.0.2"/>
-      <attribute name="from" value="org.jgrapes:org.jgrapes.osgi.core:1.0.2"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.gnu.org/licenses/agpl-3.0.txt"/>
-      <attribute name="osgi.identity" value="org.jgrapes.osgi.core"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.2.ga" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.2.ga" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.2.ga" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.jgrapes.core,org.osgi.framework,org.osgi.util.tracker"/>
-      <attribute name="version" value="1.0.2" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.jgrapes.osgi.core"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="9758" type="Long"/>
-      <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/org/jgrapes/org.jgrapes.osgi.core/1.0.2/org.jgrapes.osgi.core-1.0.2.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="4776D6DBCC10FA1F7B314B7FFBB1DB85AA02B0BAAF5B622B721526197058932E"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.jgrapes.core.events)(&amp;(version&gt;=1.1.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(&amp;(version&gt;=1.8.0)(!(version&gt;=2.0.0))))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(&amp;(version&gt;=1.5.0)(!(version&gt;=2.0.0))))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>

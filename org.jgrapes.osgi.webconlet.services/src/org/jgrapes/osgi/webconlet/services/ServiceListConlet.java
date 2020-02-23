@@ -156,7 +156,7 @@ public class ServiceListConlet
             Template tpl
                 = freemarkerConfig().getTemplate("Services-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                ServiceListConlet.class, conletModel.getConletId(),
+                type(), conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
@@ -174,7 +174,7 @@ public class ServiceListConlet
             Template tpl
                 = freemarkerConfig().getTemplate("Services-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                ServiceListConlet.class, conletModel.getConletId(),
+                type(), conletModel.getConletId(),
                 tpl, fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs())));

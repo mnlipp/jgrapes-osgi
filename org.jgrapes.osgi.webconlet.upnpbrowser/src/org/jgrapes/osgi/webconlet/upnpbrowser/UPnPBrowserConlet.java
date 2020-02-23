@@ -197,8 +197,8 @@ public class UPnPBrowserConlet
             Template tpl = freemarkerConfig()
                 .getTemplate("UPnPBrowser-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                UPnPBrowserConlet.class, conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletModel.getConletId(), tpl,
+                fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
@@ -217,8 +217,8 @@ public class UPnPBrowserConlet
             Template tpl
                 = freemarkerConfig().getTemplate("UPnPBrowser-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                UPnPBrowserConlet.class, conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletModel.getConletId(), tpl,
+                fmModel(event, channel, conletModel))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
