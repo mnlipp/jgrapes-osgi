@@ -20,7 +20,6 @@ package org.jgrapes.osgi.demo.console;
 
 import de.mnl.osgi.lf4osgi.Logger;
 import de.mnl.osgi.lf4osgi.LoggerFactory;
-
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -29,10 +28,8 @@ import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
-
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Component;
 import org.jgrapes.core.Components;
@@ -159,7 +156,7 @@ public class Application extends Component implements BundleActivator {
             console, context, PageResourceProviderFactory.class,
             type -> {
                 switch (type) {
-                case "org.jgrapes.webconsole.providers.gridstack.GridstackProvider":
+                case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
                         Components.mapOf("configuration", "CoreWithJQueryUI"));
                 default:
@@ -184,7 +181,7 @@ public class Application extends Component implements BundleActivator {
             console, context, PageResourceProviderFactory.class,
             type -> {
                 switch (type) {
-                case "org.jgrapes.webconsole.providers.gridstack.GridstackProvider":
+                case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
                         Components.mapOf("configuration", "CoreWithJQueryUI"));
                 default:
