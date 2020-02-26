@@ -43,8 +43,8 @@
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.gridstack;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.1.0,0.1.1)',\
-	org.jgrapes.webconlet.markdowndisplay;version='[0.28.1,0.28.2)',\
-	org.jgrapes.webconlet.sysinfo;version='[0.27.0,0.27.1)',\
+	org.jgrapes.webconlet.markdowndisplay;version='[0.29.0,0.29.1)',\
+	org.jgrapes.webconlet.sysinfo;version='[0.28.0,0.28.1)',\
 	org.jgrapes.osgi.core;version='[1.0.1,1.0.2)',\
 	org.jgrapes.osgi.webconlet.bundles;version='[0.10.1,0.10.2)',\
 	org.jgrapes.osgi.webconlet.logviewer;version='[0.10.0,0.10.1)',\
