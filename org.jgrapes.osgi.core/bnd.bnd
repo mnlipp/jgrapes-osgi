@@ -15,7 +15,7 @@ api_version = 1.0.2
 	org.jgrapes.core;version='[1.1.1.ga,2)'
 
 # For some unknown reason travis-ci build fails due to these:
--diffignore.1: \
+-diffignore: Git-Descriptor, Git-SHA, \
     META-INF/maven/JGrapes-OSGi/org.jgrapes.osgi.core/pom.xml, \
     META-INF/maven/JGrapes-OSGi/org.jgrapes.osgi.core/pom.properties
     
