@@ -51,11 +51,14 @@ bundleVersionQualifier: ga
 #            org.jgrapes:org.jgrapes.http:1.1.1, \
 #            org.jgrapes:org.jgrapes.http.freemarker:1.1.1'
 
-# JUnit
-junit: org.apache.servicemix.bundles.junit; version=4.12
-
 javac.source: 1.8
 javac.target: 1.8
+
+-groupid: org.jgrapes
+-pom: true
+
+# JUnit
+junit: org.apache.servicemix.bundles.junit; version=4.12
 
 # Used in build.gradle for the artifact version
 artifact_version: ${versionmask;===s;${Bundle-Version}}
@@ -74,8 +77,6 @@ Git-Descriptor:           ${system-allow-fail;git describe --dirty --always}
 Git-SHA:                  ${system-allow-fail;git rev-list -1 HEAD}
 
 -diffignore: Git-Descriptor, Git-SHA
-
--pom: true
 
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
