@@ -14,6 +14,11 @@ api_version = 1.0.2
 	osgi.annotation;version=6.0.1,\
 	org.jgrapes.core;version='[1.1.1.ga,2)'
 
+# For some unknown reason travis-ci build fails due to these:
+-diffignore.1: \
+    META-INF/maven/JGrapes-OSGi/org.jgrapes.osgi.core/pom.xml, \
+    META-INF/maven/JGrapes-OSGi/org.jgrapes.osgi.core/pom.properties
+    
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \
     "The .classpath contains a library that will not be available during continuous integration:"
