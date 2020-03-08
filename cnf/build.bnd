@@ -5,7 +5,7 @@ bundleVersionQualifier: ga
 # Configure Repositories
 -plugin.1.IndexedMaven: \
     de.mnl.osgi.bnd.repository.maven.provider.IndexedMavenRepositoryProvider; \
-        path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-2.0.3.jar,\
+        path:="${workspace}/cnf/plugins/de.mnl.osgi.bnd.repository-2.0.4.jar,\
             ${workspace}/cnf/plugins/biz.aQute.repository-5.0.0.jar"; \
         name=IndexedMaven; \
         location=cnf/indexed-maven; \
