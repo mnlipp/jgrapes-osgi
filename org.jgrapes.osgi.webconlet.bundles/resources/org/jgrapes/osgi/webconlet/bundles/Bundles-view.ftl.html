@@ -34,7 +34,7 @@
           <td v-for="key in controller.keys" 
             v-bind:title="key == 'name' ? entry['symbolicName']: false"
             v-bind:rowspan="(key == 'id') && jgwc.isDisclosed(scopedId(rowIndex)) ? 2 : false">
-            <jgwc-disclosure-button v-if="key === 'id'"
+            <jgwc-disclosure-button v-if="key === 'id'" :type="'div'"
               :id-ref="scopedId(rowIndex)"
               :on-toggle="function(show) { updateDetails(entry.id, show); }">
               <span v-html="controller.breakBeforeDots(entry[key])"></span>
