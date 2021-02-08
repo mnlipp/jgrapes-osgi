@@ -1,23 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1567615131131">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1612818369331">
   <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="net.java.dev.jna:jna:4.2.2"/>
-      <attribute name="from" value="net.java.dev.jna:jna:4.2.2"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.sun.jna"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="4.2.2" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="4.2.2" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="com.sun.jna"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="4.2.2" type="Version"/>
-      <attribute name="osgi.wiring.host" value="com.sun.jna"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="version" value="0.0.0" type="Version"/>
@@ -30,6 +17,19 @@
     <capability namespace="osgi.wiring.package">
       <attribute name="version" value="0.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="com.sun.jna.win32"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="4.2.2" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="com.sun.jna"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="4.2.2" type="Version"/>
+      <attribute name="osgi.wiring.host" value="com.sun.jna"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="net.java.dev.jna:jna:4.2.2"/>
+      <attribute name="from" value="net.java.dev.jna:jna:4.2.2"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1137286" type="Long"/>

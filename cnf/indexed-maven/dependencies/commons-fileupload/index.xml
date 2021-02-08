@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1567615131132">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1612818369331">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -7,14 +7,6 @@
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="1.3.3" type="Version"/>
       <attribute name="documentation" value="http://commons.apache.org/proper/commons-fileupload/"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.3.3" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.apache.commons.fileupload"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.3.3" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.apache.commons.fileupload"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="version" value="1.3.3" type="Version"/>
@@ -36,11 +28,13 @@
       <attribute name="version" value="1.3.3" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.commons.fileupload.util"/>
     </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="70604" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="E14AB7DB47DE124F5F9E9C0E03F4F6D2A007D83458A0AD67356B7BDD775C8CD0"/>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.3.3" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.fileupload"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.3.3" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.apache.commons.fileupload"/>
     </capability>
     <capability namespace="bnd.info">
       <attribute name="name" value="commons-fileupload:commons-fileupload:1.3.3"/>
@@ -49,6 +43,12 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="commons-io:commons-io:2.2"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="70604" type="Long"/>
+      <attribute name="url" value="https://repo.maven.apache.org/maven2/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="E14AB7DB47DE124F5F9E9C0E03F4F6D2A007D83458A0AD67356B7BDD775C8CD0"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet))"/>
@@ -72,14 +72,14 @@
       <attribute name="from" value="commons-fileupload:commons-fileupload:1.1.1"/>
       <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="commons-io:commons-io:1.1"/>
+    </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="31909" type="Long"/>
       <attribute name="url" value="https://dl.bintray.com/bintray/jcenter/commons-fileupload/commons-fileupload/1.1.1/commons-fileupload-1.1.1.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="77F6308793857E12B22FBE2A80BA7879308F24B51F992B172E3FB593BC8D5B4E"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="commons-io:commons-io:1.1"/>
     </capability>
   </resource>
 </repository>

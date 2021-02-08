@@ -1,23 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1578953819807">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1612818369262">
   <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.slf4j:slf4j-api:1.7.30"/>
-      <attribute name="from" value="org.slf4j:slf4j-api:1.7.30"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="slf4j.api"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="1.7.30" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.7.30" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="slf4j.api"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.7.30" type="Version"/>
-      <attribute name="osgi.wiring.host" value="slf4j.api"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="version" value="1.7.30" type="Version"/>
@@ -34,6 +21,19 @@
     <capability namespace="osgi.wiring.package">
       <attribute name="version" value="1.7.30" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.slf4j.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.7.30" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="slf4j.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.7.30" type="Version"/>
+      <attribute name="osgi.wiring.host" value="slf4j.api"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.slf4j:slf4j-api:1.7.30"/>
+      <attribute name="from" value="org.slf4j:slf4j-api:1.7.30"/>
+      <attribute name="version" value="0.0.0" type="Version"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="41472" type="Long"/>
