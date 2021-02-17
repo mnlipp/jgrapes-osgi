@@ -19,7 +19,8 @@ plugins {
 apply plugin: 'biz.aQute.bnd.workspace'
 
 ext {
-	isTravisBuild = System.getenv().get("TRAVIS") == 'true'
+	isCiBuild = System.getenv().get("CI") == 'true'
+    isJitPackBuild = System.getenv().get("JITPACK") == 'true'
 }
 
 // Prepare github authentication for plugins
@@ -67,6 +68,8 @@ dependencies {
 }
 
 javadoc {
+    // Does not work on JitPack, no /usr/bin/dot
+    enabled = JavaVersion.current().isJava8() && !isJitPackBuild
 	
 	options.tagletPath = configurations.javadocTaglets.files as List
 	options.taglets = ["org.jdrupes.taglets.plantUml.Taglet"]
@@ -104,7 +107,7 @@ task stage {
 	// Build everything first
 	subprojects.tasks.each { tc -> dependsOn tc.findByName("build") }
 	
-	if (!isTravisBuild || JavaVersion.current().isJava8()) {
+	if (!isCiBuild || JavaVersion.current().isJava8()) {
     	// Publish JavaDoc
     	dependsOn gitPublishPush
     }	
