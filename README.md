@@ -1,7 +1,7 @@
 JGrapes OSGi
 ===========
 
-[![Build Status](https://travis-ci.org/mnlipp/jgrapes-osgi.svg?branch=master)](https://travis-ci.org/mnlipp/jgrapes-osgi)
+[![Build Status](https://github.com/mnlipp/jgrapes-osgi/workflows/Java%20CI/badge.svg)](https://github.com/mnlipp/jgrapes-osgi/actions)
 
 
 | Bundle          | Bintray |
