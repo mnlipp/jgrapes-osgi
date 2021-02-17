@@ -1,16 +1,16 @@
 JGrapes OSGi
-===========
+============
 
 [![Build Status](https://github.com/mnlipp/jgrapes-osgi/workflows/Java%20CI/badge.svg)](https://github.com/mnlipp/jgrapes-osgi/actions)
 
 
-| Bundle          | Bintray |
-| --------------- | ------- |
-| OSGi Core       | [ ![Download](https://api.bintray.com/packages/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.core/images/download.svg) ](https://bintray.com/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.core/_latestVersion)
-| OSGi Demo Portal | [ ![Download](https://api.bintray.com/packages/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.demo.portal/images/download.svg) ](https://bintray.com/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.demo.portal/_latestVersion)
-| Bundles Portlet | [ ![Download](https://api.bintray.com/packages/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.bundles/images/download.svg) ](https://bintray.com/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.bundles/_latestVersion)
-| Services Portlet | [ ![Download](https://api.bintray.com/packages/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.services/images/download.svg) ](https://bintray.com/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.services/_latestVersion)
-| Logviewer Portlet | [ ![Download](https://api.bintray.com/packages/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.logviewer/images/download.svg) ](https://bintray.com/mnlipp/jgrapes/org.jgrapes%3Aorg.jgrapes.osgi.portlets.logviewer/_latestVersion)
+| Bundle          | Download |
+| --------------- | -------- |
+| OSGi Core       | [![Maven Central](https://img.shields.io/maven-central/v/org.jgrapes/org.jgrapes.osgi.core.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22org.jgrapes.osgi.core%22)
+| OSGi Demo Portal | [![Maven Central](https://img.shields.io/maven-central/v/org.jgrapes/org.jgrapes.osgi.demo.portal.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22org.jgrapes.osgi.demo.portal%22)
+| Bundles Portlet | [![Maven Central](https://img.shields.io/maven-central/v/org.jgrapes/org.jgrapes.osgi.portlets.bundles.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22org.jgrapes.osgi.portlets.bundles%22)
+| Services Portlet | [![Maven Central](https://img.shields.io/maven-central/v/org.jgrapes/org.jgrapes.osgi.portlets.services.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22org.jgrapes.osgi.portlets.services%22)
+| Logviewer Portlet | [![Maven Central](https://img.shields.io/maven-central/v/org.jgrapes/org.jgrapes.osgi.portlets.logviewer.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22org.jgrapes.osgi.portlets.logviewer%22)
 
 See the [project's home page](https://mnlipp.github.io/jgrapes/).
 
