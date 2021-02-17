@@ -158,7 +158,8 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration", "CoreWithJQueryUI"));
+                        Components.mapOf("configuration",
+                            "CoreWithJQUiPlugin"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
@@ -183,7 +184,8 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration", "CoreWithJQueryUI"));
+                        Components.mapOf("configuration",
+                            "CoreWithJQUiPlugin"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
