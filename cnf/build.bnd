@@ -10,7 +10,8 @@ bundleVersionQualifier: ga
         name=IndexedMaven; \
         location=cnf/indexed-maven; \
         releaseUrls="https://repo.maven.apache.org/maven2/,\
-            https://dl.bintray.com/bintray/jcenter/"; \
+            https://dl.bintray.com/bintray/jcenter/,\
+            https://oss.sonatype.org/content/repositories/releases/"; \
         logIndexing=true
 
 -plugin.2.Local: \
