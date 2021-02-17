@@ -25,11 +25,11 @@ org.jgrapes:org.jgrapes.portal.providers.jgpvuecomponents:0.0.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.portlets.markdowndisplay:0.28.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.portlets.sysinfo:0.27.0-SNAPSHOT
 
-org.jgrapes:org.jgrapes.webconsole.base:0.29.1-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.base:0.29.1-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.jqueryui:0.29.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.bootstrap4:0.29.0-SNAPSHOT
-org.jgrapes:org.jgrapes.webconsole.vuejs:0.4.0-SNAPSHOT
-org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.4.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.vuejs:0.4.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.4.0-SNAPSHOT
 
 #org.jgrapes:org.jgrapes.webconsole.provider.chartjs:0.26.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.fontawesome:0.26.0-SNAPSHOT
