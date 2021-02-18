@@ -17,6 +17,8 @@ plugins {
 }
 
 apply plugin: 'biz.aQute.bnd.workspace'
+// Makes Eclipse-groovy handle *.gradle file properly
+apply plugin:'groovy'    
 
 ext {
 	isCiBuild = System.getenv().get("CI") == 'true'
@@ -42,9 +44,8 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 	
-	// Makes Eclipse-groovy handle *.gradle file properly
-	apply plugin:'groovy'
-    
+	apply plugin:'java'
+		
     group = 'org.jgrapes'
 }
 

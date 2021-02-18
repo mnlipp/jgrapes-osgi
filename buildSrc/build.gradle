@@ -18,6 +18,9 @@ dependencies {
     compile "biz.aQute.bnd:biz.aQute.bnd.gradle:${gradleProps.bnd_version}"
 }
 
+// Makes Eclipse-groovy handle *.gradle file properly
+apply plugin:'groovy'
+
 // Configure sensible layout
 sourceSets {
 	main {

@@ -1,7 +1,3 @@
-dependencies {
-    compile localGroovy()
-}
-
 if (plugins.hasPlugin('biz.aQute.bnd')) {
     
     // artifact_version is defined in cnf/bnd.bnd
