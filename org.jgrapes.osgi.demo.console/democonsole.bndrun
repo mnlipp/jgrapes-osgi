@@ -39,13 +39,12 @@
 	org.jgrapes.webconsole.jqueryui;version='[0.29.0,0.29.1)',\
 	org.jgrapes.webconsole.vuejs;version='[0.6.0,0.6.1)',\
 	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.4.0,0.4.1)',\
-	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
+	org.jgrapes.webconsole.provider.lodash;version='[0.2.0,0.2.1)',\
 	org.jgrapes.webconsole.provider.jquery;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.moment;version='[0.2.0,0.2.1)',\
 	org.jgrapes.webconsole.provider.chartjs;version='[0.26.1,0.26.2)',\
 	org.jgrapes.webconsole.provider.fontawesome;version='[0.27.0,0.27.1)',\
 	org.jgrapes.webconsole.provider.markdownit;version='[0.26.0,0.26.1)',\
-	org.jgrapes.webconsole.provider.lodash;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.2.0,0.2.1)',\
 	org.jgrapes.webconsole.provider.vuex;version='[0.2.0,0.2.1)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.1.2,0.1.3)',\
