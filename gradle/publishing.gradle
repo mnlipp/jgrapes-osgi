@@ -68,39 +68,6 @@ configurePublishing {
     }
 }
 
-apply plugin: 'com.jfrog.bintray'
-
-bintray {
-    user = project.properties['bintrayUser'] ?: "nouser"
-    key = project.properties['bintrayApiKey'] ?: "nokey"
-    publications = ['maven']
-    publish = true
-    pkg {
-        repo = "jgrapes"
-        name = "org.jgrapes:" + project.name
-        licenses = ['AGPL-V3']
-        vcsUrl = 'https://github.com/mnlipp/jgrapes-osgi.git'
-        githubRepo = 'mnlipp/jgrapes-osgi'
-        githubReleaseNotesFile = 'README.md'
-        version {
-             gpg {
-                 sign = true
-             }
-             mavenCentralSync {
-                sync = true
-                user = project.properties['sonatypeTokenKey'] ?: "nokey"
-                password = project.properties['sonatypeTokenSecret'] ?: "nosecret"
-                close = '1'
-             }
-        }
-    }
-}
-
-afterEvaluate {
-    bintray.pkg.version.name = project.version
-    bintrayUpload.dependsOn "build"
-}
-
 task releaseTag {
     dependsOn "cleanJar"
     doLast {
@@ -115,13 +82,13 @@ task releaseTag {
 
 build.mustRunAfter "releaseTag"
 
-task releaseToBintray {
+task stageOnOssrh {
     group = "publishing"
     
     dependsOn "releaseTag"
     dependsOn "clean"
     dependsOn "build"
-    dependsOn "bintrayUpload"
+    dependsOn "publishMavenPublicationToReleaseRepository"
 }
 
 // Disable un-applicable publishing mode
