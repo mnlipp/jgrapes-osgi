@@ -137,7 +137,17 @@ public class Application extends Component implements BundleActivator {
         console.attach(new KVStoreBasedConsolePolicy(console));
         console.attach(new NewConsoleSessionPolicy(console));
         console.attach(new ComponentCollector<>(
-            console, context, PageResourceProviderFactory.class));
+            console, context, PageResourceProviderFactory.class,
+            type -> {
+                switch (type) {
+                case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
+                    return Arrays.asList(
+                        Components.mapOf("configuration",
+                            "CoreWithJQUiPlugin"));
+                default:
+                    return Arrays.asList(Collections.emptyMap());
+                }
+            }));
         console.attach(new ComponentCollector<>(
             console, context, ConletComponentFactory.class));
     }
