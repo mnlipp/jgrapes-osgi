@@ -33,11 +33,11 @@ bundleVersionQualifier: ga
         index=${.}/local_maven.mvn; \
         name="LocalMaven"
 
-#-plugin.9.PublishedSnapshots: \
-#    aQute.bnd.repository.maven.provider.MavenBndRepository; \
-#        snapshotUrl=https://oss.sonatype.org/content/repositories/snapshots/; \
-#        index=${.}/snapshots.mvn; \
-#        name="PublishedSnapshots"
+-plugin.9.PublishedSnapshots: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository; \
+        snapshotUrl=https://oss.sonatype.org/content/repositories/snapshots/; \
+        index=${.}/snapshots.mvn; \
+        name="PublishedSnapshots"
 
 #-plugin.9.JGrapes-Prerelease: \
 #    aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
