@@ -4,10 +4,10 @@
 #org.jgrapes:org.jgrapes.http:1.1.1-SNAPSHOT
 #org.jgrapes:org.jgrapes.http.freemarker:1.1.1-SNAPSHOT
 
-#org.jgrapes:org.jgrapes.webconsole.base:0.29.2
+#org.jgrapes:org.jgrapes.webconsole.base:0.30.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.jqueryui:0.29.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.bootstrap4:0.34.0
-org.jgrapes:org.jgrapes.webconsole.vuejs:0.8.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.vuejs:0.8.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.4.0-SNAPSHOT
 
 #org.jgrapes:org.jgrapes.webconsole.provider.chartjs:0.26.0-SNAPSHOT
@@ -17,13 +17,13 @@ org.jgrapes:org.jgrapes.webconsole.vuejs:0.8.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.0.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.0.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.lodash:0.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.moment:0.0.0-SNAPSHOT
-org.jgrapes:org.jgrapes.webconsole.provider.vue:0.3.0-SNAPSHOT
-org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.3.0-SNAPSHOT
-org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.5.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.provider.moment:0.3.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.provider.vue:0.3.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.provider.vuex:0.3.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:0.5.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.lodash:0.0.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.vuejs:0.26.0-SNAPSHOT
 #org.jgrapes:org.jgrapes.webconsole.provider.markdownit:0.26.0-SNAPSHOT
 
-#org.jgrapes:org.jgrapes.webconlet.markdowndisplay:0.29.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconlet.sysinfo:0.28.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconlet.markdowndisplay:0.30.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconlet.sysinfo:0.30.0-SNAPSHOT

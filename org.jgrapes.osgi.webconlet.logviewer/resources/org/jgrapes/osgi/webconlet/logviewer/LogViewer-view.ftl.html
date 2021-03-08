@@ -64,10 +64,10 @@
             </td>
             <td v-else-if="key === 'exception'" 
               :class="'jgrapes-osgi-logviewer-' + key">
-              <jgwc-disclosure-button v-if="entry['stacktrace']"
+              <aash-disclosure-button v-if="entry['stacktrace']"
                 v-bind:id-ref="scopedId(rowIndex)">
                 <span v-html="entry[key]"></span>
-              </jgwc-disclosure-button>
+              </aash-disclosure-button>
             </td>
             <td v-else
               :class="'jgrapes-osgi-logviewer-' + key"
@@ -75,7 +75,7 @@
             </td>
           </template>
         </tr>
-        <tr :id="scopedId(rowIndex)" is="jgwc-disclosure-section" 
+        <tr :id="scopedId(rowIndex)" v-if="$aash.isDisclosed(scopedId(rowIndex))" 
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td colspan="6" class="jgrapes-osgi-logviewer-stacktrace">
             <div v-html="entry['stacktrace']"></div>

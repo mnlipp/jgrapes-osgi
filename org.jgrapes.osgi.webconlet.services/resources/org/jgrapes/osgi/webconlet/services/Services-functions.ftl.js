@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2016, 2018  Michael N. Lipp
+ * Copyright (C) 2016, 2021  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -16,8 +16,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-import Vue from "../../page-resource/vue/vue.esm.browser.js"
-import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
+import { reactive, createApp, computed }
+    from "../../page-resource/vue/vue.esm-browser.js";
+import JGConsole from "../../console-base-resource/jgconsole.js"
+import JgwcPlugin, { JGWC } 
+    from "../../page-resource/jgwc-vue-components/jgwc-components.js";
+import { provideApi, getApi } 
+    from "../../page-resource/aash-vue-components/lib/aash-vue-components.js";
 
 const l10nBundles = {
     // <#list supportedLanguages() as l>
@@ -33,39 +38,41 @@ window.orgJGrapesOsgiConletServices = {};
 
 window.orgJGrapesOsgiConletServices.initPreviewTable = function(content) {
     let previewTable = $(content).find(".jgrapes-osgi-services-preview-table");
-    new Vue({
-        el: previewTable[0],
-        data: {
-            controller: new JGConsole.TableController([
+    let app = createApp ({
+        setup() {
+            const controller = reactive(new JGConsole.TableController([
                 ["id", 'serviceId'],
                 ["type", 'serviceType']
                 ], {
                 sortKey: "id"
-            }),
-            infosById: {},
-        },
-        computed: {
-            filteredData: function() {
-                let infos = Object.values(this.infosById);
-                return this.controller.filter(infos);
-            }
-        },
-        methods: {
-            localize: function(key) {
+            }));
+            const infosById = reactive(new Map());
+            const filteredData = computed(() => {
+                let infos = Array.from(infosById.values());
+                return controller.filter(infos);
+            });
+            const localize = (key) => {
                 return JGConsole.localize(
-                    l10nBundles, this.jgwc.observed.lang, key);
-            }
+                    l10nBundles, JGWC.lang(), key);
+            };
+            
+            provideApi (previewTable[0], {
+                infosById: () => { return infosById }
+            });
+            
+            return { controller, infosById, filteredData, localize }
         }
     });
+    app.use(JgwcPlugin);
+    app.mount(previewTable[0]);
 }
 
 window.orgJGrapesOsgiConletServices.initView = function(content) {
-    new Vue({
-        mixins: [jgwcIdScopeMixin],
-        el: $(content)[0],
-        data: {
-            conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
-            controller: new JGConsole.TableController([
+    const dom = $(content)[0];
+    let app = createApp({
+        setup() {
+            const conletId = $(content).closest("[data-conlet-id]").data("conlet-id");
+            const controller = reactive(new JGConsole.TableController([
                 ["id", 'serviceId'],
                 ["type", 'serviceType'],
                 ["scopeDisplay", 'serviceScope'],
@@ -73,81 +80,92 @@ window.orgJGrapesOsgiConletServices.initView = function(content) {
                 ["implementationClass", 'serviceImplementedBy'],
                 ], {
                 sortKey: "id"
-            }),
-            infosById: {},
-            detailsById: {},
-        },
-        computed: {
-            filteredData: function() {
-                let infos = Object.values(this.infosById);
+            }));
+            const infosById = reactive(new Map());
+            const detailsById = reactive(new Map());
+            const filteredData = computed(() => {
+                let infos = Array.from(infosById.values());
                 for (let info of infos) {
-                    info.scopeDisplay = this.localize(info.scope);
+                    info.scopeDisplay = localize(info.scope);
                     if (info.dsScope !== undefined) {
                         info.scopeDisplay += " (" 
-                            + this.localize("serviceAbbrevDS") + ": " 
-                            + this.localize(info.dsScope) + ")";
+                            + localize("serviceAbbrevDS") + ": " 
+                            + localize(info.dsScope) + ")";
                     }
                     info.bundleNameDisplay = info.bundleName + " (" + info.bundleId + ")";
                 }
-                return this.controller.filter(infos);
-            },
-        },
-        methods: {
-            sortedProperties: function(properties) {
+                return controller.filter(infos);
+            });
+            
+            let sortedProperties = (properties) => {
                 let entries = Object.entries(properties);
                 entries.sort();
                 return entries;
-            },
-            localize: function(key) {
+            };
+            
+            const localize = (key) => {
                 return JGConsole.localize(
-                    l10nBundles, this.jgwc.observed.lang, key);
-            }
-        },
+                    l10nBundles, JGWC.lang(), key);
+            };
+            
+            const idScope = JGWC.createIdScope();
+            
+            provideApi (content, {
+                infosById: () => { return infosById; },
+                detailsById: () => { return detailsById; }
+            });
+            
+            return { conletId, controller, infosById, detailsById,
+                filteredData, sortedProperties, localize,
+                scopedId: (id) => { return idScope.scopedId(id); } }
+        }
     });
+    app.use(JgwcPlugin);
+    app.mount(dom);
 }
     
-function updateInfos(model, infos, replace) {
+function updateInfos(api, infos, replace) {
     // Update
+    let infosById = api.infosById();
     if (replace) {
-        let infosById = {};
+        infosById.clear();
         for(let info of infos) {
-            infosById[info.id] = info;
+            infosById.set(info.id, info);
         }
-        model.infosById = infosById;
         return;
     }
-    let infosById = model.infosById; 
     for(let info of infos) {
         if (info.uninstalled) {
-            delete infosById[info.id];
+            infosById.delete(info.id);
             continue;
         }
-        infosById[info.id] = info;
+        infosById.set(info.id, info);
     }
-    model.infosById = Object.assign({}, infosById);
 }
   
-JGConsole.registerConletMethod(
+JGConsole.registerConletFunction(
         "org.jgrapes.osgi.webconlet.services.ServiceListConlet",
-        "serviceUpdates", function(conletId, params) {
-            let serviceInfos = params[0];
+        "serviceUpdates", function(conletId, serviceInfos, applyTo, replace) {
             // Preview
-            if (params[1] === "preview" || params[1] === "*") {
+            if (applyTo === "preview" || applyTo === "*") {
                 let table = $(JGConsole.findConletPreview(conletId))
                     .find(".jgrapes-osgi-services-preview-table");
-                let vm = null;
-                if (table.length && (vm = table[0].__vue__)) {
-                    updateInfos(vm, params[0], params[2]);
+                let api = null;
+                if (table.length && (api = getApi(table[0]))) {
+                    updateInfos(api, serviceInfos, replace);
                 }
             }
             
             // View
-            if (params[1] === "view" || params[1] === "*") {
+            if (applyTo === "view" || applyTo === "*") {
                 let view = $(JGConsole.findConletView(conletId))
                     .find(".jgrapes-osgi-services-view");
-                let vm = null;
-                if (view.length && (vm = view[0].__vue__)) {
-                    updateInfos(vm, params[0], params[2]);
+                let api = null;
+                if (view.length && (api = getApi(view[0]))) {
+                    if (replace) {
+                        api.detailsById().clear();
+                    }
+                    updateInfos(api, serviceInfos, replace);
                 }
             }
         });

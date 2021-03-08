@@ -1,9 +1,9 @@
 <div class="jgrapes-osgi-services-view"
   data-jgwc-on-load="orgJGrapesOsgiConletServices.initView"
-  data-jgwc-on-unload="JGConsole.jgwc.destroyVMs">
+  data-jgwc-on-unload="$jgwc.unmountViewApps()"> 
   <div class="jgrapes-osgi-services-view-search">
     <form>
-      <label>
+      <label class="form__label--horizontal">
         <span>{{ localize("Filter") }}</span>
         <input type="search" v-on:input="controller.updateFilter($event)">
         <span role="button" tabindex="0" class="fas fa-backspace" 
@@ -29,16 +29,16 @@
         <tr :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td v-for="key in controller.keys"
             :rowspan="key !== 'id' ? false 
-                : (jgwc.isDisclosed(scopedId(rowIndex)) ? 2 : 1)">
-            <jgwc-disclosure-button v-if="key == 'id'" :type="'div'"
+                : ($aash.isDisclosed(scopedId(rowIndex)) ? 2 : 1)">
+            <aash-disclosure-button v-if="key == 'id'" :type="'div'"
               :id-ref="scopedId(rowIndex)">
               <span v-html="controller.breakBeforeDots(entry[key])"></span>
-            </jgwc-disclosure-button>
+            </aash-disclosure-button>
             <span v-else
               v-html="controller.breakBeforeDots(entry[key])"></span>
           </td>
         </tr>
-        <tr :id="scopedId(rowIndex)" is="jgwc-disclosure-section"
+        <tr :id="scopedId(rowIndex)" v-if="$aash.isDisclosed(scopedId(rowIndex))"
           :class="[(rowIndex % 2) ? 'odd' : 'even']">
           <td colspan="4" class="details">
             <table class="table--basic table--basic--autoStriped">

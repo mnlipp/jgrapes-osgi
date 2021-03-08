@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2018,2019  Michael N. Lipp
+ * Copyright (C) 2018, 2021 Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -16,8 +16,13 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-import Vue from "../../page-resource/vue/vue.esm.browser.js"
-import { jgwcIdScopeMixin } from "../../page-resource/jgwc-vue-components/jgwc-components.js";
+import { reactive, ref, createApp, computed, watch }
+    from "../../page-resource/vue/vue.esm-browser.js";
+import JGConsole from "../../console-base-resource/jgconsole.js"
+import JgwcPlugin, { JGWC } 
+    from "../../page-resource/jgwc-vue-components/jgwc-components.js";
+import { provideApi, getApi } 
+    from "../../page-resource/aash-vue-components/lib/aash-vue-components.js";
 
 window.orgJGrapesOsgiConletLogViewer = {};
 
@@ -29,13 +34,11 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
             "INFO": 2,
             "DEBUG": 1,
             "TRACE": 0
-    }
-    new Vue({
-        mixins: [jgwcIdScopeMixin],
-        el: content,
-        data: {
-            conletId: $(content).closest("[data-conlet-id]").data("conlet-id"),
-            controller: new JGConsole.TableController([
+    } 
+    let app = createApp({
+        setup() {
+            const conletId = $(content).closest("[data-conlet-id]").data("conlet-id");
+            const controller = reactive(new JGConsole.TableController([
                 ["time", '${_("timestamp")}'],
                 ["logLevel", '${_("level")}'],
                 ["message", '${_("message")}'],
@@ -45,93 +48,106 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
                 ], {
                 sortKey: "sequence",
                 sortOrder: "down"
-            }),
-            messageThreshold: "INFO",
-            entries: [],
-            lang: $(content).closest('[lang]').attr('lang') || 'en',
-        	autoUpdate: true,
-            expandedByKey: {}
-        },
-        computed: {
-            filteredData: function() {
-                let entries = [];
-                let threshold = levelsToNum[this.messageThreshold];
-                for (let entry of this.entries) {
+            }));
+            const messageThreshold = ref("INFO");
+            const entries = reactive([]);
+            const autoUpdate = ref(true);
+            const expandedByKey = reactive({});
+            const filteredData = computed(() => {
+                let filtered = [];
+                let threshold = levelsToNum[messageThreshold.value];
+                for (let entry of entries) {
                     if (levelsToNum[entry.logLevel] >= threshold) {
-                        entries.push(entry);
+                        filtered.push(entry);
                     }
                 }
-                return this.controller.filter(entries);
-            }
-        },
-        methods: {
-            resync: function() {
-                    JGConsole.notifyConletModel(this.conletId, "resync");
-            },
-            formatTimestamp: function(timestamp) {
+                return controller.filter(filtered);
+            });
+            const resync = () => {
+                JGConsole.notifyConletModel(conletId, "resync");
+            };
+            const formatTimestamp = (timestamp) => {
                 let ts = moment(timestamp);
-                ts.locale(this.lang)
+                ts.locale(JGWC.lang());
                 return ts.format("L HH:mm:ss.SSS");
-            },
-            toggleExpanded: function(key) {
-                if (key in this.expandedByKey) {
-                    Vue.delete(this.expandedByKey, key);
+            };
+            const toggleExpanded = (key) => {
+                if (key in expandedByKey) {
+                    expandedByKey.delete(key);
                     return;
                 }
-                Vue.set(this.expandedByKey, key, true);
-            },
-            isExpanded: function(key) {
-                return (key in this.expandedByKey);                
-            }
-        },
-        watch: {
-        autoUpdate: function(newValue, oldValue) {
-            if (newValue) {
-                this.resync();
-	            }
-            }
+                expandedByKey[key] = true;
+            };
+            const isExpanded = (key) => {
+                return (key in expandedByKey);                
+            };
+            watch(autoUpdate, (newValue, oldValue) => {
+                if (newValue) {
+                    resync();
+                }
+            });
+            
+            provideApi (content, {
+                clearEntries: () => { entries.length = 0; },
+                addEntries: function() {
+                    for (let entry of arguments) {
+                        entries.push(entry);
+                    }
+                },
+                isAutoUpdate: () => { return autoUpdate.value; }
+            });
+            
+            const idScope = JGWC.createIdScope();
+
+            return { autoUpdate, resync, messageThreshold, controller,
+                filteredData, formatTimestamp, toggleExpanded, isExpanded,
+                scopedId: (id) => { return idScope.scopedId(id); } };
         }
     });
+    app.use(JgwcPlugin);
+    app.mount(content);
 }
 
 window.orgJGrapesOsgiConletLogViewer.onUnload = function(content) {
-    if ("__vue__" in content) {
-        content.__vue__.$destroy();
-        return;
-    }
+    JGWC.unmountVueApps(content);
     for (let child of content.children) {
         window.orgJGrapesOsgiConletBundles.onUnload(child);
     }
 }
 
-JGConsole.registerConletMethod(
-        "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
-        "entries", function(conletId, params) {
-            // View only
-            let view = $(JGConsole.findConletView(conletId))
-                .find(".jgrapes-osgi-logviewer-view");
-            let vm = null;
-            if (view.length && (vm = view[0].__vue__)) {
-                vm.entries = params[0];
-            }
-        });
- 
-JGConsole.registerConletMethod(
-        "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
-        "addEntry", function(conletId, params) {
-            // View only
-            let view = $(JGConsole.findConletView(conletId))
-                .find(".jgrapes-osgi-logviewer-view");
-            let vm = null;
-            if (view.length && (vm = view[0].__vue__)) {
-            	if (!vm.autoUpdate) {
-					return;
-				}
-				if (vm.entries) {
-					vm.entries.unshift(params[0]);
-				} else {
-					vm.entries = [params[0]];
-				}
-               }
-           });
+JGConsole.registerConletFunction(
+    "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
+    "entries", function(conletId, entries) {
+        // View only
+        let view = $(JGConsole.findConletView(conletId))
+            .find(".jgrapes-osgi-logviewer-view");
+        if (view.length == 0) {
+            return;
+        }
+        let api = getApi(view[0]);
+        if (api == null) {
+            return;
+        }
+        api.clearEntries();
+        api.addEntries(...entries);
+    });
+
+JGConsole.registerConletFunction(
+    "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
+    "addEntry", function(conletId, entry) {
+        // View only
+        let view = $(JGConsole.findConletView(conletId))
+            .find(".jgrapes-osgi-logviewer-view");
+        if (view.length == 0) {
+            return;
+        }
+        let api = getApi(view[0]);
+        if (api == null) {
+            return;
+        }
+        if (!api.isAutoUpdate()) {
+            return;
+        }
+        api.addEntries(entry);
+     });
 
