@@ -41,28 +41,26 @@
 	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.5.0,0.5.1)',\
 	org.jgrapes.webconsole.provider.jquery;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.moment;version='[0.3.0,0.3.1)',\
-	org.jgrapes.webconsole.provider.chartjs;version='[0.26.1,0.26.2)',\
+	org.jgrapes.webconsole.provider.chartjs;version='[0.27.0,0.27.1)',\
 	org.jgrapes.webconsole.provider.fontawesome;version='[0.27.0,0.27.1)',\
 	org.jgrapes.webconsole.provider.markdownit;version='[0.26.0,0.26.1)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.3.0,0.3.1)',\
-	org.jgrapes.webconsole.provider.vuex;version='[0.3.0,0.3.1)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.1.2,0.1.3)',\
-	org.jgrapes.webconsole.provider.gridstack;version='[0.6.0,0.6.1)',\
+	org.jgrapes.webconsole.provider.gridstack;version='[0.7.0,0.7.1)',\
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.1.1,0.1.2)',\
 	org.jgrapes.webconlet.markdowndisplay;version='[0.30.0,0.30.1)',\
 	org.jgrapes.webconlet.sysinfo;version='[0.30.0,0.30.1)',\
 	org.jgrapes.osgi.demo.console;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.20,1.9.21)',\
 	org.apache.felix.scr;version='[2.0.14,2.0.15)',\
-	org.apache.felix.scr;version='[2.1.18,2.1.19)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.9.4,2.9.5)',\
 	org.apache.felix.gogo.runtime;version='[1.1.4,1.1.5)',\
 	org.apache.felix.metatype;version='[1.2.4,1.2.5)',\
 	org.apache.felix.eventadmin;version='[1.5.0,1.5.1)',\
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
 	org.jgrapes.osgi.webconlet.logviewer;version=snapshot,\
-    org.jgrapes.osgi.webconlet.bundles;version=snapshot,\
-    org.jgrapes.osgi.webconlet.services;version=snapshot
+	org.jgrapes.osgi.webconlet.bundles;version=snapshot,\
+	org.jgrapes.osgi.webconlet.services;version=snapshot
 	
 
 -runrequires: \
@@ -110,7 +108,8 @@
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
     osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
     osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
-    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.28.4.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.30.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.29.0.ga)))',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
