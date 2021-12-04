@@ -33,12 +33,12 @@ class ConfigurePublishing implements Plugin<Project> {
 						pom.withXml {
 							// Generate map of resolved versions
 							Map resolvedVersionMap = [:]
-							Set<ResolvedArtifact> resolvedArtifacts = project.configurations.compile.getResolvedConfiguration().getResolvedArtifacts()
+							Set<ResolvedArtifact> resolvedArtifacts = project.configurations.compileClasspath.getResolvedConfiguration().getResolvedArtifacts()
 							resolvedArtifacts.each {
 								ModuleVersionIdentifier mvi = it.getModuleVersion().getId();
 								resolvedVersionMap.put("${mvi.getGroup()}:${mvi.getName()}", mvi.getVersion())
 							}
-							Set<ResolvedArtifact> testResolved = project.configurations.testCompile.getResolvedConfiguration().getResolvedArtifacts()
+							Set<ResolvedArtifact> testResolved = project.configurations.testCompileClasspath.getResolvedConfiguration().getResolvedArtifacts()
 							testResolved.each {
 								ModuleVersionIdentifier mvi = it.getModuleVersion().getId();
 								resolvedVersionMap.put("${mvi.getGroup()}:${mvi.getName()}", mvi.getVersion())
@@ -47,17 +47,19 @@ class ConfigurePublishing implements Plugin<Project> {
 							// Update dependencies with resolved versions
 							if (asNode().dependencies) {
 								asNode().dependencies.first().each {
-									def groupId = it.get("groupId").first().value().first()
-									def artifactId = it.get("artifactId").first().value().first()
-									def version = it.get("version").first().value()[0];
+									def groupId = it.get("groupId").first().value()
+									println groupId
+									def artifactId = it.get("artifactId").first().value()
+									def version = it.get("version").first().value();
 									// Leave Maven version ranges alone.
 									if (!version.startsWith('(') && !version.startsWith('[')) {
-										it.get("version").first().value = resolvedVersionMap.get("${groupId}:${artifactId}")
+										it.get("version").first().setValue(resolvedVersionMap.get("${groupId}:${artifactId}"))
 									}
 								}
 							}
 						}
 
+						// Add readily available information
 						def projectName = project.name
 						def projectDescription = project.description
 						if (projectDescription == null || projectDescription == "") {
@@ -69,11 +71,13 @@ class ConfigurePublishing implements Plugin<Project> {
 								appendNode('description', projectDescription)
 							}
 						}
-						
+
+						// Add dependency information						
 						pom.withXml {
 							addDependencyInformation(project, asNode())
 						}
 						
+						// Add user (configuration) supplied information
 						pom.withXml(project.configurePublishing.withPomXml)
 					}
 				}
@@ -87,8 +91,10 @@ class ConfigurePublishing implements Plugin<Project> {
 	}
 
 	void addDependencyInformation(project, pomRoot) {
+		// Already known dependencies
 		def knownDependencies = collectKnownDependencies(pomRoot)
-		project.configurations.compile.each {
+		// Extract maven coordinates from all jars in the compile classpath...
+		project.configurations.compileClasspath.each {
 			def jarFile = it
 			def jarFiles = null
 			try {
@@ -108,13 +114,18 @@ class ConfigurePublishing implements Plugin<Project> {
 			new FileInputStream(pomPropsFiles.first()).withCloseable {
 				input -> pomProps.load(input)
 			}
+			// Found coordinates in jar.
 			def newDepKey = "${pomProps.groupId}:${pomProps.artifactId}:${pomProps.version}"
 			if (!knownDependencies.contains(newDepKey)) {
 				mergeDependency(pomRoot, pomProps)
+				knownDependencies.add(newDepKey)
 			}
 		}
 	}
 	
+	/**
+	 * Collect already known dependencies from POM.
+	 */
 	Set collectKnownDependencies(pomRoot) {
 		Set result = new HashSet()
 		if (!pomRoot.dependencies || pomRoot.dependencies.empty) {
