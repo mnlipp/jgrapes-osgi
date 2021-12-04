@@ -7,19 +7,11 @@ if (plugins.hasPlugin('biz.aQute.bnd')) {
 }
 
 if (project.name.startsWith("org.jgrapes.")) {
-    apply plugin: 'signing'
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
 
     group = "org.jgrapes"
         
     apply from: "${project.rootDir}/gradle/publishing.gradle"
     
-    tasks.compileJava {
-        if (!JavaVersion.current().isJava8()) {
-            options.compilerArgs.addAll(['--release', '8'])
-        }
-    }
 }
 
 apply from: "${project.rootDir}/gradle/eclipse.gradle"
