@@ -44,7 +44,8 @@ publishing {
             url "https://gitlab.com/api/v4/projects/24557189/packages/maven"
             credentials(HttpHeaderCredentials) {
                 name = "Private-Token"
-                value = gitLabRepoAccess ?: (System.getenv("GITLAB_REPO_ACCESS") ?: "")
+                value = System.getenv("GITLAB_REPO_ACCESS") 
+                    ?: project.properties['gitLabRepoAccess'] ?: "" 
             }
             authentication {
                 header(HttpHeaderAuthentication)
