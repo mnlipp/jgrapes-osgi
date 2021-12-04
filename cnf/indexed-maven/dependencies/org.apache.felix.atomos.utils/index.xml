@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1614801225693">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1638638001334">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="&quot;Apache License, Version 2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;,Apache-2.0;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;;description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="osgi.identity" value="org.apache.felix.atomos.utils.substrate.api"/>
+      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.substrate.api/"/>
+      <attribute name="description" value="Apache Felix is a community effort to implement the OSGi Framework and Service platform and other interesting OSGi-related technologies."/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="0.9.0" type="Version"/>
-      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.substrate.api/"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.felix.atomos.utils.substrate.api.dynproxy,org.apache.felix.atomos.utils.substrate.api.reflect,org.apache.felix.atomos.utils.substrate.api.resource"/>
@@ -46,16 +47,16 @@
       <attribute name="osgi.wiring.host" value="org.apache.felix.atomos.utils.substrate.api"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0"/>
+      <attribute name="name" value="org.apache.felix.atomos.utils.substrate.api"/>
       <attribute name="from" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:osgi.annotation:7.0.0;org.javassist:javassist:3.26.0-GA;biz.aQute.bnd:biz.aQute.bnd.annotation:5.2.0"/>
+      <attribute name="compile" value="org.javassist:javassist:3.26.0-GA;biz.aQute.bnd:biz.aQute.bnd.annotation:5.2.0;org.osgi:osgi.annotation:7.0.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="20823" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.substrate.api/0.9.0/org.apache.felix.atomos.utils.substrate.api-0.9.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.substrate.api/0.9.0/org.apache.felix.atomos.utils.substrate.api-0.9.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="37689850ABFF5A8B0A3E9B583A75FFB15EAE7C980BDC7286BFF8064EA2D49A67"/>
     </capability>
@@ -114,9 +115,10 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="&quot;Apache License, Version 2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;,Apache-2.0;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;;description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="osgi.identity" value="org.apache.felix.atomos.utils.api"/>
+      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.api/"/>
+      <attribute name="description" value="Apache Felix is a community effort to implement the OSGi Framework and Service platform and other interesting OSGi-related technologies."/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="0.9.0" type="Version"/>
-      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.api/"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.felix.atomos.utils.api.plugin,org.apache.felix.atomos.utils.substrate.api.dynproxy,org.apache.felix.atomos.utils.substrate.api.reflect,org.apache.felix.atomos.utils.substrate.api.resource"/>
@@ -143,16 +145,16 @@
       <attribute name="osgi.wiring.host" value="org.apache.felix.atomos.utils.api"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0"/>
+      <attribute name="name" value="org.apache.felix.atomos.utils.api"/>
       <attribute name="from" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;org.javassist:javassist:3.26.0-GA"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="22930" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.api/0.9.0/org.apache.felix.atomos.utils.api-0.9.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.api/0.9.0/org.apache.felix.atomos.utils.api-0.9.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="1DD040E090B5DDDD387E1576E6301931F6E413CB0E8453DC32FCA9C34D353871"/>
     </capability>
@@ -227,9 +229,10 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="&quot;Apache License, Version 2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;,Apache-2.0;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;;description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="osgi.identity" value="org.apache.felix.atomos.utils.substrate.impl"/>
+      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.substrate.impl/"/>
+      <attribute name="description" value="Apache Felix is a community effort to implement the OSGi Framework and Service platform and other interesting OSGi-related technologies."/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="0.9.0" type="Version"/>
-      <attribute name="documentation" value="https://felix.apache.org/atomos-parent/org.apache.felix.atomos.utils/org.apache.felix.atomos.utils.substrate.impl/"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.felix.atomos.utils.substrate.api.dynproxy,org.apache.felix.atomos.utils.substrate.api.reflect,org.apache.felix.atomos.utils.substrate.api.resource"/>
@@ -248,16 +251,16 @@
       <attribute name="osgi.wiring.host" value="org.apache.felix.atomos.utils.substrate.impl"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0"/>
+      <attribute name="name" value="org.apache.felix.atomos.utils.substrate.impl"/>
       <attribute name="from" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="biz.aQute.bnd:biz.aQute.bnd.annotation:5.0.1;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;org.osgi:osgi.annotation:7.0.0;org.javassist:javassist:3.26.0-GA"/>
+      <attribute name="compile" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;biz.aQute.bnd:biz.aQute.bnd.annotation:5.0.1;org.osgi:osgi.annotation:7.0.0;org.javassist:javassist:3.26.0-GA"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="42756" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.substrate.impl/0.9.0/org.apache.felix.atomos.utils.substrate.impl-0.9.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.substrate.impl/0.9.0/org.apache.felix.atomos.utils.substrate.impl-0.9.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="DD2602B1F11F9B81A42E25C0BDA2724E03982DE48AF07F4DB0046A765D119D21"/>
     </capability>
@@ -350,16 +353,16 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.core:0.9.0"/>
+      <attribute name="name" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.core"/>
       <attribute name="from" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.core:0.9.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:org.osgi.util.function:1.1.0;org.osgi:org.osgi.util.converter:1.0.1;org.osgi:org.osgi.util.tracker:1.5.2;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0;org.javassist:javassist:3.26.0-GA;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0;org.apache.felix:org.apache.felix.scr:2.1.16;org.osgi:org.osgi.service.component:1.4.0;org.osgi:org.osgi.framework:1.9.0"/>
+      <attribute name="compile" value="org.osgi:org.osgi.util.function:1.1.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0;org.osgi:org.osgi.util.converter:1.0.1;org.osgi:org.osgi.service.component:1.4.0;org.osgi:org.osgi.framework:1.9.0;org.osgi:org.osgi.util.tracker:1.5.2;org.apache.felix:org.apache.felix.scr:2.1.16;org.javassist:javassist:3.26.0-GA"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="77168" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.core/0.9.0/org.apache.felix.atomos.utils.core-0.9.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/felix/atomos/utils/org.apache.felix.atomos.utils.core/0.9.0/org.apache.felix.atomos.utils.core-0.9.0.jar"/>
       <attribute name="mime" value="application/java-archive"/>
       <attribute name="osgi.content" value="C9A18DC3420A3F62ABBD2B1F73A99DA362A7D0C3DAD33DE23D7D67C173065C30"/>
     </capability>

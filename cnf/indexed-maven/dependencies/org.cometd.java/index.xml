@@ -1,17 +1,36 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1555690136229">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1638638001362">
   <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.cometd.java:bayeux-api:2.4.2"/>
-      <attribute name="from" value="org.cometd.java:bayeux-api:2.4.2"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, http://www.opensource.org/licenses/bsd-license.html, http://opensource-definition.org/licenses/afl-2.1.html"/>
       <attribute name="osgi.identity" value="bayeux-api"/>
+      <attribute name="documentation" value="http://docs.cometd.org"/>
+      <attribute name="description" value="The CometD project is a scalable web messaging bus that uses WebSocketand HTTP AJAX push technology patterns known as &quot;Comet&quot; techniques"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="2.4.2" type="Version"/>
-      <attribute name="documentation" value="http://docs.cometd.org"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.4.2" type="Version"/>
+      <attribute name="version" value="2.4.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
+      <attribute name="bnd.hashes" value="1975584354,1982811022,-1891363613,-829263522,-1216934138,-1675388953,-645326218,-1238034679" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.4.2" type="Version"/>
+      <attribute name="version" value="2.4.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
+      <attribute name="bnd.hashes" value="-628296377,2043439035,1944948379,-877898574,-1850559427,492753353,971834945,-1234228155,817212087,1391410207,-546214582,1418348817,895943793,-1393078590,-1045757593,717451467,-1790614350,1148447163,2691992,540933364,-1781730272,-1216934138,-1565755612,760255940,-142519807,-1250285192,-822493305,-535692877,1040390918" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.4.2" type="Version"/>
+      <attribute name="version" value="2.4.2" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
+      <attribute name="bnd.hashes" value="1391410207,-1090745301,-1022368980,1148447163,-735800744" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="bundle-version" value="2.4.2" type="Version"/>
@@ -21,39 +40,49 @@
       <attribute name="bundle-version" value="2.4.2" type="Version"/>
       <attribute name="osgi.wiring.host" value="bayeux-api"/>
     </capability>
-    <capability namespace="osgi.wiring.package">
+    <capability namespace="bnd.info">
+      <attribute name="name" value="bayeux-api"/>
+      <attribute name="from" value="org.cometd.java:bayeux-api:2.4.2"/>
       <attribute name="version" value="2.4.2" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
-      <attribute name="version" value="2.4.2" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux"/>
-      <attribute name="version" value="2.4.2" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="27428" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/cometd/java/bayeux-api/2.4.2/bayeux-api-2.4.2.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/cometd/java/bayeux-api/2.4.2/bayeux-api-2.4.2.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="1DF38BB0D67B2A1F7915E8343CC536586EDFA8CF7E5B045EFAA9B8F82FAA41BF"/>
     </capability>
   </resource>
   <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.cometd.java:bayeux-api:2.7.0"/>
-      <attribute name="from" value="org.cometd.java:bayeux-api:2.7.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, http://www.opensource.org/licenses/bsd-license.html, http://opensource-definition.org/licenses/afl-2.1.html"/>
       <attribute name="osgi.identity" value="bayeux-api"/>
+      <attribute name="documentation" value="http://docs.cometd.org"/>
+      <attribute name="description" value="The CometD project is a scalable web messaging bus that uses WebSocketand HTTP AJAX push technology patterns known as &quot;Comet&quot; techniques"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="2.7.0" type="Version"/>
-      <attribute name="documentation" value="http://docs.cometd.org"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.7.0" type="Version"/>
+      <attribute name="version" value="2.7.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
+      <attribute name="bnd.hashes" value="-628296377,2043439035,1944948379,-877898574,-1850559427,492753353,971834945,-1234228155,817212087,514145071,1391410207,-546214582,1418348817,895943793,-1789039945,-1393078590,2691992,540933364,-1045757593,717451467,-1790614350,1148447163,-1781730272,-1216934138,-1565755612,760255940,-142519807,-1250285192,-822493305,-535692877,1040390918" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.7.0" type="Version"/>
+      <attribute name="version" value="2.7.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
+      <attribute name="bnd.hashes" value="1975584354,1982811022,-1891363613,-829263522,1960408159,-1216934138,-1675388953,-645326218,-1238034679" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.7.0" type="Version"/>
+      <attribute name="version" value="2.7.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
+      <attribute name="bnd.hashes" value="514145071,1391410207,-1090745301,-1022368980,1148447163,-735800744" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="bundle-version" value="2.7.0" type="Version"/>
@@ -63,39 +92,49 @@
       <attribute name="bundle-version" value="2.7.0" type="Version"/>
       <attribute name="osgi.wiring.host" value="bayeux-api"/>
     </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="bayeux-api"/>
+      <attribute name="from" value="org.cometd.java:bayeux-api:2.7.0"/>
       <attribute name="version" value="2.7.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="version" value="2.7.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux"/>
-      <attribute name="version" value="2.7.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30834" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/cometd/java/bayeux-api/2.7.0/bayeux-api-2.7.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/cometd/java/bayeux-api/2.7.0/bayeux-api-2.7.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="0B72E456ACD412858B604D3F80E905332AAA7FA5946D927220B07D9BF4694FA6"/>
     </capability>
   </resource>
   <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.cometd.java:bayeux-api:2.8.0"/>
-      <attribute name="from" value="org.cometd.java:bayeux-api:2.8.0"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
-    </capability>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, http://www.opensource.org/licenses/bsd-license.html, http://opensource-definition.org/licenses/afl-2.1.html"/>
       <attribute name="osgi.identity" value="bayeux-api"/>
+      <attribute name="documentation" value="http://docs.cometd.org"/>
+      <attribute name="description" value="The CometD project is a scalable web messaging bus that uses WebSocketand HTTP AJAX push technology patterns known as &quot;Comet&quot; techniques"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="2.8.0" type="Version"/>
-      <attribute name="documentation" value="http://docs.cometd.org"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.8.0" type="Version"/>
+      <attribute name="version" value="2.8.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
+      <attribute name="bnd.hashes" value="1975584354,1982811022,-1891363613,-829263522,1960408159,-1216934138,-1675388953,-645326218,-1238034679" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.8.0" type="Version"/>
+      <attribute name="version" value="2.8.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
+      <attribute name="bnd.hashes" value="-628296377,2043439035,1944948379,-877898574,-1850559427,492753353,971834945,-1234228155,817212087,514145071,1391410207,-546214582,1418348817,895943793,-1789039945,-1393078590,2691992,540933364,-1045757593,717451467,-1790614350,1148447163,-1781730272,-1216934138,-1565755612,760255940,-142519807,-1250285192,-822493305,-535692877,1040390918" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.cometd.bayeux"/>
+      <attribute name="bundle-symbolic-name" value="bayeux-api"/>
+      <attribute name="bundle-version" value="2.8.0" type="Version"/>
+      <attribute name="version" value="2.8.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
+      <attribute name="bnd.hashes" value="514145071,1391410207,-1090745301,-1022368980,1148447163,-735800744" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="bundle-version" value="2.8.0" type="Version"/>
@@ -105,23 +144,14 @@
       <attribute name="bundle-version" value="2.8.0" type="Version"/>
       <attribute name="osgi.wiring.host" value="bayeux-api"/>
     </capability>
-    <capability namespace="osgi.wiring.package">
+    <capability namespace="bnd.info">
+      <attribute name="name" value="bayeux-api"/>
+      <attribute name="from" value="org.cometd.java:bayeux-api:2.8.0"/>
       <attribute name="version" value="2.8.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux,org.cometd.bayeux.client"/>
-      <attribute name="version" value="2.8.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.server"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.cometd.bayeux"/>
-      <attribute name="version" value="2.8.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.cometd.bayeux.client"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30983" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/cometd/java/bayeux-api/2.8.0/bayeux-api-2.8.0.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/cometd/java/bayeux-api/2.8.0/bayeux-api-2.8.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="68DC7BD075704F037DAF1E09C84FD108CAE3FDCF89F2A338C65D5472C198CFD0"/>
     </capability>

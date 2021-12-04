@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1614801225718">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1638638001478">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.mozilla.org/MPL/MPL-1.1.html, http://www.gnu.org/licenses/lgpl-2.1.html, http://www.apache.org/licenses/"/>
+      <attribute name="description" value="Javassist (JAVA programming ASSISTant) makes Java bytecode manipulation    simple.  It is a class library for editing bytecodes in Java."/>
       <attribute name="osgi.identity" value="javassist"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="3.26.0.GA" type="Version"/>
@@ -151,9 +152,9 @@
       <attribute name="osgi.wiring.host" value="javassist"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.javassist:javassist:3.26.0-GA"/>
+      <attribute name="name" value="javassist"/>
       <attribute name="from" value="org.javassist:javassist:3.26.0-GA"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="3.26.0.GA" type="Version"/>
     </capability>
     <capability namespace="bnd.mainclass">
       <attribute name="bnd.mainclass" value="javassist.CtClass"/>
@@ -161,7 +162,7 @@
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="782535" type="Long"/>
-      <attribute name="url" value="https://repo.maven.apache.org/maven2/org/javassist/javassist/3.26.0-GA/javassist-3.26.0-GA.jar"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/javassist/javassist/3.26.0-GA/javassist-3.26.0-GA.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
       <attribute name="osgi.content" value="CA5625874FF0A34F2422173A511B33C225218C146A3C961B18940EFFF430462D"/>
     </capability>
