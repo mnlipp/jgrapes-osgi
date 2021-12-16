@@ -6,7 +6,6 @@ Bundle-Category: conlet
 Private-Package: org.jgrapes.osgi.webconlet.upnpbrowser
 
 -sources: true
--runee: JavaSE-1.8
 
 -includeresource: \
 	resources
