@@ -40,8 +40,8 @@ import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
- * An advanced version of the basic {@link ComponentCollector} that is based on
- * the OSGi registry and not on the {@link ServiceLoader}.
+ * An advanced version of the basic {@link org.jgrapes.core.ComponentCollector}
+ * that is based on the OSGi registry and not on the {@link ServiceLoader}.
  */
 public class ComponentCollector<F extends ComponentFactory> extends Component
         implements ServiceTrackerCustomizer<F, F> {

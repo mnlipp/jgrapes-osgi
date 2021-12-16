@@ -1,6 +1,7 @@
 .gradle/
 .metadata
 /build/
+**/build
 **/.project
 **/.classpath
 **/org.eclipse.jdt.core.prefs

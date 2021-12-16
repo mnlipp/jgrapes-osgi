@@ -18,6 +18,38 @@
 
 /**
  *
+ * @startuml package-hierarchy.svg
+ * skinparam svgLinkTarget _parent
+ * 
+ * package org.jgrapes {
+ * 
+ *     package "org.jgrapes.*" {
+ *         note "JGrapes comoponent libraries" as LibrariesNote
+ *     }
+ * 
+ *     package org.jgrapes.osgi {
+ *         package org.jgrapes.osgi.core [[./package-summary.html#package.description]] {
+ *         }
+ *         
+ *         package org.jgrapes.osgi.webconlet.logviewer [[../webconlet/logviewer/package-summary.html#package.description]] {
+ *         }
+ *         
+ *         package org.jgrapes.osgi.webconlet.bundles [[../webconlet/bundles/package-summary.html#package.description]] {
+ *         }
+ *         
+ *         package org.jgrapes.osgi.webconlet.services [[../webconlet/services/package-summary.html#package.description]] {
+ *         }
+ *         
+ *     }
+ * 
+ * }
+ * 
+ * "org.jgrapes.*" <.. org.jgrapes.osgi.core
+ * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.logviewer
+ * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.bundles
+ * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.services
+ * 
+ * @enduml
  */
 @org.osgi.annotation.versioning.Version("${api_version}")
 package org.jgrapes.osgi.core;

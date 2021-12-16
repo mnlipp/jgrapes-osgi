@@ -3,16 +3,8 @@
 	<name>JGrapes-OSGi</name>
 	<comment></comment>
 	<projects/>
-	<natures>
-		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
-		<nature>org.eclipse.jdt.core.javanature</nature>
-	</natures>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments/>
-		</buildCommand>
-	</buildSpec>
+	<natures/>
+	<buildSpec/>
 	<linkedResources/>
 	<filteredResources/>
 </projectDescription>
