@@ -52,7 +52,7 @@ bundleVersionQualifier: ga
 javac.source: 11
 javac.target: 11
 
--dsannotations-options: version;minimum=1.2.0;maximum=1.4.0
+-dsannotations-options: version;maximum=1.4.0
 
 -groupid: org.jgrapes
 -pom: true
