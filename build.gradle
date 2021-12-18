@@ -15,7 +15,7 @@ plugins {
     id 'org.ajoberstar.git-publish' version '3.0.0'
 }
 
-// apply plugin: 'biz.aQute.bnd.workspace'
+apply plugin: 'biz.aQute.bnd.workspace'
 
 ext {
 	isCiBuild = System.getenv().get("CI") == 'true'

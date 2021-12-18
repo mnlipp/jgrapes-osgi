@@ -2,6 +2,7 @@
 .metadata
 /build/
 **/build
+.project
 **/.project
 **/.classpath
 **/org.eclipse.jdt.core.prefs
