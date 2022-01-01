@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1638638001334">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799073">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="&quot;Apache License, Version 2.0&quot;;link=&quot;https://www.apache.org/licenses/LICENSE-2.0.txt&quot;,Apache-2.0;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;;description=&quot;Apache License, Version 2.0&quot;"/>
@@ -52,7 +52,7 @@
       <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.javassist:javassist:3.26.0-GA;biz.aQute.bnd:biz.aQute.bnd.annotation:5.2.0;org.osgi:osgi.annotation:7.0.0"/>
+      <attribute name="compile" value="org.javassist:javassist:3.26.0-GA;org.osgi:osgi.annotation:7.0.0;biz.aQute.bnd:biz.aQute.bnd.annotation:5.2.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="20823" type="Long"/>
@@ -150,7 +150,7 @@
       <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;org.javassist:javassist:3.26.0-GA"/>
+      <attribute name="compile" value="org.javassist:javassist:3.26.0-GA;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="22930" type="Long"/>
@@ -256,7 +256,7 @@
       <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;biz.aQute.bnd:biz.aQute.bnd.annotation:5.0.1;org.osgi:osgi.annotation:7.0.0;org.javassist:javassist:3.26.0-GA"/>
+      <attribute name="compile" value="biz.aQute.bnd:biz.aQute.bnd.annotation:5.0.1;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0;org.osgi:osgi.annotation:7.0.0;org.javassist:javassist:3.26.0-GA"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="42756" type="Long"/>
@@ -358,7 +358,8 @@
       <attribute name="version" value="0.9.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:org.osgi.util.function:1.1.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0;org.osgi:org.osgi.util.converter:1.0.1;org.osgi:org.osgi.service.component:1.4.0;org.osgi:org.osgi.framework:1.9.0;org.osgi:org.osgi.util.tracker:1.5.2;org.apache.felix:org.apache.felix.scr:2.1.16;org.javassist:javassist:3.26.0-GA"/>
+      <attribute name="compile" value="org.osgi:org.osgi.util.converter:1.0.1;org.osgi:org.osgi.framework:1.9.0;org.osgi:org.osgi.service.component:1.4.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.api:0.9.0;org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.impl:0.9.0;org.javassist:javassist:3.26.0-GA;org.osgi:org.osgi.util.function:1.1.0;org.apache.felix:org.apache.felix.scr:2.1.16;org.osgi:org.osgi.util.tracker:1.5.2"/>
+      <attribute name="provided" value="org.apache.felix.atomos.utils:org.apache.felix.atomos.utils.substrate.api:0.9.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="77168" type="Long"/>

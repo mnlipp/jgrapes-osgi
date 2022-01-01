@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799136">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="description" value="JNA Library"/>
+      <attribute name="osgi.identity" value="com.sun.jna"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="com.sun.jna"/>
+      <attribute name="bundle-version" value="5.3.1" type="Version"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.sun.jna"/>
+      <attribute name="bnd.hashes" value="1734937804,1011645072,-107576219,143636555,-2066592503,-1243039623,1799330952,-35807461,-289080218,1959973485,-1266259821,67115090,-1655620836,419555939,34313915,-324246369,-1104118976,-118311938,-767090194,1617781279,-1757733073,-1788611012,-600008204,1445582840,1999022169,1135052254,-103209542,-1828168328,-1440826607,-2102130904,72578400,-1552235651,-47188794,-1937510614,1830861979,-1061418522,-1993889503,1077360871,-50301103,65246,1892650003,-1859660773,-1968751561,8299652,802456403,-1917738678,2036849526,59395218,-1728363736,1939328147,-1926827967,1264047645,-1858239753,129772712,58277816,435809428,1992248122,1609606768,-901910602,-225171869,-1739497836,-1960178920,-1227429371,1958253071,-2146480813,-1913292826,-2095191613,-1703477571,-602323154,-845755546,381370939,81880751,-708542798,1338293199,623891089,2016261304,-1904709816,-2117159483" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="com.sun.jna"/>
+      <attribute name="bundle-version" value="5.3.1" type="Version"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.sun.jna.ptr"/>
+      <attribute name="bnd.hashes" value="435809428,584371820,-2048666621,2075933912,2063869285,1259223160,-471980191,-2120215977,1600800440" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="com.sun.jna"/>
+      <attribute name="bundle-version" value="5.3.1" type="Version"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.sun.jna.win32"/>
+      <attribute name="bnd.hashes" value="276072745,-231179519,-314094182,-1452773786,-1537667462,618538653,-1080859462,794067583" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="5.3.1" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="com.sun.jna"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="5.3.1" type="Version"/>
+      <attribute name="osgi.wiring.host" value="com.sun.jna"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.sun.jna"/>
+      <attribute name="from" value="net.java.dev.jna:jna:5.3.1"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+    </capability>
+    <capability namespace="bnd.mainclass">
+      <attribute name="bnd.mainclass" value="com.sun.jna.Native"/>
+      <attribute name="version" value="5.3.1" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="1505196" type="Long"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="01CB505C0698D0F7ACF3524C7E73ACB7DC424A5BAE5E9C86CE44075AB32BC4EE"/>
+    </capability>
+    <requirement namespace="osgi.native">
+      <directive name="filter" value="(|(&amp;(osgi.native.osname~=win32)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=win32)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=win)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=win)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=wince)(osgi.native.processor~=arm))(&amp;(osgi.native.osname~=sunos)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=sunos)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=sunos)(osgi.native.processor~=sparc))(&amp;(osgi.native.osname~=sunos)(osgi.native.processor~=sparcv9))(&amp;(osgi.native.osname~=aix)(osgi.native.processor~=ppc))(&amp;(osgi.native.osname~=aix)(osgi.native.processor~=ppc64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=ppc))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=ppc64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=ppc64le))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=arm))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=armel))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=aarch64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=ia64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=sparcv9))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=mips64el))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=S390x))(&amp;(osgi.native.osname~=freebsd)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=freebsd)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=openbsd)(osgi.native.processor~=x86))(&amp;(osgi.native.osname~=openbsd)(osgi.native.processor~=x86-64))(&amp;(osgi.native.osname~=macosx)(|(osgi.native.processor~=x86)(osgi.native.processor~=x86-64)(osgi.native.processor~=ppc))))"/>
+    </requirement>
+  </resource>
+</repository>
