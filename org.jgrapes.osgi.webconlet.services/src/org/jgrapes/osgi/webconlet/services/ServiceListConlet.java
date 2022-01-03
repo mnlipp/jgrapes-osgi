@@ -191,7 +191,8 @@ public class ServiceListConlet
     }
 
     @SuppressWarnings({ "PMD.NcssCount", "PMD.ConfusingTernary",
-        "PMD.NPathComplexity", "PMD.AssignmentInOperand" })
+        "PMD.NPathComplexity", "PMD.AssignmentInOperand",
+        "PMD.CognitiveComplexity" })
     private Map<String, Object>
             createServiceInfo(ServiceReference<?> serviceRef, Locale locale) {
         @SuppressWarnings("PMD.UseConcurrentHashMap")
@@ -237,9 +238,11 @@ public class ServiceListConlet
         if (componentName != null && bundle != null
             && (dto = scr.getComponentDescriptionDTO(bundle,
                 componentName)) != null) {
-            result.put("dsScope", "serviceScope"
-                + dto.scope.substring(0, 1).toUpperCase(Locale.US)
-                + dto.scope.substring(1));
+            if (dto.scope != null) {
+                result.put("dsScope", "serviceScope"
+                    + dto.scope.substring(0, 1).toUpperCase(Locale.US)
+                    + dto.scope.substring(1));
+            }
             result.put("implementationClass", dto.implementationClass);
         } else {
             Object service = context.getService(serviceRef);
