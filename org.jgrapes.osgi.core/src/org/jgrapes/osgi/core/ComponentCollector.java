@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
 import java.util.function.Function;
 import java.util.stream.StreamSupport;
 import org.jgrapes.core.Channel;
@@ -40,8 +39,15 @@ import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
- * An advanced version of the basic {@link org.jgrapes.core.ComponentCollector}
- * that is based on the OSGi registry and not on the {@link ServiceLoader}.
+ * A component that collects all services from the OSGi service registry
+ * which implement the {@link ComponentFactory} interface. It uses each 
+ * to create one or more components that are then attached to the 
+ * component collector instance.
+ * 
+ * Effectively, the component collector leverages OSGi's service layer
+ * to modify the component tree at run-time.
+ * 
+ * @param <F> the component factory type
  */
 public class ComponentCollector<F extends ComponentFactory> extends Component
         implements ServiceTrackerCustomizer<F, F> {
@@ -55,8 +61,11 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
     private Function<String, List<Map<Object, Object>>> matcher;
 
     /**
-     * Creates a collector component that uses the {@link ServiceTracker} to
-     * monitor the addition and removal of component factories.
+     * Creates a collector component that uses a {@link ServiceTracker} 
+     * to monitor the addition and removal of component factories.
+     * 
+     * @see #addingService(ServiceReference)
+     * @see #removedService(ServiceReference, ComponentFactory)
      *
      * @param componentChannel this component's channel
      * @param context the OSGi {@link BundleContext}
@@ -140,6 +149,7 @@ public class ComponentCollector<F extends ComponentFactory> extends Component
      * @see ServiceTrackerCustomizer#removedService(ServiceReference, Object)
      */
     @Override
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public void removedService(ServiceReference<F> reference, F service) {
         // Avoid ConcurrentModificationException
         List<ComponentType> toBeRemoved = new ArrayList<>();
