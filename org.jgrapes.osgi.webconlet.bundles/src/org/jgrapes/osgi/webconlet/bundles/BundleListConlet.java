@@ -89,7 +89,7 @@ public class BundleListConlet
      */
     @SuppressWarnings("PMD.UnusedFormalParameter")
     public BundleListConlet(Channel componentChannel, BundleContext context,
-            Map<Object, Object> properties) {
+            Map<?, ?> properties) {
         super(componentChannel);
         this.context = context;
         context.addBundleListener(this);

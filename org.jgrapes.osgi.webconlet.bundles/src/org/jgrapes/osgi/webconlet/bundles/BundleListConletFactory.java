@@ -51,7 +51,7 @@ public class BundleListConletFactory implements ConletComponentFactory {
      */
     @Override
     public Optional<ComponentType> create(
-            Channel componentChannel, Map<Object, Object> properties) {
+            Channel componentChannel, Map<?, ?> properties) {
         return Optional.of(new BundleListConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class), properties));
     }

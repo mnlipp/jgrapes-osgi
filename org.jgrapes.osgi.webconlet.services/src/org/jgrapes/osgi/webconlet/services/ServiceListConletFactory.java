@@ -60,7 +60,7 @@ public class ServiceListConletFactory implements ConletComponentFactory {
      */
     @Override
     public Optional<ComponentType> create(Channel componentChannel,
-            Map<Object, Object> properties) {
+            Map<?, ?> properties) {
         return Optional.of(new ServiceListConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class), scr));
     }

@@ -60,7 +60,7 @@ public class UPnPBrowserConletFactory implements ConletComponentFactory {
      */
     @Override
     public Optional<ComponentType> create(Channel componentChannel,
-            Map<Object, Object> properties) {
+            Map<?, ?> properties) {
         return Optional.of(new UPnPBrowserConlet(componentChannel,
             (BundleContext) properties.get(BundleContext.class), scr));
     }
