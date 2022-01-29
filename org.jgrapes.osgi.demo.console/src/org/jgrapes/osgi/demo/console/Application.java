@@ -28,6 +28,7 @@ import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import org.jgrapes.core.Channel;
@@ -61,6 +62,8 @@ import org.osgi.framework.BundleContext;
  */
 public class Application extends Component implements BundleActivator {
 
+    @SuppressWarnings({ "PMD.FieldNamingConventions",
+        "PMD.VariableNamingConventions" })
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
     private static BundleContext context;
     private Application app;
@@ -116,7 +119,7 @@ public class Application extends Component implements BundleActivator {
         // Build application layer
         app.attach(new InMemorySessionManager(app.channel()));
         app.attach(new LanguageSelector(app.channel()));
-        app.attach(new FileStorage(app.channel(), 65536));
+        app.attach(new FileStorage(app.channel(), 65_536));
 
         createJQueryUiConsole(context);
         createBootstrap4Console(context);
@@ -125,6 +128,7 @@ public class Application extends Component implements BundleActivator {
         LOG.info("Application started.");
     }
 
+    @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createJQueryUiConsole(BundleContext context)
             throws URISyntaxException {
         ConsoleWeblet consoleWeblet
@@ -142,8 +146,7 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration",
-                            "CoreWithJQUiPlugin"));
+                        Map.of("configuration", "CoreWithJQUiPlugin"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
@@ -152,6 +155,7 @@ public class Application extends Component implements BundleActivator {
             console, context, ConletComponentFactory.class));
     }
 
+    @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createBootstrap4Console(BundleContext context)
             throws URISyntaxException {
         ConsoleWeblet consoleWeblet
@@ -168,8 +172,7 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration",
-                            "CoreWithJQUiPlugin"));
+                        Map.of("configuration", "CoreWithJQUiPlugin"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
@@ -178,6 +181,7 @@ public class Application extends Component implements BundleActivator {
             console, context, ConletComponentFactory.class));
     }
 
+    @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createVueJsConsole(BundleContext context)
             throws URISyntaxException {
         ConsoleWeblet consoleWeblet
@@ -194,8 +198,7 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration",
-                            "CoreWithJQUiPlugin"));
+                        Map.of("configuration", "CoreWithJQUiPlugin"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }

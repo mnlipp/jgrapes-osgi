@@ -22,10 +22,8 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Component;
 import org.jgrapes.core.Components;

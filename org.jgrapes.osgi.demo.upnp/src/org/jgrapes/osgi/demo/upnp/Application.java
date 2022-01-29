@@ -25,6 +25,8 @@ import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
+
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import org.jgrapes.core.Channel;
@@ -76,6 +78,7 @@ public class Application extends Component implements BundleActivator {
      * BundleContext)
      */
     @Override
+    @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     public void start(BundleContext context) throws Exception {
         Application.context = context;
         // The demo component is the application
@@ -110,7 +113,7 @@ public class Application extends Component implements BundleActivator {
         // Build application layer
         app.attach(new InMemorySessionManager(app.channel()));
         app.attach(new LanguageSelector(app.channel()));
-        app.attach(new FileStorage(app.channel(), 65536));
+        app.attach(new FileStorage(app.channel(), 65_536));
         ConsoleWeblet consoleWeblet
             = app.attach(new VueJsConsoleWeblet(app.channel(), Channel.SELF,
                 new URI("/portal/")))
@@ -128,7 +131,7 @@ public class Application extends Component implements BundleActivator {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
                     return Arrays.asList(
-                        Components.mapOf("configuration", "CoreWithJQueryUI"));
+                        Map.of("configuration", "CoreWithJQueryUI"));
                 default:
                     return Arrays.asList(Collections.emptyMap());
                 }
