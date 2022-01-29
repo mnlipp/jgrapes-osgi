@@ -14,6 +14,7 @@ Private-Package: org.jgrapes.osgi.demo.console
 	de.mnl.osgi.lf4osgi;version=latest,\
 	org.jgrapes.core;version=latest,\
 	org.jgrapes.io;version=latest,\
+    org.jgrapes.util;version=latest,\
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.webconsole.base;version=latest,\
 	org.jgrapes.webconsole.jqueryui;version=latest,\
