@@ -46,8 +46,10 @@
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
     osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
     osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
-    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.30.0.ga)))',\
-    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.29.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.coreutils)(!(version>=2.1.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.core)(!(version>=1.3.2.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.31.5.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.31.0.ga)))',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
