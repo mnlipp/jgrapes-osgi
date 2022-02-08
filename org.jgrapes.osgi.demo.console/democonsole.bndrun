@@ -24,10 +24,10 @@
     bnd.identity; id=org.jgrapes.webconsole.jqueryui; version=latest,\
     bnd.identity; id=org.jgrapes.webconlet.sysinfo; version='latest',\
     bnd.identity; id=org.jgrapes.webconlet.markdowndisplay; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.webconlet.bundles; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.webconlet.services; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.webconlet.logviewer; version='latest',\
-    bnd.identity; id=org.jgrapes.osgi.demo.console; version='latest'
+    bnd.identity; id=org.jgrapes.osgi.webconlet.bundles; version='snapshot',\
+    bnd.identity; id=org.jgrapes.osgi.webconlet.services; version='snapshot',\
+    bnd.identity; id=org.jgrapes.osgi.webconlet.logviewer; version='snapshot',\
+    bnd.identity; id=org.jgrapes.osgi.demo.console; version='snapshot'
 
 # These cause (no longer working) webconsole 4.2.8 to be used:
 #    bnd.identity; id=org.apache.felix.webconsole.plugins.obr; version='latest',\
