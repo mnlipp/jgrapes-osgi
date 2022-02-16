@@ -43,9 +43,8 @@ import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
-import org.jgrapes.http.Session;
-import org.jgrapes.webconsole.base.AbstractConlet;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConletBaseModel;
 import org.jgrapes.webconsole.base.ConsoleSession;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
 import org.jgrapes.webconsole.base.events.AddConletRequest;
@@ -54,7 +53,6 @@ import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
-import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.events.SetLocale;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
@@ -123,62 +121,22 @@ public class BundleListConlet
     }
 
     @Override
-    protected String generateConletId() {
-        return type() + "-" + super.generateConletId();
+    protected Optional<BundleListModel> createNewState(AddConletRequest event,
+            ConsoleSession session, String conletId) throws Exception {
+        BundleListModel conletModel = new BundleListModel(conletId);
+        return Optional.of(conletModel);
     }
 
     @Override
-    protected Optional<BundleListModel> stateFromSession(
-            Session session, String conletId) {
-        if (conletId.startsWith(type() + "-")) {
-            return Optional.of(new BundleListModel(conletId));
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
-    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
-            ConsoleSession channel)
-            throws Exception {
-        BundleListModel conletModel = new BundleListModel(generateConletId());
-        Template tpl
-            = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
-        channel.respond(new RenderConletFromTemplate(event,
-            type(), conletModel.getConletId(), tpl,
-            fmModel(event, channel, conletModel))
-                .setRenderAs(RenderMode.Preview)
-                .setSupportedModes(MODES));
-        List<Map<String, Object>> bundleInfos
-            = Arrays.stream(context.getBundles())
-                .map(bndl -> createBundleInfo(bndl, channel.locale()))
-                .collect(Collectors.toList());
-        channel.respond(new NotifyConletView(type(),
-            conletModel.getConletId(), "bundleUpdates", bundleInfos,
-            "preview", true));
-        return new ConletTrackingInfo(conletModel.getConletId())
-            .addModes(RenderMode.asSet(RenderMode.Preview));
-    }
-
-    @Override
-    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
+    protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
             ConsoleSession channel, String conletId,
-            BundleListModel conletModel)
-            throws Exception {
-        return renderConlet(event, channel, conletModel);
-    }
-
-    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel,
-            BundleListModel conletModel) throws TemplateNotFoundException,
-            MalformedTemplateNameException, ParseException, IOException {
+            BundleListModel conletModel) throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event, type(),
-                conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                conletId, tpl, fmModel(event, channel, conletId, conletModel))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
@@ -187,16 +145,15 @@ public class BundleListConlet
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
                     .collect(Collectors.toList());
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "bundleUpdates", bundleInfos,
-                "preview", true));
+                conletId, "bundleUpdates", bundleInfos, "preview", true));
             renderedAs.add(RenderMode.Preview);
         }
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Bundles-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(), tpl,
-                fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletModel))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs())));
             List<Map<String, Object>> bundleInfos
@@ -204,8 +161,7 @@ public class BundleListConlet
                     .map(bndl -> createBundleInfo(bndl, channel.locale()))
                     .collect(Collectors.toList());
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "bundleUpdates", bundleInfos,
-                "view", true));
+                conletId, "bundleUpdates", bundleInfos, "view", true));
             renderedAs.add(RenderMode.View);
         }
         return renderedAs;
@@ -243,7 +199,7 @@ public class BundleListConlet
     }
 
     @Override
-    protected void doNotifyConletModel(NotifyConletModel event,
+    protected void doUpdateConletState(NotifyConletModel event,
             ConsoleSession channel, BundleListModel conletState)
             throws Exception {
         event.stop();
@@ -380,7 +336,7 @@ public class BundleListConlet
      * The bundle's model.
      */
     @SuppressWarnings("serial")
-    public class BundleListModel extends AbstractConlet.ConletBaseModel {
+    public class BundleListModel extends ConletBaseModel {
 
         /**
          * Instantiates a new bundle list model.

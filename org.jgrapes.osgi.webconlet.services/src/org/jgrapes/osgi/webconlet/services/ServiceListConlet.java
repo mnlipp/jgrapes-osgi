@@ -23,6 +23,7 @@ import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,23 +38,18 @@ import org.jgrapes.core.Channel;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
-import org.jgrapes.http.Session;
-import org.jgrapes.webconsole.base.AbstractConlet;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
 import org.jgrapes.webconsole.base.ConsoleSession;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
-import org.jgrapes.webconsole.base.events.AddConletRequest;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
-import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
@@ -65,8 +61,7 @@ import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
  */
 @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 public class ServiceListConlet
-        extends FreeMarkerConlet<AbstractConlet.ConletBaseModel>
-        implements ServiceListener {
+        extends FreeMarkerConlet<Serializable> implements ServiceListener {
 
     private final ServiceComponentRuntime scr;
     private static final Set<RenderMode> MODES = RenderMode.asSet(
@@ -116,48 +111,16 @@ public class ServiceListConlet
     }
 
     @Override
-    protected String generateConletId() {
-        return type() + "-" + super.generateConletId();
-    }
-
-    @Override
-    protected Optional<ConletBaseModel> stateFromSession(
-            Session session, String conletId) {
-        if (conletId.startsWith(type() + "-")) {
-            return Optional.of(new ConletBaseModel(conletId));
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
-            ConsoleSession channel)
+    protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel, String conletId, Serializable conletState)
             throws Exception {
-        ConletBaseModel conletModel
-            = new ConletBaseModel(generateConletId());
-        return new ConletTrackingInfo(conletModel.getConletId())
-            .addModes(renderConlet(event, channel, conletModel));
-    }
-
-    @Override
-    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
-            ConsoleSession channel, String conletId,
-            ConletBaseModel conletModel) throws Exception {
-        return renderConlet(event, channel, conletModel);
-    }
-
-    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, ConletBaseModel conletModel)
-            throws TemplateNotFoundException,
-            MalformedTemplateNameException, ParseException, IOException,
-            InvalidSyntaxException {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletState))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
@@ -166,16 +129,15 @@ public class ServiceListConlet
                 .map(svc -> createServiceInfo(svc, channel.locale()))
                 .collect(Collectors.toList());
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "serviceUpdates", serviceInfos,
-                "preview", true));
+                conletId, "serviceUpdates", serviceInfos, "preview", true));
             renderedAs.add(RenderMode.Preview);
         }
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(),
-                tpl, fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletState))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs())));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
@@ -183,8 +145,7 @@ public class ServiceListConlet
                 .map(svc -> createServiceInfo(svc, channel.locale()))
                 .collect(Collectors.toList());
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "serviceUpdates", serviceInfos,
-                "view", true));
+                conletId, "serviceUpdates", serviceInfos, "view", true));
             renderedAs.add(RenderMode.View);
         }
         return renderedAs;

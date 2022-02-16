@@ -40,14 +40,12 @@ import java.util.stream.Collectors;
 import org.jdrupes.httpcodec.types.Converters;
 import org.jdrupes.httpcodec.types.MediaType;
 import org.jgrapes.core.Channel;
-import org.jgrapes.core.Components;
 import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
-import org.jgrapes.http.Session;
 import org.jgrapes.io.IOSubchannel;
-import org.jgrapes.webconsole.base.AbstractConlet;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
+import org.jgrapes.webconsole.base.ConletBaseModel;
 import org.jgrapes.webconsole.base.ConsoleSession;
 import org.jgrapes.webconsole.base.RenderSupport;
 import org.jgrapes.webconsole.base.ResourceByInputStream;
@@ -59,7 +57,6 @@ import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConletResourceRequest;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
-import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.BundleContext;
@@ -132,73 +129,23 @@ public class UPnPBrowserConlet
                 WebConsoleUtils.uriFromPath("UPnPBrowser-style.css")));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#generateConletId()
-     */
     @Override
-    protected String generateConletId() {
-        return type() + "-" + super.generateConletId();
+    protected Optional<UPnPBrowserModel> createNewState(AddConletRequest event,
+            ConsoleSession session, String conletId) throws Exception {
+        return Optional.of(new UPnPBrowserModel(conletId));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#modelFromSession
-     */
-    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
     @Override
-    protected Optional<UPnPBrowserModel> stateFromSession(
-            Session session, String conletId) {
-        if (conletId.startsWith(type() + "-")) {
-            return Optional.of(new UPnPBrowserModel(conletId));
-        }
-        return Optional.empty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doAddConlet
-     */
-    @Override
-    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
-            ConsoleSession channel)
-            throws Exception {
-        UPnPBrowserModel conletModel
-            = new UPnPBrowserModel(generateConletId());
-        return new ConletTrackingInfo(conletModel.getConletId())
-            .addModes(renderConlet(event, channel, conletModel));
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doRenderConlet
-     */
-    @Override
-    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
+    protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
             ConsoleSession channel, String conletId,
-            UPnPBrowserModel conletModel)
-            throws Exception {
-        return renderConlet(event, channel, conletModel);
-    }
-
-    @SuppressWarnings({ "PMD.AvoidDuplicateLiterals",
-        "PMD.DataflowAnomalyAnalysis", "unchecked" })
-    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, UPnPBrowserModel conletModel)
-            throws TemplateNotFoundException,
-            MalformedTemplateNameException, ParseException, IOException,
-            InvalidSyntaxException {
+            UPnPBrowserModel conletState) throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl = freemarkerConfig()
                 .getTemplate("UPnPBrowser-preview.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(), tpl,
-                fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletState))
                     .setRenderAs(
                         RenderMode.Preview.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
@@ -209,16 +156,15 @@ public class UPnPBrowserConlet
                     (ServiceReference<UPnPDevice>) svc, event.renderSupport()))
                 .collect(Collectors.toList());
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "deviceUpdates", deviceInfos,
-                "preview", true));
+                conletId, "deviceUpdates", deviceInfos, "preview", true));
             renderedAs.add(RenderMode.Preview);
         }
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("UPnPBrowser-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(), tpl,
-                fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletState))
                     .setRenderAs(
                         RenderMode.View.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
@@ -231,8 +177,7 @@ public class UPnPBrowserConlet
                 .forEach(devInfo -> deviceInfos.put((String) devInfo.get("udn"),
                     devInfo));
             channel.respond(new NotifyConletView(type(),
-                conletModel.getConletId(), "deviceUpdates",
-                treeify(deviceInfos), "view", true));
+                conletId, "deviceUpdates", treeify(deviceInfos), "view", true));
             renderedAs.add(RenderMode.View);
         }
         return renderedAs;
@@ -257,7 +202,7 @@ public class UPnPBrowserConlet
             if (device.getIcons(null) != null) {
                 result.put("iconUrl", WebConsoleUtils.mergeQuery(
                     renderSupport.conletResource(type(), ""),
-                    Components.mapOf("udn", (String) deviceRef
+                    Map.of("udn", (String) deviceRef
                         .getProperty(UPnPDevice.UDN), "resource", "icon"))
                     .toASCIIString());
             }
@@ -362,7 +307,7 @@ public class UPnPBrowserConlet
      * The conlet's model.
      */
     @SuppressWarnings("serial")
-    public class UPnPBrowserModel extends AbstractConlet.ConletBaseModel {
+    public class UPnPBrowserModel extends ConletBaseModel {
 
         /**
          * Instantiates a new service list model.
