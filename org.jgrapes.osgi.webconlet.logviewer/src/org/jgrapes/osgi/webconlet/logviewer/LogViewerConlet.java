@@ -26,6 +26,7 @@ import freemarker.template.TemplateNotFoundException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -37,23 +38,18 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.core.events.Stop;
-import org.jgrapes.http.Session;
-import org.jgrapes.webconsole.base.AbstractConlet;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
 import org.jgrapes.webconsole.base.ConsoleSession;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
-import org.jgrapes.webconsole.base.events.AddConletRequest;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
-import org.jgrapes.webconsole.base.events.RenderConletRequest;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.events.SetLocale;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
@@ -61,15 +57,14 @@ import org.osgi.service.log.LogReaderService;
 /**
  * A conlet for displaying the OSGi log.
  */
-public class LogViewerConlet
-        extends FreeMarkerConlet<AbstractConlet.ConletBaseModel> {
+public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
 
     private static final Set<RenderMode> MODES
         = RenderMode.asSet(RenderMode.View);
-    private ServiceCollector<LogReaderService,
+    private final ServiceCollector<LogReaderService,
             LogReaderService> logReaderCollector;
     private LogReaderService logReaderResolved;
-    private LogListener logReaderListener;
+    private final LogListener logReaderListener;
 
     /**
      * Creates a new component with its channel set to the given channel.
@@ -144,72 +139,20 @@ public class LogViewerConlet
                 WebConsoleUtils.uriFromPath("LogViewer-style.css")));
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#generateConletId()
-     */
     @Override
-    protected String generateConletId() {
-        return type() + "-" + super.generateConletId();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#modelFromSession
-     */
-    @SuppressWarnings("PMD.AvoidDuplicateLiterals")
-    @Override
-    protected Optional<ConletBaseModel> stateFromSession(
-            Session session, String conletId) {
-        if (conletId.startsWith(type() + "-")) {
-            return Optional.of(new ConletBaseModel(conletId));
-        }
-        return Optional.empty();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doAddConlet
-     */
-    @Override
-    protected ConletTrackingInfo doAddConlet(AddConletRequest event,
-            ConsoleSession channel) throws Exception {
-        ConletBaseModel conletModel
-            = new ConletBaseModel(generateConletId());
-        return new ConletTrackingInfo(conletModel.getConletId())
-            .addModes(renderConlet(event, channel, conletModel));
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgrapes.console.AbstractConlet#doRenderConlet
-     */
-    @Override
-    protected Set<RenderMode> doRenderConlet(RenderConletRequest event,
-            ConsoleSession channel, String conletId,
-            ConletBaseModel conletModel) throws Exception {
-        return renderConlet(event, channel, conletModel);
-    }
-
-    private Set<RenderMode> renderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, ConletBaseModel conletModel)
-            throws TemplateNotFoundException,
-            MalformedTemplateNameException, ParseException, IOException,
-            InvalidSyntaxException {
+    protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
+            ConsoleSession channel, String conletId, Serializable conletState)
+            throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
             channel.respond(new RenderConletFromTemplate(event,
-                type(), conletModel.getConletId(), tpl,
-                fmModel(event, channel, conletModel))
+                type(), conletId, tpl,
+                fmModel(event, channel, conletId, conletState))
                     .setRenderAs(RenderMode.View.addModifiers(event.renderAs()))
                     .setSupportedModes(MODES));
-            sendAllEntries(channel, conletModel.getConletId());
+            sendAllEntries(channel, conletId);
             renderedAs.add(RenderMode.View);
         }
         return renderedAs;
@@ -271,8 +214,8 @@ public class LogViewerConlet
      * @see org.jgrapes.console.AbstractConlet#doNotifyConletModel
      */
     @Override
-    protected void doNotifyConletModel(NotifyConletModel event,
-            ConsoleSession channel, ConletBaseModel conletState)
+    protected void doUpdateConletState(NotifyConletModel event,
+            ConsoleSession channel, Serializable conletState)
             throws Exception {
         event.stop();
         switch (event.method()) {
