@@ -68,7 +68,7 @@ configurePublishing {
             }
             appendNode('licenses').with {
                 appendNode('license').with {
-                    appendNode('name', 'GPL 3.0')
+                    appendNode('name', 'AGPL 3.0')
                     appendNode('url', 'https://www.gnu.org/licenses/agpl-3.0.en.html')
                     appendNode('distribution', 'repo')
                 }
