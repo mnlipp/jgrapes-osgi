@@ -21,12 +21,8 @@ class ConfigurePublishing implements Plugin<Project> {
 					
 					project.afterEvaluate {
 						artifactId = project.archivesBaseName
-						artifact(project.tasks.sourcesJar) {
-							classifier = 'sources'
-						}
-						artifact(project.tasks.javadocJar) {
-							classifier = 'javadoc'
-						}
+						artifact project.tasks.sourcesJar
+						artifact project.tasks.javadocJar
 						pom.packaging = "jar"
 
 						// Until https://github.com/gradle/gradle/issues/1232 is fixed:

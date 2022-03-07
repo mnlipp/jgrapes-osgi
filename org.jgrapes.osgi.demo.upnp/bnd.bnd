@@ -23,9 +23,6 @@ Private-Package: org.jgrapes.osgi.demo.upnp
 -includeresource: \
 	resources
 
-# Since we have no tests but gradle creates a classpath entry for testbin...
-testbin=bin/main
-
 -fixupmessages: \
     "The .classpath contains an unknown container: GROOVY_DSL_SUPPORT. This could make your build less portable.", \
     "The .classpath contains a library that will not be available during continuous integration:"
