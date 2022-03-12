@@ -31,13 +31,16 @@
  *         package org.jgrapes.osgi.core [[./package-summary.html#package.description]] {
  *         }
  *         
- *         package org.jgrapes.osgi.webconlet.logviewer [[../webconlet/logviewer/package-summary.html#package.description]] {
+ *         package org.jgrapes.osgi.webconlet.logviewer \
+ *         [[../webconlet/logviewer/package-summary.html#package.description]] {
  *         }
  *         
- *         package org.jgrapes.osgi.webconlet.bundles [[../webconlet/bundles/package-summary.html#package.description]] {
+ *         package org.jgrapes.osgi.webconlet.bundles \
+ *         [[../webconlet/bundles/package-summary.html#package.description]] {
  *         }
  *         
- *         package org.jgrapes.osgi.webconlet.services [[../webconlet/services/package-summary.html#package.description]] {
+ *         package org.jgrapes.osgi.webconlet.services \
+ *         [[../webconlet/services/package-summary.html#package.description]] {
  *         }
  *         
  *     }
@@ -48,6 +51,10 @@
  * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.logviewer
  * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.bundles
  * "org.jgrapes.*" <.. org.jgrapes.osgi.webconlet.services
+ * 
+ * org.jgrapes.osgi.core -[hidden]right-> org.jgrapes.osgi.webconlet.logviewer
+ * org.jgrapes.osgi.webconlet.logviewer -[hidden]up-> org.jgrapes.osgi.webconlet.bundles
+ * org.jgrapes.osgi.webconlet.logviewer -[hidden]up-> org.jgrapes.osgi.webconlet.services
  * 
  * @enduml
  */
