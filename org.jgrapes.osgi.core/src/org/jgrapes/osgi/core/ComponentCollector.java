@@ -31,6 +31,7 @@ import org.jgrapes.core.Channel;
 import org.jgrapes.core.ComponentFactory;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.util.ComponentProvider;
+import org.jgrapes.util.events.ConfigurationUpdate;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
