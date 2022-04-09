@@ -46,6 +46,7 @@ import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletModel;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConlet;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.events.SetLocale;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
@@ -106,6 +107,11 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
 
     }
 
+    /**
+     * Detach from OSGi framework.
+     *
+     * @param event the event
+     */
     @Handler(channels = Channel.class)
     public void onStop(Stop event) {
         logReaderCollector.close();
@@ -147,11 +153,12 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("LogViewer-view.ftl.html");
-            channel.respond(new RenderConletFromTemplate(event,
-                type(), conletId, tpl,
-                fmModel(event, channel, conletId, conletState))
-                    .setRenderAs(RenderMode.View.addModifiers(event.renderAs()))
-                    .setSupportedModes(MODES));
+            channel.respond(new RenderConlet(type(), conletId,
+                processTemplate(event, tpl,
+                    fmModel(event, channel, conletId, conletState)))
+                        .setRenderAs(
+                            RenderMode.View.addModifiers(event.renderAs()))
+                        .setSupportedModes(MODES));
             sendAllEntries(channel, conletId);
             renderedAs.add(RenderMode.View);
         }
@@ -169,6 +176,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
                 .map(entry -> logEntryAsMap(entry)).toArray()));
     }
 
+    @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     private void addEntry(LogEntry entry) {
         for (ConsoleSession consoleSession : trackedSessions()) {
             for (String conletId : conletIds(consoleSession)) {
@@ -180,6 +188,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
     }
 
     private Map<String, Object> logEntryAsMap(LogEntry entry) {
+        @SuppressWarnings("PMD.UseConcurrentHashMap")
         Map<String, Object> result = new HashMap<>();
         result.put("bundle",
             Optional
@@ -190,9 +199,9 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
         result.put("stacktrace", Optional.ofNullable(entry.getException())
             .map(exc -> {
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
-                PrintWriter pw = new PrintWriter(out);
-                exc.printStackTrace(pw);
-                pw.close();
+                PrintWriter printWriter = new PrintWriter(out);
+                exc.printStackTrace(printWriter);
+                printWriter.close();
                 return out.toString();
             }).orElse(""));
         result.put("location", Optional.ofNullable(entry.getLocation())
@@ -214,6 +223,8 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
      * @see org.jgrapes.console.AbstractConlet#doNotifyConletModel
      */
     @Override
+    @SuppressWarnings({ "PMD.SwitchStmtsShouldHaveDefault",
+        "PMD.TooFewBranchesForASwitchStatement" })
     protected void doUpdateConletState(NotifyConletModel event,
             ConsoleSession channel, Serializable conletState)
             throws Exception {
