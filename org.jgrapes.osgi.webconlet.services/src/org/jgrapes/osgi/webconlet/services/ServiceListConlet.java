@@ -45,6 +45,7 @@ import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
 import org.jgrapes.webconsole.base.events.ConsoleReady;
 import org.jgrapes.webconsole.base.events.NotifyConletView;
+import org.jgrapes.webconsole.base.events.RenderConlet;
 import org.jgrapes.webconsole.base.events.RenderConletRequestBase;
 import org.jgrapes.webconsole.base.freemarker.FreeMarkerConlet;
 import org.osgi.framework.Bundle;
@@ -118,12 +119,12 @@ public class ServiceListConlet
         if (event.renderAs().contains(RenderMode.Preview)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-preview.ftl.html");
-            channel.respond(new RenderConletFromTemplate(event,
-                type(), conletId, tpl,
-                fmModel(event, channel, conletId, conletState))
-                    .setRenderAs(
-                        RenderMode.Preview.addModifiers(event.renderAs()))
-                    .setSupportedModes(MODES));
+            channel.respond(new RenderConlet(type(), conletId,
+                processTemplate(event, tpl,
+                    fmModel(event, channel, conletId, conletState)))
+                        .setRenderAs(
+                            RenderMode.Preview.addModifiers(event.renderAs()))
+                        .setSupportedModes(MODES));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null, null))
                 .map(svc -> createServiceInfo(svc, channel.locale()))
@@ -135,11 +136,11 @@ public class ServiceListConlet
         if (event.renderAs().contains(RenderMode.View)) {
             Template tpl
                 = freemarkerConfig().getTemplate("Services-view.ftl.html");
-            channel.respond(new RenderConletFromTemplate(event,
-                type(), conletId, tpl,
-                fmModel(event, channel, conletId, conletState))
-                    .setRenderAs(
-                        RenderMode.View.addModifiers(event.renderAs())));
+            channel.respond(new RenderConlet(type(), conletId,
+                processTemplate(event, tpl,
+                    fmModel(event, channel, conletId, conletState)))
+                        .setRenderAs(
+                            RenderMode.View.addModifiers(event.renderAs())));
             List<Map<String, Object>> serviceInfos = Arrays.stream(
                 context.getAllServiceReferences(null, null))
                 .map(svc -> createServiceInfo(svc, channel.locale()))
