@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<repository increment="1646840476637" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1649874917025" name="IndexedMaven" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
     <referral url="org.jgrapes/index.xml"/>
     <referral url="dependencies/org.ops4j.base/index.xml"/>
     <referral url="org.slf4j/index.xml"/>
     <referral url="dependencies/org.jdrupes.httpcodec/index.xml"/>
     <referral url="dependencies/ch.qos.logback/index.xml"/>
     <referral url="dependencies/com.fasterxml.jackson.core/index.xml"/>
-    <referral url="dependencies/commons-io/index.xml"/>
     <referral url="dependencies/org.apache.felix.atomos.utils/index.xml"/>
+    <referral url="dependencies/commons-io/index.xml"/>
     <referral url="dependencies/org.apache.johnzon/index.xml"/>
     <referral url="dependencies/org.apache.aries/index.xml"/>
     <referral url="dependencies/org.jdrupes.json/index.xml"/>
     <referral url="dependencies/org.json/index.xml"/>
     <referral url="dependencies/biz.aQute.bnd/index.xml"/>
-    <referral url="dependencies/org.apache.aries.spec/index.xml"/>
     <referral url="dependencies/portlet-api/index.xml"/>
     <referral url="dependencies/com.google.code.findbugs/index.xml"/>
     <referral url="dependencies/org.apache.geronimo.specs/index.xml"/>
@@ -41,8 +40,8 @@
     <referral url="dependencies/org.apache.maven/index.xml"/>
     <referral url="dependencies/org.codehaus.mojo/index.xml"/>
     <referral url="org.apache.felix/index.xml"/>
-    <referral url="dependencies/net.sf.kxml/index.xml"/>
     <referral url="dependencies/org.ow2.asm/index.xml"/>
+    <referral url="dependencies/net.sf.kxml/index.xml"/>
     <referral url="dependencies/org.jetbrains/index.xml"/>
     <referral url="dependencies/log4j/index.xml"/>
     <referral url="dependencies/junit/index.xml"/>
@@ -55,8 +54,8 @@
     <referral url="dependencies/org.eclipse.jetty.websocket/index.xml"/>
     <referral url="dependencies/org.eclipse.platform/index.xml"/>
     <referral url="dependencies/org.eclipse/index.xml"/>
-    <referral url="dependencies/asm/index.xml"/>
     <referral url="dependencies/org.freemarker/index.xml"/>
+    <referral url="dependencies/asm/index.xml"/>
     <referral url="dependencies/org.hamcrest/index.xml"/>
     <referral url="dependencies/jmock/index.xml"/>
 </repository>
