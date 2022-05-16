@@ -66,10 +66,15 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
             const resync = () => {
                 JGConsole.notifyConletModel(conletId, "resync");
             };
+            const formatter = computed(() => {
+                return new Intl.DateTimeFormat(JGWC.lang(), 
+                        { year: "numeric", month: "numeric", day: "numeric",
+                          hour: "numeric", minute: "numeric", 
+                          hour12: false,
+                          second: "numeric", fractionalSecondDigits: 3 });
+            })
             const formatTimestamp = (timestamp) => {
-                let ts = moment(timestamp);
-                ts.locale(JGWC.lang());
-                return ts.format("L HH:mm:ss.SSS");
+                return formatter.value.format(timestamp);
             };
             const toggleExpanded = (key) => {
                 if (key in expandedByKey) {
