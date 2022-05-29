@@ -55,7 +55,7 @@
     osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.lf4osgi)(!(version>=2.2.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.jul2osgi)(!(version>=1.6.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.core)(!(version>=1.4.0.ga)))',\
-    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.36.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.37.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.36.0.ga)))',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
@@ -110,28 +110,28 @@
 	org.freemarker.freemarker;version='[2.3.31,2.3.32)',\
 	org.jdrupes.httpcodec;version='[2.3.0,2.3.1)',\
 	org.jdrupes.json;version='[2.3.1,2.3.2)',\
-	org.jgrapes.core;version='[1.5.0,1.5.1)',\
-	org.jgrapes.http;version='[1.5.0,1.5.1)',\
-	org.jgrapes.io;version='[1.5.0,1.5.1)',\
-	org.jgrapes.util;version='[1.5.0,1.5.1)',\
-	org.jgrapes.webconsole.base;version='[0.36.0,0.36.1)',\
-	org.jgrapes.webconsole.bootstrap4;version='[0.39.0,0.39.1)',\
-	org.jgrapes.webconsole.jqueryui;version='[0.36.0,0.36.1)',\
-	org.jgrapes.webconsole.vuejs;version='[0.15.0,0.15.1)',\
-	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.12.0,0.12.1)',\
-	org.jgrapes.webconsole.provider.jquery;version='[0.2.0,0.2.1)',\
-	org.jgrapes.webconsole.provider.chartjs;version='[0.31.0,0.31.1)',\
-	org.jgrapes.webconsole.provider.fontawesome;version='[0.28.0,0.28.1)',\
-	org.jgrapes.webconsole.provider.markdownit;version='[0.27.0,0.27.1)',\
+	org.jgrapes.core;version='[1.8.0,1.8.1)',\
+	org.jgrapes.http;version='[1.8.0,1.8.1)',\
+	org.jgrapes.io;version='[1.8.0,1.8.1)',\
+	org.jgrapes.util;version='[1.8.0,1.8.1)',\
+	org.jgrapes.webconsole.base;version='[0.37.0,0.37.1)',\
+	org.jgrapes.webconsole.bootstrap4;version='[0.40.0,0.40.1)',\
+	org.jgrapes.webconsole.jqueryui;version='[0.37.0,0.37.1)',\
+	org.jgrapes.webconsole.vuejs;version='[0.16.0,0.16.1)',\
+	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.13.0,0.13.1)',\
+	org.jgrapes.webconsole.provider.jquery;version='[0.2.1,0.2.2)',\
+	org.jgrapes.webconsole.provider.chartjs;version='[0.31.1,0.31.2)',\
+	org.jgrapes.webconsole.provider.fontawesome;version='[0.28.1,0.28.2)',\
+	org.jgrapes.webconsole.provider.markdownit;version='[0.27.1,0.27.2)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.6.0,0.6.1)',\
-	org.jgrapes.webconsole.provider.jqueryui;version='[0.2.0,0.2.1)',\
-	org.jgrapes.webconsole.provider.gridstack;version='[0.9.0,0.9.1)',\
-	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.2.0,0.2.1)',\
-	org.jgrapes.webconlet.examples.helloworld;version='[0.3.0,0.3.1)',\
-	org.jgrapes.webconlet.examples.styletest;version='[0.4.0,0.4.1)',\
-	org.jgrapes.webconlet.examples.formtest;version='[0.3.0,0.3.1)',\
-	org.jgrapes.webconlet.markdowndisplay;version='[0.34.0,0.34.1)',\
-	org.jgrapes.webconlet.sysinfo;version='[0.37.0,0.37.1)',\
+	org.jgrapes.webconsole.provider.jqueryui;version='[0.2.1,0.2.2)',\
+	org.jgrapes.webconsole.provider.gridstack;version='[0.9.1,0.9.2)',\
+	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.2.1,0.2.2)',\
+	org.jgrapes.webconlet.examples.helloworld;version='[0.4.0,0.4.1)',\
+	org.jgrapes.webconlet.examples.styletest;version='[0.4.1,0.4.2)',\
+	org.jgrapes.webconlet.examples.formtest;version='[0.3.1,0.3.2)',\
+	org.jgrapes.webconlet.markdowndisplay;version='[0.35.0,0.35.1)',\
+	org.jgrapes.webconlet.sysinfo;version='[0.37.1,0.37.2)',\
 	org.jgrapes.osgi.demo.console;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.24,1.9.25)',\
 	org.apache.felix.scr;version='[2.2.0,2.2.1)',\
@@ -140,7 +140,7 @@
 	org.apache.felix.metatype;version='[1.2.4,1.2.5)',\
 	org.apache.felix.eventadmin;version='[1.6.2,1.6.3)',\
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
-	org.apache.felix.webconsole;version='[4.7.2,4.7.3)',\
+	org.apache.felix.webconsole;version='[4.8.2,4.8.3)',\
 	org.apache.felix.webconsole.plugins.memoryusage;version='[1.0.10,1.0.11)',\
 	org.osgi.service.component;version='[1.5.0,1.5.1)',\
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
