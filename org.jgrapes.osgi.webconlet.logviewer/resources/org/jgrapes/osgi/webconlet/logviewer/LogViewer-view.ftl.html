@@ -32,11 +32,10 @@
 
       <label class="form__label--horizontal">
         <span>${_("Filter")}</span>
-        <input type="search" v-on:input="controller.updateFilter($event)">
-        <span class="form-item">
-          <span role="button" class="fas fa-backspace" 
-            v-on:click="controller.clearFilter($event)"></span>
-        </span>
+        <input type="text" class="form__input-text--with-remove"
+          v-on:input="controller.updateFilter($event)">
+        <span role="button" tabindex="0" class="fa fa-remove" 
+          v-on:click="controller.clearFilter($event)"></span>
       </label>
     </form>
   </div>

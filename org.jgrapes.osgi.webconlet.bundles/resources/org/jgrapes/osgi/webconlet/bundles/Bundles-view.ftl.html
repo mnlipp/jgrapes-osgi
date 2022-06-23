@@ -5,8 +5,9 @@
     <form>
       <label class="form__label--horizontal">
         <span>{{ localize("Filter") }}</span>
-        <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" tabindex="0" class="fas fa-backspace" 
+        <input type="text" class="form__input-text--with-remove" 
+          v-on:input="controller.updateFilter($event)">
+        <span role="button" tabindex="0" class="fa fa-remove" 
           v-on:click="controller.clearFilter($event)"></span>
       </label>
     </form>
@@ -46,15 +47,15 @@
           </td>
           <td class="jgrapes-osgi-bundles-view-action-list">
             <span role="button" v-if="entry.startable" 
-              tabindex="0" class="fas fa-play" :title="localize('bundleStart')"
+              tabindex="0" class="fa fa-play" :title="localize('bundleStart')"
               v-on:click="bundleAction(entry.id, 'start')"></span>
             <span role="button" v-if="entry.stoppable"
-              tabindex="0" class="fas fa-stop" :title="localize('bundleStop')"
+              tabindex="0" class="fa fa-stop" :title="localize('bundleStop')"
               v-on:click="bundleAction(entry.id, 'stop')"></span>
-            <span role="button" class="fas fa-sync" tabindex="0"
+            <span role="button" class="fa fa-sync" tabindex="0"
               :title="localize('bundleUpdate')"
               v-on:click="bundleAction(entry.id, 'update')"></span>
-            <span role="button" class="fas fa-eject" tabindex="0"
+            <span role="button" class="fa fa-eject" tabindex="0"
               :title="localize('bundleUninstall')"
               v-bind:disabled="!entry.uninstallable"
               v-on:click="bundleAction(entry.id, 'uninstall')"></span>

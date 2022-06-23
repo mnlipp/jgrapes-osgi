@@ -5,8 +5,9 @@
     <form>
       <label class="form__label--horizontal">
         <span>{{ localize("Filter") }}</span>
-        <input type="search" v-on:input="controller.updateFilter($event)">
-        <span role="button" tabindex="0" class="fas fa-backspace" 
+        <input type="text" class="form__input-text--with-remove"
+          v-on:input="controller.updateFilter($event)">
+        <span role="button" tabindex="0" class="fa fa-remove" 
           v-on:click="controller.clearFilter($event)"></span>
       </label>
     </form>
