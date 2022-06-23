@@ -57,6 +57,7 @@
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.core)(!(version>=1.4.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=0.40.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.36.0.ga)))',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.webconsole.provider.fontawesome)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
@@ -114,14 +115,14 @@
 	org.jgrapes.http;version='[1.8.0,1.8.1)',\
 	org.jgrapes.io;version='[1.8.0,1.8.1)',\
 	org.jgrapes.util;version='[1.8.0,1.8.1)',\
-	org.jgrapes.webconsole.base;version='[0.40.0,0.40.1)',\
-	org.jgrapes.webconsole.bootstrap4;version='[0.41.0,0.41.1)',\
-	org.jgrapes.webconsole.jqueryui;version='[0.38.0,0.38.1)',\
-	org.jgrapes.webconsole.vuejs;version='[0.18.0,0.18.1)',\
+	org.jgrapes.webconsole.base;version='[0.41.0,0.41.1)',\
+	org.jgrapes.webconsole.bootstrap4;version='[0.42.0,0.42.1)',\
+	org.jgrapes.webconsole.jqueryui;version='[0.39.0,0.39.1)',\
+	org.jgrapes.webconsole.vuejs;version='[0.20.0,0.20.1)',\
 	org.jgrapes.webconsole.provider.jgwcvuecomponents;version='[0.13.1,0.13.2)',\
 	org.jgrapes.webconsole.provider.jquery;version='[0.2.2,0.2.3)',\
 	org.jgrapes.webconsole.provider.chartjs;version='[0.31.2,0.31.3)',\
-	org.jgrapes.webconsole.provider.fontawesome;version='[0.29.0,0.29.1)',\
+	org.jgrapes.webconsole.provider.forkawesome;version='[0.1.0,0.1.1)',\
 	org.jgrapes.webconsole.provider.markdownit;version='[0.27.2,0.27.3)',\
 	org.jgrapes.webconsole.provider.vue;version='[0.6.2,0.6.3)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.2.2,0.2.3)',\
@@ -129,9 +130,9 @@
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.2.2,0.2.3)',\
 	org.jgrapes.webconlet.examples.helloworld;version='[0.4.1,0.4.2)',\
 	org.jgrapes.webconlet.examples.styletest;version='[0.4.2,0.4.3)',\
-	org.jgrapes.webconlet.examples.formtest;version='[0.3.2,0.3.3)',\
+	org.jgrapes.webconlet.examples.formtest;version='[0.4.0,0.4.1)',\
 	org.jgrapes.webconlet.markdowndisplay;version='[0.35.1,0.35.2)',\
-	org.jgrapes.webconlet.sysinfo;version='[0.37.2,0.37.3)',\
+	org.jgrapes.webconlet.sysinfo;version='[0.38.0,0.38.1)',\
 	org.jgrapes.osgi.demo.console;version=snapshot,\
 	org.apache.felix.configadmin;version='[1.9.24,1.9.25)',\
 	org.apache.felix.scr;version='[2.2.2,2.2.3)',\
