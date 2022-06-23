@@ -16,7 +16,9 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-import Vue from "../../page-resource/vue/vue.esm.browser.js"
+// NOT ADAPTED TO VUE3 YET
+import { reactive, createApp, computed }
+    from "../../page-resource/vue/vue.esm-browser.js";
 
 window.orgJGrapesOsgiConletUPnPBrowser = {};
 

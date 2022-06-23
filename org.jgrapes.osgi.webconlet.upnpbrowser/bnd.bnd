@@ -17,19 +17,20 @@ Private-Package: org.jgrapes.osgi.webconlet.upnpbrowser
 	osgi.annotation;version=6.0.1,\
     org.osgi.compendium;version='[4.1.0,4.1.1)',\
 	osgi.cmpn;version=6.0,\
-	org.jgrapes.core;version='[1.3.0,2)',\
-	org.jgrapes.io;version='[1.3.0,2)',\
-	org.jgrapes.http;version='[1.3.0,2)',\
+	org.jgrapes.core;version=latest,\
+	org.jgrapes.io;version=latest,\
+	org.jgrapes.http;version=latest,\
 	org.jgrapes.webconsole.base;version=latest,\
     org.jdrupes.json;version=latest,\
     org.jdrupes.httpcodec;version=latest,\
-	org.freemarker.freemarker;version='[2.3.27,2.4)'
+	org.freemarker.freemarker;version=latest
 
 Require-Capability: \
     osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=jquery)",\
     org.jgrapes.webconsole.page.resource;filter:="(name=vue)",\
-    org.jgrapes.webconsole.page.resource;filter:="(name=fontawesome-free)"
+    org.jgrapes.webconsole.page.resource;filter:="(name=jgwc-vue-components)",\
+    org.jgrapes.webconsole.page.resource;filter:="(name=fork-awesome)"
 
 -fixupmessages: \
     "The .classpath contains an unknown container: org.eclipse.buildship.core.gradleclasspathcontainer. This could make your build less portable.", \

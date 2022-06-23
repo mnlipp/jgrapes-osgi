@@ -1,4 +1,4 @@
--runfw: org.apache.felix.framework;version='[7.0.3,7.0.3]'
+-runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 
 -runrequires: \
     bnd.identity; id=org.apache.felix.log; version='latest',\
@@ -17,6 +17,7 @@
     bnd.identity; id=org.apache.felix.http.jetty; version='latest',\
     bnd.identity; id=org.apache.felix.webconsole; version='latest',\
     bnd.identity; id=org.apache.felix.webconsole.plugins.memoryusage; version='latest',\
+    bnd.identity; id=org.apache.felix.webconsole.plugins.upnp; version='latest',\
     \
     bnd.identity; id=org.jgrapes.webconsole.base; version=latest,\
     bnd.identity; id=org.jgrapes.webconsole.vuejs; version=latest,\
@@ -25,6 +26,9 @@
     bnd.identity; id=org.jgrapes.osgi.webconlet.bundles; version='snapshot',\
     bnd.identity; id=org.jgrapes.osgi.webconlet.services; version='snapshot',\
     bnd.identity; id=org.jgrapes.osgi.webconlet.logviewer; version='snapshot',\
+    \
+    bnd.identity; id=org.apache.felix.upnp.basedriver; version='latest',\
+    \
     bnd.identity; id=org.jgrapes.osgi.demo.upnp; version='snapshot'
 
 # These cause (no longer working) webconsole 4.2.8 to be used:
@@ -116,6 +120,8 @@
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
 	org.apache.felix.webconsole;version='[4.8.2,4.8.3)',\
 	org.apache.felix.webconsole.plugins.memoryusage;version='[1.0.10,1.0.11)',\
+    de.twentyeleven.skysail.org.json-osgi;version='[20080701.0.0,20080701.0.1)',\
+    org.apache.felix.webconsole.plugins.upnp;version='[1.0.0,1.0.1)',\
 	org.jdrupes.httpcodec;version='[2.4.0,2.4.1)',\
 	org.jdrupes.json;version='[2.3.1,2.3.2)',\
 	org.jgrapes.core;version='[1.8.0,1.8.1)',\
@@ -139,4 +145,6 @@
 	org.jgrapes.osgi.webconlet.bundles;version='[0.19.0,0.19.1)',\
 	org.jgrapes.osgi.webconlet.logviewer;version='[0.17.0,0.17.1)',\
 	org.jgrapes.osgi.webconlet.services;version='[0.17.0,0.17.1)',\
+	org.osgi.service.upnp;version='[1.2.1,1.2.2)',\
+	org.apache.felix.upnp.basedriver;version='[0.8.0,0.8.1)',\
 	org.jgrapes.osgi.demo.upnp;version=snapshot
