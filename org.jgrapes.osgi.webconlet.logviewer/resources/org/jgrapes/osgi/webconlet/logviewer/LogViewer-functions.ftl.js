@@ -124,7 +124,7 @@ JGConsole.registerConletFunction(
     "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
     "entries", function(conletId, entries) {
         // View only
-        let view = $(JGConsole.findConletView(conletId))
+        let view = $(JGConsole.findConletView(conletId).element())
             .find(".jgrapes-osgi-logviewer-view");
         if (view.length == 0) {
             return;
@@ -141,7 +141,7 @@ JGConsole.registerConletFunction(
     "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
     "addEntry", function(conletId, entry) {
         // View only
-        let view = $(JGConsole.findConletView(conletId))
+        let view = $(JGConsole.findConletView(conletId).element())
             .find(".jgrapes-osgi-logviewer-view");
         if (view.length == 0) {
             return;

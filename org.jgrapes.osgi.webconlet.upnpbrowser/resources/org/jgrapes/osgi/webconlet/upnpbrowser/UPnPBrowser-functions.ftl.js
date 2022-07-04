@@ -168,7 +168,7 @@ JGConsole.registerConletMethod(
         "deviceUpdates", function(conletId, params) {
             // Preview
             if (params[1] === "preview" || params[1] === "*") {
-                let preview = $(JGConsole.findConletPreview(conletId));
+                let preview = $(JGConsole.findConletPreview(conletId).element());
                 let vm = null;
                 if (preview && (vm = findVueVm($(preview)
                         .find(".jgrapes-osgi-upnpbrowser-preview")[0]))) {
@@ -178,7 +178,7 @@ JGConsole.registerConletMethod(
                 
             // View
             if (params[1] === "view" || params[1] === "*") {
-                let view = JGConsole.findConletView(conletId);
+                let view = JGConsole.findConletView(conletId).element();
                 let vm = null;
                 if (view && (vm = findVueVm($(view)
                         .find(".jgrapes-osgi-upnpbrowser-view div")[0]))) {

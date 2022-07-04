@@ -148,7 +148,7 @@ JGConsole.registerConletFunction(
         "serviceUpdates", function(conletId, serviceInfos, applyTo, replace) {
             // Preview
             if (applyTo === "preview" || applyTo === "*") {
-                let table = $(JGConsole.findConletPreview(conletId))
+                let table = $(JGConsole.findConletPreview(conletId).element())
                     .find(".jgrapes-osgi-services-preview-table");
                 let api = null;
                 if (table.length && (api = getApi(table[0]))) {
@@ -158,7 +158,7 @@ JGConsole.registerConletFunction(
             
             // View
             if (applyTo === "view" || applyTo === "*") {
-                let view = $(JGConsole.findConletView(conletId))
+                let view = $(JGConsole.findConletView(conletId).element())
                     .find(".jgrapes-osgi-services-view");
                 let api = null;
                 if (view.length && (api = getApi(view[0]))) {

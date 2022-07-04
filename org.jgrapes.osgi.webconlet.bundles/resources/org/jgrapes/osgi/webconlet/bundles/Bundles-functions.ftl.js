@@ -171,8 +171,8 @@ JGConsole.registerConletFunction(
     "bundleUpdates", function(conletId, bundleInfos, applyTo, replace) {
         // Preview
         if (applyTo === "preview" || applyTo === "*") {
-            let table = $(JGConsole.findConletPreview(conletId))
-                .find(".jgrapes-osgi-bundles-preview-table");
+            let table = $(JGConsole.findConletPreview(conletId)
+                .element()).find(".jgrapes-osgi-bundles-preview-table");
             let api = null;
             if (table.length && (api = getApi(table[0]))) {
                 updateInfos(api, bundleInfos, replace);
@@ -181,8 +181,8 @@ JGConsole.registerConletFunction(
             
         // View
         if (applyTo === "view" || applyTo === "*") {
-            let view = $(JGConsole.findConletView(conletId))
-                .find(".jgrapes-osgi-bundles-view");
+            let view = $(JGConsole.findConletView(conletId)
+                .element()).find(".jgrapes-osgi-bundles-view");
                 let api = null;
                 if (view.length && (api = getApi(view[0]))) {
                     if (replace) {
@@ -196,7 +196,7 @@ JGConsole.registerConletFunction(
 JGConsole.registerConletFunction(
     "org.jgrapes.osgi.webconlet.bundles.BundleListConlet",
     "bundleDetails", function(conletId, bundleId, bundleDetails) {
-        let view = $(JGConsole.findConletView(conletId))
+        let view = $(JGConsole.findConletView(conletId).element())
             .find(".jgrapes-osgi-bundles-view");
         let api = null;
         if (view.length && (api = getApi(view[0]))) {
