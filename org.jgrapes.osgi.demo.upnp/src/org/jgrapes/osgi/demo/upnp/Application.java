@@ -121,11 +121,11 @@ public class Application extends Component implements BundleActivator {
                 .prependResourceBundleProvider(getClass());
         WebConsole console = consoleWeblet.console();
         console.attach(new BrowserLocalBackedKVStore(
-            console, consoleWeblet.prefix().getPath()));
-        console.attach(new KVStoreBasedConsolePolicy(console));
-        console.attach(new NewConsoleSessionPolicy(console));
+            console.channel(), consoleWeblet.prefix().getPath()));
+        console.attach(new KVStoreBasedConsolePolicy(console.channel()));
+        console.attach(new NewConsoleSessionPolicy(console.channel()));
         console.attach(new ComponentCollector<>(
-            console, context, PageResourceProviderFactory.class,
+            console.channel(), context, PageResourceProviderFactory.class,
             type -> {
                 switch (type) {
                 case "org.jgrapes.webconsole.provider.gridstack.GridstackProvider":
@@ -136,7 +136,7 @@ public class Application extends Component implements BundleActivator {
                 }
             }));
         console.attach(new ComponentCollector<>(
-            console, context, ConletComponentFactory.class));
+            console.channel(), context, ConletComponentFactory.class));
         Components.start(app);
 
 //		context().addServiceListener(new RootDeviceListener(),
