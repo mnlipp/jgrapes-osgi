@@ -19,7 +19,6 @@
 package org.jgrapes.osgi.demo.console;
 
 import java.net.URI;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.webconsole.vuejs.VueJsConsoleWeblet;
 

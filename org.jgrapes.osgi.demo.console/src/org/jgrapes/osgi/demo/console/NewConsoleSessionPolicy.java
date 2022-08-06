@@ -19,7 +19,6 @@
 package org.jgrapes.osgi.demo.console;
 
 import java.util.Optional;
-
 import org.jgrapes.core.Channel;
 import org.jgrapes.core.Component;
 import org.jgrapes.core.annotation.Handler;
