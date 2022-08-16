@@ -39,7 +39,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
-import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.ConsoleConnection;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
@@ -129,7 +129,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleConnection channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
         // Add conlet resources to page
@@ -147,7 +147,8 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
 
     @Override
     protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, String conletId, Serializable conletState)
+            ConsoleConnection channel, String conletId,
+            Serializable conletState)
             throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.View)) {
@@ -165,7 +166,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
         return renderedAs;
     }
 
-    private void sendAllEntries(ConsoleSession channel, String conletId) {
+    private void sendAllEntries(ConsoleConnection channel, String conletId) {
         final LogReaderService logReader = logReaderResolved;
         if (logReader == null) {
             return;
@@ -178,9 +179,9 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
 
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     private void addEntry(LogEntry entry) {
-        for (ConsoleSession consoleSession : trackedSessions()) {
-            for (String conletId : conletIds(consoleSession)) {
-                consoleSession.respond(new NotifyConletView(type(),
+        for (ConsoleConnection connection : trackedConnections()) {
+            for (String conletId : conletIds(connection)) {
+                connection.respond(new NotifyConletView(type(),
                     conletId, "addEntry", logEntryAsMap(entry))
                         .disableTracking());
             }
@@ -226,7 +227,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
     @SuppressWarnings({ "PMD.SwitchStmtsShouldHaveDefault",
         "PMD.TooFewBranchesForASwitchStatement" })
     protected void doUpdateConletState(NotifyConletModel event,
-            ConsoleSession channel, Serializable conletState)
+            ConsoleConnection channel, Serializable conletState)
             throws Exception {
         event.stop();
         switch (event.method()) {
@@ -237,7 +238,7 @@ public class LogViewerConlet extends FreeMarkerConlet<Serializable> {
     }
 
     @Override
-    protected boolean doSetLocale(SetLocale event, ConsoleSession channel,
+    protected boolean doSetLocale(SetLocale event, ConsoleConnection channel,
             String conletId) throws Exception {
         return true;
     }

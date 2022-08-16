@@ -46,7 +46,7 @@ import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.io.IOSubchannel;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
 import org.jgrapes.webconsole.base.ConletBaseModel;
-import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.ConsoleConnection;
 import org.jgrapes.webconsole.base.RenderSupport;
 import org.jgrapes.webconsole.base.ResourceByInputStream;
 import org.jgrapes.webconsole.base.ResourceNotModified;
@@ -108,7 +108,7 @@ public class UPnPBrowserConlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleConnection channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
         @SuppressWarnings("PMD.CloseResource")
@@ -133,14 +133,14 @@ public class UPnPBrowserConlet
 
     @Override
     protected Optional<UPnPBrowserModel> createNewState(AddConletRequest event,
-            ConsoleSession session, String conletId) throws Exception {
+            ConsoleConnection session, String conletId) throws Exception {
         return Optional.of(new UPnPBrowserModel(conletId));
     }
 
     @SuppressWarnings({ "unchecked", "PMD.AvoidDuplicateLiterals" })
     @Override
     protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, String conletId,
+            ConsoleConnection channel, String conletId,
             UPnPBrowserModel conletState) throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {

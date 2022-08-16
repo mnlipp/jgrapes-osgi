@@ -16,7 +16,7 @@
  * with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.jgrapes.osgi.demo.console;
+package org.jgrapes.osgi.demo.upnp;
 
 import java.util.Optional;
 import org.jgrapes.core.Channel;
@@ -30,40 +30,40 @@ import org.jgrapes.webconsole.base.events.RenderConlet;
 /**
  * 
  */
-public class NewConsoleSessionPolicy extends Component {
+public class ShowHelpPolicy extends Component {
 
     private final String renderedFlagName = getClass().getName() + ".rendered";
 
     /**
      * Creates a new component with its channel set to itself.
      */
-    public NewConsoleSessionPolicy() {
-        // Everything is done by super.
+    public ShowHelpPolicy() {
+        // Everything done by super.
     }
 
     /**
      * Creates a new component with its channel set to the given channel.
      * 
-     * @param componentChannel
+     * @param componentChannel the component channel
      */
-    public NewConsoleSessionPolicy(Channel componentChannel) {
+    public ShowHelpPolicy(Channel componentChannel) {
         super(componentChannel);
     }
 
     /**
-     * Handles a conlet render request.
+     * Handle render portlet requests.
      *
      * @param event the event
      * @param channel the channel
      */
     @Handler
-    public void onRenderConlet(RenderConlet event, IOSubchannel channel) {
+    public void onRenderPortlet(RenderConlet event, IOSubchannel channel) {
         channel.associated(Session.class)
             .ifPresent(session -> session.put(renderedFlagName, true));
     }
 
     /**
-     * On console configured.
+     * Check layout.
      *
      * @param event the event
      * @param channel the channel
@@ -71,8 +71,9 @@ public class NewConsoleSessionPolicy extends Component {
      */
     @Handler
     @SuppressWarnings("PMD.CollapsibleIfStatements")
-    public void onConsoleConfigured(ConsoleConfigured event,
-            IOSubchannel channel) throws InterruptedException {
+    public void onPortalConfigured(ConsoleConfigured event,
+            IOSubchannel channel)
+            throws InterruptedException {
         Optional<Session> optSession = channel.associated(Session.class);
         if (optSession.isPresent()) {
             if ((Boolean) optSession.get().getOrDefault(

@@ -39,7 +39,7 @@ import org.jgrapes.core.Event;
 import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
-import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.ConsoleConnection;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
 import org.jgrapes.webconsole.base.events.AddConletType;
 import org.jgrapes.webconsole.base.events.AddPageResources.ScriptResource;
@@ -96,7 +96,7 @@ public class ServiceListConlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleConnection channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
         // Add conlet resources to page
@@ -113,7 +113,8 @@ public class ServiceListConlet
 
     @Override
     protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, String conletId, Serializable conletState)
+            ConsoleConnection channel, String conletId,
+            Serializable conletState)
             throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {
@@ -241,7 +242,7 @@ public class ServiceListConlet
      */
     @Override
     public void serviceChanged(ServiceEvent event) {
-        fire(new ServiceChanged(event), trackedSessions());
+        fire(new ServiceChanged(event), trackedConnections());
     }
 
     /**
@@ -254,15 +255,15 @@ public class ServiceListConlet
     @SuppressWarnings({ "PMD.AvoidInstantiatingObjectsInLoops",
         "PMD.DataflowAnomalyAnalysis" })
     public void onServiceChanged(ServiceChanged event,
-            ConsoleSession consoleSession) {
+            ConsoleConnection channel) {
         Map<String, Object> info = createServiceInfo(
             event.serviceEvent().getServiceReference(),
-            consoleSession.locale());
+            channel.locale());
         if (event.serviceEvent().getType() == ServiceEvent.UNREGISTERING) {
             info.put("updateType", "unregistering");
         }
-        for (String conletId : conletIds(consoleSession)) {
-            consoleSession.respond(new NotifyConletView(
+        for (String conletId : conletIds(channel)) {
+            channel.respond(new NotifyConletView(
                 type(), conletId, "serviceUpdates",
                 (Object) new Object[] { info }, "*", false));
         }

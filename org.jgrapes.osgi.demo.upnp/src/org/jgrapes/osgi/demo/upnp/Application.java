@@ -123,7 +123,7 @@ public class Application extends Component implements BundleActivator {
         console.attach(new BrowserLocalBackedKVStore(
             console.channel(), consoleWeblet.prefix().getPath()));
         console.attach(new KVStoreBasedConsolePolicy(console.channel()));
-        console.attach(new NewConsoleSessionPolicy(console.channel()));
+        console.attach(new ShowHelpPolicy(console.channel()));
         console.attach(new ComponentCollector<>(
             console.channel(), context, PageResourceProviderFactory.class,
             type -> {

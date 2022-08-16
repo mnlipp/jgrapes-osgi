@@ -45,7 +45,7 @@ import org.jgrapes.core.Manager;
 import org.jgrapes.core.annotation.Handler;
 import org.jgrapes.webconsole.base.Conlet.RenderMode;
 import org.jgrapes.webconsole.base.ConletBaseModel;
-import org.jgrapes.webconsole.base.ConsoleSession;
+import org.jgrapes.webconsole.base.ConsoleConnection;
 import org.jgrapes.webconsole.base.WebConsoleUtils;
 import org.jgrapes.webconsole.base.events.AddConletRequest;
 import org.jgrapes.webconsole.base.events.AddConletType;
@@ -106,7 +106,7 @@ public class BundleListConlet
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Handler
-    public void onConsoleReady(ConsoleReady event, ConsoleSession channel)
+    public void onConsoleReady(ConsoleReady event, ConsoleConnection channel)
             throws TemplateNotFoundException, MalformedTemplateNameException,
             ParseException, IOException {
         // Add conlet resources to page
@@ -123,14 +123,14 @@ public class BundleListConlet
 
     @Override
     protected Optional<BundleListModel> createNewState(AddConletRequest event,
-            ConsoleSession session, String conletId) throws Exception {
+            ConsoleConnection channel, String conletId) throws Exception {
         BundleListModel conletModel = new BundleListModel(conletId);
         return Optional.of(conletModel);
     }
 
     @Override
     protected Set<RenderMode> doRenderConlet(RenderConletRequestBase<?> event,
-            ConsoleSession channel, String conletId,
+            ConsoleConnection channel, String conletId,
             BundleListModel conletModel) throws Exception {
         Set<RenderMode> renderedAs = new HashSet<>();
         if (event.renderAs().contains(RenderMode.Preview)) {
@@ -202,7 +202,7 @@ public class BundleListConlet
 
     @Override
     protected void doUpdateConletState(NotifyConletModel event,
-            ConsoleSession channel, BundleListModel conletState)
+            ConsoleConnection channel, BundleListModel conletState)
             throws Exception {
         event.stop();
         Bundle bundle = context.getBundle(event.params().asInt(0));
@@ -238,7 +238,7 @@ public class BundleListConlet
     }
 
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-    private void sendBundleDetails(String conletId, ConsoleSession channel,
+    private void sendBundleDetails(String conletId, ConsoleConnection channel,
             Bundle bundle) {
         Locale locale = channel.locale();
         List<Object> data = new ArrayList<>();
@@ -280,7 +280,7 @@ public class BundleListConlet
      */
     @Override
     public void bundleChanged(BundleEvent event) {
-        fire(new BundleChanged(event), trackedSessions());
+        fire(new BundleChanged(event), trackedConnections());
     }
 
     /**
@@ -292,18 +292,19 @@ public class BundleListConlet
     @Handler
     @SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
     public void onBundleChanged(BundleChanged event,
-            ConsoleSession consoleSession) {
-        for (String conletId : conletIds(consoleSession)) {
-            consoleSession.respond(new NotifyConletView(type(), conletId,
+            ConsoleConnection channel) {
+        for (String conletId : conletIds(channel)) {
+            channel.respond(new NotifyConletView(type(), conletId,
                 "bundleUpdates",
                 (Object) new Object[] { createBundleInfo(
-                    event.bundleEvent().getBundle(), consoleSession.locale()) },
+                    event.bundleEvent().getBundle(),
+                    channel.locale()) },
                 "*", false));
         }
     }
 
     @Override
-    protected boolean doSetLocale(SetLocale event, ConsoleSession channel,
+    protected boolean doSetLocale(SetLocale event, ConsoleConnection channel,
             String conletId) throws Exception {
         return true;
     }
@@ -337,7 +338,6 @@ public class BundleListConlet
     /**
      * The bundle's model.
      */
-    @SuppressWarnings("serial")
     public class BundleListModel extends ConletBaseModel {
 
         /**
