@@ -117,7 +117,6 @@ public class Application extends Component implements BundleActivator {
             httpTransport, Request.In.Get.class, Request.In.Post.class));
 
         // Build application layer
-        app.attach(new InMemorySessionManager(app.channel()));
         app.attach(new LanguageSelector(app.channel()));
         app.attach(new FileStorage(app.channel(), 65_536));
 
@@ -131,6 +130,8 @@ public class Application extends Component implements BundleActivator {
     @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createJQueryUiConsole(BundleContext context)
             throws URISyntaxException {
+        app.attach(new InMemorySessionManager(app.channel(), "/jqconsole")
+            .setIdName("id-jq"));
         ConsoleWeblet consoleWeblet
             = app.attach(new JQueryUiWeblet(app.channel(), Channel.SELF,
                 new URI("/jqconsole/")))
@@ -158,6 +159,8 @@ public class Application extends Component implements BundleActivator {
     @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createBootstrap4Console(BundleContext context)
             throws URISyntaxException {
+        app.attach(new InMemorySessionManager(app.channel(), "/b4console")
+            .setIdName("id-b4"));
         ConsoleWeblet consoleWeblet
             = app.attach(new Bootstrap4Weblet(app.channel(), Channel.SELF,
                 new URI("/b4console/")));
@@ -184,6 +187,8 @@ public class Application extends Component implements BundleActivator {
     @SuppressWarnings("PMD.TooFewBranchesForASwitchStatement")
     private void createVueJsConsole(BundleContext context)
             throws URISyntaxException {
+        app.attach(new InMemorySessionManager(app.channel(), "/vjconsole")
+            .setIdName("id-vj"));
         ConsoleWeblet consoleWeblet
             = app.attach(new DemoConsoleWeblet(app.channel(), Channel.SELF,
                 new URI("/vjconsole/")));
