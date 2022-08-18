@@ -1,6 +1,6 @@
 /*
  * JGrapes Event Driven Framework
- * Copyright (C) 2016, 2018  Michael N. Lipp
+ * Copyright (C) 2016, 2022  Michael N. Lipp
  *
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU Affero General Public License as published by 
@@ -17,7 +17,32 @@
  */
 
 /**
- *
+ * This package provides support for integrating JGrapes with OSGi 
+ * services.
+ * 
+ * There are several ways in which JGrapes and OSGi can be integrated.
+ * 
+ *  * Provide libraries as OSGi bundle. This is done for all JGrapes 
+ *    libraries.
+ *    
+ *  * Write an OSGi bundle with an activator that adds one or more
+ *    components to a JGrapes component tree. This is possible but 
+ *    not recommended as a general approach because 
+ *    
+ *     * the component tree has to be made accessible in the OSGi 
+ *       service registry (not really a problem) and
+ *       
+ *     * the activator has to "know" where to insert the components
+ *       in the tree, thus introducing a dependency of the bundle
+ *       on the application and limiting the possibilities for reuse.
+ *      
+ *  * Use a variation of the 
+ *    "[Whiteboard Pattern](https://web.archive.org/web/20220507070515/http://docs.osgi.org/whitepaper/whiteboard-pattern/)".
+ *    
+ *  This package provides the helper class 
+ *  {@link org.jgrapes.osgi.core.ComponentCollector} that simplifies the
+ *  implementation of the third approach.
+ * 
  * @startuml package-hierarchy.svg
  * skinparam svgLinkTarget _parent
  * 

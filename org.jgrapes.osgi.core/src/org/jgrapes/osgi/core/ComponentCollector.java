@@ -28,6 +28,7 @@ import static java.util.function.Predicate.not;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.jgrapes.core.Channel;
+import org.jgrapes.core.Component;
 import org.jgrapes.core.ComponentFactory;
 import org.jgrapes.core.events.Stop;
 import org.jgrapes.util.ComponentProvider;
@@ -39,9 +40,10 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
  * A component that collects all services from the OSGi service registry
- * which implement the {@link ComponentFactory} interface. It uses each 
- * to create one or more components that are then attached to the 
- * component collector instance.
+ * which implement the sub-interface of {@link ComponentFactory} 
+ * specified when creating the collector. The collector uses each service 
+ * found to create one or more {@link Component}s that are then attached 
+ * to the component collector instance.
  * 
  * Effectively, the component collector leverages OSGi's service layer
  * to modify the component tree at run-time.
