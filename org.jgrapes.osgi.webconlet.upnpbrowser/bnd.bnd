@@ -15,7 +15,6 @@ Private-Package: org.jgrapes.osgi.webconlet.upnpbrowser
 -buildpath: \
 	osgi.core;version=6.0.0,\
 	osgi.annotation;version=6.0.1,\
-    org.osgi.compendium;version='[4.1.0,4.1.1)',\
 	osgi.cmpn;version=6.0,\
 	org.jgrapes.core;version=latest,\
 	org.jgrapes.io;version=latest,\
