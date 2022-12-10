@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670624185342">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, http://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="osgi.identity" value="org.mortbay.jetty.util"/>
+      <attribute name="documentation" value="http://jetty.mortbay.org"/>
+      <attribute name="description" value="Utility classes for Jetty"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.util,org.slf4j"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.log"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="76580,-2013470288,-1338049599,1247891330" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.log,javax.servlet,org.mortbay.util,javax.servlet.http"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.util.ajax"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="-1706664287,279391704,-592065961,1296321912,584510565,1654237878,-2004043085,1847113871,-1921645279,-838655266,-1812638661,240646060,2286824,-2147482944,163097293,1924113487,1601302083,-1821901665,-741684310,-516527616,1739267332" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.log,javax.servlet,org.mortbay.util.ajax,org.mortbay.util,javax.servlet.http"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.servlet"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="73795339,66661,1315947633,-359930792,-1119169126,-1501671022,-1034806157,-1411969212,1799520447,-58325710,338820119,-563232628,-1064200225,-2107074062,1095692634" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.log,org.mortbay.component"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.thread"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="-1851201178,1181228963,2373963,-244565191,808378726,2599333,350741825" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.log,org.mortbay.thread"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.util"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="-1895856777,-649224091,156250859,279828960,1728678996,1157473206,74653,-1950517813,-1255203208,509450219,2342,2088795709,-1189985710,-2013651917,-1442072778,718439811,-964556115,-917051329,-1528077474,-195491902,-1744462706,1677696006,683604717,1410803924,-719352354,1552312801,80596777,2433570,-1271935221,1814669163,420425683,-611636612,546056046,-112916289,-1182419486" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.mortbay.log,org.mortbay.util"/>
+      <attribute name="bundle-symbolic-name" value="org.mortbay.jetty.util"/>
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.mortbay.component"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+      <attribute name="bnd.hashes" value="1427336488,1410803924,-97531304,1593011297,1672091434" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.mortbay.jetty.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="6.1.26" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.mortbay.jetty.util"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.mortbay.jetty.util"/>
+      <attribute name="from" value="org.mortbay.jetty:jetty-util:6.1.26"/>
+      <attribute name="version" value="6.1.26" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="provided" value="org.mortbay.jetty:servlet-api:2.5-20081211"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="177131" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.jar"/>
+      <attribute name="osgi.content" value="9B974CE2B99F48254B76126337DC45B21226F383AAED616F59780ADAF167C047"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet)"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet.http)"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.3.0))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.slf4j"/>
+    </requirement>
+  </resource>
+</repository>

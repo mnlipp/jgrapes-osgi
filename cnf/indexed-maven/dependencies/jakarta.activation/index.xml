@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1662750175089">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487754">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.eclipse.org/org/documents/edl-v10.php"/>
@@ -12,16 +12,16 @@
     <capability namespace="osgi.wiring.package">
       <attribute name="bundle-symbolic-name" value="jakarta.activation-api"/>
       <attribute name="bundle-version" value="2.1.0" type="Version"/>
-      <attribute name="version" value="2.1.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="jakarta.activation"/>
+      <attribute name="version" value="2.1.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1359889218,64058019,206291577,-1517362639,838515274,202913531,608817551,879465504,-2126306139,-1029031803,1462319168,1913542064,1446596385,-1581448570,-1883382773,-796606708,-1952191496,-1327476306,1083548516,-2052561703,-1641495510,423188491,1002652865,-1475195750,-1131237297,-569689061,1505629994,-1627952364,-896685802" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="jakarta.activation"/>
       <attribute name="bundle-symbolic-name" value="jakarta.activation-api"/>
       <attribute name="bundle-version" value="2.1.0" type="Version"/>
-      <attribute name="version" value="2.1.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="jakarta.activation.spi"/>
+      <attribute name="version" value="2.1.0" type="Version"/>
       <attribute name="bnd.hashes" value="1976753673,2119206684" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -39,8 +39,8 @@
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="63473" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar"/>
       <attribute name="osgi.content" value="56E8D994095FE49C28138C60291482F66F18D12AC2B720E938697DCE6A3135C7"/>
     </capability>
     <requirement namespace="osgi.wiring.package">

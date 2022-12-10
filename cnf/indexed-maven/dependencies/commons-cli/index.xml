@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670624185337">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="org.apache.commons.cli"/>
+      <attribute name="documentation" value="http://commons.apache.org/proper/commons-cli/"/>
+      <attribute name="description" value="Apache Commons CLI provides a simple API for presenting, processing and validating a command line interface."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.apache.commons.cli"/>
+      <attribute name="bundle-version" value="1.4.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.commons.cli"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="194259612,-112486450,737954253,1895597947,206376383,-1788499266,1669314976,2097499661,-1392269493,-1309029783,717943148,975848756,-1926269803,-11423418,1287202538,-2097279427,415178366,1971845884,-1911543745,-32160810,56958050,-1207151984,-779750837,2647074" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.4.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.apache.commons.cli"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.4.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.apache.commons.cli"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.commons.cli"/>
+      <attribute name="from" value="commons-cli:commons-cli:1.4"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="53820" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"/>
+      <attribute name="osgi.content" value="FD3C7C9545A9CDB2051D1F9155C4F76B1E4AC5A57304404A6EEDB578FFBA7328"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+</repository>

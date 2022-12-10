@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799376">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487967">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, http://www.eclipse.org/org/documents/epl-v10.php"/>
@@ -14,8 +14,8 @@
       <directive name="uses" value="javax.net.ssl"/>
       <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.alpn.api"/>
       <attribute name="bundle-version" value="1.1.3.v20160715" type="Version"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.eclipse.jetty.alpn"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
       <attribute name="bnd.hashes" value="-1845940484,-922850799,-1819184524,2012009" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -33,8 +33,8 @@
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="5557" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/alpn/alpn-api/1.1.3.v20160715/alpn-api-1.1.3.v20160715.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/alpn/alpn-api/1.1.3.v20160715/alpn-api-1.1.3.v20160715.jar"/>
       <attribute name="osgi.content" value="07BE99758B699E194F70FB9784D94202DC6C98212877829E3D72B020F2660576"/>
     </capability>
     <requirement namespace="osgi.wiring.package">

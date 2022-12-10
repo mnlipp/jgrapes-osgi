@@ -1,19 +1,195 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799087">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487763">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="org.apache.aries.util"/>
+      <attribute name="documentation" value="http://www.apache.org"/>
+      <attribute name="description" value="This bundle contains the OSGi common util for Apache Aries"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-676979750,-1649925365,581547165,-1173312427,49268581" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.filesystem"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-495181077,678451317,686571364,-419200988,1681013098,69606757" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.aries.util.filesystem"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.filesystem.impl"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+      <attribute name="bnd.hashes" value="-2091491493,1394812429,-671215140,816679851,-879855460,1848325298,-275868925,-1369146586,-318218212,-462081940,-165283070,1081401309" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.internal"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+      <attribute name="bnd.hashes" value="-1318914367,1882640639,337446101,-1502624774,-1193650530,794800265,-1135757009" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.aries.util.filesystem"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.io"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1587945685,-224372075" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.log,org.osgi.util.tracker"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.log"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-2013470288" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.apache.aries.util,org.apache.aries.util.filesystem,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.manifest"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1314516209,1581691183,1295243782,831062212,-1503652028,-187051530,-1503540864,652899894,-686030077" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.messages"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.nls"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-350697298,794800265" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.service.registry"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-260644081" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.util.tracker"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.tracker"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="481822708,-1628678015,-2003017372,-247409407,128125259" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.util.tracker"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.apache.aries.util.tracker.hook"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+      <attribute name="bnd.hashes" value="1388063880,-1923016613,597257994,-1017073807" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.apache.aries.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.1.3" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.apache.aries.util"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.aries.util"/>
+      <attribute name="from" value="org.apache.aries:org.apache.aries.util:1.1.3"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="provided" value="org.osgi:org.osgi.compendium:4.3.1;org.osgi:org.osgi.core:4.3.1;org.eclipse:osgi:3.5.0.v20090520;org.apache.aries:org.apache.aries.util-r42:1.1.3"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="115595" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.1.3/org.apache.aries.util-1.1.3.jar"/>
+      <attribute name="osgi.content" value="4E3DE8C3D39F7624EB570BF36B81CCBA995C1D68416C638216BE8AF07F3C7467"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.hooks.bundle)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.hooks.bundle"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.launch)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.launch"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.wiring"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.framework)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.tracker"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.framework.internal.core)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.framework.internal.core"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.framework.adaptor)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.framework.adaptor"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.internal.loader)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.internal.loader"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.apache.aries:org.apache.aries.util-r42"/>
-      <attribute name="from" value="org.apache.aries:org.apache.aries.util-r42:1.0.0"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="from" value="org.apache.aries:org.apache.aries.util-r42:1.1.3"/>
+      <attribute name="version" value="1.1.3" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="provided" value="org.osgi:org.osgi.core:4.2.0;org.osgi:org.osgi.compendium:4.2.0;org.eclipse:osgi:3.5.0.v20090520"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="97596" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util-r42/1.0.0/org.apache.aries.util-r42-1.0.0.jar"/>
+      <attribute name="size" value="102537" type="Long"/>
       <attribute name="mime" value="application/java-archive"/>
-      <attribute name="osgi.content" value="B04645FA92FF1E6D0D6CADD932405EE1FAABC3EFAF2AC5A2D49C8D8320D9E39A"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util-r42/1.1.3/org.apache.aries.util-r42-1.1.3.jar"/>
+      <attribute name="osgi.content" value="030DFFBB900E506D993F7B85856CF3EF786D4CA00ECD31780704208F4D2426FB"/>
     </capability>
   </resource>
   <resource>
@@ -29,64 +205,64 @@
       <directive name="uses" value="org.osgi.framework"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-676979750,-1649925365,581547165,-1173312427,49268581" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.osgi.service.log,org.osgi.util.tracker,org.osgi.framework"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.log"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-2013470288" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.osgi.util.tracker,org.osgi.framework,org.osgi.framework.launch,org.osgi.service.framework"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.tracker"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="481822708,-1628678015,-2003017372,-247409407,128125259" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.osgi.framework,org.apache.aries.util"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.nls"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-350697298,794800265" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.aries.util.filesystem"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.io"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-1587945685,-224372075" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.osgi.framework"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.service.registry"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-260644081" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.aries.util.io,org.apache.aries.util.filesystem,org.osgi.framework,org.apache.aries.util"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.manifest"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1314516209,1581691183,1295243782,831062212,-1503652028,-187051530,-1503540864,652899894,-686030077" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.apache.aries.util.manifest"/>
       <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.aries.util.filesystem"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-495181077,678451317,686571364,-419200988,69606757" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -103,12 +279,12 @@
       <attribute name="version" value="1.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.0;org.osgi:org.osgi.compendium:4.2.0;org.apache.aries:org.apache.aries.util-r42:1.0.0;org.eclipse:osgi:3.5.0.v20090520"/>
+      <attribute name="provided" value="org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.3.0;org.eclipse:osgi:3.5.0.v20090520;org.apache.aries:org.apache.aries.util-r42:1.0.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="108826" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.0.0/org.apache.aries.util-1.0.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.0.0/org.apache.aries.util-1.0.0.jar"/>
       <attribute name="osgi.content" value="E46DE2FAF8EC3804F75ACC76348CA7698CADF16EDC45D009623967A3D09D118E"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -163,193 +339,17 @@
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.apache.aries:org.apache.aries.util-r42"/>
-      <attribute name="from" value="org.apache.aries:org.apache.aries.util-r42:1.1.3"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
+      <attribute name="from" value="org.apache.aries:org.apache.aries.util-r42:1.0.0"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.2.0;org.osgi:org.osgi.compendium:4.2.0;org.eclipse:osgi:3.5.0.v20090520"/>
+      <attribute name="provided" value="org.eclipse:osgi:3.5.0.v20090520;org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.2.0"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="102537" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util-r42/1.1.3/org.apache.aries.util-r42-1.1.3.jar"/>
+      <attribute name="size" value="97596" type="Long"/>
       <attribute name="mime" value="application/java-archive"/>
-      <attribute name="osgi.content" value="030DFFBB900E506D993F7B85856CF3EF786D4CA00ECD31780704208F4D2426FB"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util-r42/1.0.0/org.apache.aries.util-r42-1.0.0.jar"/>
+      <attribute name="osgi.content" value="B04645FA92FF1E6D0D6CADD932405EE1FAABC3EFAF2AC5A2D49C8D8320D9E39A"/>
     </capability>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-      <attribute name="osgi.identity" value="org.apache.aries.util"/>
-      <attribute name="documentation" value="http://www.apache.org"/>
-      <attribute name="description" value="This bundle contains the OSGi common util for Apache Aries"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util"/>
-      <attribute name="bnd.hashes" value="-676979750,-1649925365,581547165,-1173312427,49268581" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.filesystem"/>
-      <attribute name="bnd.hashes" value="-495181077,678451317,686571364,-419200988,1681013098,69606757" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.apache.aries.util.filesystem"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.filesystem.impl"/>
-      <attribute name="bnd.hashes" value="-2091491493,1394812429,-671215140,816679851,-879855460,1848325298,-275868925,-1369146586,-318218212,-462081940,-165283070,1081401309" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.internal"/>
-      <attribute name="bnd.hashes" value="-1318914367,1882640639,337446101,-1502624774,-1193650530,794800265,-1135757009" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.apache.aries.util.filesystem"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.io"/>
-      <attribute name="bnd.hashes" value="-1587945685,-224372075" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.service.log,org.osgi.util.tracker"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.log"/>
-      <attribute name="bnd.hashes" value="-2013470288" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.apache.aries.util,org.apache.aries.util.filesystem,org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.manifest"/>
-      <attribute name="bnd.hashes" value="1314516209,1581691183,1295243782,831062212,-1503652028,-187051530,-1503540864,652899894,-686030077" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.messages"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.nls"/>
-      <attribute name="bnd.hashes" value="-350697298,794800265" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.service.registry"/>
-      <attribute name="bnd.hashes" value="-260644081" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.util.tracker"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.tracker"/>
-      <attribute name="bnd.hashes" value="481822708,-1628678015,-2003017372,-247409407,128125259" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.util.tracker"/>
-      <attribute name="bundle-symbolic-name" value="org.apache.aries.util"/>
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.apache.aries.util.tracker.hook"/>
-      <attribute name="bnd.hashes" value="1388063880,-1923016613,597257994,-1017073807" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.apache.aries.util"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.1.3" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.apache.aries.util"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.aries.util"/>
-      <attribute name="from" value="org.apache.aries:org.apache.aries.util:1.1.3"/>
-      <attribute name="version" value="1.1.3" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.eclipse:osgi:3.5.0.v20090520;org.apache.aries:org.apache.aries.util-r42:1.1.3;org.osgi:org.osgi.compendium:4.3.1"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="115595" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.1.3/org.apache.aries.util-1.1.3.jar"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="osgi.content" value="4E3DE8C3D39F7624EB570BF36B81CCBA995C1D68416C638216BE8AF07F3C7467"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.hooks.bundle)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.hooks.bundle"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.launch)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.launch"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.wiring"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.framework)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.tracker"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.framework.internal.core)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.framework.internal.core"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.framework.adaptor)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.framework.adaptor"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.osgi.internal.loader)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.osgi.internal.loader"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
-    </requirement>
   </resource>
 </repository>

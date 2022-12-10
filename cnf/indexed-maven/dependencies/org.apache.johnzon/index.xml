@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799098">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487764">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -13,8 +13,8 @@
       <directive name="uses" value="javax.json,javax.json.spi,javax.json.stream"/>
       <attribute name="bundle-symbolic-name" value="org.apache.johnzon.core"/>
       <attribute name="bundle-version" value="1.0.0" type="Version"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.apache.johnzon.core"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="303463776,-781677967,1145292307,-1921018260,1521165926,-551271076,-1485893118,-1297684740,-529402905,809047064,-472519150,-927215096,657602674,1993615347,804502459,-240242424,2433570,2141503264,637045098,266591217,2077742807,895019957,1685820601,-1379512673,-1970089570,1387105131,951756231,-517853971,-1974537875,58653853,1166425060,514881585,-1500878988,1973900583,1811707011,-1967105090,-302127911,1611057503,919447723,-1985128919,1371753383,-666019591,1417170863,287546459,-1478916219,-583643246,1816284,237930454,-217105822,-1820588799" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -35,8 +35,8 @@
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="90358" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/johnzon/johnzon-core/1.0.0/johnzon-core-1.0.0.jar"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/johnzon/johnzon-core/1.0.0/johnzon-core-1.0.0.jar"/>
       <attribute name="osgi.content" value="9AF1FBE30A2E1DE660916E501254D79B68A3A1337C547E83F4947C6C969DC5BD"/>
     </capability>
     <requirement namespace="osgi.wiring.package">

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1641043799389">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487998">
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="jmock:jmock"/>
@@ -11,8 +11,8 @@
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="102598" type="Long"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/jmock/jmock/1.1.0/jmock-1.1.0.jar"/>
       <attribute name="mime" value="application/java-archive"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/jmock/jmock/1.1.0/jmock-1.1.0.jar"/>
       <attribute name="osgi.content" value="C0EF259DACF85CA42C905DFB558C134BDC3B7ABFEEA3452C173196D933F602AB"/>
     </capability>
   </resource>
