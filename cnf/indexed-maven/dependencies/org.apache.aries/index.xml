@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487763">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670682918763">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -116,7 +116,7 @@
       <attribute name="version" value="1.1.3" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.compendium:4.3.1;org.osgi:org.osgi.core:4.3.1;org.eclipse:osgi:3.5.0.v20090520;org.apache.aries:org.apache.aries.util-r42:1.1.3"/>
+      <attribute name="provided" value="org.eclipse:osgi:3.5.0.v20090520;org.osgi:org.osgi.core:4.3.1;org.apache.aries:org.apache.aries.util-r42:1.1.3;org.osgi:org.osgi.compendium:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="115595" type="Long"/>
@@ -183,7 +183,7 @@
       <attribute name="version" value="1.1.3" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.2.0;org.osgi:org.osgi.compendium:4.2.0;org.eclipse:osgi:3.5.0.v20090520"/>
+      <attribute name="provided" value="org.eclipse:osgi:3.5.0.v20090520;org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.2.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="102537" type="Long"/>
@@ -279,7 +279,7 @@
       <attribute name="version" value="1.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.3.0;org.eclipse:osgi:3.5.0.v20090520;org.apache.aries:org.apache.aries.util-r42:1.0.0"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.0;org.apache.aries:org.apache.aries.util-r42:1.0.0;org.osgi:org.osgi.compendium:4.2.0;org.eclipse:osgi:3.5.0.v20090520"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="108826" type="Long"/>
@@ -343,7 +343,7 @@
       <attribute name="version" value="1.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.eclipse:osgi:3.5.0.v20090520;org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.2.0"/>
+      <attribute name="provided" value="org.osgi:org.osgi.compendium:4.2.0;org.osgi:org.osgi.core:4.2.0;org.eclipse:osgi:3.5.0.v20090520"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="97596" type="Long"/>

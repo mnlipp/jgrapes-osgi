@@ -1,5 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487960">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670682920332">
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.electronwill.night-config:json"/>
+      <attribute name="from" value="com.electronwill.night-config:json:3.6.6"/>
+      <attribute name="version" value="3.6.6" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="com.electronwill.night-config:core:3.6.6"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="16799" type="Long"/>
+      <attribute name="mime" value="application/java-archive"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/com/electronwill/night-config/json/3.6.6/json-3.6.6.jar"/>
+      <attribute name="osgi.content" value="B7AC37AF049BE79867F040576C3BDD8BBE355CD6129AE60A34DCC7B61015F64F"/>
+    </capability>
+  </resource>
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="com.electronwill.night-config:core"/>
@@ -11,22 +27,6 @@
       <attribute name="mime" value="application/java-archive"/>
       <attribute name="url" value="https://repo1.maven.org/maven2/com/electronwill/night-config/core/3.6.6/core-3.6.6.jar"/>
       <attribute name="osgi.content" value="D8A2CEDD585113347A3B3E5EA7F76A0B3C68F2C38E4E7256293F6F7ACC1BA224"/>
-    </capability>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="com.electronwill.night-config:yaml"/>
-      <attribute name="from" value="com.electronwill.night-config:yaml:3.6.6"/>
-      <attribute name="version" value="3.6.6" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.yaml:snakeyaml:1.31;com.electronwill.night-config:core:3.6.6"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="6663" type="Long"/>
-      <attribute name="mime" value="application/java-archive"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/com/electronwill/night-config/yaml/3.6.6/yaml-3.6.6.jar"/>
-      <attribute name="osgi.content" value="0769DDE575458268C69EE5C18787D4B1B375281539093284C401C075B9FA1201"/>
     </capability>
   </resource>
   <resource>
@@ -47,18 +47,18 @@
   </resource>
   <resource>
     <capability namespace="bnd.info">
-      <attribute name="name" value="com.electronwill.night-config:json"/>
-      <attribute name="from" value="com.electronwill.night-config:json:3.6.6"/>
+      <attribute name="name" value="com.electronwill.night-config:yaml"/>
+      <attribute name="from" value="com.electronwill.night-config:yaml:3.6.6"/>
       <attribute name="version" value="3.6.6" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="com.electronwill.night-config:core:3.6.6"/>
+      <attribute name="compile" value="com.electronwill.night-config:core:3.6.6;org.yaml:snakeyaml:1.31"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="16799" type="Long"/>
+      <attribute name="size" value="6663" type="Long"/>
       <attribute name="mime" value="application/java-archive"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/com/electronwill/night-config/json/3.6.6/json-3.6.6.jar"/>
-      <attribute name="osgi.content" value="B7AC37AF049BE79867F040576C3BDD8BBE355CD6129AE60A34DCC7B61015F64F"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/com/electronwill/night-config/yaml/3.6.6/yaml-3.6.6.jar"/>
+      <attribute name="osgi.content" value="0769DDE575458268C69EE5C18787D4B1B375281539093284C401C075B9FA1201"/>
     </capability>
   </resource>
 </repository>

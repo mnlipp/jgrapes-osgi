@@ -1,103 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670624185485">
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2014). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="osgi.annotation"/>
-      <attribute name="description" value="OSGi Annotation Release 6, Annotations for use in compiling bundles."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="6.0.0.201403061837" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="6.0.0.201403061837" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="osgi.annotation"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="6.0.0.201403061837" type="Version"/>
-      <attribute name="osgi.wiring.host" value="osgi.annotation"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="osgi.annotation"/>
-      <attribute name="from" value="org.osgi:org.osgi.annotation:6.0.0"/>
-      <attribute name="version" value="6.0.0.201403061837" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="13199" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.annotation/6.0.0/org.osgi.annotation-6.0.0.jar"/>
-      <attribute name="osgi.content" value="323C8DEF7E33AC0219790374B4A31D46E236DFAF6C27A2A7E546EEBA2D6E68B7"/>
-    </capability>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.log"/>
-      <attribute name="documentation" value="https://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.log Version 1.4.0"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.4.0.201802012107" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
-      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
-      <attribute name="version" value="1.4.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1534135002,2054177710,2060375744,459075576,-1361742930,1955537649,-2013470288,-1030022714,971415866,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.log"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
-      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.log.admin"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="939507583,-1280137761,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.log,org.osgi.util.pushstream"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
-      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.log.stream"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="415178366,-611851819,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.log"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.log"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.log"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.log:1.4.0"/>
-      <attribute name="version" value="1.4.0.201802012107" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="38305" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.log/1.4.0/org.osgi.service.log-1.4.0.jar"/>
-      <attribute name="osgi.content" value="ECBF91B29ECC3A16FA2B4853FB7D914B27A29A81B8AE5861EC615679DF465E9E"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.4.0)(!(version&gt;=1.5.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.pushstream)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.pushstream"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
-    </requirement>
-  </resource>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670683107867">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="Apache-2.0;description=&quot;This program and the accompanying materials are made available under the terms of the Apache License, Version 2.0.&quot;;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;"/>
@@ -1222,7 +1124,7 @@
       <attribute name="version" value="1.2.0.202109301733" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:org.osgi.util.function:1.1.0;org.osgi:osgi.annotation:8.0.1"/>
+      <attribute name="compile" value="org.osgi:osgi.annotation:8.0.1;org.osgi:org.osgi.util.function:1.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="83400" type="Long"/>
@@ -1236,51 +1138,6 @@
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE/compact1)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.util.promise"/>
-      <attribute name="documentation" value="https://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.util.promise Version 1.1.1"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.1.1.201810101357" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.function"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.util.promise"/>
-      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
-      <attribute name="version" value="1.1.1" type="Version"/>
-      <attribute name="bnd.hashes" value="712535039,65070753,-973241247,65915235,1335848159,-891069155,2104342424,885810947,77116,-1547713212,-2009290710,-674203470,-1807668168,2605629,-1892220507,350741825,1437638748,393463102,1872034202,578079082,1355436283,65921,1229938816,-122541857,695804588,1910929295,-2041294197,1473077508,-1850559427,1360409019,-931148072,-374893917,-202516509,126968846,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.util.promise"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.util.promise"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.util.promise"/>
-      <attribute name="from" value="org.osgi:org.osgi.util.promise:1.1.1"/>
-      <attribute name="version" value="1.1.1.201810101357" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="75587" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.util.promise/1.1.1/org.osgi.util.promise-1.1.1.jar"/>
-      <attribute name="osgi.content" value="4F85BECCD281CC1A4E735BD266A0DD3DB11651D3D0DDE001E6BFA55DBDFDEE83"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.function)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
     </requirement>
   </resource>
   <resource>
@@ -1332,6 +1189,51 @@
     </requirement>
     <requirement namespace="osgi.unresolvable">
       <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.util.promise"/>
+      <attribute name="documentation" value="https://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.util.promise Version 1.1.1"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.1.1.201810101357" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.util.function"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.util.promise"/>
+      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
+      <attribute name="version" value="1.1.1" type="Version"/>
+      <attribute name="bnd.hashes" value="712535039,65070753,-973241247,65915235,1335848159,-891069155,2104342424,885810947,77116,-1547713212,-2009290710,-674203470,-1807668168,2605629,-1892220507,350741825,1437638748,393463102,1872034202,578079082,1355436283,65921,1229938816,-122541857,695804588,1910929295,-2041294197,1473077508,-1850559427,1360409019,-931148072,-374893917,-202516509,126968846,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.util.promise"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.1.1.201810101357" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.util.promise"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.util.promise"/>
+      <attribute name="from" value="org.osgi:org.osgi.util.promise:1.1.1"/>
+      <attribute name="version" value="1.1.1.201810101357" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="75587" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.util.promise/1.1.1/org.osgi.util.promise-1.1.1.jar"/>
+      <attribute name="osgi.content" value="4F85BECCD281CC1A4E735BD266A0DD3DB11651D3D0DDE001E6BFA55DBDFDEE83"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.function)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
     </requirement>
   </resource>
   <resource>
@@ -1586,6 +1488,35 @@
       <directive name="resolution" value="optional"/>
       <attribute name="osgi.wiring.package" value="javax.security.auth.x500"/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2014). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="osgi.annotation"/>
+      <attribute name="description" value="OSGi Annotation Release 6, Annotations for use in compiling bundles."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="6.0.0.201403061837" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="6.0.0.201403061837" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="osgi.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="6.0.0.201403061837" type="Version"/>
+      <attribute name="osgi.wiring.host" value="osgi.annotation"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="osgi.annotation"/>
+      <attribute name="from" value="org.osgi:org.osgi.annotation:6.0.0"/>
+      <attribute name="version" value="6.0.0.201403061837" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="13199" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.annotation/6.0.0/org.osgi.annotation-6.0.0.jar"/>
+      <attribute name="osgi.content" value="323C8DEF7E33AC0219790374B4A31D46E236DFAF6C27A2A7E546EEBA2D6E68B7"/>
+    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
@@ -2824,538 +2755,71 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="osgi.cmpn"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Compendium Release 6, Interfaces and Classes for use in compiling bundles."/>
+      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.log"/>
+      <attribute name="documentation" value="https://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.log Version 1.4.0"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="version" value="1.4.0.201802012107" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.application"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-926029217,1985437237,-1060737223,-1744825890" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.namespace.contract"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="133281865,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.namespace.extender"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="348866484,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.namespace.implementation"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="281913769,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.namespace.service"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-94261690,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.util.promise"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.async"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="63574620,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.promise"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.async.delegate"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-421513215,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.application"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-545105431,1977094958,883966373,-1783521089,1032591615,-1008049288,-1550065021" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.service.blueprint.reflect"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.container"/>
-      <attribute name="version" value="1.0.2" type="Version"/>
-      <attribute name="bnd.hashes" value="2050929486,599345127,1979764807,-1063574497,1654237568,-468363275,718743994,-1435156110,-1545607148,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.reflect"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="-1537443155,-397764833,-940901947,-273691635,-2061439188,323514535,219533462,529928331,-385360049,-1243997917,-376929802,-383883105,243727554,332094648,1142172927,-653991046,107773101,-216344348,-1594302075,-1797038671,-395862112,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
-      <attribute name="version" value="1.5.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1563253546,-1675361255,-1671138460,2064407577,-851798102,368751429,2132978627,40470441,1045830198,-14948876,-1419216863,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.component"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1162845426,-1732850158,-1228219406,518703469,-1056307054,1970033372,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.component.annotations"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1591330541,604060893,42974632,-3298156,1908775407,-550869271,1078812459,1251122531,-200760259,1946760978,1381413353,512804031,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.service.component.runtime.dto,org.osgi.util.promise"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1884290256,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime.dto"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1401622534,1820653184,-338241868,-706379834,-655211827,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.coordinator"/>
-      <attribute name="version" value="1.0.2" type="Version"/>
-      <attribute name="bnd.hashes" value="-1935710085,994107924,1549200554,746990312,-755178736,-1859676397,1367323455,455676068,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-924593040,982123370,-1026823975,1825589994,-739665503" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.service.deploymentadmin"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin.spi"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="-405938621,2052384753,-1135962108,-1291314005" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.device"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1581691183,2043677302,2055308360,-1405415634,-1327688633,74115493" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt"/>
-      <attribute name="version" value="2.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="65642,-410230492,-2145518428,-844430539,-406007697,-1816126909,-241615964,-745116759,-264847573,-386002489,85324" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.dmt"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification"/>
-      <attribute name="version" value="2.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="541231727,-16724182" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.dmt.notification"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification.spi"/>
-      <attribute name="version" value="2.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1292649067" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.security"/>
-      <attribute name="version" value="2.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1890377771,-318098786,1896465690,-1516685480,-1368312398,71223792" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.dmt"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.spi"/>
-      <attribute name="version" value="2.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1117700195,1466662724,-1582757748,-1020809961,1104542723,-934183588,1374643299" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
-      <attribute name="version" value="1.3.1" type="Version"/>
-      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet,javax.servlet.http"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http"/>
-      <attribute name="version" value="1.2.1" type="Version"/>
-      <attribute name="bnd.hashes" value="-821083161,211539181,1928146260" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet.http,org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.context"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="32119832,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.http.runtime.dto"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="55483947,-1897933980,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-484412629,-1490342320,-390944312,-301496667,-1484020886,2037830638,1935433300,-14384392,1156948375,1122568999,-1290190741,-912752414,-1392588079,1463609095,-323953227,356856186,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1123970986,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.microedition.io"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.io"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1610527788,1025945032" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.sql"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.jdbc"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="637984965" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.naming,javax.naming.directory"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.jndi"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-570969466,-970553305,2051787157" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.persistence"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.jpa"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1539960837,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
+      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="2054177710,459075576,-1361742930,1955537649" type="List&lt;Long&gt;"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1534135002,2054177710,2060375744,459075576,-1361742930,1955537649,-2013470288,-1030022714,971415866,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="321319151,-402152275,320335376,640868022,1821631372,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype.annotations"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="321319151,-650104874,-629368844,2273433,1821631372,-1926269803,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.monitor"/>
+      <directive name="uses" value="org.osgi.service.log"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
+      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log.admin"/>
       <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1868558901,1482466318,1623930537,-1047151212,-1050023371,-1444560722" type="List&lt;Long&gt;"/>
+      <attribute name="bnd.hashes" value="939507583,-1280137761,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.prefs"/>
-      <attribute name="version" value="1.1.1" type="Version"/>
-      <attribute name="bnd.hashes" value="35728073,-637237544,-160238403" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.provisioning"/>
-      <attribute name="version" value="1.2.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1017209112" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-326896397,-1488128249,185059813,-998425159,-552983159,-232897180,1093231394,115338711,-765976915,-1178211066,1834163486,-8757367,1522664736,-782782118,-1416491532,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin.namespace"/>
+      <directive name="uses" value="org.osgi.service.log,org.osgi.util.pushstream"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.log"/>
+      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log.stream"/>
       <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-803860053,1686407959,-1690157172,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource,org.osgi.util.promise"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.repository"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="314374063,-1766621950,-955759125,1063929366,-2057232981,-1183379205,-350701718,-2144876113,1318495736,500130587,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.resolver"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="1806831839,760430819,1962956355,-276684762,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.rest"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-612215463,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework.dto,org.osgi.framework.startlevel.dto"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.rest.client"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-646453025,-1835206869,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.serviceloader"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-1631688909,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework,org.osgi.resource"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.subsystem"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="80204913,-1755799473,-749995584,1153906880,-2086966402,-332844868,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.upnp"/>
-      <attribute name="version" value="1.2.0" type="Version"/>
-      <attribute name="bnd.hashes" value="286094867,373888563,-2052569359,-1174474926,-973764714,1918362847,-870004104,-1663385680" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.useradmin"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-586608551,69076575,2552982,2645995,-1979650524,416664278,1458156280,-263179501,2012037649" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.wireadmin"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="1562798590,-503125994,-1984138256,-939117646,2696357,1027607978,1608216336,1080814718,1132197418,426441812,-420336110" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1445582840,655935895,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.measurement"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="-144931940,80204913,2641316" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.measurement"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.position"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="812449097" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.util.function"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="712535039,1872034202,578079082,1355436283,65070753,-891069155,2104342424,885810947,-2013470288,77116,-1547713212,-2009290710,-674203470,2605629,1360409019,65921,-931148072,-202516509,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.xml.parsers,org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.util.xml"/>
-      <attribute name="version" value="1.0.1" type="Version"/>
-      <attribute name="bnd.hashes" value="735836351" type="List&lt;Long&gt;"/>
+      <attribute name="bnd.hashes" value="415178366,-611851819,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.log"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
-      <attribute name="osgi.wiring.host" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="1.4.0.201802012107" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.log"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="osgi.cmpn"/>
-      <attribute name="from" value="org.osgi:osgi.cmpn:6.0.0"/>
-      <attribute name="version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="name" value="org.osgi.service.log"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.log:1.4.0"/>
+      <attribute name="version" value="1.4.0.201802012107" type="Version"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="958829" type="Long"/>
+      <attribute name="size" value="38305" type="Long"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/osgi.cmpn/6.0.0/osgi.cmpn-6.0.0.jar"/>
-      <attribute name="osgi.content" value="DBE06105A0E3E46BC88425B3D7C682A2D8B6BD055341913B6C37E998C00C9176"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.log/1.4.0/org.osgi.service.log-1.4.0.jar"/>
+      <attribute name="osgi.content" value="ECBF91B29ECC3A16FA2B4853FB7D914B27A29A81B8AE5861EC615679DF465E9E"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.microedition.io)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.microedition.io"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.naming"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.naming.directory)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.naming.directory"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.persistence)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.persistence"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.sql"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="javax.xml.parsers"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.dto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
       <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.dto"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.4.0)(!(version&gt;=1.5.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.startlevel.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.startlevel.dto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution" value="optional"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.resource"/>
-    </requirement>
-    <requirement namespace="osgi.compile.time.only">
-      <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.pushstream)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.pushstream"/>
     </requirement>
     <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
     </requirement>
   </resource>
   <resource>
@@ -4218,6 +3682,542 @@
     </requirement>
     <requirement namespace="osgi.unresolvable">
       <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="osgi.cmpn"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Compendium Release 6, Interfaces and Classes for use in compiling bundles."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="6.0.0.201505202027" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.application"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-926029217,1985437237,-1060737223,-1744825890" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.contract"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="133281865,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.extender"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="348866484,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.implementation"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="281913769,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.service"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-94261690,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.util.promise"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.async"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="63574620,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.util.promise"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.async.delegate"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-421513215,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.application"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-545105431,1977094958,883966373,-1783521089,1032591615,-1008049288,-1550065021" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.blueprint.reflect"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.container"/>
+      <attribute name="version" value="1.0.2" type="Version"/>
+      <attribute name="bnd.hashes" value="2050929486,599345127,1979764807,-1063574497,1654237568,-468363275,718743994,-1435156110,-1545607148,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.reflect"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-1537443155,-397764833,-940901947,-273691635,-2061439188,323514535,219533462,529928331,-385360049,-1243997917,-376929802,-383883105,243727554,332094648,1142172927,-653991046,107773101,-216344348,-1594302075,-1797038671,-395862112,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
+      <attribute name="version" value="1.5.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1563253546,-1675361255,-1671138460,2064407577,-851798102,368751429,2132978627,40470441,1045830198,-14948876,-1419216863,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1162845426,-1732850158,-1228219406,518703469,-1056307054,1970033372,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.annotations"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1591330541,604060893,42974632,-3298156,1908775407,-550869271,1078812459,1251122531,-200760259,1946760978,1381413353,512804031,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.component.runtime.dto,org.osgi.util.promise"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1884290256,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime.dto"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1401622534,1820653184,-338241868,-706379834,-655211827,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.coordinator"/>
+      <attribute name="version" value="1.0.2" type="Version"/>
+      <attribute name="bnd.hashes" value="-1935710085,994107924,1549200554,746990312,-755178736,-1859676397,1367323455,455676068,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-924593040,982123370,-1026823975,1825589994,-739665503" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.deploymentadmin"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin.spi"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-405938621,2052384753,-1135962108,-1291314005" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.device"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1581691183,2043677302,2055308360,-1405415634,-1327688633,74115493" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt"/>
+      <attribute name="version" value="2.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="65642,-410230492,-2145518428,-844430539,-406007697,-1816126909,-241615964,-745116759,-264847573,-386002489,85324" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="541231727,-16724182" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt.notification"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification.spi"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1292649067" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.security"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1890377771,-318098786,1896465690,-1516685480,-1368312398,71223792" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.spi"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1117700195,1466662724,-1582757748,-1020809961,1104542723,-934183588,1374643299" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
+      <attribute name="version" value="1.3.1" type="Version"/>
+      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet,javax.servlet.http"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http"/>
+      <attribute name="version" value="1.2.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-821083161,211539181,1928146260" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet.http,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.context"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="32119832,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.http.runtime.dto"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="55483947,-1897933980,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-484412629,-1490342320,-390944312,-301496667,-1484020886,2037830638,1935433300,-14384392,1156948375,1122568999,-1290190741,-912752414,-1392588079,1463609095,-323953227,356856186,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1123970986,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.microedition.io"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.io"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1610527788,1025945032" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.sql"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jdbc"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="637984965" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.naming,javax.naming.directory"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jndi"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-570969466,-970553305,2051787157" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.persistence"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jpa"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1539960837,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2054177710,459075576,-1361742930,1955537649" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="321319151,-402152275,320335376,640868022,1821631372,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype.annotations"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="321319151,-650104874,-629368844,2273433,1821631372,-1926269803,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.monitor"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1868558901,1482466318,1623930537,-1047151212,-1050023371,-1444560722" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.prefs"/>
+      <attribute name="version" value="1.1.1" type="Version"/>
+      <attribute name="bnd.hashes" value="35728073,-637237544,-160238403" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.provisioning"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1017209112" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-326896397,-1488128249,185059813,-998425159,-552983159,-232897180,1093231394,115338711,-765976915,-1178211066,1834163486,-8757367,1522664736,-782782118,-1416491532,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin.namespace"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-803860053,1686407959,-1690157172,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource,org.osgi.util.promise"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.repository"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="314374063,-1766621950,-955759125,1063929366,-2057232981,-1183379205,-350701718,-2144876113,1318495736,500130587,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.resolver"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="1806831839,760430819,1962956355,-276684762,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.rest"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-612215463,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework.dto,org.osgi.framework.startlevel.dto"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.rest.client"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-646453025,-1835206869,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.serviceloader"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1631688909,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.subsystem"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="80204913,-1755799473,-749995584,1153906880,-2086966402,-332844868,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.upnp"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="286094867,373888563,-2052569359,-1174474926,-973764714,1918362847,-870004104,-1663385680" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.useradmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-586608551,69076575,2552982,2645995,-1979650524,416664278,1458156280,-263179501,2012037649" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.wireadmin"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="1562798590,-503125994,-1984138256,-939117646,2696357,1027607978,1608216336,1080814718,1132197418,426441812,-420336110" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1445582840,655935895,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.measurement"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-144931940,80204913,2641316" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.util.measurement"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.position"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="812449097" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.util.function"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="712535039,1872034202,578079082,1355436283,65070753,-891069155,2104342424,885810947,-2013470288,77116,-1547713212,-2009290710,-674203470,2605629,1360409019,65921,-931148072,-202516509,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.parsers,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.xml"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="735836351" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="osgi.cmpn"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="6.0.0.201505202027" type="Version"/>
+      <attribute name="osgi.wiring.host" value="osgi.cmpn"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="osgi.cmpn"/>
+      <attribute name="from" value="org.osgi:osgi.cmpn:6.0.0"/>
+      <attribute name="version" value="6.0.0.201505202027" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="958829" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/osgi.cmpn/6.0.0/osgi.cmpn-6.0.0.jar"/>
+      <attribute name="osgi.content" value="DBE06105A0E3E46BC88425B3D7C682A2D8B6BD055341913B6C37E998C00C9176"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.microedition.io)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.microedition.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.naming"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.directory)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.naming.directory"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.persistence)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.persistence"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=2.5.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.sql"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.parsers"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.startlevel.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.startlevel.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.resource)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.resource"/>
+    </requirement>
+    <requirement namespace="osgi.compile.time.only">
+      <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
     </requirement>
   </resource>
   <resource>
@@ -5265,6 +5265,19 @@
     </capability>
   </resource>
   <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi:org.osgi.compendium"/>
+      <attribute name="from" value="org.osgi:org.osgi.compendium:4.0.0"/>
+      <attribute name="version" value="4.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="673571" type="Long"/>
+      <attribute name="mime" value="application/java-archive"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.compendium/4.0.0/org.osgi.compendium-4.0.0.jar"/>
+      <attribute name="osgi.content" value="BA23461E878CFF259EF958F0B739E4F423FE1566AB1C02C21927991ECF95AD72"/>
+    </capability>
+  </resource>
+  <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
@@ -6005,43 +6018,153 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.annotation.versioning"/>
+      <attribute name="osgi.identity" value="org.osgi.service.event"/>
       <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.annotation.versioning Version 1.0.0."/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.event Version 1.3.1."/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0.201505202023" type="Version"/>
+      <attribute name="version" value="1.3.1.201505202024" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.osgi.annotation.versioning"/>
-      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.annotation.versioning"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-676532112,-254739221,2016261304,-1923478059" type="List&lt;Long&gt;"/>
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
+      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
+      <attribute name="version" value="1.3.1" type="Version"/>
+      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.annotation.versioning"/>
+      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.event"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.annotation.versioning"/>
+      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.event"/>
     </capability>
     <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.annotation.versioning"/>
-      <attribute name="from" value="org.osgi:org.osgi.annotation.versioning:1.0.0"/>
-      <attribute name="version" value="1.0.0.201505202023" type="Version"/>
+      <attribute name="name" value="org.osgi.service.event"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.event:1.3.1"/>
+      <attribute name="version" value="1.3.1.201505202024" type="Version"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="14769" type="Long"/>
+      <attribute name="size" value="36834" type="Long"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.annotation.versioning/1.0.0/org.osgi.annotation.versioning-1.0.0.jar"/>
-      <attribute name="osgi.content" value="B299B3CA50B3A57504E131FDDD34D5F3E10A581A6C81E74B6D8FBA81C6E055A7"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.event/1.3.1/org.osgi.service.event-1.3.1.jar"/>
+      <attribute name="osgi.content" value="10B02929473C5E041F9D2F8B34B08C77297EE63D171976D0B2C1A1174324FADC"/>
     </capability>
-    <requirement namespace="osgi.compile.time.only">
-      <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="documentation" value="https://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.http.whiteboard Version 1.1.0"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.1.0.201802012106" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet.http,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.context"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="32119832,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.http.runtime.dto"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="55483947,-1897933980,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-484412629,-1490342320,-390944312,-301496667,-1484020886,2037830638,-1454816269,1935433300,-14384392,1156948375,1122568999,-1290190741,985082352,-912752414,-1392588079,1463609095,-323953227,356856186,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1123970986,-720095889,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard.annotations"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-946112598,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard.propertytypes"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1391128266,1469010022,-1778692625,590487940,-864212184,70818259,-1016966326,-1448902520,2088775417,401550931,-750588654,208913719,-1326623444,690473483,-1215796208,934390038,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.http.whiteboard"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.http.whiteboard"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.http.whiteboard"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.http.whiteboard:1.1.0"/>
+      <attribute name="version" value="1.1.0.201802012106" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="98221" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.http.whiteboard/1.1.0/org.osgi.service.http.whiteboard-1.1.0.jar"/>
+      <attribute name="osgi.content" value="F7D146C23EB324DE0A229B2B019C90BBBE62DB0DB6F55C8A3FEA4BEC600752B4"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet)"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet.http)"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.http.runtime.dto)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
+    </requirement>
+    <requirement namespace="osgi.contract">
+      <directive name="filter" value="(&amp;(osgi.contract=JavaServlet)(version=3.1.0))"/>
+      <attribute name="osgi.contract" value="JavaServlet"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
     </requirement>
   </resource>
   <resource>
@@ -6084,6 +6207,541 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
       <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.http"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.http Version 1.2.1."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.2.1.201505202024" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet,javax.servlet.http"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.http"/>
+      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http"/>
+      <attribute name="version" value="1.2.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-821083161,211539181,1928146260" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.http"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.http"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.http"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.http:1.2.1"/>
+      <attribute name="version" value="1.2.1.201505202024" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="17871" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.http/1.2.1/org.osgi.service.http-1.2.1.jar"/>
+      <attribute name="osgi.content" value="33F19F406C728D73A04E316E46F19A1377A90FE3A407BE381E89D47ED894D87F"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.useradmin"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.useradmin Version 1.1.0."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.1.0.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.useradmin"/>
+      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.useradmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-586608551,69076575,2552982,2645995,-1979650524,416664278,1458156280,-263179501,2012037649" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.useradmin"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.useradmin"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.useradmin"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.useradmin:1.1.0"/>
+      <attribute name="version" value="1.1.0.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="35422" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.useradmin/1.1.0/org.osgi.service.useradmin-1.1.0.jar"/>
+      <attribute name="osgi.content" value="C7224528BC4871376191063BC2E0A7168918A5906E473D988F9B5953D8DC5B50"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2013). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="osgi.cmpn"/>
+      <attribute name="description" value="OSGi Compendium Release 5, Interfaces and Classes for use in compiling bundles."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="5.0.0.201305092017" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.application"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-926029217,1985437237,-1060737223,-1744825890,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.contract"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="133281865,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.extender"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="348866484,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.namespace.service"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-94261690,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.application"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-545105431,1977094958,883966373,-1783521089,1032591615,-1008049288,-1550065021,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.blueprint.reflect"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.container"/>
+      <attribute name="version" value="1.0.2" type="Version"/>
+      <attribute name="bnd.hashes" value="2050929486,599345127,1979764807,-1063574497,1654237568,-468363275,718743994,-1435156110,-1545607148,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.blueprint.reflect"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-1537443155,-397764833,-940901947,-273691635,-2061439188,323514535,219533462,529928331,-385360049,-1243997917,-376929802,-383883105,243727554,332094648,1142172927,-653991046,107773101,-216344348,-1594302075,-1797038671,-395862112,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.cm"/>
+      <attribute name="version" value="1.5.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1563253546,-1675361255,-1671138460,2064407577,-851798102,368751429,2132978627,40470441,1045830198,-14948876,-1419216863,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component"/>
+      <attribute name="version" value="1.2.1" type="Version"/>
+      <attribute name="bnd.hashes" value="1162845426,-1732850158,-1228219406,518703469,-1056307054,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.annotations"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1591330541,604060893,42974632,-3298156,-550869271,1078812459,1251122531,-200760259,1946760978,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.coordinator"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-1935710085,994107924,1549200554,746990312,-755178736,-1859676397,1367323455,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-924593040,982123370,-1026823975,1825589994,-739665503,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.deploymentadmin"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.deploymentadmin.spi"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-405938621,2052384753,-1135962108,-1291314005,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.device"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1581691183,2043677302,2055308360,-1405415634,-1327688633,74115493,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt"/>
+      <attribute name="version" value="2.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="65642,-410230492,-2145518428,-844430539,-406007697,-1816126909,-241615964,-745116759,-264847573,-386002489,85324,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="541231727,-16724182,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt.notification"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.notification.spi"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1292649067,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.security"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1890377771,-318098786,1896465690,-1516685480,-1368312398,71223792,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.dmt"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.dmt.spi"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1117700195,1466662724,-1582757748,-1020809961,1104542723,-934183588,1374643299,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.servlet,javax.servlet.http"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.http"/>
+      <attribute name="version" value="1.2.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-821083161,211539181,1928146260,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.microedition.io"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.io"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1610527788,1025945032,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.sql"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jdbc"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="637984965,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.naming,javax.naming.directory"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jndi"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-570969466,-970553305,2051787157,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.persistence"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.jpa"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1539960837,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.log"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2054177710,459075576,-1361742930,1955537649,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="321319151,-402152275,320335376,640868022,1821631372,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.monitor"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1868558901,1482466318,1623930537,-1047151212,-1050023371,-1444560722,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.prefs"/>
+      <attribute name="version" value="1.1.1" type="Version"/>
+      <attribute name="bnd.hashes" value="35728073,-637237544,-160238403,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.provisioning"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1017209112,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.remoteserviceadmin"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-326896397,-1488128249,-552983159,-232897180,1093231394,115338711,-765976915,-1178211066,1834163486,-8757367,1522664736,-782782118,-1416491532,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.repository"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1766621950,-350701718,-2144876113,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.resolver"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="1806831839,760430819,1962956355,-276684762,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.serviceloader"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1631688909,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework,org.osgi.resource"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.subsystem"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="80204913,-1755799473,-749995584,1153906880,-2086966402,-332844868,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.upnp"/>
+      <attribute name="version" value="1.2.0" type="Version"/>
+      <attribute name="bnd.hashes" value="286094867,373888563,-2052569359,-1174474926,-973764714,1918362847,-870004104,-1663385680,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.useradmin"/>
+      <attribute name="version" value="1.1.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-586608551,69076575,2552982,2645995,-1979650524,416664278,1458156280,-263179501,2012037649,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.wireadmin"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="1562798590,-503125994,-1984138256,-939117646,2696357,1027607978,1608216336,1080814718,1132197418,426441812,-420336110,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.measurement"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="-144931940,80204913,2641316,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.util.measurement"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.position"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="812449097,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.xml.parsers,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="osgi.cmpn"/>
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.util.xml"/>
+      <attribute name="version" value="1.0.1" type="Version"/>
+      <attribute name="bnd.hashes" value="735836351,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="osgi.cmpn"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="5.0.0.201305092017" type="Version"/>
+      <attribute name="osgi.wiring.host" value="osgi.cmpn"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="osgi.cmpn"/>
+      <attribute name="from" value="org.osgi:org.osgi.compendium:5.0.0"/>
+      <attribute name="version" value="5.0.0.201305092017" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="771157" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.compendium/5.0.0/org.osgi.compendium-5.0.0.jar"/>
+      <attribute name="osgi.content" value="F1EF32CC1530F4E66AAC606C24363B627ACE4780A7737B045BFB3B908D801BCD"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.microedition.io)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.microedition.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.naming"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.directory)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.naming.directory"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.persistence)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.persistence"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet.http)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.sql)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.sql"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.xml.parsers)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="javax.xml.parsers"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.osgi.framework)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.osgi.resource)"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.resource"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.annotation.versioning"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.annotation.versioning Version 1.0.0."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.annotation.versioning"/>
+      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.annotation.versioning"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-676532112,-254739221,2016261304,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.annotation.versioning"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.annotation.versioning"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.annotation.versioning"/>
+      <attribute name="from" value="org.osgi:org.osgi.annotation.versioning:1.0.0"/>
+      <attribute name="version" value="1.0.0.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="14769" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.annotation.versioning/1.0.0/org.osgi.annotation.versioning-1.0.0.jar"/>
+      <attribute name="osgi.content" value="B299B3CA50B3A57504E131FDDD34D5F3E10A581A6C81E74B6D8FBA81C6E055A7"/>
+    </capability>
+    <requirement namespace="osgi.compile.time.only">
+      <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
@@ -6437,51 +7095,6 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.event"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.event Version 1.3.1."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.3.1.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
-      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
-      <attribute name="version" value="1.3.1" type="Version"/>
-      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.event"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.3.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.event"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.event"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.event:1.3.1"/>
-      <attribute name="version" value="1.3.1.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="36834" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.event/1.3.1/org.osgi.service.event-1.3.1.jar"/>
-      <attribute name="osgi.content" value="10B02929473C5E041F9D2F8B34B08C77297EE63D171976D0B2C1A1174324FADC"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
       <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
       <attribute name="osgi.identity" value="org.osgi.service.component.annotations"/>
@@ -6522,6 +7135,199 @@
     </requirement>
     <requirement namespace="osgi.unresolvable">
       <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.metatype"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.metatype Version 1.3.0."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.3.0.201505202024" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.metatype"/>
+      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype"/>
+      <attribute name="version" value="1.3.0" type="Version"/>
+      <attribute name="bnd.hashes" value="321319151,-402152275,320335376,640868022,1821631372,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.metatype"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.metatype"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.metatype"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.metatype:1.3.0"/>
+      <attribute name="version" value="1.3.0.201505202024" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="21865" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.metatype/1.3.0/org.osgi.service.metatype-1.3.0.jar"/>
+      <attribute name="osgi.content" value="F4F6E4710DD6B4391A9A4B45FF0AE04D4CE6B6FD6783D19E374D49461C49D207"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.prefs"/>
+      <attribute name="documentation" value="http://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.prefs Version 1.1.1."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.1.1.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.prefs"/>
+      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.prefs"/>
+      <attribute name="version" value="1.1.1" type="Version"/>
+      <attribute name="bnd.hashes" value="35728073,-637237544,-160238403" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.prefs"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.prefs"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.prefs"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.prefs:1.1.1"/>
+      <attribute name="version" value="1.1.1.201505202023" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="19739" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.prefs/1.1.1/org.osgi.service.prefs-1.1.1.jar"/>
+      <attribute name="osgi.content" value="7B9ABB61457AB98334C7FDC54C6528B7CF9364B952109B664554FC6E38442986"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache-2.0;description=&quot;This program and the accompanying materials are made available under the terms of the Apache License, Version 2.0.&quot;;link=&quot;https://opensource.org/licenses/Apache-2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) Contributors to the Eclipse Foundation"/>
+      <attribute name="osgi.identity" value="org.osgi.service.servlet"/>
+      <attribute name="documentation" value="https://docs.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.servlet Version 2.0.0"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.0.0.202211071920-RC1" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="jakarta.servlet.http,org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.context"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="32119832,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.service.servlet.runtime.dto"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.runtime"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="55483947,-1897933980,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.runtime.dto"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-484412629,-1490342320,-390944312,-301496667,-1484020886,2037830638,-1454816269,1935433300,-14384392,1156948375,1122568999,-1290190741,985082352,-912752414,-1392588079,1463609095,-323953227,356856186,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="jakarta.servlet"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.whiteboard"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1123970986,-720095889,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.whiteboard.annotations"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-946112598,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="jakarta.servlet"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.servlet"/>
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.whiteboard.propertytypes"/>
+      <attribute name="version" value="2.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1391128266,1469010022,-1778692625,590487940,-864212184,70818259,-1016966326,-1448902520,2088775417,401550931,-750588654,208913719,-1326623444,690473483,-1215796208,934390038,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.0.0.202211071920-RC1" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.servlet"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.servlet"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.servlet:2.0.0-RC1"/>
+      <attribute name="version" value="2.0.0.202211071920-RC1" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.osgi:osgi.annotation:8.1.0;org.osgi:org.osgi.namespace.implementation:1.0.0"/>
+      <attribute name="provided" value="org.osgi:org.osgi.framework:1.8.0;org.osgi:org.osgi.dto:1.0.0;jakarta.servlet:jakarta.servlet-api:5.0.0;org.osgi:org.osgi.service.component.annotations:1.4.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="99744" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.servlet/2.0.0-RC1/org.osgi.service.servlet-2.0.0-RC1.jar"/>
+      <attribute name="osgi.content" value="5AC57D523363693C28C29EB8F2E276415FF36672B5F6ABC8EDFD5B8CC48E6AF6"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=jakarta.servlet)(version&gt;=5.0.0)(!(version&gt;=6.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="jakarta.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=jakarta.servlet.http)(version&gt;=5.0.0)(!(version&gt;=6.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="jakarta.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework.dto"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.servlet.runtime.dto)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.servlet.runtime.dto"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE/compact1)(version=1.8))"/>
     </requirement>
   </resource>
   <resource>
@@ -6579,8 +7385,8 @@
       <attribute name="version" value="1.5.0.202109301733" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.osgi:org.osgi.util.function:1.0.0;org.osgi:org.osgi.util.promise:1.0.0;org.osgi:osgi.annotation:8.0.1;org.osgi:org.osgi.namespace.extender:1.0.1"/>
-      <attribute name="provided" value="org.osgi:org.osgi.dto:1.0.0;org.osgi:org.osgi.framework:1.8.0;org.osgi:org.osgi.service.condition:1.0.0"/>
+      <attribute name="compile" value="org.osgi:org.osgi.namespace.extender:1.0.1;org.osgi:osgi.annotation:8.0.1;org.osgi:org.osgi.util.function:1.0.0;org.osgi:org.osgi.util.promise:1.0.0"/>
+      <attribute name="provided" value="org.osgi:org.osgi.service.condition:1.0.0;org.osgi:org.osgi.framework:1.8.0;org.osgi:org.osgi.dto:1.0.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="66412" type="Long"/>
@@ -6653,51 +7459,6 @@
     </capability>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE/compact1)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.metatype"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.metatype Version 1.3.0."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.3.0.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.metatype"/>
-      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.metatype"/>
-      <attribute name="version" value="1.3.0" type="Version"/>
-      <attribute name="bnd.hashes" value="321319151,-402152275,320335376,640868022,1821631372,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.metatype"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.3.0.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.metatype"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.metatype"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.metatype:1.3.0"/>
-      <attribute name="version" value="1.3.0.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="21865" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.metatype/1.3.0/org.osgi.service.metatype-1.3.0.jar"/>
-      <attribute name="osgi.content" value="F4F6E4710DD6B4391A9A4B45FF0AE04D4CE6B6FD6783D19E374D49461C49D207"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
     </requirement>
   </resource>
   <resource>
@@ -6948,248 +7709,6 @@
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.5))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.prefs"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.prefs Version 1.1.1."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.1.1.201505202023" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.prefs"/>
-      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.prefs"/>
-      <attribute name="version" value="1.1.1" type="Version"/>
-      <attribute name="bnd.hashes" value="35728073,-637237544,-160238403" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.prefs"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.1.1.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.prefs"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.prefs"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.prefs:1.1.1"/>
-      <attribute name="version" value="1.1.1.201505202023" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="19739" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.prefs/1.1.1/org.osgi.service.prefs-1.1.1.jar"/>
-      <attribute name="osgi.content" value="7B9ABB61457AB98334C7FDC54C6528B7CF9364B952109B664554FC6E38442986"/>
-    </capability>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="documentation" value="https://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.http.whiteboard Version 1.1.0"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.1.0.201802012106" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet.http,org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.context"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="32119832,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.service.http.runtime.dto"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="55483947,-1897933980,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-484412629,-1490342320,-390944312,-301496667,-1484020886,2037830638,-1454816269,1935433300,-14384392,1156948375,1122568999,-1290190741,985082352,-912752414,-1392588079,1463609095,-323953227,356856186,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1123970986,-720095889,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard.annotations"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-946112598,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.whiteboard.propertytypes"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1391128266,1469010022,-1778692625,590487940,-864212184,70818259,-1016966326,-1448902520,2088775417,401550931,-750588654,208913719,-1326623444,690473483,-1215796208,934390038,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.http.whiteboard"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.1.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.http.whiteboard"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.http.whiteboard"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.http.whiteboard:1.1.0"/>
-      <attribute name="version" value="1.1.0.201802012106" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="98221" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.http.whiteboard/1.1.0/org.osgi.service.http.whiteboard-1.1.0.jar"/>
-      <attribute name="osgi.content" value="F7D146C23EB324DE0A229B2B019C90BBBE62DB0DB6F55C8A3FEA4BEC600752B4"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.servlet)"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.servlet.http)"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.dto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework.dto"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.http.runtime.dto)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http.runtime.dto"/>
-    </requirement>
-    <requirement namespace="osgi.contract">
-      <directive name="filter" value="(&amp;(osgi.contract=JavaServlet)(version=3.1.0))"/>
-      <attribute name="osgi.contract" value="JavaServlet"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.http"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.http Version 1.2.1."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.2.1.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.servlet,javax.servlet.http"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.http"/>
-      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.http"/>
-      <attribute name="version" value="1.2.1" type="Version"/>
-      <attribute name="bnd.hashes" value="-821083161,211539181,1928146260" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.http"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.2.1.201505202024" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.http"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.http"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.http:1.2.1"/>
-      <attribute name="version" value="1.2.1.201505202024" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="17871" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.http/1.2.1/org.osgi.service.http-1.2.1.jar"/>
-      <attribute name="osgi.content" value="33F19F406C728D73A04E316E46F19A1377A90FE3A407BE381E89D47ED894D87F"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=2.1.0)(!(version&gt;=3.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2015). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.useradmin"/>
-      <attribute name="documentation" value="http://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.useradmin Version 1.1.0."/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.1.0.201505202023" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.useradmin"/>
-      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.useradmin"/>
-      <attribute name="version" value="1.1.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-586608551,69076575,2552982,2645995,-1979650524,416664278,1458156280,-263179501,2012037649" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.useradmin"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.1.0.201505202023" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.useradmin"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.useradmin"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.useradmin:1.1.0"/>
-      <attribute name="version" value="1.1.0.201505202023" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="35422" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.useradmin/1.1.0/org.osgi.service.useradmin-1.1.0.jar"/>
-      <attribute name="osgi.content" value="C7224528BC4871376191063BC2E0A7168918A5906E473D988F9B5953D8DC5B50"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.2))"/>
     </requirement>
   </resource>
   <resource>
@@ -7756,6 +8275,65 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
+      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
+      <attribute name="osgi.identity" value="org.osgi.service.event"/>
+      <attribute name="documentation" value="https://www.osgi.org/"/>
+      <attribute name="description" value="OSGi Companion Code for org.osgi.service.event Version 1.4.0"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.4.0.201802012106" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
+      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
+      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event.annotations"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="1745916922,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
+      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.service.event.propertytypes"/>
+      <attribute name="version" value="1.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-286398322,1392506514,1798964286,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.osgi.service.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.osgi.service.event"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.osgi.service.event"/>
+      <attribute name="from" value="org.osgi:org.osgi.service.event:1.4.0"/>
+      <attribute name="version" value="1.4.0.201802012106" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="47315" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.event/1.4.0/org.osgi.service.event-1.4.0.jar"/>
+      <attribute name="osgi.content" value="8963DBC8956583EB4C6A1F2C33D3E7F94C7BCA090A106A40A6D9619E6F687C0B"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="license" value="http://opensource.org/licenses/apache2.0.php; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
       <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2013). All Rights Reserved."/>
       <attribute name="osgi.identity" value="osgi.cmpn"/>
@@ -8194,65 +8772,6 @@
     </requirement>
     <requirement namespace="osgi.unresolvable">
       <directive name="filter" value="(&amp;(must.not.resolve=*)(!(must.not.resolve=*)))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="Apache-2.0; link=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;; description=&quot;Apache License, Version 2.0&quot;"/>
-      <attribute name="copyright" value="Copyright (c) OSGi Alliance (2000, 2018). All Rights Reserved."/>
-      <attribute name="osgi.identity" value="org.osgi.service.event"/>
-      <attribute name="documentation" value="https://www.osgi.org/"/>
-      <attribute name="description" value="OSGi Companion Code for org.osgi.service.event Version 1.4.0"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.4.0.201802012106" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.osgi.framework"/>
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
-      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event"/>
-      <attribute name="version" value="1.4.0" type="Version"/>
-      <attribute name="bnd.hashes" value="2086568683,67338874,-1345319691,-468363275,1765379952,1940233037,-658393026,442928508,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
-      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event.annotations"/>
-      <attribute name="version" value="1.4.0" type="Version"/>
-      <attribute name="bnd.hashes" value="1745916922,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.osgi.service.event"/>
-      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.service.event.propertytypes"/>
-      <attribute name="version" value="1.4.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-286398322,1392506514,1798964286,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.osgi.service.event"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.4.0.201802012106" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.osgi.service.event"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.osgi.service.event"/>
-      <attribute name="from" value="org.osgi:org.osgi.service.event:1.4.0"/>
-      <attribute name="version" value="1.4.0.201802012106" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="47315" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.event/1.4.0/org.osgi.service.event-1.4.0.jar"/>
-      <attribute name="osgi.content" value="8963DBC8956583EB4C6A1F2C33D3E7F94C7BCA090A106A40A6D9619E6F687C0B"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
     </requirement>
   </resource>
 </repository>

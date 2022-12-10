@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487793">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670682918852">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.eclipse.org/legal/epl-2.0, https://www.gnu.org/software/classpath/license.html, http://www.eclipse.org/org/documents/edl-v10.php"/>
@@ -169,7 +169,7 @@
       <attribute name="version" value="1.0.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="jakarta.mail:jakarta.mail-api:2.1.0;org.eclipse.angus:angus-core:1.0.0"/>
+      <attribute name="compile" value="org.eclipse.angus:angus-core:1.0.0;jakarta.mail:jakarta.mail-api:2.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="234515" type="Long"/>

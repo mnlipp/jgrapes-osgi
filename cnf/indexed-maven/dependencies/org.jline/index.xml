@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670604487848">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670682919062">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://opensource.org/licenses/BSD-3-Clause"/>
@@ -62,7 +62,7 @@
       <attribute name="version" value="3.13.2" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.jline:jline-terminal:3.13.2;net.java.dev.jna:jna:5.3.1"/>
+      <attribute name="compile" value="net.java.dev.jna:jna:5.3.1;org.jline:jline-terminal:3.13.2"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="63014" type="Long"/>
@@ -391,7 +391,7 @@
       <attribute name="version" value="3.13.2" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.jline:jline-remote-ssh:3.13.2;org.jline:jline-terminal:3.13.2;org.jline:jline-builtins:3.13.2;org.jline:jline-remote-telnet:3.13.2;org.jline:jline-terminal-jna:3.13.2;org.jline:jline-terminal-jansi:3.13.2;org.jline:jline-reader:3.13.2;org.jline:jline-style:3.13.2"/>
+      <attribute name="provided" value="org.jline:jline-reader:3.13.2;org.jline:jline-builtins:3.13.2;org.jline:jline-style:3.13.2;org.jline:jline-terminal-jna:3.13.2;org.jline:jline-terminal-jansi:3.13.2;org.jline:jline-remote-ssh:3.13.2;org.jline:jline-terminal:3.13.2;org.jline:jline-remote-telnet:3.13.2"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="839360" type="Long"/>
