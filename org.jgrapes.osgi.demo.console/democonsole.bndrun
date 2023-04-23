@@ -1,4 +1,4 @@
--runfw: org.apache.felix.framework;version='[7.0.3,7.0.3]'
+-runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 
 -runrequires: \
     bnd.identity; id=org.glassfish.hk2.osgi-resource-locator; version='latest',\
