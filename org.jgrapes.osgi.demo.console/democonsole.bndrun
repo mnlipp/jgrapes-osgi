@@ -47,6 +47,7 @@
 #   satisfied by de.mnl.osgi.slf4j2osgi.
 # - no deprecated portal component versions
 -runblacklist: \
+    osgi.identity;filter:='(osgi.identity=org.apache.aries.spifly.dynamic.bundle)',\
     osgi.identity;filter:='(&(osgi.identity=slf4j.api)(|(!(version>=1.7.36))(version>=1.8.0)))',\
     osgi.identity;filter:='(osgi.identity=slf4j.simple)',\
     osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
@@ -88,12 +89,7 @@
     de.mnl.osgi.jul2osgi.lib; version=1.6.0
 
 -runbundles: \
-	org.apache.aries.spifly.dynamic.bundle;version='[1.3.6,1.3.7)',\
-	org.objectweb.asm;version='[9.4.0,9.4.1)',\
-	org.objectweb.asm.commons;version='[9.4.0,9.4.1)',\
-	org.objectweb.asm.tree;version='[9.4.0,9.4.1)',\
-	org.objectweb.asm.tree.analysis;version='[9.4.0,9.4.1)',\
-	org.objectweb.asm.util;version='[9.4.0,9.4.1)',\
+	org.apache.aries.spifly.dynamic.framework.extension;version='[1.3.6,1.3.7)',\
 	de.mnl.osgi.coreutils;version='[2.1.0,2.1.1)',\
 	de.mnl.osgi.jul2osgi;version='[1.6.0,1.6.1)',\
 	de.mnl.osgi.lf4osgi;version='[2.2.0,2.2.1)',\
