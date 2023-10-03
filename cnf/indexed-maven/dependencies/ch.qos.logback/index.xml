@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1670682918731">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276112283">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.eclipse.org/legal/epl-v10.html, http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"/>
@@ -236,7 +236,7 @@
       <attribute name="version" value="1.2.8" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.slf4j:slf4j-api:1.7.32;ch.qos.logback:logback-core:1.2.8"/>
+      <attribute name="compile" value="ch.qos.logback:logback-core:1.2.8;org.slf4j:slf4j-api:1.7.32"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="284732" type="Long"/>
@@ -1079,7 +1079,7 @@
       <attribute name="version" value="1.2.7" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.slf4j:slf4j-api:1.7.32;ch.qos.logback:logback-core:1.2.7"/>
+      <attribute name="compile" value="ch.qos.logback:logback-core:1.2.7;org.slf4j:slf4j-api:1.7.32"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="292031" type="Long"/>

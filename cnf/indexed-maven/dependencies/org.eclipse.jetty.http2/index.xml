@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696168508732">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276113978">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
@@ -172,7 +172,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.52.v20230823;org.eclipse.jetty.http2:http2-common:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.52.v20230823;org.eclipse.jetty:jetty-server:9.4.52.v20230823"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -338,7 +338,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.51.v20230217;org.eclipse.jetty:jetty-io:9.4.51.v20230217;org.eclipse.jetty:jetty-http:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.51.v20230217;org.eclipse.jetty:jetty-http:9.4.51.v20230217;org.eclipse.jetty:jetty-io:9.4.51.v20230217"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52145" type="Long"/>
@@ -785,7 +785,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201;org.eclipse.jetty:jetty-http:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty:jetty-http:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52142" type="Long"/>
@@ -848,7 +848,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.50.v20221201;org.eclipse.jetty:jetty-server:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.50.v20221201;org.eclipse.jetty.http2:http2-common:9.4.50.v20221201"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -952,7 +952,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52141" type="Long"/>
@@ -1015,7 +1015,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.49.v20220914;org.eclipse.jetty:jetty-server:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.49.v20220914;org.eclipse.jetty.http2:http2-common:9.4.49.v20220914"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -1259,7 +1259,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.45.v20220203;org.eclipse.jetty:jetty-util:9.4.45.v20220203;org.eclipse.jetty:jetty-io:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.45.v20220203;org.eclipse.jetty:jetty-http:9.4.45.v20220203;org.eclipse.jetty:jetty-io:9.4.45.v20220203"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52141" type="Long"/>
@@ -1322,7 +1322,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.45.v20220203;org.eclipse.jetty.http2:http2-common:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.45.v20220203;org.eclipse.jetty:jetty-server:9.4.45.v20220203"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -1874,7 +1874,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.43.v20210629;org.eclipse.jetty.http2:http2-common:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.43.v20210629;org.eclipse.jetty:jetty-server:9.4.43.v20210629"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -2118,7 +2118,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.43.v20210629;org.eclipse.jetty:jetty-util:9.4.43.v20210629;org.eclipse.jetty:jetty-http:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.43.v20210629;org.eclipse.jetty:jetty-http:9.4.43.v20210629;org.eclipse.jetty:jetty-util:9.4.43.v20210629"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52144" type="Long"/>
@@ -2181,7 +2181,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.42.v20210604;org.eclipse.jetty:jetty-server:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.42.v20210604;org.eclipse.jetty.http2:http2-common:9.4.42.v20210604"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -2285,7 +2285,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty:jetty-http:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.42.v20210604;org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52141" type="Long"/>
@@ -2488,7 +2488,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.40.v20210413;org.eclipse.jetty.http2:http2-common:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.40.v20210413;org.eclipse.jetty:jetty-server:9.4.40.v20210413"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -2592,7 +2592,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty:jetty-http:9.4.40.v20210413;org.eclipse.jetty:jetty-io:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty:jetty-io:9.4.40.v20210413;org.eclipse.jetty:jetty-http:9.4.40.v20210413"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52143" type="Long"/>
@@ -2899,7 +2899,7 @@
       <attribute name="version" value="9.4.38.v20210224" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.38.v20210224;org.eclipse.jetty:jetty-http:9.4.38.v20210224;org.eclipse.jetty:jetty-io:9.4.38.v20210224"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.38.v20210224;org.eclipse.jetty:jetty-http:9.4.38.v20210224;org.eclipse.jetty:jetty-util:9.4.38.v20210224"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52144" type="Long"/>
@@ -3241,7 +3241,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.35.v20201120;org.eclipse.jetty:jetty-util:9.4.35.v20201120;org.eclipse.jetty:jetty-http:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.35.v20201120;org.eclipse.jetty:jetty-util:9.4.35.v20201120;org.eclipse.jetty:jetty-io:9.4.35.v20201120"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52142" type="Long"/>
@@ -3304,7 +3304,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.35.v20201120;org.eclipse.jetty:jetty-server:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.35.v20201120;org.eclipse.jetty.http2:http2-common:9.4.35.v20201120"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -3548,7 +3548,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.32.v20200930;org.eclipse.jetty:jetty-io:9.4.32.v20200930;org.eclipse.jetty:jetty-util:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.32.v20200930;org.eclipse.jetty:jetty-http:9.4.32.v20200930;org.eclipse.jetty:jetty-io:9.4.32.v20200930"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52140" type="Long"/>
@@ -3611,7 +3611,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-server:9.4.32.v20200930;org.eclipse.jetty.http2:http2-common:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty.http2:http2-common:9.4.32.v20200930;org.eclipse.jetty:jetty-server:9.4.32.v20200930"/>
       <attribute name="provided" value="org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715"/>
     </capability>
     <capability namespace="osgi.content">
@@ -3715,7 +3715,7 @@
       <attribute name="version" value="9.4.31.v20200723" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.31.v20200723;org.eclipse.jetty:jetty-io:9.4.31.v20200723;org.eclipse.jetty:jetty-util:9.4.31.v20200723"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.31.v20200723;org.eclipse.jetty:jetty-util:9.4.31.v20200723;org.eclipse.jetty:jetty-http:9.4.31.v20200723"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="52137" type="Long"/>

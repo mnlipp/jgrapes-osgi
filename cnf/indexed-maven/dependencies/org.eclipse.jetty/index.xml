@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696168508810">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276114402">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
@@ -681,7 +681,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util-ajax:9.4.52.v20230823;org.eclipse.jetty:jetty-security:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-security:9.4.52.v20230823;org.eclipse.jetty:jetty-util-ajax:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="146065" type="Long"/>
@@ -862,7 +862,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty:jetty-http:9.4.52.v20230823"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="736757" type="Long"/>
@@ -1200,7 +1200,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty:jetty-util:9.4.52.v20230823"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -1293,7 +1293,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.52.v20230823;org.eclipse.jetty:jetty-xml:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.52.v20230823;org.eclipse.jetty:jetty-servlet:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140307" type="Long"/>
@@ -1707,7 +1707,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.51.v20230217;org.eclipse.jetty:jetty-io:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.51.v20230217;org.eclipse.jetty:jetty-http:9.4.51.v20230217;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="736865" type="Long"/>
@@ -1868,7 +1868,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util-ajax:9.4.51.v20230217;org.eclipse.jetty:jetty-security:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-security:9.4.51.v20230217;org.eclipse.jetty:jetty-util-ajax:9.4.51.v20230217"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="146077" type="Long"/>
@@ -2727,7 +2727,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.51.v20230217;org.eclipse.jetty:jetty-servlet:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.51.v20230217;org.eclipse.jetty:jetty-xml:9.4.51.v20230217"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140321" type="Long"/>
@@ -3320,7 +3320,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util-ajax:9.4.50.v20221201;org.eclipse.jetty:jetty-security:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-security:9.4.50.v20221201;org.eclipse.jetty:jetty-util-ajax:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="146079" type="Long"/>
@@ -3501,7 +3501,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.50.v20221201;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="736217" type="Long"/>
@@ -3847,7 +3847,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.50.v20221201;org.eclipse.jetty:jetty-xml:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.50.v20221201;org.eclipse.jetty:jetty-servlet:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140316" type="Long"/>
@@ -4159,7 +4159,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.50.v20221201;org.eclipse.jetty:jetty-util:9.4.50.v20221201"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -4987,7 +4987,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.49.v20220914;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="732226" type="Long"/>
@@ -5216,7 +5216,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="327914" type="Long"/>
@@ -5333,7 +5333,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.49.v20220914;org.eclipse.jetty:jetty-xml:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.49.v20220914;org.eclipse.jetty:jetty-servlet:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140313" type="Long"/>
@@ -5545,7 +5545,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty:jetty-util:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -6008,7 +6008,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.45.v20220203;org.eclipse.jetty:jetty-io:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.45.v20220203;org.eclipse.jetty:jetty-http:9.4.45.v20220203"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="325856" type="Long"/>
@@ -6911,7 +6911,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.45.v20220203;org.eclipse.jetty:jetty-servlet:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.45.v20220203;org.eclipse.jetty:jetty-xml:9.4.45.v20220203"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140313" type="Long"/>
@@ -7494,7 +7494,7 @@
       <attribute name="version" value="9.4.44.v20210927" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.44.v20210927;org.eclipse.jetty:jetty-io:9.4.44.v20210927"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.44.v20210927;org.eclipse.jetty:jetty-http:9.4.44.v20210927"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="325613" type="Long"/>
@@ -7787,7 +7787,7 @@
       <attribute name="version" value="9.4.44.v20210927" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.44.v20210927;org.eclipse.jetty:jetty-http:9.4.44.v20210927"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.44.v20210927;org.eclipse.jetty:jetty-io:9.4.44.v20210927;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="718742" type="Long"/>
@@ -8750,7 +8750,7 @@
       <attribute name="version" value="9.4.44.v20210927" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.44.v20210927;org.eclipse.jetty:jetty-io:9.4.44.v20210927"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.44.v20210927;org.eclipse.jetty:jetty-util:9.4.44.v20210927"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -9537,6 +9537,106 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
       <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.jmx"/>
+      <attribute name="documentation" value="https://eclipse.org/jetty"/>
+      <attribute name="description" value="Jetty module for Jetty :: JMX Management"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.43.v20210629" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.jmx,org.eclipse.jetty.util.annotation"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log.jmx"/>
+      <attribute name="version" value="9.4.43" type="Version"/>
+      <attribute name="bnd.hashes" value="2060240121" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.management,javax.management.remote,org.eclipse.jetty.util.annotation,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
+      <attribute name="version" value="9.4.43" type="Version"/>
+      <attribute name="bnd.hashes" value="-1488221957,-798189104,935154532,-650443446,890622613,-386313361,372559262" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.jmx"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.jmx"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="from" value="org.eclipse.jetty:jetty-jmx:9.4.43.v20210629"/>
+      <attribute name="version" value="9.4.43.v20210629" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.43.v20210629"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="42355" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.43.v20210629/jetty-jmx-9.4.43.v20210629.jar"/>
+      <attribute name="osgi.content" value="959811A21492952582F20093E352CAB4D767594B17616D0B18E2AD4F5962BFAB"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+      <attribute name="osgi.wiring.package" value="javax.management"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.modelmbean)"/>
+      <attribute name="osgi.wiring.package" value="javax.management.modelmbean"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
+      <attribute name="osgi.wiring.package" value="javax.management.remote"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.rmi.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.rmi.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.jmx)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
       <attribute name="osgi.identity" value="org.eclipse.jetty.webapp"/>
       <attribute name="documentation" value="https://eclipse.org/jetty"/>
       <attribute name="description" value="Jetty module for Jetty :: Webapp Application Support"/>
@@ -9648,106 +9748,6 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.xml.sax)"/>
       <attribute name="osgi.wiring.package" value="org.xml.sax"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
-      <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
-      <attribute name="osgi.identity" value="org.eclipse.jetty.jmx"/>
-      <attribute name="documentation" value="https://eclipse.org/jetty"/>
-      <attribute name="description" value="Jetty module for Jetty :: JMX Management"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.43.v20210629" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.eclipse.jetty.jmx,org.eclipse.jetty.util.annotation"/>
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log.jmx"/>
-      <attribute name="version" value="9.4.43" type="Version"/>
-      <attribute name="bnd.hashes" value="2060240121" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.management,javax.management.remote,org.eclipse.jetty.util.annotation,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl"/>
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
-      <attribute name="version" value="9.4.43" type="Version"/>
-      <attribute name="bnd.hashes" value="-1488221957,-798189104,935154532,-650443446,890622613,-386313361,372559262" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.jmx"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.43.v20210629" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.jmx"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="from" value="org.eclipse.jetty:jetty-jmx:9.4.43.v20210629"/>
-      <attribute name="version" value="9.4.43.v20210629" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.43.v20210629"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="42355" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.43.v20210629/jetty-jmx-9.4.43.v20210629.jar"/>
-      <attribute name="osgi.content" value="959811A21492952582F20093E352CAB4D767594B17616D0B18E2AD4F5962BFAB"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
-      <attribute name="osgi.wiring.package" value="javax.management"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management.modelmbean)"/>
-      <attribute name="osgi.wiring.package" value="javax.management.modelmbean"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
-      <attribute name="osgi.wiring.package" value="javax.management.remote"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.rmi.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.rmi.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.jmx)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.43)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -10595,106 +10595,6 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
       <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
-      <attribute name="osgi.identity" value="org.eclipse.jetty.jmx"/>
-      <attribute name="documentation" value="https://eclipse.org/jetty"/>
-      <attribute name="description" value="Jetty module for Jetty :: JMX Management"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.42.v20210604" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.eclipse.jetty.jmx,org.eclipse.jetty.util.annotation"/>
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log.jmx"/>
-      <attribute name="version" value="9.4.42" type="Version"/>
-      <attribute name="bnd.hashes" value="2060240121" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="javax.management,javax.management.remote,org.eclipse.jetty.util.annotation,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl"/>
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
-      <attribute name="version" value="9.4.42" type="Version"/>
-      <attribute name="bnd.hashes" value="-1488221957,-798189104,935154532,-650443446,890622613,-386313361,372559262" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.jmx"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.jmx"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.eclipse.jetty.jmx"/>
-      <attribute name="from" value="org.eclipse.jetty:jetty-jmx:9.4.42.v20210604"/>
-      <attribute name="version" value="9.4.42.v20210604" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.42.v20210604"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="42356" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.42.v20210604/jetty-jmx-9.4.42.v20210604.jar"/>
-      <attribute name="osgi.content" value="A7854D8F8B055361CCEDA98CD334995E051EB3CD0680AA9074A5C9CD602B8DFF"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
-      <attribute name="osgi.wiring.package" value="javax.management"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management.modelmbean)"/>
-      <attribute name="osgi.wiring.package" value="javax.management.modelmbean"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
-      <attribute name="osgi.wiring.package" value="javax.management.remote"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=javax.rmi.ssl)"/>
-      <attribute name="osgi.wiring.package" value="javax.rmi.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.jmx)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
-      <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
       <attribute name="osgi.identity" value="org.eclipse.jetty.http"/>
       <attribute name="documentation" value="https://eclipse.org/jetty"/>
       <attribute name="description" value="Jetty module for Jetty :: Http Utility"/>
@@ -10796,6 +10696,106 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
       <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.jmx"/>
+      <attribute name="documentation" value="https://eclipse.org/jetty"/>
+      <attribute name="description" value="Jetty module for Jetty :: JMX Management"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.42.v20210604" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.jmx,org.eclipse.jetty.util.annotation"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log.jmx"/>
+      <attribute name="version" value="9.4.42" type="Version"/>
+      <attribute name="bnd.hashes" value="2060240121" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="javax.management,javax.management.remote,org.eclipse.jetty.util.annotation,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
+      <attribute name="version" value="9.4.42" type="Version"/>
+      <attribute name="bnd.hashes" value="-1488221957,-798189104,935154532,-650443446,890622613,-386313361,372559262" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.jmx"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.42.v20210604" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.jmx"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.jmx"/>
+      <attribute name="from" value="org.eclipse.jetty:jetty-jmx:9.4.42.v20210604"/>
+      <attribute name="version" value="9.4.42.v20210604" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.42.v20210604"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="42356" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-jmx/9.4.42.v20210604/jetty-jmx-9.4.42.v20210604.jar"/>
+      <attribute name="osgi.content" value="A7854D8F8B055361CCEDA98CD334995E051EB3CD0680AA9074A5C9CD602B8DFF"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+      <attribute name="osgi.wiring.package" value="javax.management"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.modelmbean)"/>
+      <attribute name="osgi.wiring.package" value="javax.management.modelmbean"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management.remote)"/>
+      <attribute name="osgi.wiring.package" value="javax.management.remote"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.net.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.rmi.ssl)"/>
+      <attribute name="osgi.wiring.package" value="javax.rmi.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.jmx)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.jmx"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.42)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2021 Mort Bay Consulting Pty Ltd and others."/>
       <attribute name="osgi.identity" value="org.eclipse.jetty.client"/>
       <attribute name="documentation" value="https://eclipse.org/jetty"/>
       <attribute name="description" value="Jetty module for Jetty :: Asynchronous HTTP Client"/>
@@ -10856,7 +10856,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.42.v20210604;org.eclipse.jetty:jetty-http:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="324435" type="Long"/>
@@ -11041,7 +11041,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util-ajax:9.4.42.v20210604;org.eclipse.jetty:jetty-security:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-security:9.4.42.v20210604;org.eclipse.jetty:jetty-util-ajax:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="145932" type="Long"/>
@@ -11251,7 +11251,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.42.v20210604;org.eclipse.jetty:jetty-xml:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.42.v20210604;org.eclipse.jetty:jetty-servlet:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140273" type="Long"/>
@@ -11427,7 +11427,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.42.v20210604;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="716914" type="Long"/>
@@ -12900,7 +12900,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.40.v20210413;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.40.v20210413;org.eclipse.jetty:jetty-io:9.4.40.v20210413;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="710973" type="Long"/>
@@ -13490,7 +13490,7 @@
       <attribute name="version" value="9.4.38.v20210224" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.38.v20210224;org.eclipse.jetty:jetty-io:9.4.38.v20210224"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.38.v20210224;org.eclipse.jetty:jetty-util:9.4.38.v20210224"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -14109,7 +14109,7 @@
       <attribute name="version" value="9.4.38.v20210224" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.38.v20210224;org.eclipse.jetty:jetty-xml:9.4.38.v20210224"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.38.v20210224;org.eclipse.jetty:jetty-servlet:9.4.38.v20210224"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140219" type="Long"/>
@@ -15888,7 +15888,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util-ajax:9.4.35.v20201120;org.eclipse.jetty:jetty-security:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-security:9.4.35.v20201120;org.eclipse.jetty:jetty-util-ajax:9.4.35.v20201120"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="145866" type="Long"/>
@@ -16154,7 +16154,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.35.v20201120;org.eclipse.jetty:jetty-http:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.35.v20201120;org.eclipse.jetty:jetty-http:9.4.35.v20201120;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="709109" type="Long"/>
@@ -16383,7 +16383,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.32.v20200930;org.eclipse.jetty:jetty-io:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.32.v20200930;org.eclipse.jetty:jetty-http:9.4.32.v20200930"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="319311" type="Long"/>
@@ -16669,7 +16669,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.32.v20200930;org.eclipse.jetty:jetty-xml:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.32.v20200930;org.eclipse.jetty:jetty-servlet:9.4.32.v20200930"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="140132" type="Long"/>
@@ -17490,7 +17490,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.32.v20200930;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.32.v20200930;org.eclipse.jetty:jetty-http:9.4.32.v20200930;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="706239" type="Long"/>
@@ -18185,7 +18185,7 @@
       <attribute name="version" value="9.4.31.v20200723" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.31.v20200723;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.31.v20200723"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.31.v20200723;org.eclipse.jetty:jetty-io:9.4.31.v20200723"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="703234" type="Long"/>
@@ -19010,7 +19010,7 @@
       <attribute name="version" value="9.4.31.v20200723" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.31.v20200723;org.eclipse.jetty:jetty-io:9.4.31.v20200723"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.31.v20200723;org.eclipse.jetty:jetty-util:9.4.31.v20200723"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -19380,7 +19380,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.30.v20200611;org.eclipse.jetty:jetty-xml:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.30.v20200611;org.eclipse.jetty:jetty-servlet:9.4.30.v20200611"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="138225" type="Long"/>
@@ -19899,7 +19899,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.30.v20200611;org.eclipse.jetty:jetty-util:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.30.v20200611;org.eclipse.jetty:jetty-io:9.4.30.v20200611"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -20400,7 +20400,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.30.v20200611;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.30.v20200611;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.30.v20200611"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="700887" type="Long"/>
@@ -20734,7 +20734,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.28.v20200408;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="691105" type="Long"/>
@@ -20887,7 +20887,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.28.v20200408;org.eclipse.jetty:jetty-util:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -21551,7 +21551,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.28.v20200408;org.eclipse.jetty:jetty-http:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="324658" type="Long"/>
@@ -21943,7 +21943,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.26.v20200117;org.eclipse.jetty:jetty-io:9.4.26.v20200117;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.26.v20200117;org.eclipse.jetty:jetty-io:9.4.26.v20200117"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="676564" type="Long"/>
@@ -22315,7 +22315,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.26.v20200117;org.eclipse.jetty:jetty-servlet:9.4.26.v20200117"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.26.v20200117;org.eclipse.jetty:jetty-xml:9.4.26.v20200117"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="138227" type="Long"/>
@@ -23261,7 +23261,7 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.20.v20190813;org.eclipse.jetty:jetty-io:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.20.v20190813;org.eclipse.jetty:jetty-http:9.4.20.v20190813"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="295968" type="Long"/>
@@ -24418,7 +24418,7 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.20.v20190813;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.20.v20190813;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.20.v20190813"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="657307" type="Long"/>
@@ -24958,7 +24958,7 @@
       <attribute name="version" value="9.4.19.v20190610" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.19.v20190610;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-http:9.4.19.v20190610"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.19.v20190610;org.eclipse.jetty:jetty-http:9.4.19.v20190610;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="649028" type="Long"/>
@@ -25463,7 +25463,7 @@
       <attribute name="version" value="9.4.19.v20190610" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.19.v20190610;org.eclipse.jetty:jetty-io:9.4.19.v20190610"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.19.v20190610;org.eclipse.jetty:jetty-http:9.4.19.v20190610"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="299585" type="Long"/>
@@ -25921,7 +25921,7 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.15.v20190215;javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-io:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="638951" type="Long"/>
@@ -26058,7 +26058,7 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.15.v20190215;org.eclipse.jetty:jetty-xml:9.4.15.v20190215"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.15.v20190215;org.eclipse.jetty:jetty-servlet:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="136453" type="Long"/>
@@ -26426,7 +26426,7 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.15.v20190215;org.eclipse.jetty:jetty-http:9.4.15.v20190215"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="298364" type="Long"/>

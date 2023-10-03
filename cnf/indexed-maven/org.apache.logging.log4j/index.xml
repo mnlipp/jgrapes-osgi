@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696168508723">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276114010">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -333,7 +333,7 @@
       <attribute name="version" value="2.11.2" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.11.2"/>
+      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.11.2;org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="266283" type="Long"/>
@@ -1588,7 +1588,7 @@
       <attribute name="version" value="2.14.1" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.14.1;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.14.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="300365" type="Long"/>
@@ -1720,7 +1720,7 @@
       <attribute name="version" value="2.14.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.14.0;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.14.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="301418" type="Long"/>
@@ -1984,7 +1984,7 @@
       <attribute name="version" value="2.13.2" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.13.2"/>
+      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.13.2;org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="292301" type="Long"/>
@@ -2248,7 +2248,7 @@
       <attribute name="version" value="2.13.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.13.0;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.13.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="286261" type="Long"/>
@@ -2612,7 +2612,7 @@
       <attribute name="version" value="2.12.2" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.12.2"/>
+      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.12.2;org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="276768" type="Long"/>
@@ -2852,7 +2852,7 @@
       <attribute name="version" value="2.12.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-api-java9:2.12.0;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-api-java9:2.12.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="273454" type="Long"/>
@@ -3312,9 +3312,9 @@
       <attribute name="version" value="3.0.0.alpha1" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.apache.logging.log4j:log4j-plugins:3.0.0-alpha1;org.apache.logging.log4j:log4j-api:3.0.0-alpha1"/>
+      <attribute name="compile" value="org.apache.logging.log4j:log4j-api:3.0.0-alpha1;org.apache.logging.log4j:log4j-plugins:3.0.0-alpha1"/>
       <attribute name="provided" value="org.osgi:org.osgi.resource:1.0.1;org.osgi:org.osgi.framework:1.10.0"/>
-      <attribute name="runtime" value="com.fasterxml.woodstox:woodstox-core:6.5.0;javax.xml.bind:jaxb-api:2.3.1;javax.activation:javax.activation-api:1.2.0"/>
+      <attribute name="runtime" value="javax.activation:javax.activation-api:1.2.0;javax.xml.bind:jaxb-api:2.3.1;com.fasterxml.woodstox:woodstox-core:6.5.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1579487" type="Long"/>
@@ -9690,7 +9690,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.16.0"/>
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.16.0"/>
+      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.16.0;org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1789565" type="Long"/>
@@ -13142,7 +13142,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.13.3"/>
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.13.3;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.13.3"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1714164" type="Long"/>
@@ -13999,7 +13999,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.13.2"/>
-      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.13.2"/>
+      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.13.2;org.osgi:org.osgi.core:4.3.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1714150" type="Long"/>
@@ -14856,7 +14856,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.13.1"/>
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.13.1;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.13.1"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1702809" type="Long"/>
@@ -15713,7 +15713,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.13.0"/>
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.13.0;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.13.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1699530" type="Long"/>
@@ -18255,7 +18255,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="org.apache.logging.log4j:log4j-api:2.12.2"/>
-      <attribute name="provided" value="org.apache.logging.log4j:log4j-core-java9:2.12.2;org.osgi:org.osgi.core:4.3.1"/>
+      <attribute name="provided" value="org.osgi:org.osgi.core:4.3.1;org.apache.logging.log4j:log4j-core-java9:2.12.2"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="1673938" type="Long"/>

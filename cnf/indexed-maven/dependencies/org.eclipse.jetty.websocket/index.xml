@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696168508780">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276114319">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
@@ -123,8 +123,8 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-client:9.4.52.v20230823;org.eclipse.jetty:jetty-http:9.4.52.v20230823;org.eclipse.jetty:jetty-servlet:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-servlet:9.4.52.v20230823"/>
-      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.52.v20230823;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.52.v20230823;org.eclipse.jetty:jetty-http:9.4.52.v20230823;org.eclipse.jetty:jetty-servlet:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-servlet:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-client:9.4.52.v20230823"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45511" type="Long"/>
@@ -278,7 +278,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.52.v20230823;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30305" type="Long"/>
@@ -354,7 +354,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.52.v20230823;org.eclipse.jetty:jetty-client:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-common:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-common:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty:jetty-util:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45602" type="Long"/>
@@ -577,7 +577,7 @@
       <attribute name="version" value="9.4.52.v20230823" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty.websocket:websocket-api:9.4.52.v20230823"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.52.v20230823;org.eclipse.jetty:jetty-io:9.4.52.v20230823;org.eclipse.jetty:jetty-util:9.4.52.v20230823"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214599" type="Long"/>
@@ -811,7 +811,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-common:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-client:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-servlet:9.4.51.v20230217;org.eclipse.jetty:jetty-servlet:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-servlet:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-common:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-client:9.4.51.v20230217;org.eclipse.jetty:jetty-http:9.4.51.v20230217"/>
       <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.51.v20230217;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -1042,7 +1042,7 @@
       <attribute name="version" value="9.4.51.v20230217" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.51.v20230217;org.eclipse.jetty.websocket:websocket-common:9.4.51.v20230217;org.eclipse.jetty:jetty-io:9.4.51.v20230217;org.eclipse.jetty:jetty-util:9.4.51.v20230217"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.51.v20230217;org.eclipse.jetty:jetty-io:9.4.51.v20230217;org.eclipse.jetty:jetty-client:9.4.51.v20230217;org.eclipse.jetty:jetty-util:9.4.51.v20230217"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45621" type="Long"/>
@@ -1498,7 +1498,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-api:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.50.v20221201;org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty:jetty-io:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214633" type="Long"/>
@@ -1647,7 +1647,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.50.v20221201;org.eclipse.jetty:jetty-servlet:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-servlet:9.4.50.v20221201;org.eclipse.jetty:jetty-http:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-client:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-servlet:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-common:9.4.50.v20221201;org.eclipse.jetty:jetty-http:9.4.50.v20221201;org.eclipse.jetty:jetty-servlet:9.4.50.v20221201"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
@@ -1963,7 +1963,7 @@
       <attribute name="version" value="9.4.50.v20221201" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.50.v20221201;org.eclipse.jetty:jetty-client:9.4.50.v20221201;org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-common:9.4.50.v20221201"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.50.v20221201;org.eclipse.jetty:jetty-util:9.4.50.v20221201;org.eclipse.jetty:jetty-client:9.4.50.v20221201;org.eclipse.jetty.websocket:websocket-common:9.4.50.v20221201"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45622" type="Long"/>
@@ -2186,7 +2186,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty:jetty-util:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.49.v20220914;org.eclipse.jetty:jetty-io:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-api:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214625" type="Long"/>
@@ -2484,7 +2484,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-common:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-client:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-servlet:9.4.49.v20220914"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.49.v20220914;org.eclipse.jetty:jetty-http:9.4.49.v20220914;org.eclipse.jetty:jetty-servlet:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-client:9.4.49.v20220914;org.eclipse.jetty.websocket:websocket-common:9.4.49.v20220914"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
@@ -2724,7 +2724,7 @@
       <attribute name="version" value="9.4.49.v20220914" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.49.v20220914;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.49.v20220914"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30312" type="Long"/>
@@ -2885,7 +2885,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.45.v20220203;org.eclipse.jetty:jetty-client:9.4.45.v20220203;org.eclipse.jetty.websocket:websocket-common:9.4.45.v20220203;org.eclipse.jetty:jetty-util:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.45.v20220203;org.eclipse.jetty:jetty-client:9.4.45.v20220203;org.eclipse.jetty:jetty-util:9.4.45.v20220203;org.eclipse.jetty:jetty-io:9.4.45.v20220203"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45612" type="Long"/>
@@ -3083,7 +3083,7 @@
       <attribute name="version" value="9.4.45.v20220203" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.45.v20220203;org.eclipse.jetty:jetty-servlet:9.4.45.v20220203;org.eclipse.jetty.websocket:websocket-common:9.4.45.v20220203;org.eclipse.jetty.websocket:websocket-servlet:9.4.45.v20220203;org.eclipse.jetty:jetty-http:9.4.45.v20220203"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.45.v20220203;org.eclipse.jetty:jetty-servlet:9.4.45.v20220203;org.eclipse.jetty:jetty-http:9.4.45.v20220203;org.eclipse.jetty.websocket:websocket-common:9.4.45.v20220203;org.eclipse.jetty.websocket:websocket-servlet:9.4.45.v20220203"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.45.v20220203"/>
     </capability>
     <capability namespace="osgi.content">
@@ -3711,8 +3711,8 @@
       <attribute name="version" value="9.4.44.v20210927" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-common:9.4.44.v20210927;org.eclipse.jetty:jetty-http:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-client:9.4.44.v20210927;org.eclipse.jetty:jetty-servlet:9.4.44.v20210927"/>
-      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.44.v20210927"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-common:9.4.44.v20210927;org.eclipse.jetty:jetty-servlet:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-client:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-servlet:9.4.44.v20210927"/>
+      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.44.v20210927;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44841" type="Long"/>
@@ -4023,7 +4023,7 @@
       <attribute name="version" value="9.4.44.v20210927" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-common:9.4.44.v20210927;org.eclipse.jetty:jetty-client:9.4.44.v20210927;org.eclipse.jetty:jetty-util:9.4.44.v20210927"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.44.v20210927;org.eclipse.jetty.websocket:websocket-common:9.4.44.v20210927;org.eclipse.jetty:jetty-util:9.4.44.v20210927;org.eclipse.jetty:jetty-client:9.4.44.v20210927"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45622" type="Long"/>
@@ -4172,7 +4172,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.43.v20210629;org.eclipse.jetty:jetty-client:9.4.43.v20210629;org.eclipse.jetty:jetty-io:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-common:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.43.v20210629;org.eclipse.jetty:jetty-io:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-common:9.4.43.v20210629;org.eclipse.jetty:jetty-util:9.4.43.v20210629"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45622" type="Long"/>
@@ -4304,7 +4304,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.43.v20210629;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30313" type="Long"/>
@@ -4370,7 +4370,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-client:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-common:9.4.43.v20210629;org.eclipse.jetty:jetty-servlet:9.4.43.v20210629;org.eclipse.jetty:jetty-http:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.43.v20210629;org.eclipse.jetty:jetty-servlet:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-common:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-servlet:9.4.43.v20210629;org.eclipse.jetty:jetty-http:9.4.43.v20210629"/>
       <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.43.v20210629;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -4697,7 +4697,7 @@
       <attribute name="version" value="9.4.43.v20210629" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-api:9.4.43.v20210629;org.eclipse.jetty:jetty-util:9.4.43.v20210629"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.43.v20210629;org.eclipse.jetty.websocket:websocket-api:9.4.43.v20210629;org.eclipse.jetty:jetty-io:9.4.43.v20210629"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214388" type="Long"/>
@@ -4905,7 +4905,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.42.v20210604;org.eclipse.jetty:jetty-http:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-servlet:9.4.42.v20210604;org.eclipse.jetty:jetty-servlet:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-client:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-common:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-client:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-servlet:9.4.42.v20210604;org.eclipse.jetty:jetty-http:9.4.42.v20210604"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
@@ -5147,7 +5147,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.42.v20210604;org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-api:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-api:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214380" type="Long"/>
@@ -5391,7 +5391,7 @@
       <attribute name="version" value="9.4.42.v20210604" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-common:9.4.42.v20210604;org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.42.v20210604;org.eclipse.jetty:jetty-util:9.4.42.v20210604;org.eclipse.jetty:jetty-io:9.4.42.v20210604;org.eclipse.jetty.websocket:websocket-common:9.4.42.v20210604"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45622" type="Long"/>
@@ -5589,7 +5589,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.40.v20210413;org.eclipse.jetty:jetty-http:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-servlet:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-common:9.4.40.v20210413;org.eclipse.jetty:jetty-servlet:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.40.v20210413;org.eclipse.jetty:jetty-http:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-common:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-client:9.4.40.v20210413;org.eclipse.jetty:jetty-servlet:9.4.40.v20210413"/>
       <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.40.v20210413;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -5831,7 +5831,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.40.v20210413;org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-api:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-api:9.4.40.v20210413;org.eclipse.jetty:jetty-io:9.4.40.v20210413"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="214118" type="Long"/>
@@ -6075,7 +6075,7 @@
       <attribute name="version" value="9.4.40.v20210413" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.40.v20210413;org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty:jetty-client:9.4.40.v20210413;org.eclipse.jetty:jetty-io:9.4.40.v20210413"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.40.v20210413;org.eclipse.jetty:jetty-client:9.4.40.v20210413;org.eclipse.jetty:jetty-util:9.4.40.v20210413;org.eclipse.jetty.websocket:websocket-common:9.4.40.v20210413"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45505" type="Long"/>
@@ -6273,8 +6273,8 @@
       <attribute name="version" value="9.4.38.v20210224" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-common:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-servlet:9.4.38.v20210224;org.eclipse.jetty:jetty-servlet:9.4.38.v20210224;org.eclipse.jetty:jetty-http:9.4.38.v20210224"/>
-      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.38.v20210224;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-common:9.4.38.v20210224;org.eclipse.jetty:jetty-servlet:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-client:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-servlet:9.4.38.v20210224"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.38.v20210224"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44837" type="Long"/>
@@ -6674,7 +6674,7 @@
       <attribute name="version" value="9.4.38.v20210224" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-common:9.4.38.v20210224;org.eclipse.jetty:jetty-client:9.4.38.v20210224;org.eclipse.jetty:jetty-util:9.4.38.v20210224"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.38.v20210224;org.eclipse.jetty:jetty-client:9.4.38.v20210224;org.eclipse.jetty.websocket:websocket-common:9.4.38.v20210224;org.eclipse.jetty:jetty-util:9.4.38.v20210224"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45504" type="Long"/>
@@ -6898,7 +6898,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.35.v20201120;org.eclipse.jetty:jetty-http:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-client:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-servlet:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-common:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-servlet:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-common:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-client:9.4.35.v20201120;org.eclipse.jetty:jetty-http:9.4.35.v20201120"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.35.v20201120"/>
     </capability>
     <capability namespace="osgi.content">
@@ -7107,6 +7107,65 @@
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
       <attribute name="copyright" value="Copyright (c) 2008-2020 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="documentation" value="https://eclipse.org/jetty"/>
+      <attribute name="description" value="Websocket Servlet Interface"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.35.v20201120" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="version" value="9.4.35" type="Version"/>
+      <attribute name="bnd.hashes" value="1080470104,-812231272,1331805774,507441765,1463043198,-2013651917,-114353492" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.35.v20201120"/>
+      <attribute name="version" value="9.4.35.v20201120" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.35.v20201120"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="30263" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-servlet/9.4.35.v20201120/websocket-servlet-9.4.35.v20201120.jar"/>
+      <attribute name="osgi.content" value="4D6FD0249B2FDF9EF9F6C53D6201D5807A57DC4E500167CD609C6C1C8EA9B36D"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.35)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.35)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2020 Mort Bay Consulting Pty Ltd and others."/>
       <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.client"/>
       <attribute name="documentation" value="https://eclipse.org/jetty"/>
       <attribute name="description" value="Jetty module for Jetty :: Websocket :: Client"/>
@@ -7151,7 +7210,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.35.v20201120;org.eclipse.jetty.websocket:websocket-common:9.4.35.v20201120;org.eclipse.jetty:jetty-client:9.4.35.v20201120;org.eclipse.jetty:jetty-io:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.35.v20201120;org.eclipse.jetty:jetty-util:9.4.35.v20201120;org.eclipse.jetty:jetty-io:9.4.35.v20201120;org.eclipse.jetty:jetty-client:9.4.35.v20201120"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45502" type="Long"/>
@@ -7247,65 +7306,6 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.xml)(version&gt;=9.4.35)(!(version&gt;=10.0.0)))"/>
       <directive name="resolution" value="optional"/>
       <attribute name="osgi.wiring.package" value="org.eclipse.jetty.xml"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
-      <attribute name="copyright" value="Copyright (c) 2008-2020 Mort Bay Consulting Pty Ltd and others."/>
-      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.servlet"/>
-      <attribute name="documentation" value="https://eclipse.org/jetty"/>
-      <attribute name="description" value="Websocket Servlet Interface"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.35.v20201120" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.servlet"/>
-      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
-      <attribute name="version" value="9.4.35" type="Version"/>
-      <attribute name="bnd.hashes" value="1080470104,-812231272,1331805774,507441765,1463043198,-2013651917,-114353492" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.servlet"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.35.v20201120" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.servlet"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.eclipse.jetty.websocket.servlet"/>
-      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.35.v20201120"/>
-      <attribute name="version" value="9.4.35.v20201120" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.35.v20201120;javax.servlet:javax.servlet-api:3.1.0"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="30263" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-servlet/9.4.35.v20201120/websocket-servlet-9.4.35.v20201120.jar"/>
-      <attribute name="osgi.content" value="4D6FD0249B2FDF9EF9F6C53D6201D5807A57DC4E500167CD609C6C1C8EA9B36D"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.35)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.35)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
@@ -7433,7 +7433,7 @@
       <attribute name="version" value="9.4.35.v20201120" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.35.v20201120;org.eclipse.jetty:jetty-util:9.4.35.v20201120;org.eclipse.jetty:jetty-io:9.4.35.v20201120"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.35.v20201120;org.eclipse.jetty:jetty-io:9.4.35.v20201120;org.eclipse.jetty:jetty-util:9.4.35.v20201120"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="212494" type="Long"/>
@@ -7592,7 +7592,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-common:9.4.32.v20200930;org.eclipse.jetty:jetty-client:9.4.32.v20200930;org.eclipse.jetty:jetty-xml:9.4.32.v20200930;org.eclipse.jetty:jetty-util:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.32.v20200930;org.eclipse.jetty:jetty-util:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-common:9.4.32.v20200930;org.eclipse.jetty:jetty-io:9.4.32.v20200930;org.eclipse.jetty:jetty-client:9.4.32.v20200930"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45615" type="Long"/>
@@ -7804,7 +7804,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.32.v20200930;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30261" type="Long"/>
@@ -8103,7 +8103,7 @@
       <attribute name="version" value="9.4.32.v20200930" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-client:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-servlet:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-common:9.4.32.v20200930;org.eclipse.jetty:jetty-servlet:9.4.32.v20200930"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-servlet:9.4.32.v20200930;org.eclipse.jetty:jetty-servlet:9.4.32.v20200930;org.eclipse.jetty.websocket:websocket-common:9.4.32.v20200930;org.eclipse.jetty:jetty-http:9.4.32.v20200930"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.32.v20200930"/>
     </capability>
     <capability namespace="osgi.content">
@@ -8261,8 +8261,8 @@
       <attribute name="version" value="9.4.31.v20200723" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.31.v20200723;org.eclipse.jetty.websocket:websocket-common:9.4.31.v20200723;org.eclipse.jetty.websocket:websocket-servlet:9.4.31.v20200723;org.eclipse.jetty:jetty-servlet:9.4.31.v20200723;org.eclipse.jetty.websocket:websocket-client:9.4.31.v20200723"/>
-      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.31.v20200723"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.31.v20200723;org.eclipse.jetty:jetty-servlet:9.4.31.v20200723;org.eclipse.jetty.websocket:websocket-client:9.4.31.v20200723;org.eclipse.jetty:jetty-http:9.4.31.v20200723;org.eclipse.jetty.websocket:websocket-common:9.4.31.v20200723"/>
+      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.31.v20200723;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44814" type="Long"/>
@@ -8806,7 +8806,7 @@
       <attribute name="version" value="9.4.31.v20200723" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.31.v20200723;org.eclipse.jetty:jetty-client:9.4.31.v20200723;org.eclipse.jetty:jetty-xml:9.4.31.v20200723;org.eclipse.jetty:jetty-util:9.4.31.v20200723;org.eclipse.jetty:jetty-io:9.4.31.v20200723"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.31.v20200723;org.eclipse.jetty:jetty-io:9.4.31.v20200723;org.eclipse.jetty:jetty-client:9.4.31.v20200723;org.eclipse.jetty:jetty-xml:9.4.31.v20200723;org.eclipse.jetty:jetty-util:9.4.31.v20200723"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45457" type="Long"/>
@@ -8950,7 +8950,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.30.v20200611;org.eclipse.jetty:jetty-io:9.4.30.v20200611;org.eclipse.jetty:jetty-xml:9.4.30.v20200611;org.eclipse.jetty:jetty-util:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-common:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-common:9.4.30.v20200611;org.eclipse.jetty:jetty-io:9.4.30.v20200611;org.eclipse.jetty:jetty-util:9.4.30.v20200611;org.eclipse.jetty:jetty-xml:9.4.30.v20200611"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45002" type="Long"/>
@@ -9228,7 +9228,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-servlet:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-common:9.4.30.v20200611;org.eclipse.jetty:jetty-servlet:9.4.30.v20200611;org.eclipse.jetty:jetty-http:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-client:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-servlet:9.4.30.v20200611;org.eclipse.jetty:jetty-http:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-common:9.4.30.v20200611"/>
       <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.30.v20200611;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -9470,7 +9470,7 @@
       <attribute name="version" value="9.4.30.v20200611" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.30.v20200611;org.eclipse.jetty.websocket:websocket-api:9.4.30.v20200611;org.eclipse.jetty:jetty-io:9.4.30.v20200611"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.30.v20200611;org.eclipse.jetty:jetty-util:9.4.30.v20200611;org.eclipse.jetty:jetty-io:9.4.30.v20200611"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="208753" type="Long"/>
@@ -9703,7 +9703,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-api:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408;org.eclipse.jetty:jetty-util:9.4.28.v20200408"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="208754" type="Long"/>
@@ -9862,7 +9862,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.28.v20200408;org.eclipse.jetty:jetty-client:9.4.28.v20200408;org.eclipse.jetty:jetty-util:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-common:9.4.28.v20200408;org.eclipse.jetty:jetty-xml:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.28.v20200408;org.eclipse.jetty:jetty-io:9.4.28.v20200408;org.eclipse.jetty:jetty-util:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-common:9.4.28.v20200408;org.eclipse.jetty:jetty-client:9.4.28.v20200408"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45003" type="Long"/>
@@ -9989,7 +9989,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.28.v20200408;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.28.v20200408"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30287" type="Long"/>
@@ -10140,7 +10140,7 @@
       <attribute name="version" value="9.4.28.v20200408" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-client:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-servlet:9.4.28.v20200408;org.eclipse.jetty:jetty-servlet:9.4.28.v20200408;org.eclipse.jetty:jetty-http:9.4.28.v20200408"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-common:9.4.28.v20200408;org.eclipse.jetty:jetty-http:9.4.28.v20200408;org.eclipse.jetty:jetty-servlet:9.4.28.v20200408;org.eclipse.jetty.websocket:websocket-client:9.4.28.v20200408"/>
       <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.28.v20200408;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
@@ -10382,7 +10382,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-api:9.4.26.v20200117;org.eclipse.jetty:jetty-util:9.4.26.v20200117"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.26.v20200117;org.eclipse.jetty:jetty-io:9.4.26.v20200117;org.eclipse.jetty:jetty-util:9.4.26.v20200117"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="207799" type="Long"/>
@@ -10531,7 +10531,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-servlet:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-common:9.4.26.v20200117;org.eclipse.jetty:jetty-servlet:9.4.26.v20200117;org.eclipse.jetty:jetty-http:9.4.26.v20200117"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.26.v20200117;org.eclipse.jetty:jetty-http:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-servlet:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-client:9.4.26.v20200117;org.eclipse.jetty:jetty-servlet:9.4.26.v20200117"/>
       <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.26.v20200117"/>
     </capability>
     <capability namespace="osgi.content">
@@ -10699,7 +10699,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.26.v20200117;org.eclipse.jetty:jetty-io:9.4.26.v20200117;org.eclipse.jetty:jetty-xml:9.4.26.v20200117;org.eclipse.jetty:jetty-client:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-common:9.4.26.v20200117"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.26.v20200117;org.eclipse.jetty:jetty-xml:9.4.26.v20200117;org.eclipse.jetty:jetty-io:9.4.26.v20200117;org.eclipse.jetty.websocket:websocket-common:9.4.26.v20200117;org.eclipse.jetty:jetty-client:9.4.26.v20200117"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45017" type="Long"/>
@@ -10911,7 +10911,7 @@
       <attribute name="version" value="9.4.26.v20200117" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.26.v20200117"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.26.v20200117;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30288" type="Long"/>
@@ -10987,7 +10987,7 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813;org.eclipse.jetty:jetty-io:9.4.20.v20190813;org.eclipse.jetty:jetty-client:9.4.20.v20190813;org.eclipse.jetty:jetty-xml:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-client:9.4.20.v20190813;org.eclipse.jetty:jetty-io:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813;org.eclipse.jetty:jetty-xml:9.4.20.v20190813;org.eclipse.jetty:jetty-util:9.4.20.v20190813"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44917" type="Long"/>
@@ -11199,7 +11199,7 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30186" type="Long"/>
@@ -11349,7 +11349,7 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813;org.eclipse.jetty:jetty-util:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.20.v20190813;org.eclipse.jetty:jetty-io:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="204993" type="Long"/>
@@ -11498,8 +11498,8 @@
       <attribute name="version" value="9.4.20.v20190813" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813;org.eclipse.jetty:jetty-servlet:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-servlet:9.4.20.v20190813;org.eclipse.jetty:jetty-http:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813"/>
-      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.20.v20190813"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813;org.eclipse.jetty:jetty-http:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-servlet:9.4.20.v20190813;org.eclipse.jetty:jetty-servlet:9.4.20.v20190813;org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813"/>
+      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.20.v20190813;javax.servlet:javax.servlet-api:3.1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44908" type="Long"/>
@@ -11966,8 +11966,8 @@
       <attribute name="version" value="9.4.19.v20190610" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-client:9.4.19.v20190610;org.eclipse.jetty:jetty-http:9.4.19.v20190610;org.eclipse.jetty:jetty-servlet:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-servlet:9.4.19.v20190610"/>
-      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.19.v20190610;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-servlet:9.4.19.v20190610;org.eclipse.jetty:jetty-http:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-servlet:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-client:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-common:9.4.19.v20190610"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.19.v20190610"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="43654" type="Long"/>
@@ -12130,7 +12130,7 @@
       <attribute name="version" value="9.4.19.v20190610" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-common:9.4.19.v20190610;org.eclipse.jetty:jetty-io:9.4.19.v20190610;org.eclipse.jetty:jetty-xml:9.4.19.v20190610;org.eclipse.jetty:jetty-client:9.4.19.v20190610"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-io:9.4.19.v20190610;org.eclipse.jetty.websocket:websocket-common:9.4.19.v20190610;org.eclipse.jetty:jetty-util:9.4.19.v20190610;org.eclipse.jetty:jetty-client:9.4.19.v20190610;org.eclipse.jetty:jetty-xml:9.4.19.v20190610"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="44937" type="Long"/>
@@ -12257,7 +12257,7 @@
       <attribute name="version" value="9.4.19.v20190610" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.19.v20190610;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.19.v20190610"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="30197" type="Long"/>
@@ -12408,8 +12408,8 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-http:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-servlet:9.4.15.v20190215;org.eclipse.jetty:jetty-servlet:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-common:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-client:9.4.15.v20190215"/>
-      <attribute name="provided" value="org.eclipse.jetty:jetty-server:9.4.15.v20190215;javax.servlet:javax.servlet-api:3.1.0"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.15.v20190215;org.eclipse.jetty:jetty-http:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-client:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-common:9.4.15.v20190215;org.eclipse.jetty:jetty-servlet:9.4.15.v20190215"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="43466" type="Long"/>
@@ -12646,7 +12646,7 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.15.v20190215;org.eclipse.jetty:jetty-util:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215"/>
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-api:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="197908" type="Long"/>
@@ -12797,7 +12797,7 @@
       <attribute name="version" value="9.4.15.v20190215" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-xml:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215;org.eclipse.jetty.websocket:websocket-common:9.4.15.v20190215;org.eclipse.jetty:jetty-client:9.4.15.v20190215;org.eclipse.jetty:jetty-util:9.4.15.v20190215"/>
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.15.v20190215;org.eclipse.jetty:jetty-io:9.4.15.v20190215;org.eclipse.jetty:jetty-util:9.4.15.v20190215;org.eclipse.jetty:jetty-xml:9.4.15.v20190215;org.eclipse.jetty:jetty-client:9.4.15.v20190215"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="45232" type="Long"/>
