@@ -13,7 +13,7 @@ Private-Package: org.jgrapes.osgi.demo.upnp
 	osgi.annotation;version=6.0.1,\
 	osgi.cmpn;version=6.0,\
 	org.jgrapes.core;version='[1.3.0,2)',\
-	org.jgrapes.io;version='[1.3.0,2)',\
+	org.jgrapes.io;version='[1.3.0,3)',\
     org.jgrapes.util;version='[1.3.0,2)',\
 	org.jgrapes.http;version='[1.3.0,2)',\
 	org.jgrapes.webconsole.base;version=latest,\
