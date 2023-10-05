@@ -45,6 +45,7 @@
 # - SLF4J 1.8 is still alpha and backward compatibility is unclear
 # - Make sure that the import "org.slf4j.impl;version=1.6.0" is only 
 #   satisfied by de.mnl.osgi.slf4j2osgi.
+# - org.apache.commons.io has been renamed to org.apache.commons-io
 # - no deprecated portal component versions
 -runblacklist: \
     osgi.identity;filter:='(osgi.identity=org.apache.aries.spifly.dynamic.bundle)',\
@@ -68,6 +69,7 @@
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
+    osgi.identity;filter:='(osgi.identity=org.apache.commons.io)',\
     osgi.identity;filter:='(&(osgi.identity=org.apache.felix.inventory)(!(version>=1.0.6)))',\
     osgi.identity;filter:='(&(osgi.identity=org.apache.felix.http.jetty)(|(version=4.0.12)(version=4.0.14)))',\
     osgi.identity;filter:='(&(osgi.identity=org.osgi.compendium)(!(version>=6.0.0)))'
