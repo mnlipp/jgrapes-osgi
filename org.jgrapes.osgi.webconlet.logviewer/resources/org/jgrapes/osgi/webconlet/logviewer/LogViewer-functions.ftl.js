@@ -37,7 +37,8 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
     } 
     let app = createApp({
         setup() {
-            const conletId = $(content).closest("[data-conlet-id]").data("conlet-id");
+            const conletId = content.closest("[data-conlet-id]")
+                .dataset["conletId"];
             const controller = reactive(new JGConsole.TableController([
                 ["time", '${_("timestamp")}'],
                 ["logLevel", '${_("level")}'],
@@ -124,12 +125,15 @@ JGConsole.registerConletFunction(
     "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
     "entries", function(conletId, entries) {
         // View only
-        let view = $(JGConsole.findConletView(conletId).element())
-            .find(".jgrapes-osgi-logviewer-view");
-        if (view.length == 0) {
+        let conlet = JGConsole.findConletView(conletId);
+        if (conlet == null) {
+            return
+        }
+        let view = conlet.element().querySelector(":scope .jgrapes-osgi-logviewer-view");
+        if (view == 0) {
             return;
         }
-        let api = getApi(view[0]);
+        let api = getApi(view);
         if (api == null) {
             return;
         }
@@ -141,12 +145,15 @@ JGConsole.registerConletFunction(
     "org.jgrapes.osgi.webconlet.logviewer.LogViewerConlet",
     "addEntry", function(conletId, entry) {
         // View only
-        let view = $(JGConsole.findConletView(conletId).element())
-            .find(".jgrapes-osgi-logviewer-view");
-        if (view.length == 0) {
+        let conlet = JGConsole.findConletView(conletId);
+        if (conlet == null) {
+            return
+        }
+        let view = conlet.element().querySelector(":scope .jgrapes-osgi-logviewer-view");
+        if (view == 0) {
             return;
         }
-        let api = getApi(view[0]);
+        let api = getApi(view);
         if (api == null) {
             return;
         }
