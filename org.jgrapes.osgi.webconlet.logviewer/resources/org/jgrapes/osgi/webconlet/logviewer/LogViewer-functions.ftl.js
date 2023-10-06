@@ -130,10 +130,10 @@ JGConsole.registerConletFunction(
         // View only
         let conlet = JGConsole.findConletView(conletId);
         if (conlet == null) {
-            return
+            return;
         }
         let view = conlet.element().querySelector(":scope .jgrapes-osgi-logviewer-view");
-        if (view == 0) {
+        if (view === 0) {
             return;
         }
         let api = getApi(view);
