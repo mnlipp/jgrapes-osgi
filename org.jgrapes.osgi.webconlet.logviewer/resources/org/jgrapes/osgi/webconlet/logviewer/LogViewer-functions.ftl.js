@@ -23,6 +23,7 @@ import JgwcPlugin, { JGWC }
     from "../../page-resource/jgwc-vue-components/jgwc-components.js";
 import { provideApi, getApi } 
     from "../../page-resource/aash-vue-components/lib/aash-vue-components.js";
+import l10nBundles from "./LogViewer-l10nBundles.ftl.js";
 
 window.orgJGrapesOsgiConletLogViewer = {};
 
@@ -39,13 +40,15 @@ window.orgJGrapesOsgiConletLogViewer.initView = function(content) {
         setup() {
             const conletId = content.closest("[data-conlet-id]")
                 .dataset["conletId"];
+            const ctrlL18n = (key) => 
+                JGConsole.localize(l10nBundles, JGWC.lang(), key);
             const controller = reactive(new JGConsole.TableController([
-                ["time", '${_("timestamp")}'],
-                ["logLevel", '${_("level")}'],
-                ["message", '${_("message")}'],
-                ["bundle", '${_("bundle")}'],
-                ["service", '${_("service")}'],
-                ["exception", '${_("exception")}'],
+                ["time", ctrlL18n],
+                ["logLevel", ctrlL18n],
+                ["message", ctrlL18n],
+                ["bundle", ctrlL18n],
+                ["service", ctrlL18n],
+                ["exception", ctrlL18n],
                 ], {
                 sortKey: "sequence",
                 sortOrder: "down"
