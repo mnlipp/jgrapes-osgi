@@ -63,7 +63,7 @@
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.core)(!(version>=1.17.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.io)(!(version>=2.0.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.http)(!(version>=3.0.0.ga)))',\
-    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=1.1.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=1.2.0.ga)))',\
     osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.jqueryui)(!(version>=0.41.0.ga)))',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.webconsole.provider.fontawesome)',\
     osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
@@ -124,7 +124,7 @@
 	com.electronwill.nightconfig.yaml;version='[3.6.7,3.6.8)',\
 	org.owasp.encoder;version='[1.2.3,1.2.4)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
-	org.jgrapes.webconsole.base;version='[1.1.0,1.1.1)',\
+	org.jgrapes.webconsole.base;version='[1.2.0,1.2.1)',\
 	org.jgrapes.webconsole.jqueryui;version='[0.46.0,0.46.1)',\
 	org.jgrapes.webconsole.bootstrap4;version='[0.49.0,0.49.1)',\
 	org.jgrapes.webconsole.vuejs;version='[1.4.0,1.4.1)',\
@@ -133,15 +133,15 @@
 	org.jgrapes.webconsole.provider.chartjs;version='[1.1.0,1.1.1)',\
 	org.jgrapes.webconsole.provider.forkawesome;version='[1.1.0,1.1.1)',\
 	org.jgrapes.webconsole.provider.markdownit;version='[1.1.0,1.1.1)',\
-	org.jgrapes.webconsole.provider.vue;version='[1.1.0,1.1.1)',\
+	org.jgrapes.webconsole.provider.vue;version='[1.2.0,1.2.1)',\
 	org.jgrapes.webconsole.provider.jqueryui;version='[0.4.0,0.4.1)',\
 	org.jgrapes.webconsole.provider.gridstack;version='[1.1.0,1.1.1)',\
 	org.jgrapes.webconsole.provider.jquitouchpunch;version='[0.4.0,0.4.1)',\
-	org.jgrapes.webconlet.examples.helloworld;version='[1.1.0,1.1.1)',\
+	org.jgrapes.webconlet.examples.helloworld;version='[1.2.0,1.2.1)',\
 	org.jgrapes.webconlet.examples.styletest;version='[1.1.0,1.1.1)',\
 	org.jgrapes.webconlet.examples.formtest;version='[1.1.0,1.1.1)',\
-	org.jgrapes.webconlet.markdowndisplay;version='[1.1.0,1.1.1)',\
-	org.jgrapes.webconlet.sysinfo;version='[1.2.0,1.2.1)',\
+	org.jgrapes.webconlet.markdowndisplay;version='[1.2.0,1.2.1)',\
+	org.jgrapes.webconlet.sysinfo;version='[1.3.0,1.3.1)',\
 	org.apache.felix.configadmin;version='[1.9.26,1.9.27)',\
 	org.apache.felix.scr;version='[2.2.6,2.2.7)',\
 	org.apache.felix.inventory;version='[2.0.0,2.0.1)',\
@@ -150,7 +150,7 @@
 	org.apache.felix.metatype;version='[1.2.4,1.2.5)',\
 	org.apache.felix.eventadmin;version='[1.6.4,1.6.5)',\
 	org.apache.felix.useradmin;version='[1.0.4,1.0.5)',\
-	org.apache.felix.webconsole;version='[4.9.4,4.9.5)',\
+	org.apache.felix.webconsole;version='[4.9.6,4.9.7)',\
 	org.apache.felix.webconsole.plugins.memoryusage;version='[1.1.0,1.1.1)',\
 	org.osgi.service.component;version='[1.5.0,1.5.1)',\
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
