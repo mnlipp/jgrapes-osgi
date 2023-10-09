@@ -35,18 +35,43 @@
     bnd.identity; id=org.jgrapes.osgi.webconlet.logviewer; version='snapshot',\
     bnd.identity; id=org.jgrapes.osgi.demo.console; version='snapshot'
 
-# These cause (no longer working) webconsole 4.2.8 to be used:
-#    bnd.identity; id=org.apache.felix.webconsole.plugins.obr; version='latest',\
-#    bnd.identity; id=org.apache.felix.webconsole.plugins.useradmin; version='latest'
-
-# Causes the JGrapes part to hang:
-#    bnd.identity; id=org.apache.felix.webconsole.plugins.ds; version='latest'
-
+# - Don't include the compendium    
+# - Use spifly's framework extension variant
 # - SLF4J 1.8 is still alpha and backward compatibility is unclear
 # - Make sure that the import "org.slf4j.impl;version=1.6.0" is only 
 #   satisfied by de.mnl.osgi.slf4j2osgi.
-# - org.apache.commons.io has been renamed to org.apache.commons-io
-# - no deprecated portal component versions
+# - no deprecated portal component versions and no deprected fontawesome
+## - Dont' use "simplified" angus mail implementation
+##       osgi.identity;filter:='(osgi.identity=org.eclipse.angus.jakarta.mail)'
+# - Don't use full fledged angus mail (doesn't resolve)
+# - For some JDrupes/JGrapes components it's necessary to force newer versions
+-runblacklist: \
+    osgi.identity;filter:='(&(osgi.identity=org.osgi.compendium)(!(version>=6.0.0)))',\
+    osgi.identity;filter:='(osgi.identity=org.apache.aries.spifly.dynamic.bundle)',\
+    osgi.identity;filter:='(&(osgi.identity=slf4j.api)(|(!(version>=1.7.36))(version>=1.8.0)))',\
+    osgi.identity;filter:='(osgi.identity=slf4j.simple)',\
+    osgi.identity;filter:='(osgi.identity=slf4j.log4j12)',\
+    osgi.identity;filter:='(osgi.identity=slf4j.osgi)',\
+    osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.portal.*)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.osgi.portal.*)',\
+    osgi.identity;filter:='(osgi.identity=org.jgrapes.webconsole.provider.fontawesome)',\
+    \
+    osgi.identity;filter:='(osgi.identity=jakarta.mail-api)',\
+    osgi.identity;filter:='(osgi.identity=org.eclipse.angus.mail)',\
+    \
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.coreutils)(!(version>=2.1.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.osgi2jul)(!(version>=1.2.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.log4j2osgi)(!(version>=1.2.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.lf4osgi)(!(version>=2.2.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=de.mnl.osgi.jul2osgi)(!(version>=1.6.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jdrupes.httpcodec)(!(version>=3.0.0)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.core)(!(version>=1.17.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.io)(!(version>=2.0.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.http)(!(version>=3.0.0.ga)))',\
+    osgi.identity;filter:='(&(osgi.identity=org.jgrapes.webconsole.base)(!(version>=1.2.0.ga)))'
+
 -runblacklist: \
     osgi.identity;filter:='(osgi.identity=org.apache.aries.spifly.dynamic.bundle)',\
     osgi.identity;filter:='(&(osgi.identity=slf4j.api)(|(!(version>=1.7.36))(version>=1.8.0)))',\
@@ -92,6 +117,9 @@
 
 -runbundles: \
 	org.apache.aries.spifly.dynamic.framework.extension;version='[1.3.6,1.3.7)',\
+	org.owasp.encoder;version='[1.2.3,1.2.4)',\
+	jakarta.activation-api;version='[2.1.2,2.1.3)',\
+	angus-activation;version='[2.0.0,2.0.1)',\
 	de.mnl.osgi.coreutils;version='[2.1.0,2.1.1)',\
 	de.mnl.osgi.jul2osgi;version='[1.6.0,1.6.1)',\
 	de.mnl.osgi.lf4osgi;version='[2.3.0,2.3.1)',\
@@ -101,9 +129,7 @@
 	slf4j.api;version='[1.7.36,1.7.37)',\
 	org.apache.commons.commons-fileupload;version='[1.5.0,1.5.1)',\
 	org.apache.commons.commons-io;version='[2.13.0,2.13.1)',\
-	jakarta.activation-api;version='[2.1.2,2.1.3)',\
 	org.glassfish.hk2.osgi-resource-locator;version='[2.5.0,2.5.1)',\
-	angus-activation;version='[2.0.0,2.0.1)',\
 	org.apache.felix.shell;version='[1.4.3,1.4.4)',\
 	org.apache.felix.gogo.command;version='[1.1.2,1.1.3)',\
 	org.apache.felix.gogo.shell;version='[1.1.4,1.1.5)',\
@@ -122,7 +148,7 @@
 	com.electronwill.nightconfig.json;version='[3.6.7,3.6.8)',\
 	com.electronwill.nightconfig.toml;version='[3.6.7,3.6.8)',\
 	com.electronwill.nightconfig.yaml;version='[3.6.7,3.6.8)',\
-	org.owasp.encoder;version='[1.2.3,1.2.4)',\
+	com.fasterxml.jackson.core.jackson-core;version='[2.12.2,2.12.3)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
 	org.jgrapes.webconsole.base;version='[1.2.0,1.2.1)',\
 	org.jgrapes.webconsole.jqueryui;version='[0.46.0,0.46.1)',\
@@ -145,7 +171,6 @@
 	org.apache.felix.configadmin;version='[1.9.26,1.9.27)',\
 	org.apache.felix.scr;version='[2.2.6,2.2.7)',\
 	org.apache.felix.inventory;version='[2.0.0,2.0.1)',\
-	com.fasterxml.jackson.core.jackson-core;version='[2.12.2,2.12.3)',\
 	org.apache.felix.gogo.runtime;version='[1.1.6,1.1.7)',\
 	org.apache.felix.metatype;version='[1.2.4,1.2.5)',\
 	org.apache.felix.eventadmin;version='[1.6.4,1.6.5)',\
@@ -155,9 +180,9 @@
 	org.osgi.service.component;version='[1.5.0,1.5.1)',\
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
 	org.osgi.util.promise;version='[1.2.0,1.2.1)',\
-	org.jgrapes.osgi.webconlet.bundles;version=snapshot,\
-	org.jgrapes.osgi.webconlet.services;version=snapshot,\
-	org.jgrapes.osgi.webconlet.logviewer;version=snapshot,\
-	org.jgrapes.osgi.demo.console;version=snapshot,\
-	org.jgrapes.osgi.core;version='[1.2.1,1.2.2)'
+	org.jgrapes.osgi.core;version='[1.2.1,1.2.2)',\
+	org.jgrapes.osgi.webconlet.bundles;version='[1.0.0,1.0.1)',\
+	org.jgrapes.osgi.webconlet.logviewer;version='[1.0.0,1.0.1)',\
+	org.jgrapes.osgi.webconlet.services;version='[1.0.0,1.0.1)',\
+	org.jgrapes.osgi.demo.console;version=snapshot
 
