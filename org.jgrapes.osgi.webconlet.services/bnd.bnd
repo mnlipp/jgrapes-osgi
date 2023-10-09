@@ -1,6 +1,6 @@
 Bundle-Name: JGrapes OSGi Conlet for Services
 #Bundle-Version: 0.11.0.-${tstamp}-SNAPSHOT
-Bundle-Version: 1.0.0.ga
+Bundle-Version: 1.0.1.ga
 Bundle-Copyright: Michael N. Lipp (c) 2017, 2022
 Bundle-License: http://www.gnu.org/licenses/agpl-3.0.txt
 Bundle-Category: conlet
