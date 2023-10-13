@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276114155">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1697191513668">
   <resource>
     <capability namespace="osgi.identity">
       <directive name="singleton" value="true"/>
-      <attribute name="copyright" value="Copyright (c) 2003, 2018 IBM Corporation and others. This program and the accompanying materials  are made available under the terms of the Eclipse Public License 2.0 which accompanies this distribution, and is available at https://www.eclipse.org/legal/epl-2.0/"/>
+      <attribute name="copyright" value="copyright"/>
       <attribute name="osgi.identity" value="org.eclipse.osgi"/>
       <attribute name="documentation" value="http://www.eclipse.org"/>
-      <attribute name="description" value="OSGi System Bundle"/>
+      <attribute name="description" value="systemBundle"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" value="3.17.0.v20210823-1805" type="Version"/>
     </capability>

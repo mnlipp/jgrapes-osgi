@@ -1,5 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276112604">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1697191754856">
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.apache.tomcat:tomcat-servlet-api"/>
+      <attribute name="from" value="org.apache.tomcat:tomcat-servlet-api:8.0.9"/>
+      <attribute name="version" value="8.0.9" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="244106" type="Long"/>
+      <attribute name="mime" value="application/java-archive"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-servlet-api/8.0.9/tomcat-servlet-api-8.0.9.jar"/>
+      <attribute name="osgi.content" value="BC69D8A091E731741D213E37238968F0437C921DA7174429A6B0B0993ECD8A78"/>
+    </capability>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="org.apache.tomcat-servlet-api"/>
@@ -177,19 +190,6 @@
       <attribute name="mime" value="application/java-archive"/>
       <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-servlet-api/8.5.66/tomcat-servlet-api-8.5.66.jar"/>
       <attribute name="osgi.content" value="30AEB2785E645ACDEA69DA422BB57F6519E068053EE91F255E1A62C7D2D423A9"/>
-    </capability>
-  </resource>
-  <resource>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.apache.tomcat:tomcat-servlet-api"/>
-      <attribute name="from" value="org.apache.tomcat:tomcat-servlet-api:8.0.9"/>
-      <attribute name="version" value="8.0.9" type="Version"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="244106" type="Long"/>
-      <attribute name="mime" value="application/java-archive"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-servlet-api/8.0.9/tomcat-servlet-api-8.0.9.jar"/>
-      <attribute name="osgi.content" value="BC69D8A091E731741D213E37238968F0437C921DA7174429A6B0B0993ECD8A78"/>
     </capability>
   </resource>
   <resource>
