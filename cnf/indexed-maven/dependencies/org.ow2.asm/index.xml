@@ -1,50 +1,249 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276113613">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723292346426">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+      <attribute name="bnd.hashes" value="103284255,594174114,83010,2017053308,-1734073205,872586299,711177040,666722294,1027991531,359934939,1581691183,-1678783089,1610077076,2154973,758731316,2139338221,68139341,-2140710328,-1937510614,73174740,1477465799,-660431827,1262274772,-367623102,1548814879,399646405,1455956802,-747664609,-1803656776,67115090,319794686,1327447286,2622298,-611803489,-1421180655" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-1658639493,-491865930,-1503234261" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm"/>
+      <attribute name="from" value="org.ow2.asm:asm:9.6"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="123598" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.jar"/>
+      <attribute name="osgi.content" value="3C6FAC2424DB3D4A853B669F4E3D1D9C3C552235E19A319673F887083C2303A1"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm.commons"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.signature,org.objectweb.asm.tree"/>
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.commons"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.commons"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-718936297,664616873,1091208867,1377918892,-1784929247,-64768722,1571135772,129330945,1735507245,1215373471,-1592971177,-1993687807,-1109153195,2144798612,-622017312,115246372,-1271609377,74384864,-461275564,2289459,497938146,-178577684,-338384346,-1180801640,309361,-2018499656" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.commons"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm.commons"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm.commons"/>
+      <attribute name="from" value="org.ow2.asm:asm-commons:9.6"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.ow2.asm:asm:9.6;org.ow2.asm:asm-tree:9.6"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="72194" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar"/>
+      <attribute name="osgi.content" value="7AEFD0D5C0901701C69F7513FEDA765FB6BE33AF2CE7AA17C5781FC87657C511"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.signature)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm.util"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.signature,org.objectweb.asm.tree,org.objectweb.asm.tree.analysis"/>
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.util"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.util"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+      <attribute name="bnd.hashes" value="271473438,739483345,228386072,69773247,161782269,-1242492629,-1993687807,-1927447265,-712552666,-908373577,-419743941,1430743307,80204913,-944550785,1349935098,975218540,-842039613,-1595225190,-1861693029,-1769684007,-1731895512,-1439086787,-928937305,-269561893" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm.util"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm.util"/>
+      <attribute name="from" value="org.ow2.asm:asm-util:9.6"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.ow2.asm:asm-analysis:9.6;org.ow2.asm:asm-tree:9.6;org.ow2.asm:asm:9.6"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="91131" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-util/9.6/asm-util-9.6.jar"/>
+      <attribute name="osgi.content" value="C635A7402F4AA9BF66B2F4230CEA62025A0FE1CD63E8729ADEFC9B1994FAC4C3"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.signature)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree.analysis)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree.analysis"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
       <attribute name="osgi.identity" value="org.objectweb.asm.tree.analysis"/>
       <attribute name="documentation" value="http://asm.ow2.org"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.tree"/>
+      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.signature,org.objectweb.asm.tree"/>
       <attribute name="bundle-symbolic-name" value="org.objectweb.asm.tree.analysis"/>
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
       <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree.analysis"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
       <attribute name="bnd.hashes" value="-959795002,2060107305,1670022540,860624387,1617197316,68139341,-340140454,-1806848312,691293134,-541908485,-858183873,1574353398,232847012,82420049" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
       <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.tree.analysis"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
       <attribute name="osgi.wiring.host" value="org.objectweb.asm.tree.analysis"/>
     </capability>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.objectweb.asm.tree.analysis"/>
-      <attribute name="from" value="org.ow2.asm:asm-analysis:9.4"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
+      <attribute name="from" value="org.ow2.asm:asm-analysis:9.6"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm-tree:9.4"/>
+      <attribute name="compile" value="org.ow2.asm:asm-tree:9.6"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="34331" type="Long"/>
+      <attribute name="size" value="34041" type="Long"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/9.4/asm-analysis-9.4.jar"/>
-      <attribute name="osgi.content" value="7B5F8C5E3BF341B5BB570D26F379E3FDEBDC32732187159C42479164053F373D"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/9.6/asm-analysis-9.6.jar"/>
+      <attribute name="osgi.content" value="D92832D7C37EDC07C60E2559AC6118B31D642E337A6671EDCB7BA9FAE68EDBBB"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.6.0))"/>
       <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.signature)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.6.0))"/>
       <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm.tree"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.signature"/>
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.tree"/>
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-641155388,442804721,1994092410,1010172764,-1025976836,-1746047761,-1240543625,816492036,1924087212,613601054,613665922,-1067733679,-171851255,1269368528,1396057846,463469389,1301555231,1159705752,-1469644407,-588538896,-34211709,1270314659,-1946489982,1123126958,-600916456,-332333545,-2033504549,2074505859,419367211,1102860206,124133124,-632416721,-571553845,1779946972,1837619418,2647074,-1078647671" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.6.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm.tree"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm.tree"/>
+      <attribute name="from" value="org.ow2.asm:asm-tree:9.6"/>
+      <attribute name="version" value="9.6.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.ow2.asm:asm:9.6"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="51935" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar"/>
+      <attribute name="osgi.content" value="C43ECF17B539C777E15DA7B5B86553B377E2D39A683DE6285567D5283888E7EF"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.signature)(version&gt;=9.6.0))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
     </requirement>
   </resource>
   <resource>
@@ -92,6 +291,49 @@
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm.tree"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.objectweb.asm"/>
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.tree"/>
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-641155388,442804721,1994092410,1010172764,-1025976836,-1746047761,-1240543625,816492036,1924087212,613601054,613665922,-1067733679,-171851255,1269368528,1396057846,463469389,1301555231,1159705752,-1469644407,-588538896,-34211709,1270314659,-1946489982,1123126958,-600916456,-332333545,-2033504549,2074505859,419367211,1102860206,124133124,-632416721,-571553845,1779946972,1837619418,2647074,-1078647671" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm.tree"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm.tree"/>
+      <attribute name="from" value="org.ow2.asm:asm-tree:9.4"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.ow2.asm:asm:9.4"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="52665" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/9.4/asm-tree-9.4.jar"/>
+      <attribute name="osgi.content" value="C42D479CF24566A21EB20AF7EEAEEF4E86BDB4A886306CF72F483B65E75B2ACF"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
       <attribute name="osgi.identity" value="org.objectweb.asm.commons"/>
       <attribute name="documentation" value="http://asm.ow2.org"/>
       <attribute name="type" value="osgi.bundle"/>
@@ -134,6 +376,53 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.signature)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
       <attribute name="osgi.wiring.package" value="org.objectweb.asm.signature"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
+      <attribute name="osgi.identity" value="org.objectweb.asm.tree.analysis"/>
+      <attribute name="documentation" value="http://asm.ow2.org"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.objectweb.asm,org.objectweb.asm.tree"/>
+      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.tree.analysis"/>
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree.analysis"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-959795002,2060107305,1670022540,860624387,1617197316,68139341,-340140454,-1806848312,691293134,-541908485,-858183873,1574353398,232847012,82420049" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.tree.analysis"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.objectweb.asm.tree.analysis"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.objectweb.asm.tree.analysis"/>
+      <attribute name="from" value="org.ow2.asm:asm-analysis:9.4"/>
+      <attribute name="version" value="9.4.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.ow2.asm:asm-tree:9.4"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="34331" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/9.4/asm-analysis-9.4.jar"/>
+      <attribute name="osgi.content" value="7B5F8C5E3BF341B5BB570D26F379E3FDEBDC32732187159C42479164053F373D"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
@@ -193,49 +482,6 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm.tree.analysis)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
       <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree.analysis"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
-      <attribute name="osgi.identity" value="org.objectweb.asm.tree"/>
-      <attribute name="documentation" value="http://asm.ow2.org"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="org.objectweb.asm"/>
-      <attribute name="bundle-symbolic-name" value="org.objectweb.asm.tree"/>
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.objectweb.asm.tree"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
-      <attribute name="bnd.hashes" value="-641155388,442804721,1994092410,1010172764,-1025976836,-1746047761,-1240543625,816492036,1924087212,613601054,613665922,-1067733679,-171851255,1269368528,1396057846,463469389,1301555231,1159705752,-1469644407,-588538896,-34211709,1270314659,-1946489982,1123126958,-600916456,-332333545,-2033504549,2074505859,419367211,1102860206,124133124,-632416721,-571553845,1779946972,1837619418,2647074,-1078647671" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.objectweb.asm.tree"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.objectweb.asm.tree"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.objectweb.asm.tree"/>
-      <attribute name="from" value="org.ow2.asm:asm-tree:9.4"/>
-      <attribute name="version" value="9.4.0" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm:9.4"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="52665" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/9.4/asm-tree-9.4.jar"/>
-      <attribute name="osgi.content" value="C42D479CF24566A21EB20AF7EEAEEF4E86BDB4A886306CF72F483B65E75B2ACF"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.objectweb.asm)(version&gt;=9.4.0)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.objectweb.asm"/>
     </requirement>
   </resource>
   <resource>
