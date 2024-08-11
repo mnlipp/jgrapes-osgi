@@ -53,9 +53,9 @@
 #bundleVersionQualifier: -${tstamp}-SNAPSHOT
 bundleVersionQualifier: ga
 
-javac.source: 17
-javac.target: 17
--runee: JavaSE-17
+javac.source: 21
+javac.target: 21
+-runee: JavaSE-21
 
 -groupid: org.jgrapes
 

@@ -1,5 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276112344">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723370971151">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="org.fusesource.jansi"/>
+      <attribute name="documentation" value="http://fusesource.com/"/>
+      <attribute name="description" value="Jansi is a java library for generating and interpreting ANSI escape sequences."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.18.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.fusesource.jansi"/>
+      <attribute name="bundle-version" value="1.18.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.fusesource.jansi"/>
+      <attribute name="version" value="1.18.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2017053308,65290051,67216006,-1957336892,2045795,-1136520632,-1750548364,-448575556,783703780,2051505450,1768315052,2105869,1640679750,-1394791084,-1431291435,1060496559,1079735111,1229770855,-2076051476" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.fusesource.jansi"/>
+      <attribute name="bundle-version" value="1.18.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.fusesource.jansi.internal"/>
+      <attribute name="version" value="1.8.0" type="Version"/>
+      <attribute name="bnd.hashes" value="241075201,-1281332771,-1659929864,83701751,471124482,64307925,-1536852515,1747905158,-1172231242,1426936982,-758355152,1744594492,614287743,378772348,-2076051476" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.18.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.fusesource.jansi"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.18.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.fusesource.jansi"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.fusesource.jansi"/>
+      <attribute name="from" value="org.fusesource.jansi:jansi:1.18"/>
+      <attribute name="version" value="1.18.0" type="Version"/>
+    </capability>
+    <capability namespace="bnd.mainclass">
+      <attribute name="bnd.mainclass" value="org.fusesource.jansi.AnsiMain"/>
+      <attribute name="version" value="1.18.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="287352" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.18/jansi-1.18.jar"/>
+      <attribute name="osgi.content" value="109E64FC65767C7A1A3BD654709D76F107B0A3B39DB32CBF11139E13A6F5229B"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.6))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>

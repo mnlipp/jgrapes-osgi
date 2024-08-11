@@ -1,5 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1696276113251">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723370971265">
+  <resource>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.codehaus.mojo:animal-sniffer-annotations"/>
+      <attribute name="from" value="org.codehaus.mojo:animal-sniffer-annotations:1.9"/>
+      <attribute name="version" value="1.9.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="3409" type="Long"/>
+      <attribute name="mime" value="application/java-archive"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/codehaus/mojo/animal-sniffer-annotations/1.9/animal-sniffer-annotations-1.9.jar"/>
+      <attribute name="osgi.content" value="CD96FEEB47F34B2559704715DB7B179A03A3721F9DC4092C345C718E29B42DE4"/>
+    </capability>
+  </resource>
   <resource>
     <capability namespace="bnd.info">
       <attribute name="name" value="org.codehaus.mojo:animal-sniffer-annotations"/>

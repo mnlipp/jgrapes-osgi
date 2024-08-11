@@ -3,7 +3,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:6.4.0"
+        classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:7.0.0"
         classpath 'org.ajoberstar.grgit:grgit-gradle:4.1.0'
         classpath 'org.ajoberstar:gradle-git-publish:3.0.0'
     }
@@ -51,22 +51,15 @@ configurations {
 }
 
 dependencies {
-    markdownDoclet "org.jdrupes.mdoclet:doclet:3.1.0"
-    javadocTaglets "org.jdrupes.taglets:plantuml-taglet:2.0.0"
+    markdownDoclet "org.jdrupes.mdoclet:doclet:4.2.0"
+    javadocTaglets "org.jdrupes.taglets:plantuml-taglet:3.1.0"
 }
 
 var docDestinationDir = file("../jgrapes.gh-pages/javadoc-osgi")
 
-task javadocResources(type: Copy) {
-    into docDestinationDir
-    from ("${rootProject.rootDir}/misc") {
-        include '*.woff2'
-    }
-}
-
-task java11doc(type: JavaExec) {
+task apidocs(type: JavaExec) {
     // Does not work on JitPack, no /usr/bin/dot
-    enabled = JavaVersion.current() == JavaVersion.VERSION_17 && !isJitPackBuild
+    enabled = JavaVersion.current() == JavaVersion.VERSION_21 && !isJitPackBuild
 
     // Make sure that other projects' compileClasspaths are resolved
     rootProject.subprojects
@@ -87,13 +80,20 @@ task java11doc(type: JavaExec) {
     
     outputs.dir(docDestinationDir)
     
-    jvmArgs = ['--add-exports=jdk.javadoc/jdk.javadoc.internal.tool=ALL-UNNAMED',
-        '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED']
-    main = 'jdk.javadoc.internal.tool.Main'
+    jvmArgs = ['--add-exports=jdk.compiler/com.sun.tools.doclint=ALL-UNNAMED',
+        '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+        '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+        '--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED',
+        '--add-exports=jdk.javadoc/jdk.javadoc.internal.tool=ALL-UNNAMED',
+        '--add-exports=jdk.javadoc/jdk.javadoc.internal.doclets.toolkit=ALL-UNNAMED',
+        '--add-opens=jdk.javadoc/jdk.javadoc.internal.doclets.toolkit.resources.releases=ALL-UNNAMED',
+        '-Duser.language=en', '-Duser.region=US']
+    mainClass = 'jdk.javadoc.internal.tool.Main'
+    
     args = ['-doctitle', "JGrapes OSGi Components",
         '-use',
         '-linksource',
-        '-link', 'https://docs.oracle.com/en/java/javase/11/docs/api/',
+        '-link', 'https://docs.oracle.com/en/java/javase/21/docs/api/',
         '-link', 'https://mnlipp.github.io/jdrupes-httpcodec/javadoc/',
         '-link', 'https://mnlipp.github.io/jgrapes/latest-release/javadoc/',
         '-link', 'https://docs.osgi.org/javadoc/osgi.core/7.0.0/',
@@ -114,8 +114,8 @@ task java11doc(type: JavaExec) {
         '-bottom', rootProject.file("misc/javadoc.bottom.txt").text,
         '--allow-script-in-comments',
         '-Xdoclint:-html',
-        '--main-stylesheet', "${rootProject.rootDir}/misc/stylesheet.css",
-        '--add-exports=jdk.javadoc/jdk.javadoc.internal.doclets.formats.html=ALL-UNNAMED'
+        '--add-stylesheet', "${rootProject.rootDir}/misc/javadoc-overwrites.css",
+        '--add-exports=jdk.javadoc/jdk.javadoc.internal.doclets.formats.html=ALL-UNNAMED',
         ]
     
     ignoreExitValue true
@@ -125,7 +125,7 @@ gitPublish {
 	repoUri = 'https://github.com/mnlipp/jgrapes.git'
 	branch = 'gh-pages'
 	contents {
-		from(java11doc) {
+		from(apidocs) {
 			into 'javadoc-osgi'
 		}
 	}
@@ -141,7 +141,7 @@ task stage {
 	subprojects.tasks.findAll { tc -> tc.findByName("build") }
 	   .each { tc -> dependsOn tc.findByName("build") }
 	
-	if (!isCiBuild || JavaVersion.current() == JavaVersion.VERSION_17) {
+	if (!isCiBuild || JavaVersion.current() == JavaVersion.VERSION_21) {
     	// Publish JavaDoc
     	dependsOn gitPublishPush
     }	
