@@ -25,10 +25,6 @@ if (System.properties['org.ajoberstar.grgit.auth.username'] == null) {
 
 allprojects {
     repositories {
-        jcenter()
-        // My packages, until linked
-        // maven { url 'https://dl.bintray.com/mnlipp/jgrapes' }
-        
         mavenCentral()
         // Snapshots
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
