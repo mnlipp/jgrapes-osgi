@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723468820258">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723475415955">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -59,7 +59,7 @@
     </capability>
     <capability namespace="maven.dependencies.info">
       <attribute name="compile" value="commons-io:commons-io:2.11.0"/>
-      <attribute name="provided" value="portlet-api:portlet-api:1.0;javax.servlet:servlet-api:2.4"/>
+      <attribute name="provided" value="javax.servlet:servlet-api:2.4;portlet-api:portlet-api:1.0"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="74132" type="Long"/>

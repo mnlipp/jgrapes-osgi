@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723468820542">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723475416019">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="BSD-3-Clause;link=https://asm.ow2.io/LICENSE.txt"/>
@@ -123,7 +123,7 @@
       <attribute name="version" value="9.6.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm-analysis:9.6;org.ow2.asm:asm:9.6;org.ow2.asm:asm-tree:9.6"/>
+      <attribute name="compile" value="org.ow2.asm:asm:9.6;org.ow2.asm:asm-tree:9.6;org.ow2.asm:asm-analysis:9.6"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="91131" type="Long"/>
@@ -459,7 +459,7 @@
       <attribute name="version" value="9.4.0" type="Version"/>
     </capability>
     <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.ow2.asm:asm-analysis:9.4;org.ow2.asm:asm-tree:9.4;org.ow2.asm:asm:9.4"/>
+      <attribute name="compile" value="org.ow2.asm:asm-analysis:9.4;org.ow2.asm:asm:9.4;org.ow2.asm:asm-tree:9.4"/>
     </capability>
     <capability namespace="osgi.content">
       <attribute name="size" value="91549" type="Long"/>
