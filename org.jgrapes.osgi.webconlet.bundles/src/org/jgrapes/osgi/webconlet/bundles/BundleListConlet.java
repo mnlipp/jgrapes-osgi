@@ -205,7 +205,7 @@ public class BundleListConlet
             ConsoleConnection channel, BundleListModel conletState)
             throws Exception {
         event.stop();
-        Bundle bundle = context.getBundle(event.params().asInt(0));
+        Bundle bundle = context.getBundle((int) event.param(0));
         if (bundle == null) {
             return;
         }
