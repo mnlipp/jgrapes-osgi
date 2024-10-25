@@ -24,7 +24,6 @@ Private-Package: org.jgrapes.osgi.webconlet.logviewer
 	org.jgrapes.io;version='[1.3.0,3)',\
 	org.jgrapes.http;version='[1.3.0,2)',\
     org.jgrapes.webconsole.base;version=latest,\
-    org.jdrupes.json;version=latest,\
     org.jdrupes.httpcodec;version=latest,\
 	org.freemarker.freemarker;version='[2.3.31,2.4)'
 

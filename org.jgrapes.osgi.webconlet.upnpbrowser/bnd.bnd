@@ -20,7 +20,6 @@ Private-Package: org.jgrapes.osgi.webconlet.upnpbrowser
 	org.jgrapes.io;version=latest,\
 	org.jgrapes.http;version=latest,\
 	org.jgrapes.webconsole.base;version=latest,\
-    org.jdrupes.json;version=latest,\
     org.jdrupes.httpcodec;version=latest,\
 	org.freemarker.freemarker;version=latest
 
