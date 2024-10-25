@@ -4,20 +4,22 @@
 #org.jgrapes:org.jgrapes.http:1.1.1-SNAPSHOT
 #org.jgrapes:org.jgrapes.http.freemarker:1.1.1-SNAPSHOT
 
-#org.jgrapes:org.jgrapes.webconsole.base:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.jqueryui:0.44.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.base:2.0.0
+#org.jgrapes:org.jgrapes.webconsole.jqueryui:0.47.0
 #org.jgrapes:org.jgrapes.webconsole.bootstrap4:0.47.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.vuejs:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.chartjs:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.forkawesome:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.gridstack:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.jquery:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.markdownit:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconsole.provider.vue:1.0.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconsole.vuejs:1.7.0
+#org.jgrapes:org.jgrapes.webconsole.provider.chartjs:1.3.0
+#org.jgrapes:org.jgrapes.webconsole.provider.forkawesome:1.2.0
+#org.jgrapes:org.jgrapes.webconsole.provider.gridstack:1.2.0
+#org.jgrapes:org.jgrapes.webconsole.provider.jgwcvuecomponents:1.4.0
+#org.jgrapes:org.jgrapes.webconsole.provider.jquery:1.2.0
+#org.jgrapes:org.jgrapes.webconsole.provider.jqueryui:0.5.0
+#org.jgrapes:org.jgrapes.webconsole.provider.jquitouchpunch:0.5.0
+#org.jgrapes:org.jgrapes.webconsole.provider.markdownit:1.2.0
+#org.jgrapes:org.jgrapes.webconsole.provider.vue:1.4.0
 
-#org.jgrapes:org.jgrapes.webconlet.examples.formtest:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconlet.examples.helloworld:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconlet.examples.styletest:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconlet.markdowndisplay:1.0.0-SNAPSHOT
-#org.jgrapes:org.jgrapes.webconlet.sysinfo:1.0.0-SNAPSHOT
+#org.jgrapes:org.jgrapes.webconlet.examples.formtest:1.2.0
+#org.jgrapes:org.jgrapes.webconlet.examples.helloworld:1.3.0
+#org.jgrapes:org.jgrapes.webconlet.examples.styletest:1.3.0
+#org.jgrapes:org.jgrapes.webconlet.markdowndisplay:1.3.0
+#org.jgrapes:org.jgrapes.webconlet.sysinfo:1.5.0
