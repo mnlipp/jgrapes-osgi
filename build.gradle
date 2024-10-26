@@ -1,16 +1,11 @@
-buildscript {
-    repositories {
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:7.0.0"
-        classpath 'org.ajoberstar.grgit:grgit-gradle:4.1.0'
-        classpath 'org.ajoberstar:gradle-git-publish:3.0.0'
-    }
+plugins {
+    id 'biz.aQute.bnd.workspace' version "7.0.0"
+    id 'org.ajoberstar.git-publish' version '4.2.0'
+    id "io.github.gradle-nexus.publish-plugin" version "2.0.0"
+    id 'eclipse'
+    // Make available, don't apply
+    id 'org.ajoberstar.grgit' version '5.2.0' apply false
 }
-
-apply plugin: 'biz.aQute.bnd.workspace'
-apply plugin: 'org.ajoberstar.git-publish'
 
 ext {
 	isCiBuild = System.getenv().get("CI") == 'true'
@@ -127,6 +122,18 @@ gitPublish {
 	}
 	preserve { include '**/*' }
 	commitMessage = "Updated."
+}
+
+// Required for nexus publishing
+group = "org.jgrapes"
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = project.properties['sonatypeTokenKey'] ?: "nouser"
+            password = project.properties['sonatypeTokenSecret'] ?: "nopass"
+        }
+    }
 }
 
 // Until https://github.com/ajoberstar/gradle-git-publish/issues/41 is fixed

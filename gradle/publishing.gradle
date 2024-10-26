@@ -15,43 +15,6 @@ task javadocJar(type: Jar) {
     archiveClassifier = "javadoc"
 }
 
-// MavenPublishing (new)
-
-publishing {
-
-    repositories {
-        maven {
-            name "snapshot"
-            url "https://oss.sonatype.org/content/repositories/snapshots/"
-            credentials {
-                username project.properties['sonatypeTokenKey'] ?: "nouser"
-                password project.properties['sonatypeTokenSecret'] ?: "nopass"
-            }
-        }
-        maven {
-            name "release"
-            url "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            credentials {
-                username project.properties['sonatypeUsername'] ?: "nouser"
-                password project.properties['sonatypePassword'] ?: "nopass"
-            }
-        }
-
-        maven {
-            name "GitLab"
-            url "https://gitlab.com/api/v4/projects/24557189/packages/maven"
-            credentials(HttpHeaderCredentials) {
-                name = "Private-Token"
-                value = System.getenv("GITLAB_REPO_ACCESS") 
-                    ?: project.properties['gitLabRepoAccess'] ?: "" 
-            }
-            authentication {
-                header(HttpHeaderAuthentication)
-            }
-        }
-    }
-}
-
 // Additional configuration of publishing
 apply plugin: ConfigurePublishing
 
@@ -81,6 +44,10 @@ configurePublishing {
     }
 }
 
+signing {
+    sign publishing.publications.maven
+}
+
 task releaseTag {
     dependsOn "cleanJar"
     doLast {
@@ -101,13 +68,14 @@ task stageOnOssrh {
     dependsOn "releaseTag"
     dependsOn "clean"
     dependsOn "build"
-    dependsOn "publishMavenPublicationToReleaseRepository"
+    dependsOn "publishToSonatype"
 }
 
 // Disable un-applicable publishing mode
 afterEvaluate {
     if (bnd.artifact_version.contains("SNAPSHOT")) {
-        tasks.matching { it.name == "publishMavenJavaPublicationToReleaseRepository" }.all {
+        tasks.matching { it.name == "publishMavenJavaPublicationToReleaseRepository"
+           || it.name == "publishToSonatype" }.all {
             enabled = false
         }
     } else {
