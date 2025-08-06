@@ -1,5 +1,84 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723475415877">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1754412630432">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.eclipse.org/legal/epl-2.0, https://www.gnu.org/software/classpath/license.html"/>
+      <attribute name="osgi.identity" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="documentation" value="https://www.eclipse.org"/>
+      <attribute name="description" value="Eclipse Enterprise for Java (EE4J) is an open source initiative to create standard APIs,        implementations of those APIs, and technology compatibility kits for Java runtimes        that enable development, deployment, and management of server-side and cloud-native applications."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="bundle-version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.glassfish.hk2.osgiresourcelocator"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-2086606091,-1424674316,-660214220,32381369,-1472694520,356268086,-89758807,720301120,-860652131,1505265992" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.glassfish.hk2.osgi-resource-locator"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="3.0.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.glassfish.hk2.osgi-resource-locator"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="from" value="org.glassfish.hk2:osgi-resource-locator:3.0.0"/>
+      <attribute name="version" value="3.0.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="provided" value="org.osgi:osgi.cmpn:7.0.0;org.osgi:osgi.core:8.0.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="31968" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/3.0.0/osgi-resource-locator-3.0.0.jar"/>
+      <attribute name="osgi.content" value="A1866CCFDDAA29F18DA5D39DF662894AB2DD9902994A5000E7644F6CC1E37E55"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.io)"/>
+      <attribute name="osgi.wiring.package" value="java.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.invoke)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.invoke"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.net)"/>
+      <attribute name="osgi.wiring.package" value="java.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.security)"/>
+      <attribute name="osgi.wiring.package" value="java.security"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util)"/>
+      <attribute name="osgi.wiring.package" value="java.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent.locks)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent.locks"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.10.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.glassfish.hk2.osgiresourcelocator)(version&gt;=3.0.0))"/>
+      <attribute name="osgi.wiring.package" value="org.glassfish.hk2.osgiresourcelocator"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=11))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="https://glassfish.java.net/nonav/public/CDDL+GPL_1_1.html"/>
@@ -94,6 +173,85 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.glassfish.hk2.osgiresourcelocator)(version&gt;=2.4.0))"/>
       <attribute name="osgi.wiring.package" value="org.glassfish.hk2.osgiresourcelocator"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.eclipse.org/legal/epl-2.0, https://www.gnu.org/software/classpath/license.html"/>
+      <attribute name="osgi.identity" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="documentation" value="https://www.eclipse.org"/>
+      <attribute name="description" value="Eclipse Enterprise for Java (EE4J) is an open source initiative to create standard APIs,        implementations of those APIs, and technology compatibility kits for Java runtimes        that enable development, deployment, and management of server-side and cloud-native applications."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.4" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-symbolic-name" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="bundle-version" value="1.0.4" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.glassfish.hk2.osgiresourcelocator"/>
+      <attribute name="version" value="1.0.4" type="Version"/>
+      <attribute name="bnd.hashes" value="-2086606091,-1424674316,-660214220,32381369,-1472694520,356268086,-89758807,720301120,-860652131,1505265992" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.4" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.glassfish.hk2.osgi-resource-locator"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.4" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.glassfish.hk2.osgi-resource-locator"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.glassfish.hk2.osgi-resource-locator"/>
+      <attribute name="from" value="org.glassfish.hk2:osgi-resource-locator:1.0.4"/>
+      <attribute name="version" value="1.0.4" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="provided" value="org.osgi:osgi.cmpn:7.0.0;org.osgi:osgi.core:8.0.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="31973" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/glassfish/hk2/osgi-resource-locator/1.0.4/osgi-resource-locator-1.0.4.jar"/>
+      <attribute name="osgi.content" value="D0F2B588C2B38EFDE070DEBA070787197549BBE7809F748F04FA48229AA6EE1E"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.io)"/>
+      <attribute name="osgi.wiring.package" value="java.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.invoke)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.invoke"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.net)"/>
+      <attribute name="osgi.wiring.package" value="java.net"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.security)"/>
+      <attribute name="osgi.wiring.package" value="java.security"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util)"/>
+      <attribute name="osgi.wiring.package" value="java.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.util.concurrent.locks)"/>
+      <attribute name="osgi.wiring.package" value="java.util.concurrent.locks"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.10.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.osgi.framework"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.glassfish.hk2.osgiresourcelocator)(version&gt;=1.0.4))"/>
+      <attribute name="osgi.wiring.package" value="org.glassfish.hk2.osgiresourcelocator"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=11))"/>
     </requirement>
   </resource>
   <resource>

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1731181749641">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="documentation" value="https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names"/>
+      <attribute name="description" value="Add-on module for Jackson (https://github.com/FasterXML/jackson) to supportintrospection of method/constructor parameter names, without having to add explicit property name annotation."/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="com.fasterxml.jackson.annotation,com.fasterxml.jackson.core,com.fasterxml.jackson.databind,com.fasterxml.jackson.databind.cfg,com.fasterxml.jackson.databind.introspect,com.fasterxml.jackson.databind.module"/>
+      <attribute name="bundle-symbolic-name" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="bundle-version" value="2.18.0" type="Version"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.module.paramnames"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+      <attribute name="bnd.hashes" value="-710995502,771359899,1446619326,520636555" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="2.18.0" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="2.18.0" type="Version"/>
+      <attribute name="osgi.wiring.host" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="from" value="com.fasterxml.jackson.module:jackson-module-parameter-names:2.18.0"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="com.fasterxml.jackson.core:jackson-core:2.18.0;com.fasterxml.jackson.core:jackson-databind:2.18.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="9869" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.0/jackson-module-parameter-names-2.18.0.jar"/>
+      <attribute name="osgi.content" value="05A77D2362EDB986EEAF84402C3168EA3C1D67A11282E4C9E1157FBEB46C7DC1"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.annotation)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.core)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.core.util)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.core.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind.cfg)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind.cfg"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind.introspect)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind.introspect"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.fasterxml.jackson.databind.module)(version&gt;=2.18.0)(!(version&gt;=3.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind.module"/>
+    </requirement>
+    <requirement namespace="bnd.multirelease">
+      <directive name="filter" value="(&amp;(bnd.multirelease=com.fasterxml.jackson.module.jackson-module-parameter-names)(&amp;(version&gt;=2.18.0)(version&lt;=2.18.0)))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.module.jackson-module-parameter-names__8"/>
+      <attribute name="type" value="bnd.synthetic"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="bnd.multirelease">
+      <attribute name="bnd.multirelease" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(&amp;(version&gt;=1.8.0)(!(version&gt;=9.0.0))))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.module.jackson-module-parameter-names__9"/>
+      <attribute name="type" value="bnd.synthetic"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="bnd.multirelease">
+      <attribute name="bnd.multirelease" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version&gt;=9.0.0))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.module.jackson-module-parameter-names__8"/>
+      <attribute name="type" value="bnd.synthetic"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="bnd.multirelease">
+      <attribute name="bnd.multirelease" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(&amp;(version&gt;=1.8.0)(!(version&gt;=9.0.0))))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="com.fasterxml.jackson.module.jackson-module-parameter-names__9"/>
+      <attribute name="type" value="bnd.synthetic"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <capability namespace="bnd.multirelease">
+      <attribute name="bnd.multirelease" value="com.fasterxml.jackson.module.jackson-module-parameter-names"/>
+      <attribute name="version" value="2.18.0" type="Version"/>
+    </capability>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version&gt;=9.0.0))"/>
+    </requirement>
+  </resource>
+</repository>

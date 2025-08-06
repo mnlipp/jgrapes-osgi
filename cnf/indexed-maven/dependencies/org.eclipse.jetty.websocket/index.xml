@@ -1,5 +1,1614 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1723475416039">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="IndexedMaven" increment="1754412630527">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Server"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-1734645962,-1146186056,-878006856,-1044135578,1335045973,-5058058,-2110462739,-946901597,-1818419758,171690371,1792230384,848203880,-1281123392,-384864211,-1501364834" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server.pathmap"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1299028384,-2054323513,-1362882875" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.server"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.server"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-server:9.4.57.v20241219"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.57.v20241219;org.eclipse.jetty.websocket:websocket-common:9.4.57.v20241219;org.eclipse.jetty.websocket:websocket-servlet:9.4.57.v20241219;org.eclipse.jetty:jetty-http:9.4.57.v20241219;org.eclipse.jetty:jetty-servlet:9.4.57.v20241219"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.57.v20241219"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="45509" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-server/9.4.57.v20241219/websocket-server-9.4.57.v20241219.jar"/>
+      <attribute name="osgi.content" value="F4C36AAA3ACC33B3FE7FB2CFB57581A386707F620BD6799E223061A0ED18CAB3"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="javax.servlet.ServletContainerInitializer"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http.pathmap)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http.pathmap"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.server)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.server"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.server.handler)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.server.handler"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.servlet)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.servlet.listener)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.servlet.listener"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.server.pathmap)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server.pathmap"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.servlet)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: API"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api.extensions"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-343749530,1024948189,634459479,1840375786,-1923286433,1773659297,-1669274212,-921269129,-462315493,-645326218,-2053995233,-1941355715,-1872545357,-650812173,1352592989,-1671621240,-1758689479,1595410905,1299274056,-1091790776,1894398138,-1923442277,-2012083570,-1099333307,1633153887,-168196135,2140610005,-1219642076" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-1566922192,1806112546,-1564893632,-1563986523,1809686079,858269639" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="80204913,-1064963561,521020542,82903280" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1391410207,-99100607,-820151317,2622298,68139341,-1442250612,1057632082" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.api"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-api:9.4.57.v20241219"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="52192" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-api/9.4.57.v20241219/websocket-api-9.4.57.v20241219.jar"/>
+      <attribute name="osgi.content" value="5933B3678C9B59552BAB900D521DEADE8BB24C441D3F35DB957A87210A478C2D"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.processor)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.serviceloader">
+      <directive name="filter" value="(osgi.serviceloader=org.eclipse.jetty.websocket.api.extensions.Extension)"/>
+      <directive name="resolution" value="optional"/>
+      <directive name="cardinality" value="multiple"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Common"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="766116438,-1440699077,-1733959953,1521162918,-2004043085,-872841305,-1927724146,80204913,-1911543745,1029563503,-321643084,-297155614,1371868,-1798579662,1786533350,-1286563269,-1202118750,1463874767,-1061446341,-2005279069" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="132099532,-91245963,400411990,-1481803216,1617437635,1602121467,-825918411,1260655696,943245344" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1375049618,75103429,-897714694,-181206331" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-40864690,904277649,80204927,-349362557,80204913,-276256717,2043886881,1698768677,1260311716,-2101882751,-1921706231,1708774200,-1888900063,1955883606,879437947" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.http"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1833885489,1971845884,80204913,1516112053" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-702454811,1315155652" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-1988939940,1392069652,-938955025,-683648821" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-1937796672,1343472450,1944860520,-834721662,-814048376,1306796218,-2016715575,1167685924,-1915193692,-1141149072,-879640878,-337293653" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1283032652,421777369,1589443579,2028110808,-1467169618,262562895" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.identity"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="449511681" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1146655261,904277649,1698768677,-958115415,-1975646458,1193489842" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1937863230,904277649,1698768677,809582301,-779723203,-153790274,549454083" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.fragment"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="904277649,1698768677,52573103" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="975479374,80204913,-1962869373,45750632,-801107062,-645701830,-12549024,1192349716,-771970840,1106278823" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-common:9.4.57.v20241219"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.57.v20241219;org.eclipse.jetty:jetty-io:9.4.57.v20241219;org.eclipse.jetty:jetty-util:9.4.57.v20241219"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="214602" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-common/9.4.57.v20241219/websocket-common-9.4.57.v20241219.jar"/>
+      <attribute name="osgi.content" value="100CAFAB74235B3E4A1D9FBB1504BBD51AD2DA9A2670C18ADC28949A6DC8E61D"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="org.eclipse.jetty.websocket.api.extensions.Extension"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.annotations)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events.annotated)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions.compress)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.frames)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io.payload)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.message)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.util)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.client,org.eclipse.jetty.client.api,org.eclipse.jetty.client.http,org.eclipse.jetty.io,org.eclipse.jetty.util,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl,org.eclipse.jetty.util.thread,org.eclipse.jetty.websocket.api,org.eclipse.jetty.websocket.api.extensions,org.eclipse.jetty.websocket.client.io,org.eclipse.jetty.websocket.client.masks,org.eclipse.jetty.websocket.common,org.eclipse.jetty.websocket.common.events,org.eclipse.jetty.websocket.common.scopes"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1399164318,477354770,-1420563067,-300915292,-1819943081,-543238542,1700330456,-1390615430,-1517204320" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.io,org.eclipse.jetty.util.component,org.eclipse.jetty.util.thread,org.eclipse.jetty.websocket.api,org.eclipse.jetty.websocket.api.extensions,org.eclipse.jetty.websocket.client,org.eclipse.jetty.websocket.common.io"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.io"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-757296433,-1255891248,905530096" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.masks"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="-1753998067,-1997409095,-579580068,467480961" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.client"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.client"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-client:9.4.57.v20241219"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.57.v20241219;org.eclipse.jetty:jetty-client:9.4.57.v20241219;org.eclipse.jetty:jetty-io:9.4.57.v20241219;org.eclipse.jetty:jetty-util:9.4.57.v20241219"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="45597" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-client/9.4.57.v20241219/websocket-client-9.4.57.v20241219.jar"/>
+      <attribute name="osgi.content" value="994A6CE882440D3CE41ADAE46F60C14EA692FAA884FD8E44247F6A955CDEB4FE"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client.api)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client.http)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.resource)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.resource"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client.io)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client.masks)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.masks"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.xml)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.xml"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Websocket Servlet Interface"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="version" value="9.4.57" type="Version"/>
+      <attribute name="bnd.hashes" value="1080470104,-812231272,1331805774,507441765,1463043198,-2013651917,-114353492" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.57.v20241219" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.57.v20241219"/>
+      <attribute name="version" value="9.4.57.v20241219" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.57.v20241219"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="30304" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-servlet/9.4.57.v20241219/websocket-servlet-9.4.57.v20241219.jar"/>
+      <attribute name="osgi.content" value="89D2A48984AFC28AC5047A3F0F45356342F5ADC3D114B2F1803AA4E624392A5A"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.57)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Websocket Servlet Interface"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1080470104,-812231272,1331805774,507441765,1463043198,-2013651917,-114353492" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.servlet"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.servlet"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-servlet:9.4.56.v20240826"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty.websocket:websocket-api:9.4.56.v20240826"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="30306" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-servlet/9.4.56.v20240826/websocket-servlet-9.4.56.v20240826.jar"/>
+      <attribute name="osgi.content" value="FA779712CB22157116411979FD5593D20F9DB3E27FA9088E1F282C9AEF4A5584"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.client,org.eclipse.jetty.client.api,org.eclipse.jetty.client.http,org.eclipse.jetty.io,org.eclipse.jetty.util,org.eclipse.jetty.util.component,org.eclipse.jetty.util.ssl,org.eclipse.jetty.util.thread,org.eclipse.jetty.websocket.api,org.eclipse.jetty.websocket.api.extensions,org.eclipse.jetty.websocket.client.io,org.eclipse.jetty.websocket.client.masks,org.eclipse.jetty.websocket.common,org.eclipse.jetty.websocket.common.events,org.eclipse.jetty.websocket.common.scopes"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1399164318,477354770,-1420563067,-300915292,-1819943081,-543238542,1700330456,-1390615430,-1517204320" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.io,org.eclipse.jetty.util.component,org.eclipse.jetty.util.thread,org.eclipse.jetty.websocket.api,org.eclipse.jetty.websocket.api.extensions,org.eclipse.jetty.websocket.client,org.eclipse.jetty.websocket.common.io"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.io"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-757296433,-1255891248,905530096" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.masks"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-1753998067,-1997409095,-579580068,467480961" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.client"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.client"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.client"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-client:9.4.56.v20240826"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-common:9.4.56.v20240826;org.eclipse.jetty:jetty-client:9.4.56.v20240826;org.eclipse.jetty:jetty-io:9.4.56.v20240826;org.eclipse.jetty:jetty-util:9.4.56.v20240826"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="45598" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-client/9.4.56.v20240826/websocket-client-9.4.56.v20240826.jar"/>
+      <attribute name="osgi.content" value="2B88F2994A257299527903E365883452C24C9160F1008C03337411B397E9F3F6"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client.api)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.client.http)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.client.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.resource)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.resource"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client.io)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.client.masks)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.client.masks"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.xml)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.xml"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Common"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="766116438,-1440699077,-1733959953,1521162918,-2004043085,-872841305,-1927724146,80204913,-1911543745,1029563503,-321643084,-297155614,1371868,-1798579662,1786533350,-1286563269,-1202118750,1463874767,-1061446341,-2005279069" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="132099532,-91245963,400411990,-1481803216,1617437635,1602121467,-825918411,1260655696,943245344" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1375049618,75103429,-897714694,-181206331" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-40864690,904277649,80204927,-349362557,80204913,-276256717,2043886881,1698768677,1260311716,-2101882751,-1921706231,1708774200,-1888900063,1955883606,879437947" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.http"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1833885489,1971845884,80204913,1516112053" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-702454811,1315155652" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-1988939940,1392069652,-938955025,-683648821" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-1937796672,1343472450,1944860520,-834721662,-814048376,1306796218,-2016715575,1167685924,-1915193692,-1141149072,-879640878,-337293653" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1283032652,421777369,1589443579,2028110808,-1467169618,262562895" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.identity"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="449511681" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1146655261,904277649,1698768677,-958115415,-1975646458,1193489842" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1937863230,904277649,1698768677,809582301,-779723203,-153790274,549454083" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.fragment"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="904277649,1698768677,52573103" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="975479374,80204913,-1962869373,45750632,-801107062,-645701830,-12549024,1192349716,-771970840,1106278823" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-common:9.4.56.v20240826"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-api:9.4.56.v20240826;org.eclipse.jetty:jetty-io:9.4.56.v20240826;org.eclipse.jetty:jetty-util:9.4.56.v20240826"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="214603" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-common/9.4.56.v20240826/websocket-common-9.4.56.v20240826.jar"/>
+      <attribute name="osgi.content" value="239C482DFDAD265CA37FD88A954579E32691DE26276C319FFF4FFFF5437DA307"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="org.eclipse.jetty.websocket.api.extensions.Extension"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.annotations)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events.annotated)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions.compress)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.frames)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io.payload)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.message)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.util)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Server"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-1734645962,-1146186056,-878006856,-1044135578,1335045973,-5058058,-2110462739,-946901597,-1818419758,171690371,1792230384,848203880,-1281123392,-384864211,-1501364834" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server.pathmap"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1299028384,-2054323513,-1362882875" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.server"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.server"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.server"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-server:9.4.56.v20240826"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty.websocket:websocket-client:9.4.56.v20240826;org.eclipse.jetty.websocket:websocket-common:9.4.56.v20240826;org.eclipse.jetty.websocket:websocket-servlet:9.4.56.v20240826;org.eclipse.jetty:jetty-http:9.4.56.v20240826;org.eclipse.jetty:jetty-servlet:9.4.56.v20240826"/>
+      <attribute name="provided" value="javax.servlet:javax.servlet-api:3.1.0;org.eclipse.jetty:jetty-server:9.4.56.v20240826"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="45509" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-server/9.4.56.v20240826/websocket-server-9.4.56.v20240826.jar"/>
+      <attribute name="osgi.content" value="0D8959A54AF499307A9E8718C5FC7390B7751EF8B184D4B491271ED04E3A4E62"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="javax.servlet.ServletContainerInitializer"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=javax.servlet.http)(version&gt;=3.1.0)(!(version&gt;=4.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="javax.servlet.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.http.pathmap)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.http.pathmap"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.server)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.server"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.server.handler)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.server.handler"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.servlet)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.servlet.listener)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.servlet.listener"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.server.pathmap)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.server.pathmap"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.servlet)(version&gt;=9.4.56)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="documentation" value="https://jetty.org/"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: API"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api.extensions"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-343749530,1024948189,634459479,1840375786,-1923286433,1773659297,-1669274212,-921269129,-462315493,-645326218,-2053995233,-1941355715,-1872545357,-650812173,1352592989,-1671621240,-1758689479,1595410905,1299274056,-1091790776,1894398138,-1923442277,-2012083570,-1099333307,1633153887,-168196135,2140610005,-1219642076" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="-1566922192,1806112546,-1564893632,-1563986523,1809686079,858269639" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="80204913,-1064963561,521020542,82903280" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <directive name="uses" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+      <attribute name="version" value="9.4.56" type="Version"/>
+      <attribute name="bnd.hashes" value="1391410207,-99100607,-820151317,2622298,68139341,-1442250612,1057632082" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.56.v20240826" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.api"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.api"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-api:9.4.56.v20240826"/>
+      <attribute name="version" value="9.4.56.v20240826" type="Version"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="52191" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-api/9.4.56.v20240826/websocket-api-9.4.56.v20240826.jar"/>
+      <attribute name="osgi.content" value="B6362DE984ED8C67F8755BCCEB33346789B136238B621652DDB7E8391B2C449F"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.processor)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.serviceloader">
+      <directive name="filter" value="(osgi.serviceloader=org.eclipse.jetty.websocket.api.extensions.Extension)"/>
+      <directive name="resolution" value="optional"/>
+      <directive name="cardinality" value="multiple"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
+      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
+      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="documentation" value="https://eclipse.org/jetty"/>
+      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Common"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="9.4.54.v20240208" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="766116438,-1440699077,-1733959953,1521162918,-2004043085,-872841305,-1927724146,80204913,-1911543745,1029563503,-321643084,-297155614,1371868,-1798579662,1786533350,-1286563269,-1202118750,1463874767,-1061446341,-2005279069" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="132099532,-91245963,400411990,-1481803216,1617437635,1602121467,-825918411,1260655696,943245344" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="1375049618,75103429,-897714694,-181206331" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="-40864690,904277649,80204927,-349362557,80204913,-276256717,2043886881,1698768677,1260311716,-2101882751,-1921706231,1708774200,-1888900063,1955883606,879437947" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.http"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="1833885489,1971845884,80204913,1516112053" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="-702454811,1315155652" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="-1988939940,1392069652,-938955025,-683648821" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="-1937796672,1343472450,1944860520,-834721662,-814048376,1306796218,-2016715575,1167685924,-1915193692,-1141149072,-879640878,-337293653" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="1283032652,421777369,1589443579,2028110808,-1467169618,262562895" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.identity"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="449511681" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="1146655261,904277649,1698768677,-958115415,-1975646458,1193489842" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="1937863230,904277649,1698768677,809582301,-779723203,-153790274,549454083" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.fragment"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="904277649,1698768677,52573103" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+      <attribute name="version" value="9.4.54" type="Version"/>
+      <attribute name="bnd.hashes" value="975479374,80204913,-1962869373,45750632,-801107062,-645701830,-12549024,1192349716,-771970840,1106278823" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.common"/>
+    </capability>
+    <capability namespace="bnd.info">
+      <attribute name="name" value="org.eclipse.jetty.websocket.common"/>
+      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-common:9.4.54.v20240208"/>
+      <attribute name="version" value="9.4.54.v20240208" type="Version"/>
+    </capability>
+    <capability namespace="maven.dependencies.info">
+      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.54.v20240208;org.eclipse.jetty.websocket:websocket-api:9.4.54.v20240208;org.eclipse.jetty:jetty-io:9.4.54.v20240208"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="214603" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-common/9.4.54.v20240208/websocket-common-9.4.54.v20240208.jar"/>
+      <attribute name="osgi.content" value="97F994BFD6918232615D147175E8BAD9CCEE631A11E9C416885BB9A8A2EF440F"/>
+    </capability>
+    <capability namespace="osgi.serviceloader">
+      <attribute name="osgi.serviceloader" value="org.eclipse.jetty.websocket.api.extensions.Extension"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.annotations)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events.annotated)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions.compress)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.frames)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io.payload)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.message)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.util)"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
@@ -302,239 +1911,6 @@
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.servlet)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
       <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.servlet"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-    <requirement namespace="osgi.extender">
-      <directive name="filter" value="(osgi.extender=osgi.serviceloader.registrar)"/>
-      <directive name="resolution" value="optional"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="http://www.apache.org/licenses/LICENSE-2.0, https://www.eclipse.org/org/documents/epl-v10.php"/>
-      <attribute name="copyright" value="Copyright (c) 2008-2022 Mort Bay Consulting Pty Ltd and others."/>
-      <attribute name="osgi.identity" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="documentation" value="https://eclipse.org/jetty"/>
-      <attribute name="description" value="Jetty module for Jetty :: Websocket :: Common"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="9.4.54.v20240208" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="766116438,-1440699077,-1733959953,1521162918,-2004043085,-872841305,-1927724146,80204913,-1911543745,1029563503,-321643084,-297155614,1371868,-1798579662,1786533350,-1286563269,-1202118750,1463874767,-1061446341,-2005279069" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="132099532,-91245963,400411990,-1481803216,1617437635,1602121467,-825918411,1260655696,943245344" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="1375049618,75103429,-897714694,-181206331" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="-40864690,904277649,80204927,-349362557,80204913,-276256717,2043886881,1698768677,1260311716,-2101882751,-1921706231,1708774200,-1888900063,1955883606,879437947" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.http"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="1833885489,1971845884,80204913,1516112053" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="-702454811,1315155652" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="-1988939940,1392069652,-938955025,-683648821" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="-1937796672,1343472450,1944860520,-834721662,-814048376,1306796218,-2016715575,1167685924,-1915193692,-1141149072,-879640878,-337293653" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="1283032652,421777369,1589443579,2028110808,-1467169618,262562895" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.identity"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="449511681" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="1146655261,904277649,1698768677,-958115415,-1975646458,1193489842" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="1937863230,904277649,1698768677,809582301,-779723203,-153790274,549454083" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.fragment"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="904277649,1698768677,52573103" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
-      <attribute name="version" value="9.4.54" type="Version"/>
-      <attribute name="bnd.hashes" value="975479374,80204913,-1962869373,45750632,-801107062,-645701830,-12549024,1192349716,-771970840,1106278823" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.eclipse.jetty.websocket.common"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="9.4.54.v20240208" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.eclipse.jetty.websocket.common"/>
-    </capability>
-    <capability namespace="bnd.info">
-      <attribute name="name" value="org.eclipse.jetty.websocket.common"/>
-      <attribute name="from" value="org.eclipse.jetty.websocket:websocket-common:9.4.54.v20240208"/>
-      <attribute name="version" value="9.4.54.v20240208" type="Version"/>
-    </capability>
-    <capability namespace="maven.dependencies.info">
-      <attribute name="compile" value="org.eclipse.jetty:jetty-util:9.4.54.v20240208;org.eclipse.jetty.websocket:websocket-api:9.4.54.v20240208;org.eclipse.jetty:jetty-io:9.4.54.v20240208"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="214603" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="https://repo1.maven.org/maven2/org/eclipse/jetty/websocket/websocket-common/9.4.54.v20240208/websocket-common-9.4.54.v20240208.jar"/>
-      <attribute name="osgi.content" value="97F994BFD6918232615D147175E8BAD9CCEE631A11E9C416885BB9A8A2EF440F"/>
-    </capability>
-    <capability namespace="osgi.serviceloader">
-      <attribute name="osgi.serviceloader" value="org.eclipse.jetty.websocket.api.extensions.Extension"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.io)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.io"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.annotation)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.annotation"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.component)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.component"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.compression)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.compression"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.log)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.log"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.ssl)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.ssl"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.util.thread)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.util.thread"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.annotations)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.annotations"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.extensions)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.extensions"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.eclipse.jetty.websocket.api.util)(version&gt;=9.4.54)(!(version&gt;=10.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.api.util"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.events.annotated)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.events.annotated"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.extensions.compress)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.extensions.compress"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.frames)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.frames"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.io.payload)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.io.payload"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.message)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.message"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.scopes)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.scopes"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=org.eclipse.jetty.websocket.common.util)"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.jetty.websocket.common.util"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
